@@ -10,7 +10,9 @@ export async function getGameDecks() {
 }
 
 export async function getGameDeckByName(name: string) {
-  const response = await fetch(`${baseUrl}/gameDecks/${name}`);
+  const response = await fetch(`${baseUrl}/gameDecks/${name}`, {
+    next: { revalidate: 60 * 5 },
+  });
   if (!response.ok) {
     throw new Error('Game deck not found');
   }
