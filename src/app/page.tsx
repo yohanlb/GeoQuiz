@@ -1,7 +1,15 @@
-export default function Home() {
+import React from 'react';
+import { getGameDecks } from './queries/gameDecks';
+import GameDeckGrid from '@components/components/home/GameDeckGrid';
+
+async function Home() {
+  const fetchedGameDecks = await getGameDecks();
+
   return (
-    <main className='flex min-h-screen flex-col items-center justify-between p-24'>
-      <h1>Home</h1>
-    </main>
+    <>
+      <GameDeckGrid gameDecks={fetchedGameDecks} />
+    </>
   );
 }
+
+export default Home;
