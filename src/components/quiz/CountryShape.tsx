@@ -1,3 +1,5 @@
+'use client';
+import LoadingSpinner from '@components/_commons/LoadingSpinner';
 import React from 'react';
 import InlineSVG from 'react-inlinesvg';
 
@@ -32,6 +34,7 @@ function CountryShape({
           height='100%'
           width='100%'
           title='Country shape'
+          loader={<LoadingSpinner />}
         />
       </div>
     );

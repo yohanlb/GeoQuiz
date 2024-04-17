@@ -39,7 +39,10 @@ const QuestionView = ({
     <div className='mx-auto flex max-w-lg flex-col gap-6 px-4 md:gap-8 md:px-0'>
       <div className='text-left '>
         <h1 className='text-3xl md:text-5xl'>
-          {`${currentQuestion.countryData.emoji} ${currentQuestion.countryData.name}`}
+          <span className='font-emoji'>
+            {currentQuestion.countryData.emoji}
+          </span>{' '}
+          {currentQuestion.countryData.name}
         </h1>
         <div className='text-xs'>
           <p>
