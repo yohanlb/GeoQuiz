@@ -6,9 +6,7 @@ type Props = {
   searchParams: { length: number };
 };
 const Quiz = async ({ params, searchParams }: Props) => {
-  console.log(params);
   const questions = await getQuestions(params.gameDeck, searchParams.length);
-  console.log(searchParams.length, questions.length);
 
   return (
     <div>
