@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
 import NavBar from '@components/_commons/NavBar';
-
-const inter = Inter({ subsets: ['latin'] });
+import BackgroundGradient from '@components/_commons/BackgroundGradient';
+import { inter, notoEmoji } from '../utils/font';
+import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Geo Quiz! - Country, Capitals, and Flag questions!',
@@ -19,10 +18,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
-      <body className={`${inter.className} mx-auto max-w-screen-md pb-2`}>
+    <html lang='en' className={`${inter.variable} ${notoEmoji.variable}`}>
+      <body className={`mx-auto max-w-screen-md pb-2`}>
         <NavBar />
         {children}
+        <BackgroundGradient />
       </body>
     </html>
   );
