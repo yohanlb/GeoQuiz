@@ -1,5 +1,4 @@
 import React from 'react';
-import { QuestionMarkCircledIcon } from '@radix-ui/react-icons';
 import Image from 'next/image';
 
 type Props = {
@@ -25,16 +24,9 @@ const GameDeckCard = ({ gameDeck }: Props) => (
     </div>
 
     <div className='mt-3 text-left text-xs font-extralight text-gray-400 '>
-      <div className='mb-3 flex items-center justify-between'>
-        <h3 className='text-xl font-light leading-none tracking-tight text-white'>
-          {gameDeck.displayName}
-        </h3>
-        <span className=' flex-shrink-0'>
-          <span className='mr-1'>10</span>
-          <span className='hidden md:inline'>Questions</span>
-          <QuestionMarkCircledIcon className='inline align-top md:hidden' />
-        </span>
-      </div>
+      <h3 className=' mb-2 text-xl font-light leading-none tracking-tight text-white'>
+        {gameDeck.displayName}
+      </h3>
       <p>Unplayed</p>
       <p>
         Community average:
