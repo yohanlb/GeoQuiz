@@ -3,7 +3,7 @@ import { AnswerOptionButton } from './AnswerButton';
 import AnswerCirclesList from './AnswerCirclesList';
 import ChoiceOptionButtons from './AnswerButtonsList';
 import formatCountrySuccessPercentage from '../../utils/countryStats';
-// import CountryShape from '../Widgets/CountryShape';
+import CountryShape from './CountryShape';
 
 type QuestionViewProps = {
   questions: Question[];
@@ -60,7 +60,7 @@ const QuestionView = ({
           </p>
         </div>
       </div>
-      {/* <CountryShape countryCode={currentQuestion.countryData.iso2} /> */}
+      <CountryShape countryCode={currentQuestion.countryData.iso2} />
       <ChoiceOptionButtons
         options={options}
         handleClick={handleClickAnswerOption}
