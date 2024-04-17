@@ -2,11 +2,10 @@ import GameDeckInfos from '@components/setup/GameDeckInfos';
 import { getGameDeckByName } from '../../queries/gameDecks';
 import Link from 'next/link';
 
-export default async function Setup({
-  params,
-}: {
+type Props = {
   params: { gameDeck: string };
-}) {
+};
+export default async function Setup({ params }: Props) {
   const selectedGameDeck = await getGameDeckByName(params.gameDeck);
 
   return (
