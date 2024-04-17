@@ -24,7 +24,7 @@ const GameDeckCard = ({ gameDeck }: Props) => (
     </div>
 
     <div className='mt-3 text-left text-xs font-extralight text-gray-400 '>
-      <h3 className=' mb-2 text-xl font-light leading-none tracking-tight text-white'>
+      <h3 className='mb-2 text-base font-light leading-none tracking-tight text-white md:text-xl'>
         {gameDeck.displayName}
       </h3>
       <p>Unplayed</p>
