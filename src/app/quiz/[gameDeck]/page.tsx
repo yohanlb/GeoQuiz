@@ -1,3 +1,4 @@
+import GameController from '@components/quiz/GameController';
 import { getQuestions } from '../../queries/questions';
 
 type Props = {
@@ -11,11 +12,7 @@ const Quiz = async ({ params, searchParams }: Props) => {
 
   return (
     <div>
-      {questions.map((question) => (
-        <p key={question.countryData.name}>
-          {question.answer}- {question.countryData.name}
-        </p>
-      ))}
+      <GameController questions={questions} gameDeck={params.gameDeck} />
     </div>
   );
 };

@@ -41,7 +41,7 @@ declare global {
   export type Question = {
     questionType: 'CountryToCapital' | 'CapitalToCountry';
     countryData: CountryData;
-    proposals: string[];
+    answerOptions: string[];
     answer: string;
   };
 
