@@ -13,6 +13,8 @@ const config: Config = {
         emoji: ['var(--font-notoEmoji)'],
       },
       colors: {
+        background: '#1E2228',
+        accent: '#e0881b',
         'bg-gradient-start': '#22262C',
         'bg-gradient-end': '#0F141C',
       },
