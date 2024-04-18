@@ -1,9 +1,9 @@
 'use client';
-import React from 'react';
-// import { useSendCountryStats } from '@/hooks/useSendCountryStats';
+import React, { startTransition } from 'react';
 import ResultView from './ResultsView';
 import QuestionView from './QuestionView';
 import { useRouter } from 'next/navigation';
+import { postCountryStats } from '../../actions/countryStats';
 
 type Props = { questions: Question[]; gameDeck: string };
 
@@ -14,11 +14,16 @@ function GameController({ questions, gameDeck }: Props) {
   const [gameState, setGameState] = React.useState<GameState>('playing');
   const [isShowingAnswer, setIsShowingAnswer] = React.useState<boolean>(false);
   const [userResults, setUserResults] = React.useState<UserResults>([]);
-  // const sendQuestionResultToServer = useSendCountryStats();
   const router = useRouter();
 
   const handleNextQuestion = () => {
-    // sendQuestionResultToServer(fetchedQuestions[currentQuestionIndex].countryData.id, userAnswers.length < 1);
+    startTransition(() => {
+      postCountryStats(
+        questions[currentQuestionIndex].countryData.id,
+        userAnswers.length < 1,
+      );
+    });
+
     setUserAnswers([]);
     setIsShowingAnswer(false);
     if (currentQuestionIndex >= questions.length - 1) {
