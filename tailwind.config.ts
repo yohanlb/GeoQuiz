@@ -18,6 +18,11 @@ const config: Config = {
         'bg-gradient-start': '#22262C',
         'bg-gradient-end': '#0F141C',
       },
+      boxShadow: {
+        light: '6px 4px 8px 0px rgba(0, 0, 0, 0.2)',
+        medium: '12px 8px 8px 0px rgba(0, 0, 0, 0.2)',
+        strong: '12px 12px 8px 2px rgba(0, 0, 0, 0.3)',
+      },
     },
   },
   plugins: [],

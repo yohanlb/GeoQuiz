@@ -6,7 +6,7 @@ type Props = {
 
 const Chip = ({ children }: Props) => {
   return (
-    <div className='bg-background rounded-full bg-opacity-50 px-1 py-0.5 text-sm font-extralight'>
+    <div className='bg-background rounded-full bg-opacity-40 px-1 py-0.5 text-sm font-extralight duration-100 group-hover:bg-opacity-70'>
       {children}
     </div>
   );

@@ -8,7 +8,7 @@ type Props = {
 
 const GameDeckGrid = ({ gameDecks }: Props) => {
   return (
-    <div className='grid grid-cols-2 justify-items-center gap-3 px-3 md:grid-cols-3 md:gap-4 md:px-0'>
+    <div className='grid grid-cols-2 justify-items-center gap-x-3 gap-y-2 px-3 md:grid-cols-3 md:gap-x-4 md:gap-y-2 md:px-0'>
       {gameDecks.map((gameDeck) => (
         <Link
           key={gameDeck.name}
