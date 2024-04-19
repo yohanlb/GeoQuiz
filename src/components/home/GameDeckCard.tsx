@@ -10,10 +10,7 @@ type Props = {
 
 const GameDeckCard = ({ gameDeck }: Props) => (
   <div className='group  w-full text-left text-sm'>
-    <div
-      // style={{ boxShadow: '2px 8px 8px 0px rgba(0,0,0, 0.5)' }}
-      className='shadow-light relative aspect-video w-full overflow-hidden rounded-lg shadow-black/40 group-hover:shadow-strong'
-    >
+    <div className='relative aspect-video w-full overflow-hidden rounded-lg shadow-light shadow-black/40 group-hover:shadow-strong'>
       <div className='absolute left-1 top-1 z-20'>
         <ChipScore label='87%' />
       </div>
