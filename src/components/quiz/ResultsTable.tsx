@@ -1,6 +1,6 @@
 import React from 'react';
 import AnswerCircle from './AnswerCircle';
-import formatCountrySuccessPercentage from '../../utils/countryStats';
+import formatCountrySuccessPercentage from '../../lib/utils/countryStats';
 
 type Props = {
   questions: Question[];

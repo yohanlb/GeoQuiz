@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import NavBar from '@components/_commons/NavBar';
 import BackgroundGradient from '@components/_commons/BackgroundGradient';
-import { inter, notoEmoji } from '../utils/font';
+import { inter, notoEmoji } from '../lib/utils/font';
 import './globals.css';
 
 export const metadata: Metadata = {

@@ -1,5 +1,5 @@
 import GameDeckInfos from '@components/setup/GameDeckInfos';
-import { getGameDeckByName } from '../../queries/gameDecks';
+import { getGameDeckByName } from '../../../queries/gameDecks';
 import Link from 'next/link';
 
 type Props = {

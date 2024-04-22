@@ -2,7 +2,7 @@ import React from 'react';
 import { AnswerOptionButton } from './AnswerButton';
 import AnswerCirclesList from './AnswerCirclesList';
 import ChoiceOptionButtons from './AnswerButtonsList';
-import formatCountrySuccessPercentage from '../../utils/countryStats';
+import formatCountrySuccessPercentage from '../../lib/utils/countryStats';
 import CountryShape from './CountryShape';
 
 type QuestionViewProps = {

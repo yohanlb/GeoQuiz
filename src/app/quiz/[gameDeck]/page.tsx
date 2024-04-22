@@ -1,5 +1,5 @@
 import GameController from '@components/quiz/GameController';
-import { getQuestions } from '../../queries/questions';
+import { getQuestions } from '../../../queries/questions';
 
 type Props = {
   params: { gameDeck: string };
