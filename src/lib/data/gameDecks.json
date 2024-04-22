@@ -1,12 +1,64 @@
 [
   {
-    "id": 1,
-    "name": "World",
-    "cards": 60
+    "name": "worldwide",
+    "available": true,
+    "visible": true,
+    "displayName": "World",
+    "description": "Get quizzed about any country in the world!",
+    "imageAvailable": true
   },
   {
-    "id": 2,
-    "name": "Bweqwe",
-    "cards": 30
+    "name": "europe",
+    "available": true,
+    "visible": true,
+    "displayName": "Europe",
+    "description": "Dive into Europe's rich history and diverse cultures, from the charming streets of Paris to the ancient ruins of Rome.",
+    "imageAvailable": true
+  },
+  {
+    "name": "asia",
+    "available": true,
+    "visible": true,
+    "displayName": "Asia",
+    "description": "Explore the vibrant countries of Asia, where bustling cities and serene landscapes collide in a whirlwind of experiences.",
+    "imageAvailable": true
+  },
+  {
+    "name": "africa",
+    "available": true,
+    "visible": true,
+    "displayName": "Africa",
+    "description": "",
+    "imageAvailable": true
+  },
+  {
+    "name": "north_america",
+    "available": false,
+    "visible": true,
+    "displayName": "North America",
+    "description": "Discover the diverse landscapes of North America, from the towering peaks of the Rockies to the bustling streets of New York City.",
+    "imageAvailable": true
+  },
+  {
+    "name": "south_america",
+    "available": true,
+    "visible": true,
+    "displayName": "South America",
+    "description": "Immerse yourself in the lively rhythms of South America, where vibrant cities and stunning natural wonders await at every turn.",
+    "imageAvailable": true
+  },
+  {
+    "name": "hardest",
+    "available": true,
+    "visible": true,
+    "displayName": "Hardest Countries",
+    "description": "Get quizzed only about the countries the community knows the less!"
+  },
+  {
+    "name": "easiest",
+    "available": true,
+    "visible": true,
+    "displayName": "Easiest Countries",
+    "description": "Get quizzed only about the countries the community knows the most!"
   }
 ]

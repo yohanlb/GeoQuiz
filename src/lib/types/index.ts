@@ -35,7 +35,7 @@ declare global {
     visible: boolean;
     displayName: string;
     description: string;
-    imageUrl: string;
+    imageAvailable?: boolean;
   };
 
   export type Question = {

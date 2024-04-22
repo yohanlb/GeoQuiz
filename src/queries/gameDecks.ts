@@ -3,7 +3,8 @@ import { promises as fs } from 'fs';
 const ONE_HOUR = 60 * 60;
 const baseUrl = process.env.GEOQUIZ_API_BASE_URL as string;
 
-export async function getGameDecks() {
+//TODO: Not implemented BE yet
+export async function getDynamicGameDecks() {
   const response = await fetch(`${baseUrl}/gameDecks`, {
     next: { revalidate: ONE_HOUR },
   });
