@@ -10,7 +10,7 @@ type Props = {
 };
 
 const GameDeckCard = ({ gameDeck }: Props) => {
-  const dynamicImageName = gameDeck.name;
+  const dynamicImageName = gameDeck.name as GameDeck['name'];
   const image = gameDeckImages[dynamicImageName];
 
   console.log(image, dynamicImageName);

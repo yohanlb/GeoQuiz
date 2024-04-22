@@ -1,12 +1,19 @@
 import GameDeckInfos from '@components/setup/GameDeckInfos';
-import { getGameDeckByName } from '../../../queries/gameDecks';
+import { getGameDecksFromJson } from '../../../queries/gameDecks';
 import Link from 'next/link';
 
 type Props = {
-  params: { gameDeck: string };
+  params: { gameDeck: GameDeck['name'] };
 };
 export default async function Setup({ params }: Props) {
-  const selectedGameDeck = await getGameDeckByName(params.gameDeck);
+  const allGameDecks = await getGameDecksFromJson();
+  const selectedGameDeck = allGameDecks.filter(
+    (gameDeck) => gameDeck.name === params.gameDeck,
+  )[0];
+
+  if (!selectedGameDeck) {
+    throw new Error('Game deck not found');
+  }
 
   return (
     <main className=''>

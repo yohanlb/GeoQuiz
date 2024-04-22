@@ -32,5 +32,5 @@ export async function getGameDecksFromJson() {
     'utf8',
   );
   const data = JSON.parse(file);
-  return data;
+  return data as GameDeck[];
 }
