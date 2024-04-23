@@ -4,10 +4,13 @@ import personIcon from '@assets/person-icon.svg';
 import Image from 'next/image';
 
 type Props = {
-  label: string;
+  label?: string;
 };
 
 const ChipScore = ({ label }: Props) => {
+  if (label === undefined) {
+    return <div className='flex gap-1'></div>;
+  }
   return (
     <Chip>
       <div className='flex gap-1'>

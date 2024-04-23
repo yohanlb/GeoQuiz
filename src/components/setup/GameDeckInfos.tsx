@@ -46,13 +46,21 @@ const GameDeckInfos = ({ gameDeck }: Props) => {
                 Guess the right capitals.
               </strong>
             </p>
-            <p>
+            {/* <p>
               Your Best Score:
               <strong className='font-semibold italic'> Unplayed</strong>
+            </p> */}
+            <p>
+              Countries in this deck:
+              <strong className='font-semibold italic'>
+                {' '}
+                {gameDeck.countryIds.length}
+              </strong>
+              .
             </p>
             <p>
               Community Average Score:
-              <strong className='font-semibold italic'> 73%</strong>
+              <strong className='font-semibold italic'> __%</strong>.
             </p>
           </div>
         </div>
