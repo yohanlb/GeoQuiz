@@ -31,6 +31,33 @@ export async function getGameDecksFromJson() {
     process.cwd() + '/src/lib/data/gameDecks.json',
     'utf8',
   );
-  const data = JSON.parse(file);
-  return data as GameDeck[];
+  const data = JSON.parse(file) as GameDeck[];
+  const gameDecksToShow = data.filter(
+    (gameDeck: GameDeck) =>
+      gameDeck.available && gameDeck.visible && gameDeck.countryIds.length > 0,
+  );
+  return gameDecksToShow;
+}
+
+export async function getGameDecksFromJsonByName(
+  gameDeckName: GameDeck['name'],
+) {
+  const file = await fs.readFile(
+    process.cwd() + '/src/lib/data/gameDecks.json',
+    'utf8',
+  );
+  const data = JSON.parse(file) as GameDeck[];
+  const gameDecksToShow = data.filter(
+    (gameDeck: GameDeck) =>
+      gameDeck.available && gameDeck.visible && gameDeck.countryIds.length > 0,
+  );
+  const selectedGameDeck = gameDecksToShow.filter(
+    (gameDeck) => gameDeck.name === gameDeckName,
+  )[0];
+
+  if (!selectedGameDeck) {
+    throw new Error('Game deck not found');
+  }
+
+  return selectedGameDeck;
 }

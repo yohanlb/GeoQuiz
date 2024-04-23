@@ -5,7 +5,8 @@
     "visible": true,
     "displayName": "World",
     "description": "Get quizzed about any country in the world!",
-    "imageAvailable": true
+    "imageAvailable": true,
+    "countryIds": []
   },
   {
     "name": "europe",
@@ -13,7 +14,13 @@
     "visible": true,
     "displayName": "Europe",
     "description": "Dive into Europe's rich history and diverse cultures, from the charming streets of Paris to the ancient ruins of Rome.",
-    "imageAvailable": true
+    "imageAvailable": true,
+    "countryIds": [
+      34, 6, 3, 21, 22, 28, 15, 55, 58, 59, 72, 74, 75, 82, 84, 85, 91, 99, 100,
+      105, 107, 110, 248, 120, 125, 127, 135, 144, 145, 147, 156, 129, 176, 192,
+      196, 200, 213, 214, 232, 136, 2, 57, 69, 238, 177, 181, 211, 126, 165,
+      201, 207, 182, 230
+    ]
   },
   {
     "name": "asia",
@@ -21,7 +28,25 @@
     "visible": true,
     "displayName": "Asia",
     "description": "Explore the vibrant countries of Asia, where bustling cities and serene landscapes collide in a whirlwind of experiences.",
-    "imageAvailable": true
+    "imageAvailable": true,
+    "countryIds": [
+      12, 33, 37, 19, 26, 16, 18, 63, 81, 103, 104, 109, 111, 117, 118, 121,
+      133, 146, 151, 154, 166, 167, 174, 179, 199, 116, 208, 215, 216, 217, 219,
+      225, 226, 231, 236, 245, 1, 98, 128, 101, 112, 115, 169, 45, 240, 106,
+      119, 132, 194, 102
+    ]
+  },
+  {
+    "name": "oceania",
+    "available": true,
+    "visible": true,
+    "displayName": "Oceania",
+    "description": "",
+    "imageAvailable": false,
+    "countryIds": [
+      5, 47, 52, 46, 73, 89, 114, 153, 157, 143, 162, 163, 164, 168, 175, 191,
+      228, 237, 243, 14, 222, 202, 137, 158, 171, 77
+    ]
   },
   {
     "name": "africa",
@@ -29,7 +54,13 @@
     "visible": true,
     "displayName": "Africa",
     "description": "",
-    "imageAvailable": true
+    "imageAvailable": true,
+    "countryIds": [
+      7, 35, 36, 40, 4, 24, 29, 32, 38, 49, 50, 60, 43, 67, 68, 70, 79, 83, 65,
+      93, 122, 123, 124, 130, 131, 134, 141, 149, 150, 152, 140, 161, 180, 160,
+      184, 193, 195, 197, 198, 183, 206, 209, 212, 218, 220, 224, 229, 244, 246,
+      80, 42, 92, 139, 54, 51, 78, 203, 113, 204, 247
+    ]
   },
   {
     "name": "north_america",
@@ -37,7 +68,8 @@
     "visible": true,
     "displayName": "North America",
     "description": "Discover the diverse landscapes of North America, from the towering peaks of the Rockies to the bustling streets of New York City.",
-    "imageAvailable": true
+    "imageAvailable": true,
+    "countryIds": []
   },
   {
     "name": "south_america",
@@ -45,19 +77,20 @@
     "visible": true,
     "displayName": "South America",
     "description": "Immerse yourself in the lively rhythms of South America, where vibrant cities and stunning natural wonders await at every turn.",
-    "imageAvailable": true
+    "imageAvailable": true,
+    "countryIds": []
   },
   {
     "name": "hardest",
-    "available": true,
-    "visible": true,
+    "available": false,
+    "visible": false,
     "displayName": "Hardest Countries",
     "description": "Get quizzed only about the countries the community knows the less!"
   },
   {
     "name": "easiest",
-    "available": true,
-    "visible": true,
+    "available": false,
+    "visible": false,
     "displayName": "Easiest Countries",
     "description": "Get quizzed only about the countries the community knows the most!"
   }

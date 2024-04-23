@@ -36,6 +36,7 @@ declare global {
     displayName: string;
     description: string;
     imageAvailable?: boolean;
+    countryIds: number[];
   };
 
   export type Question = {

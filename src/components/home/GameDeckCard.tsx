@@ -13,8 +13,6 @@ const GameDeckCard = ({ gameDeck }: Props) => {
   const dynamicImageName = gameDeck.name as GameDeck['name'];
   const image = gameDeckImages[dynamicImageName];
 
-  console.log(image, dynamicImageName);
-
   return (
     <div className='group  w-full text-left text-sm'>
       <div className='relative aspect-video w-full overflow-hidden rounded-lg shadow-light shadow-black/40 group-hover:shadow-strong'>
@@ -43,7 +41,7 @@ const GameDeckCard = ({ gameDeck }: Props) => {
           {gameDeck.displayName}
         </h3>
         <div className='flex w-12 shrink-0 gap-1 text-right '>
-          <span className='text-xs'>100</span>
+          <span className='text-xs'>{gameDeck.countryIds.length}</span>
           <IconDeck />
         </div>
       </div>
