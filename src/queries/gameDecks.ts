@@ -2,7 +2,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 
 const ONE_HOUR = 60 * 60;
-const baseUrl = process.env.GEOQUIZ_API_BASE_URL as string;
+const baseUrl = process.env.NEXT_PUBLIC_GEOQUIZ_API_BASE_URL as string;
 
 //TODO: Not implemented BE yet
 export async function getDynamicGameDecks() {

@@ -1,6 +1,5 @@
-import GameController from '@components/quiz/GameController';
 import { getGameDecksFromJsonByName } from '../../../queries/gameDecks';
-import { getQuestionsFromCountryIds } from '../../../queries/questions';
+import GameClientWrapper from '@components/quiz/GameClientWrapper';
 
 type Props = {
   params: { gameDeck: string };
@@ -9,14 +8,12 @@ type Props = {
 const Quiz = async ({ params, searchParams }: Props) => {
   const gameDeck = await getGameDecksFromJsonByName(params.gameDeck);
 
-  const questions = await getQuestionsFromCountryIds(
-    gameDeck.countryIds,
-    searchParams.length,
-  );
-
   return (
     <div>
-      <GameController questions={questions} gameDeck={params.gameDeck} />
+      <GameClientWrapper
+        gameDeck={gameDeck}
+        amountOfQuestions={searchParams.length}
+      />
     </div>
   );
 };

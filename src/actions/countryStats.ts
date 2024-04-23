@@ -1,5 +1,5 @@
 'use server';
-const baseUrl = process.env.GEOQUIZ_API_BASE_URL as string;
+const baseUrl = process.env.NEXT_PUBLIC_GEOQUIZ_API_BASE_URL as string;
 
 export async function postCountryStats(
   countryId: number,
