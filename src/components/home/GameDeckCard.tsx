@@ -13,40 +13,58 @@ const GameDeckCard = ({ gameDeck }: Props) => {
   const dynamicImageName = gameDeck.name as GameDeck['name'];
   const image = gameDeckImages[dynamicImageName];
 
-  return (
-    <div className='group  w-full text-left text-sm'>
-      <div className='relative aspect-video w-full overflow-hidden rounded-lg shadow-light shadow-black/40 group-hover:shadow-strong'>
-        <div className='absolute left-1 top-1 z-20'>
+  if (!image) {
+    return (
+      <div className='group flex aspect-[16/9] w-full flex-col justify-between rounded-lg bg-background p-1 text-left text-sm hover:bg-zinc-700'>
+        <div className='flex justify-between'>
           <ChipScore label='87%' />
-        </div>
-        <div className='absolute right-1 top-1'>
           <ChipCommunity label='54%' />
         </div>
-        {gameDeck.imageAvailable && (
-          <Image
-            alt={gameDeck.displayName}
-            src={image}
-            fill
-            sizes={'600px'}
-            className=' duration-300 ease-out group-hover:scale-105'
-            style={{
-              objectFit: 'cover',
-              zIndex: -1,
-            }}
-          />
-        )}
-      </div>
-      <div className=' flex h-8 items-center gap-1 align-middle '>
-        <h3 className='grow text-base font-light leading-none tracking-tight text-white '>
-          {gameDeck.displayName}
-        </h3>
-        <div className='flex w-12 shrink-0 gap-1 text-right '>
-          <span className='text-xs'>{gameDeck.countryIds.length}</span>
-          <IconDeck />
+        <div className='flex grow items-center justify-center text-center'>
+          <h3 className='text-base font-bold leading-none tracking-wider text-white underline-offset-4 group-hover:underline'>
+            {gameDeck.displayName}
+          </h3>
+        </div>
+        <div className='flex justify-end'>
+          <div className='flex gap-1'>
+            <span className='text-xs'>{gameDeck.countryIds.length}</span>
+            <IconDeck />
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div className='group relative flex aspect-[16/9] w-full flex-col justify-between overflow-hidden rounded-lg bg-black/20 p-1 text-left text-sm transition-all duration-200 hover:bg-black/0 '>
+        <div className='flex justify-between'>
+          <ChipScore label='87%' />
+          <ChipCommunity label='54%' />
+        </div>
+        <div className='flex grow items-center justify-center text-center'>
+          <h3 className='text-base font-bold leading-none tracking-wider text-white underline-offset-4 group-hover:underline'>
+            {gameDeck.displayName}
+          </h3>
+        </div>
+        <div className='flex justify-end'>
+          <div className='flex gap-1'>
+            <span className='text-xs'>{gameDeck.countryIds.length}</span>
+            <IconDeck />
+          </div>
+        </div>
+        <Image
+          alt={gameDeck.displayName}
+          src={image}
+          fill
+          sizes={'600px'}
+          className=' duration-300 ease-out group-hover:scale-105'
+          style={{
+            objectFit: 'cover',
+            zIndex: -1,
+          }}
+        />
+      </div>
+    );
+  }
 };
 
 export default GameDeckCard;
