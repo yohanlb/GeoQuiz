@@ -25,8 +25,8 @@ const GameDeckInfos = ({ gameDeck }: Props) => {
         </div>
         <div className='mt-4 flex flex-col gap-4 px-0 md:mt-8 md:gap-8'>
           <p className='text-left text-sm md:text-lg'>{gameDeck.description}</p>
-          <div className='relative mx-auto h-40 w-52 overflow-hidden rounded-xl md:h-96 md:w-full'>
-            {gameDeck.imageAvailable && (
+          {gameDeck.imageAvailable && (
+            <div className='relative mx-auto h-40 w-52 overflow-hidden rounded-xl md:h-96 md:w-full'>
               <Image
                 alt={gameDeck.displayName}
                 src={image}
@@ -36,8 +36,8 @@ const GameDeckInfos = ({ gameDeck }: Props) => {
                   objectFit: 'cover',
                 }}
               />
-            )}
-          </div>
+            </div>
+          )}
           <div className='text-left text-sm md:text-lg'>
             <p>
               Goal:
