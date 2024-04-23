@@ -5,7 +5,6 @@
     "visible": true,
     "displayName": "World",
     "description": "Get quizzed about any country in the world!",
-    "imageAvailable": true,
     "countryIds": []
   },
   {
@@ -14,7 +13,6 @@
     "visible": true,
     "displayName": "Europe",
     "description": "Dive into Europe's rich history and diverse cultures, from the charming streets of Paris to the ancient ruins of Rome.",
-    "imageAvailable": true,
     "countryIds": [
       34, 6, 3, 21, 22, 28, 15, 55, 58, 59, 72, 74, 75, 82, 84, 85, 91, 99, 100,
       105, 107, 110, 248, 120, 125, 127, 135, 144, 145, 147, 156, 129, 176, 192,
@@ -28,7 +26,6 @@
     "visible": true,
     "displayName": "Asia",
     "description": "Explore the vibrant countries of Asia, where bustling cities and serene landscapes collide in a whirlwind of experiences.",
-    "imageAvailable": true,
     "countryIds": [
       12, 33, 37, 19, 26, 16, 18, 63, 81, 103, 104, 109, 111, 117, 118, 121,
       133, 146, 151, 154, 166, 167, 174, 179, 199, 116, 208, 215, 216, 217, 219,
@@ -42,7 +39,6 @@
     "visible": true,
     "displayName": "Oceania",
     "description": "",
-    "imageAvailable": false,
     "countryIds": [
       5, 47, 52, 46, 73, 89, 114, 153, 157, 143, 162, 163, 164, 168, 175, 191,
       228, 237, 243, 14, 222, 202, 137, 158, 171, 77
@@ -54,7 +50,6 @@
     "visible": true,
     "displayName": "Africa",
     "description": "",
-    "imageAvailable": true,
     "countryIds": [
       7, 35, 36, 40, 4, 24, 29, 32, 38, 49, 50, 60, 43, 67, 68, 70, 79, 83, 65,
       93, 122, 123, 124, 130, 131, 134, 141, 149, 150, 152, 140, 161, 180, 160,
@@ -68,7 +63,6 @@
     "visible": true,
     "displayName": "North America",
     "description": "Discover the diverse landscapes of North America, from the towering peaks of the Rockies to the bustling streets of New York City.",
-    "imageAvailable": true,
     "countryIds": []
   },
   {
@@ -77,8 +71,28 @@
     "visible": true,
     "displayName": "South America",
     "description": "Immerse yourself in the lively rhythms of South America, where vibrant cities and stunning natural wonders await at every turn.",
-    "imageAvailable": true,
-    "countryIds": []
+    "countryIds": [
+      27, 48, 94, 172, 173, 210, 235, 239, 44, 64, 76, 31, 71, 205, 11
+    ]
+  },
+  {
+    "name": "northernAndCentralAmerica",
+    "available": true,
+    "visible": true,
+    "displayName": "Northern and Central America",
+    "description": "",
+    "countryIds": [25, 233, 86, 187, 39, 23, 53, 66, 90, 97, 170, 159, 142]
+  },
+  {
+    "name": "caribbean",
+    "available": true,
+    "visible": true,
+    "displayName": "Caribbean",
+    "description": "",
+    "countryIds": [
+      8, 13, 41, 20, 155, 56, 249, 61, 62, 87, 108, 88, 138, 148, 178, 185, 186,
+      188, 189, 190, 250, 223, 227, 241, 242, 10, 17, 95
+    ]
   },
   {
     "name": "hardest",

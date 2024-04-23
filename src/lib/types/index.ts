@@ -35,7 +35,6 @@ declare global {
     visible: boolean;
     displayName: string;
     description: string;
-    imageAvailable?: boolean;
     countryIds: number[];
   };
 
