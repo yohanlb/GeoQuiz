@@ -21,7 +21,7 @@ export async function getQuestionsFromCountryIds(
 ) {
   try {
     const response = await axios.post(
-      `${baseUrl}/gameDecks`,
+      `${baseUrl}/questions`,
       {
         countryIds: countryIds,
         amountOfQuestions,
