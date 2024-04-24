@@ -4,15 +4,14 @@ import path from 'path';
 const ONE_HOUR = 60 * 60;
 const baseUrl = process.env.NEXT_PUBLIC_GEOQUIZ_API_BASE_URL as string;
 
-//TODO: Not implemented BE yet
-export async function getDynamicGameDecks() {
-  const response = await fetch(`${baseUrl}/gameDecks`, {
+export async function getDeckByName(deckName: string) {
+  const response = await fetch(`${baseUrl}/gameDecks/name/${deckName}`, {
     next: { revalidate: ONE_HOUR },
   });
   if (!response.ok) {
-    throw new Error("Couldn't fetch game decks.");
+    throw new Error(`Couldn't fetch game deck ${deckName}.`);
   }
-  const data: GameDeck[] = await response.json();
+  const data: Deck = await response.json();
   return data;
 }
 
@@ -41,6 +40,7 @@ export async function getGameDecksFromJson() {
 }
 
 export async function getGameDecksFromJsonByName(
+  // TODO: unused. Delete ?
   gameDeckName: GameDeck['name'],
 ) {
   const file = await fs.readFile(

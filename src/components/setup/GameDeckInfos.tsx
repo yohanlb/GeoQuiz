@@ -7,11 +7,10 @@ import deckIcon from '@assets/deck-icon.svg';
 import peopleIcon from '@assets/people-icon.svg';
 
 type Props = {
-  gameDeck: GameDeck;
-  communityAveragePercent: number;
+  gameDeck: Deck;
 };
 
-const GameDeckInfos = ({ gameDeck, communityAveragePercent }: Props) => {
+const GameDeckInfos = ({ gameDeck }: Props) => {
   const dynamicImageName = gameDeck.name;
   const image = gameDeckImages[dynamicImageName];
 
@@ -64,7 +63,7 @@ const GameDeckInfos = ({ gameDeck, communityAveragePercent }: Props) => {
               <span>Community Average Score:</span>
               <Image src={peopleIcon} width={18} height={18} alt='deck-icon' />
               <span className='font-semibold italic'>
-                {communityAveragePercent}%
+                {gameDeck.averageSuccessRatio}%
               </span>
             </div>
           </div>

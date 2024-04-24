@@ -29,6 +29,7 @@ declare global {
     updated_at: string;
   };
 
+  //Deprecated
   type GameDeck = {
     name: string;
     available: boolean;
@@ -36,6 +37,18 @@ declare global {
     displayName: string;
     description: string;
     countryIds: number[];
+  };
+  //NEW
+  type Deck = {
+    id: number;
+    name: string;
+    description: string | null;
+    countryIds: number[];
+    isDynamic: boolean;
+    isAvailable: boolean;
+    averageSuccessRatio: number;
+    categories: string[] | null;
+    displayName: string;
   };
 
   export type Question = {
