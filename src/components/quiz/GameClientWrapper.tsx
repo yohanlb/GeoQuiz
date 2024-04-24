@@ -39,7 +39,11 @@ const GameClientWrapper = ({ gameDeck, amountOfQuestions }: Props) => {
       </>
     );
   } else {
-    return <LoadingSpinner />;
+    return (
+      <div className='flex w-full justify-center pt-12'>
+        <LoadingSpinner />
+      </div>
+    );
   }
 };
 
