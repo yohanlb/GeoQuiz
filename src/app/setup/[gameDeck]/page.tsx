@@ -1,16 +1,22 @@
 import GameDeckInfos from '@components/setup/GameDeckInfos';
 import { getGameDecksFromJsonByName } from '../../../queries/gameDecks';
 import Link from 'next/link';
+import { getStatsFromCountryIds } from '../../../queries/stats';
+import { calculateAverageScoreOfDeck } from '@lib/utils/stats';
 
 type Props = {
   params: { gameDeck: GameDeck['name'] };
 };
 export default async function Setup({ params }: Props) {
   const gameDeck = await getGameDecksFromJsonByName(params.gameDeck);
-
+  const deckStats = await getStatsFromCountryIds(gameDeck.countryIds);
+  const deckCommunityAverage = calculateAverageScoreOfDeck(deckStats);
   return (
     <main className=''>
-      <GameDeckInfos gameDeck={gameDeck} />
+      <GameDeckInfos
+        gameDeck={gameDeck}
+        communityAveragePercent={deckCommunityAverage}
+      />
       <div className='mt-12 flex justify-center md:mt-24'>
         <Link href={`/quiz/${gameDeck.name || ''}?length=10`}>
           <button

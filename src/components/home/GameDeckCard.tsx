@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 import ChipScore from '@components/quiz/ChipScore';
-import ChipCommunity from '@components/quiz/ChipCommunity';
 import { gameDeckImages } from '@lib/utils/importImages';
 import ChipDeck from '@components/quiz/ChipDeck';
 
@@ -16,9 +15,9 @@ const GameDeckCard = ({ gameDeck }: Props) => {
   return (
     <div className='group relative aspect-[16/10] w-full justify-between overflow-hidden rounded-lg bg-background p-1 text-left text-sm hover:bg-zinc-700 sm:p-2'>
       <div className='relative z-10 flex h-full flex-col '>
-        <div className='flex justify-between'>
+        <div className='flex min-h-4 justify-between'>
           <ChipScore />
-          <ChipCommunity label='__%' />
+          {/* <ChipCommunity label='__%' /> */}
         </div>
         <div className='flex grow items-center justify-center text-center'>
           <h3 className='line-clamp-2 text-base font-bold leading-none tracking-wide text-white underline-offset-4 group-hover:underline sm:text-xl'>

@@ -48,4 +48,10 @@ declare global {
   export type UserResultsStatus = 'default' | 'valid' | 'invalid';
 
   export type UserResults = UserResultsStatus[];
+
+  export type CountryStatsResponse = {
+    country_id: CountryData['id'];
+    guessed: number;
+    guessed_right: number;
+  }[];
 }

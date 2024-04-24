@@ -3,12 +3,15 @@ import Link from 'next/link';
 import ReturnButton from '@assets/ReturnButton.svg';
 import Image from 'next/image';
 import { gameDeckImages } from '@lib/utils/importImages';
+import deckIcon from '@assets/deck-icon.svg';
+import peopleIcon from '@assets/people-icon.svg';
 
 type Props = {
   gameDeck: GameDeck;
+  communityAveragePercent: number;
 };
 
-const GameDeckInfos = ({ gameDeck }: Props) => {
+const GameDeckInfos = ({ gameDeck, communityAveragePercent }: Props) => {
   const dynamicImageName = gameDeck.name;
   const image = gameDeckImages[dynamicImageName];
 
@@ -50,18 +53,20 @@ const GameDeckInfos = ({ gameDeck }: Props) => {
               Your Best Score:
               <strong className='font-semibold italic'> Unplayed</strong>
             </p> */}
-            <p>
-              Countries in this deck:
-              <strong className='font-semibold italic'>
-                {' '}
+            <div className='flex gap-1'>
+              <span>Countries in this deck:</span>
+              <span className='font-semibold italic'>
                 {gameDeck.countryIds.length}
-              </strong>
-              .
-            </p>
-            <p>
-              Community Average Score:
-              <strong className='font-semibold italic'> __%</strong>.
-            </p>
+              </span>
+              <Image src={deckIcon} width={18} height={18} alt='deck-icon' />
+            </div>
+            <div className='flex gap-1'>
+              <span>Community Average Score:</span>
+              <Image src={peopleIcon} width={18} height={18} alt='deck-icon' />
+              <span className='font-semibold italic'>
+                {communityAveragePercent}%
+              </span>
+            </div>
           </div>
         </div>
       </div>
