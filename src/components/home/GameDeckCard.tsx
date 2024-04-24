@@ -5,11 +5,11 @@ import { gameDeckImages } from '@lib/utils/importImages';
 import ChipDeck from '@components/quiz/ChipDeck';
 
 type Props = {
-  gameDeck: GameDeck;
+  deck: Deck;
 };
 
-const GameDeckCard = ({ gameDeck }: Props) => {
-  const dynamicImageName = gameDeck.name as GameDeck['name'];
+const GameDeckCard = ({ deck }: Props) => {
+  const dynamicImageName = deck.name as Deck['name'];
   const image = gameDeckImages[dynamicImageName];
 
   return (
@@ -21,16 +21,16 @@ const GameDeckCard = ({ gameDeck }: Props) => {
         </div>
         <div className='flex grow items-center justify-center text-center'>
           <h3 className='line-clamp-2 text-base font-bold leading-none tracking-wide text-white underline-offset-4 group-hover:underline sm:text-xl'>
-            {gameDeck.displayName}
+            {deck.displayName}
           </h3>
         </div>
         <div className='flex justify-end'>
-          <ChipDeck value={gameDeck.countryIds.length} />
+          <ChipDeck value={deck.countryIds.length} />
         </div>
       </div>
       {image && (
         <Image
-          alt={gameDeck.displayName}
+          alt={deck.displayName}
           src={image}
           fill
           sizes={'600px'}

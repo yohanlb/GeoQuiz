@@ -15,6 +15,17 @@ export async function getDeckByName(deckName: string) {
   return data;
 }
 
+export async function getDecks() {
+  const response = await fetch(`${baseUrl}/decks`, {
+    next: { revalidate: ONE_HOUR },
+  });
+  if (!response.ok) {
+    throw new Error(`Couldn't fetch game decks.`);
+  }
+  const data: Deck[] = await response.json();
+  return data;
+}
+
 export async function getGameDeckByName(name: string) {
   const response = await fetch(`${baseUrl}/gameDecks/${name}`, {
     next: { revalidate: ONE_HOUR },
@@ -26,6 +37,7 @@ export async function getGameDeckByName(name: string) {
   return data;
 }
 
+//TODO: delete, Deprecated
 export async function getGameDecksFromJson() {
   const file = await fs.readFile(
     path.join(process.cwd(), '/src/lib/data/gameDecks.json'),
@@ -40,7 +52,7 @@ export async function getGameDecksFromJson() {
 }
 
 export async function getGameDecksFromJsonByName(
-  // TODO: unused. Delete ?
+  //TODO: delete, Deprecated
   gameDeckName: GameDeck['name'],
 ) {
   const file = await fs.readFile(
