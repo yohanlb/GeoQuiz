@@ -1,4 +1,4 @@
-import { getGameDecksFromJsonByName } from '../../../queries/gameDecks';
+import { getDeckByName } from '../../../queries/gameDecks';
 import GameClientWrapper from '@components/quiz/GameClientWrapper';
 
 type Props = {
@@ -6,14 +6,11 @@ type Props = {
   searchParams: { length: number };
 };
 const Quiz = async ({ params, searchParams }: Props) => {
-  const gameDeck = await getGameDecksFromJsonByName(params.gameDeck);
+  const deck = await getDeckByName(params.gameDeck);
 
   return (
     <div>
-      <GameClientWrapper
-        gameDeck={gameDeck}
-        amountOfQuestions={searchParams.length}
-      />
+      <GameClientWrapper deck={deck} amountOfQuestions={searchParams.length} />
     </div>
   );
 };

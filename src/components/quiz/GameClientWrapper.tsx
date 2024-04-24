@@ -5,11 +5,11 @@ import GameController from './GameController';
 import LoadingSpinner from '@components/_commons/LoadingSpinner';
 
 type Props = {
-  gameDeck: GameDeck;
+  deck: Deck;
   amountOfQuestions: number;
 };
 
-const GameClientWrapper = ({ gameDeck, amountOfQuestions }: Props) => {
+const GameClientWrapper = ({ deck, amountOfQuestions }: Props) => {
   const [questions, setQuestions] = React.useState<Question[] | null>(null);
 
   React.useEffect(() => {
@@ -17,7 +17,7 @@ const GameClientWrapper = ({ gameDeck, amountOfQuestions }: Props) => {
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_GEOQUIZ_API_BASE_URL as string}questions`,
         {
-          countryIds: gameDeck.countryIds,
+          countryIds: deck.countryIds,
           amountOfQuestions,
         },
         {
@@ -30,12 +30,12 @@ const GameClientWrapper = ({ gameDeck, amountOfQuestions }: Props) => {
     };
 
     fetchQuestions();
-  }, [amountOfQuestions, gameDeck]);
+  }, [amountOfQuestions, deck]);
 
   if (questions && questions.length > 0) {
     return (
       <>
-        <GameController questions={questions} gameDeck={gameDeck.name} />
+        <GameController questions={questions} deckName={deck.name} />
       </>
     );
   } else {

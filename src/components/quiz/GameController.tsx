@@ -5,9 +5,9 @@ import QuestionView from './QuestionView';
 import { useRouter } from 'next/navigation';
 import { postCountryStats } from '../../actions/countryStats';
 
-type Props = { questions: Question[]; gameDeck: string };
+type Props = { questions: Question[]; deckName: string };
 
-function GameController({ questions, gameDeck }: Props) {
+function GameController({ questions, deckName }: Props) {
   const [userAnswers, setUserAnswers] = React.useState<string[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] =
     React.useState<number>(0);
@@ -34,7 +34,7 @@ function GameController({ questions, gameDeck }: Props) {
   };
 
   const handleRestart = () => {
-    router.push(`/setup/${gameDeck}`);
+    router.push(`/setup/${deckName}`);
   };
 
   const handleClickAnswerOption = (userAnswer: string) => {
