@@ -9,7 +9,7 @@ const Quiz = async ({ params, searchParams }: Props) => {
   const deck = await getDeckByName(params.gameDeck);
 
   return (
-    <div>
+    <div className='h-full'>
       <GameClientWrapper deck={deck} amountOfQuestions={searchParams.length} />
     </div>
   );

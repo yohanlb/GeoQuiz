@@ -8,7 +8,7 @@ type AnswerButtonsListProps = {
 
 function AnswerButtonsList({ options, handleClick }: AnswerButtonsListProps) {
   return (
-    <ul className='flex flex-col items-center gap-2 md:gap-3'>
+    <ul className='flex flex-col items-center gap-2 py-2 md:gap-3'>
       {options.map((option) => (
         <li key={option.text} className='w-full'>
           <AnswerButton option={option} handleClick={handleClick} />

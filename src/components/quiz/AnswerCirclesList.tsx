@@ -28,7 +28,7 @@ const AnswerCirclesList = ({
   }
 
   return (
-    <div className='flex justify-center gap-2'>
+    <div className='flex justify-center gap-2 py-2'>
       {circles.map((circle) => (
         <AnswerCircle
           status={circle.status}

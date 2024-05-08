@@ -40,7 +40,7 @@ const GameClientWrapper = ({ deck, amountOfQuestions }: Props) => {
     );
   } else {
     return (
-      <div className='flex w-full justify-center pt-12'>
+      <div className='flex h-full w-full items-center justify-center'>
         <LoadingSpinner />
       </div>
     );

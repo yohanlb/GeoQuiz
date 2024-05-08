@@ -9,7 +9,7 @@ export default async function Setup({ params }: Props) {
   const gameDeck = await getDeckByName(params.gameDeck);
 
   return (
-    <main className=''>
+    <div className='h-full'>
       <GameDeckInfos gameDeck={gameDeck} />
       <div className='mt-12 flex justify-center md:mt-24'>
         <Link href={`/quiz/${gameDeck.name || ''}?length=10`}>
@@ -21,6 +21,6 @@ export default async function Setup({ params }: Props) {
           </button>
         </Link>
       </div>
-    </main>
+    </div>
   );
 }

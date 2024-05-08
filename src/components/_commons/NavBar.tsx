@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import SettingsIcon from '@assets/SettingsWheelIcon.svg';
+// import SettingsIcon from '@assets/SettingsWheelIcon.svg';
 import GeoQuizLogoExpanded from '@assets/LogoExpanded.svg';
 import GeoQuizLogoCompact from '@assets/LogoCompact.svg';
 import HeaderHeroSeparator from '@assets/HeaderHeroSeparator.svg';
@@ -9,7 +9,7 @@ import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 
 const ExpandedHeader = () => (
-  <div className='grid h-full grid-cols-5 grid-rows-1 gap-0 p-4'>
+  <div className='grid grid-cols-5 grid-rows-1 gap-0 p-4'>
     <div className='col-span-3 col-start-2'>
       <Link href='/'>
         <Image
@@ -45,26 +45,13 @@ function NavBar() {
   const currentPath = usePathname();
   const isExpanded = currentPath === '/';
 
-  if (isExpanded) {
-    return (
-      <header>
-        <ExpandedHeader />
-        <Image
-          src={HeaderHeroSeparator}
-          alt='Separator Hero Line'
-          className='w-2/3 pb-4 md:pt-10'
-        />
-      </header>
-    );
-  }
-
   return (
-    <header>
-      <CompactHeader />
+    <header className='mb-2'>
+      {isExpanded ? <ExpandedHeader /> : <CompactHeader />}
       <Image
         src={HeaderHeroSeparator}
         alt='Separator Hero Line'
-        className='w-2/3 pb-4 pt-0'
+        className='w-2/3'
       />
     </header>
   );

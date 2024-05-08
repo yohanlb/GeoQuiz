@@ -21,7 +21,7 @@ function ResultsView({
     Math.round((numberOfCorrectAnswers / questions.length) * 1000) / 10;
 
   return (
-    <div className='mt-2 flex flex-col items-center gap-6 md:mt-8 md:gap-12'>
+    <div className='mt-2 flex h-full flex-col items-center justify-evenly pb-4 md:mt-8'>
       <h1 className='text-5xl font-bold uppercase italic tracking-wider'>
         Results
       </h1>
