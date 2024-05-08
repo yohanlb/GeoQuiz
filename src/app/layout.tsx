@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en' className={`${inter.variable} ${notoEmoji.variable}`}>
+    <html lang='en' className={`${inter.variable} ${notoEmoji.variable} dark`}>
       <body className={`mx-auto max-w-screen-md pb-2`}>
         <NavBar />
         {children}

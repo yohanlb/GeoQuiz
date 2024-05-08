@@ -1,5 +1,5 @@
 'use client';
-import LoadingSpinner from '@components/_commons/LoadingSpinner';
+import { Skeleton } from '@components/ui/skeleton';
 import React from 'react';
 import InlineSVG from 'react-inlinesvg';
 
@@ -34,7 +34,7 @@ function CountryShape({
           height='100%'
           width='100%'
           title='Country shape'
-          loader={<LoadingSpinner />}
+          loader={<Skeleton className='mx-auto h-44 rounded-xl md:h-80' />}
         />
       </div>
     );
