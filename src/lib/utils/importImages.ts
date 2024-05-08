@@ -2,7 +2,7 @@ import africa from '@assets/gameDeckImages/africa.jpg';
 import europe from '@assets/gameDeckImages/europe.jpg';
 import asia from '@assets/gameDeckImages/asia.jpg';
 import islands from '@assets/gameDeckImages/islands.jpg';
-import south_america from '@assets/gameDeckImages/south_america.jpg';
+import southAmerica from '@assets/gameDeckImages/southAmerica.jpg';
 import worldwide from '@assets/gameDeckImages/worldwide.jpg';
 import caribbean from '@assets/gameDeckImages/caribbean.jpg';
 import oceania from '@assets/gameDeckImages/oceania.jpg';
@@ -18,7 +18,7 @@ export const gameDeckImages: GameDeckImages = {
   europe,
   asia,
   islands,
-  south_america,
+  southAmerica,
   worldwide,
   caribbean,
   oceania,
