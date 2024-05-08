@@ -19,11 +19,11 @@ const ExpandedHeader = () => (
         />
       </Link>
     </div>
-    <div className='col-start-5 flex items-start justify-end'>
+    {/* <div className='col-start-5 flex items-start justify-end'>
       <button type='button' className='focus:outline-none'>
         <Image src={SettingsIcon} alt='Settings Icon' className='w-8 md:w-12' />
       </button>
-    </div>
+    </div> */}
   </div>
 );
 const CompactHeader = () => (
@@ -35,9 +35,9 @@ const CompactHeader = () => (
         className='w-16 md:w-20'
       />
     </Link>
-    <button type='button' className='focus:outline-none'>
+    {/* <button type='button' className='focus:outline-none'>
       <Image src={SettingsIcon} alt='Settings Icon' className='w-6 md:w-10' />
-    </button>
+    </button> */}
   </div>
 );
 
