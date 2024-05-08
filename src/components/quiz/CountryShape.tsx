@@ -34,7 +34,7 @@ function CountryShape({
           height='100%'
           width='100%'
           title='Country shape'
-          loader={<Skeleton className='mx-auto h-44 rounded-xl md:h-80' />}
+          loader={<Skeleton className='h-44 w-44 rounded-xl md:h-80 md:w-80' />}
         />
       </div>
     );
