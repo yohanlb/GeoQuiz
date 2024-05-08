@@ -3,11 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    @apply h-full;
-  }
-
   body {
-    @apply bg-stone-800 text-center font-light text-white antialiased;
+    @apply font-light text-white antialiased;
   }
 }
