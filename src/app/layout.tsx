@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' className={`${inter.variable} ${notoEmoji.variable} dark`}>
-      <body className={`h-dvh  bg-background pb-2`}>
+      <body className={`h-dvh  bg-background`}>
         <div className='mx-auto flex h-full max-w-screen-md flex-col'>
           <NavBar />
           <main className='flex-grow'>{children}</main>

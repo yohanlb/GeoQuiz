@@ -8,11 +8,13 @@ export type AnswerOptionButton = {
 
 type AnswerButtonProps = {
   option: AnswerOptionButton;
+  index: number;
   handleClick: (value: string) => void;
 };
 
 function AnswerButton({
   handleClick,
+  index,
   option = {
     text: 'text',
     state: 'DEFAULT',
@@ -60,7 +62,7 @@ function AnswerButton({
 
   return (
     <button type='button' className={buttonStyle} onClick={onClick}>
-      {option.text}
+      {`${index + 1}. ${option.text} `}
     </button>
   );
 }

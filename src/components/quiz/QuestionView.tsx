@@ -36,7 +36,7 @@ const QuestionView = ({
   }) as AnswerOptionButton[];
 
   return (
-    <div className='mx-auto flex h-full max-w-lg flex-col justify-between px-4 pb-3 md:px-0'>
+    <div className='mx-auto flex h-full max-w-lg flex-col justify-between px-4 pb-3 md:px-0 md:py-2'>
       <div className='text-left '>
         <h1 className='text-3xl md:text-5xl'>
           <span className='font-emoji'>
