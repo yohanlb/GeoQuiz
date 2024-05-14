@@ -54,7 +54,7 @@ export default function SetupDialogContent({ gameDeck }: Props) {
         <Link href={`/quiz/${gameDeck.name || ''}?length=10`}>
           <button
             type='submit'
-            className='w-60 rounded-xl border border-white py-2 text-2xl font-bold italic text-white md:w-96 md:text-5xl'
+            className='w-60 rounded-xl border border-gray-400 py-2 text-2xl font-bold italic text-white hover:border-white active:bg-white active:text-background md:w-96 md:text-5xl'
           >
             Play !
           </button>
