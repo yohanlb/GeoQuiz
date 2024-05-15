@@ -1,12 +1,12 @@
-import africa from '@assets/gameDeckImages/Africa.jpg';
-import europe from '@assets/gameDeckImages/Europe.jpg';
-import asia from '@assets/gameDeckImages/Asia.jpg';
-import islands from '@assets/gameDeckImages/Islands.jpg';
-import southAmerica from '@assets/gameDeckImages/SouthAmerica.jpg';
-import worldwide from '@assets/gameDeckImages/Worldwide.jpg';
-import caribbean from '@assets/gameDeckImages/Caribbean.jpg';
-import oceania from '@assets/gameDeckImages/Oceania.jpg';
-import northernAndCentralAmerica from '@assets/gameDeckImages/NorthAmerica.jpg';
+import africa from '@assets/deckImages/Africa.jpg';
+import europe from '@assets/deckImages/Europe.jpg';
+import asia from '@assets/deckImages/Asia.jpg';
+import islands from '@assets/deckImages/Islands.jpg';
+import southAmerica from '@assets/deckImages/SouthAmerica.jpg';
+import worldwide from '@assets/deckImages/Worldwide.jpg';
+import caribbean from '@assets/deckImages/Caribbean.jpg';
+import oceania from '@assets/deckImages/Oceania.jpg';
+import northernAndCentralAmerica from '@assets/deckImages/NorthAmerica.jpg';
 import { StaticImageData } from 'next/image';
 
 type GameDeckImages = {
