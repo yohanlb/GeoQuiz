@@ -4,9 +4,9 @@ import ResultView from './ResultsView';
 import QuestionView from './QuestionView';
 import { postCountryStats } from '../../actions/countryStats';
 
-type Props = { questions: Question[]; deckName: string };
+type Props = { questions: Question[]; deckName?: string };
 
-function GameController({ questions, deckName }: Props) {
+function GameController({ questions }: Props) {
   const [userAnswers, setUserAnswers] = React.useState<string[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] =
     React.useState<number>(0);
