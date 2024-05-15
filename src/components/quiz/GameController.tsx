@@ -2,7 +2,6 @@
 import React, { startTransition } from 'react';
 import ResultView from './ResultsView';
 import QuestionView from './QuestionView';
-import { useRouter } from 'next/navigation';
 import { postCountryStats } from '../../actions/countryStats';
 
 type Props = { questions: Question[]; deckName: string };
@@ -14,7 +13,6 @@ function GameController({ questions, deckName }: Props) {
   const [gameState, setGameState] = React.useState<GameState>('playing');
   const [isShowingAnswer, setIsShowingAnswer] = React.useState<boolean>(false);
   const [userResults, setUserResults] = React.useState<UserResults>([]);
-  const router = useRouter();
 
   const handleNextQuestion = () => {
     startTransition(() => {
@@ -34,7 +32,7 @@ function GameController({ questions, deckName }: Props) {
   };
 
   const handleRestart = () => {
-    router.push(`/setup/${deckName}`);
+    window.location.reload();
   };
 
   const handleClickAnswerOption = (userAnswer: string) => {
