@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-// import SettingsIcon from '@assets/SettingsWheelIcon.svg';
+// import SettingsIcon from '@icons/SettingsWheelIcon.svg';
 import GeoQuizLogoExpanded from '@assets/LogoExpanded.svg';
 import GeoQuizLogoCompact from '@assets/LogoCompact.svg';
 import HeaderHeroSeparator from '@assets/HeaderHeroSeparator.svg';

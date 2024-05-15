@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
-import deckIcon from '@assets/deck-icon.svg';
-import peopleIcon from '@assets/people-icon.svg';
+import deckIcon from '@icons/deck-icon.svg';
+import peopleIcon from '@icons/people-icon.svg';
 
 type Props = {
   gameDeck: Deck;

@@ -1,10 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
-import ReturnButton from '@assets/ReturnButton.svg';
+import ReturnButton from '@icons/ReturnButton.svg';
 import Image from 'next/image';
 import { gameDeckImages } from '@lib/utils/importImages';
-import deckIcon from '@assets/deck-icon.svg';
-import peopleIcon from '@assets/people-icon.svg';
+import deckIcon from '@icons/deck-icon.svg';
+import peopleIcon from '@icons/people-icon.svg';
 
 type Props = {
   gameDeck: Deck;

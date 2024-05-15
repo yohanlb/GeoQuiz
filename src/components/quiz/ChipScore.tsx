@@ -1,5 +1,5 @@
 import React from 'react';
-import personIcon from '@assets/person-icon.svg';
+import personIcon from '@icons/person-icon.svg';
 import Image from 'next/image';
 
 type Props = {

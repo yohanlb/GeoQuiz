@@ -1,5 +1,5 @@
 import React from 'react';
-import deckIcon from '@assets/deck-icon.svg';
+import deckIcon from '@icons/deck-icon.svg';
 import Image from 'next/image';
 
 type Props = {
