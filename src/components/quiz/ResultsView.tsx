@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 import ResultsTable from './ResultsTable';
+import { calculateNewDeckScore } from '@lib/utils/score';
 
 type ResultsViewProps = {
   questions: Question[];
@@ -13,12 +14,7 @@ function ResultsView({
   userResults,
   handleRestart,
 }: ResultsViewProps) {
-  const numberOfCorrectAnswers = userResults.reduce(
-    (count, result) => count + (result === 'valid' ? 1 : 0),
-    0,
-  );
-  const correctAnswerPercentage =
-    Math.round((numberOfCorrectAnswers / questions.length) * 1000) / 10;
+  const newDeckScore = calculateNewDeckScore(userResults, questions.length);
 
   return (
     <div className='mt-2 flex h-full flex-col items-center justify-evenly pb-4 md:mt-8'>
@@ -29,7 +25,7 @@ function ResultsView({
       <ResultsTable questions={questions} userResults={userResults} />
 
       <div className='text-xl tracking-wider'>
-        <p>{correctAnswerPercentage}% of correct answers!</p>
+        <p>{newDeckScore}% of correct answers!</p>
       </div>
 
       <div className='flex gap-6 md:gap-16'>

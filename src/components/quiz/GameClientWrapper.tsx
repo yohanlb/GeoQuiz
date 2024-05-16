@@ -35,7 +35,7 @@ const GameClientWrapper = ({ deck, amountOfQuestions }: Props) => {
   if (questions && questions.length > 0) {
     return (
       <>
-        <GameController questions={questions} deckName={deck.name} />
+        <GameController questions={questions} deck={deck} />
       </>
     );
   } else {

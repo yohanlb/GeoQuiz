@@ -3,12 +3,19 @@ import React from 'react';
 import deckIcon from '@icons/deck-icon.svg';
 import peopleIcon from '@icons/people-icon.svg';
 import personIcon from '@icons/person-icon.svg';
+import { useScore } from '../../hooks/useScore';
 
 type Props = {
   gameDeck: Deck;
 };
 
 function SetupStats({ gameDeck }: Props) {
+  const { getDeckScores } = useScore();
+  const userScore = getDeckScores(gameDeck.id);
+  const userScoreFormatted = userScore?.capital
+    ? `${userScore.capital}%`
+    : 'Unplayed';
+
   return (
     <div className='flex flex-col text-sm font-thin'>
       <div className='flex'>
@@ -20,7 +27,8 @@ function SetupStats({ gameDeck }: Props) {
           alt='person-icon'
         />
         <span>
-          Your Last Score: <strong className='font-medium'>Unplayed</strong>.
+          Your Last Score:{' '}
+          <strong className='font-medium'>{userScoreFormatted}</strong>.
         </span>
       </div>
       <div className='flex'>

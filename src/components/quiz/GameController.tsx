@@ -3,16 +3,19 @@ import React, { startTransition } from 'react';
 import ResultView from './ResultsView';
 import QuestionView from './QuestionView';
 import { postCountryStats } from '../../actions/countryStats';
+import { useScore } from '@/src/hooks/useScore';
+import { calculateNewDeckScore } from '@lib/utils/score';
 
-type Props = { questions: Question[]; deckName?: string };
+type Props = { questions: Question[]; deck: Deck };
 
-function GameController({ questions }: Props) {
+function GameController({ questions, deck }: Props) {
   const [userAnswers, setUserAnswers] = React.useState<string[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] =
     React.useState<number>(0);
   const [gameState, setGameState] = React.useState<GameState>('playing');
   const [isShowingAnswer, setIsShowingAnswer] = React.useState<boolean>(false);
   const [userResults, setUserResults] = React.useState<UserResults>([]);
+  const { updateDeckScore } = useScore();
 
   const handleNextQuestion = () => {
     startTransition(() => {
@@ -21,7 +24,6 @@ function GameController({ questions }: Props) {
         userAnswers.length < 1,
       );
     });
-
     setUserAnswers([]);
     setIsShowingAnswer(false);
     if (currentQuestionIndex >= questions.length - 1) {
@@ -45,20 +47,23 @@ function GameController({ questions }: Props) {
     if (userAnswer === questions[currentQuestionIndex]?.answer) {
       // Correct Answer
       setIsShowingAnswer(true);
-
       const newResult: UserResultsStatus = isUserFirstAttempt
         ? 'valid'
         : 'invalid';
-      const newUserResults = [...userResults];
-      newUserResults[currentQuestionIndex] = newResult;
-      setUserResults(newUserResults);
+      setUserResults((prevUserResults) => {
+        const newUserResults = [...prevUserResults];
+        newUserResults[currentQuestionIndex] = newResult;
+        return newUserResults;
+      });
 
       setTimeout(handleNextQuestion, 700);
     } else {
       // Wrong Answer
-      const newUserResults = [...userResults];
-      newUserResults[currentQuestionIndex] = 'invalid';
-      setUserResults(newUserResults);
+      setUserResults((prevUserResults) => {
+        const newUserResults = [...prevUserResults];
+        newUserResults[currentQuestionIndex] = 'invalid';
+        return newUserResults;
+      });
     }
   };
 
@@ -67,6 +72,14 @@ function GameController({ questions }: Props) {
     setUserResults([]);
     setGameState('playing');
   }, []);
+
+  // AFTER GAME FINISHED
+  React.useEffect(() => {
+    if (gameState === 'finished') {
+      const newDeckScore = calculateNewDeckScore(userResults, questions.length);
+      updateDeckScore(deck.id, 'capital', newDeckScore);
+    }
+  }, [gameState]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (gameState === 'finished') {
     return (
