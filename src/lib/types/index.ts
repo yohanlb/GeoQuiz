@@ -74,7 +74,7 @@ declare global {
     [key in GameType]: number | undefined;
   };
 
-  export type CountryScore = {
-    [key in GameType]: number | undefined;
+  export type CountryScores = {
+    [key in GameType]: boolean[] | undefined;
   };
 }

@@ -1,8 +1,10 @@
 import { useLocalStorage } from 'usehooks-ts';
 
+const NUMBER_OF_SCORES_TO_KEEP = 10;
+
 export type CountryScoresData = {
-  capital: { [countryID: CountryData['id']]: number };
-  flag: { [countryID: CountryData['id']]: number };
+  capital: { [countryID: string]: boolean[] };
+  flag: { [countryID: string]: boolean[] };
 };
 
 const defaultCountryScoresData: CountryScoresData = {
@@ -18,25 +20,30 @@ export function useCountryScores() {
     removeCountryScores();
   }
 
-  function getCountryScores(countryID: CountryData['id']): CountryScore {
-    const capitalScore = countryScoresData['capital'][countryID];
-    const flagScore = countryScoresData['flag'][countryID];
+  function getCountryScores(countryID: CountryData['id']): CountryScores {
+    const capitalScores = countryScoresData['capital'][countryID] ?? null;
+    const flagScores = countryScoresData['flag'][countryID] ?? null;
     return {
-      capital: capitalScore,
-      flag: flagScore,
+      capital: capitalScores,
+      flag: flagScores,
     };
   }
 
   function updateCountryScore(
-    countryID: string,
+    countryID: CountryData['id'],
     gameType: GameType,
-    newScore: number,
+    newResult: boolean,
   ) {
+    console.log('updateCountryScore', countryID, gameType, newResult);
+
     const updatedScoresData = {
       ...countryScoresData,
       [gameType]: {
         ...countryScoresData[gameType],
-        [countryID]: newScore,
+        [countryID]: [
+          newResult,
+          ...(countryScoresData[gameType][countryID] ?? []),
+        ].slice(0, NUMBER_OF_SCORES_TO_KEEP),
       },
     };
     setCountryScoresData(updatedScoresData);

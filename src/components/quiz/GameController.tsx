@@ -5,6 +5,7 @@ import QuestionView from './QuestionView';
 import { postCountryStats } from '../../actions/countryStats';
 import { calculateNewDeckScore } from '@lib/utils/score';
 import { useDeckScores } from '@/src/hooks/useDeckScores';
+import { useCountryScores } from '@/src/hooks/useCountryScores';
 
 type Props = { questions: Question[]; deck: Deck };
 
@@ -16,6 +17,7 @@ function GameController({ questions, deck }: Props) {
   const [isShowingAnswer, setIsShowingAnswer] = React.useState<boolean>(false);
   const [userResults, setUserResults] = React.useState<UserResults>([]);
   const { updateDeckScore } = useDeckScores();
+  const { updateCountryScore } = useCountryScores();
 
   const handleNextQuestion = () => {
     startTransition(() => {
@@ -55,7 +57,11 @@ function GameController({ questions, deck }: Props) {
         newUserResults[currentQuestionIndex] = newResult;
         return newUserResults;
       });
-
+      updateCountryScore(
+        questions[currentQuestionIndex].countryData.id,
+        'capital',
+        newResult === 'valid' ? true : false,
+      );
       setTimeout(handleNextQuestion, 700);
     } else {
       // Wrong Answer
