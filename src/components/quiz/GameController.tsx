@@ -3,8 +3,8 @@ import React, { startTransition } from 'react';
 import ResultView from './ResultsView';
 import QuestionView from './QuestionView';
 import { postCountryStats } from '../../actions/countryStats';
-import { useScore } from '@/src/hooks/useScore';
 import { calculateNewDeckScore } from '@lib/utils/score';
+import { useDeckScores } from '@/src/hooks/useDeckScores';
 
 type Props = { questions: Question[]; deck: Deck };
 
@@ -15,7 +15,7 @@ function GameController({ questions, deck }: Props) {
   const [gameState, setGameState] = React.useState<GameState>('playing');
   const [isShowingAnswer, setIsShowingAnswer] = React.useState<boolean>(false);
   const [userResults, setUserResults] = React.useState<UserResults>([]);
-  const { updateDeckScore } = useScore();
+  const { updateDeckScore } = useDeckScores();
 
   const handleNextQuestion = () => {
     startTransition(() => {

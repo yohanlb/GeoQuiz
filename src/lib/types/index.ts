@@ -67,4 +67,14 @@ declare global {
     guessed: number;
     guessed_right: number;
   }[];
+
+  export type GameType = 'capital' | 'flag';
+
+  export type DeckScores = {
+    [key in GameType]: number | undefined;
+  };
+
+  export type CountryScore = {
+    [key in GameType]: number | undefined;
+  };
 }
