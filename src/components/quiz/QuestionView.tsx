@@ -4,6 +4,8 @@ import AnswerCirclesList from './AnswerCirclesList';
 import ChoiceOptionButtons from './AnswerButtonsList';
 import formatCountrySuccessPercentage from '../../lib/utils/countryStats';
 import CountryShape from './CountryShape';
+import { useCountryScores } from '@/src/hooks/useCountryScores';
+import LastAttempts from './LastAttempts';
 
 type QuestionViewProps = {
   questions: Question[];
@@ -20,6 +22,8 @@ const QuestionView = ({
   handleClickAnswerOption,
   userResults,
 }: QuestionViewProps) => {
+  const { getCountryScores } = useCountryScores();
+
   const currentQuestion = questions[currentQuestionIndex];
 
   const options = currentQuestion.answerOptions.map((option) => {
@@ -34,6 +38,10 @@ const QuestionView = ({
       state,
     };
   }) as AnswerOptionButton[];
+
+  const countryCapitalScore = getCountryScores(
+    currentQuestion.countryData.id,
+  ).capital;
 
   return (
     <div className='mx-auto flex h-full max-w-lg flex-col justify-between px-4 pb-3 md:px-0 md:py-2'>
@@ -51,10 +59,13 @@ const QuestionView = ({
               {currentQuestion.countryData.subregion}
             </strong>
           </p>
-          <p>
+          {countryCapitalScore && (
+            <LastAttempts results={countryCapitalScore} />
+          )}
+          {/* <p>
             <span>Population: </span>
             <strong className='font-semibold italic'>_</strong>
-          </p>
+          </p> */}
           <p>
             <span>Community average: </span>
             <strong className='font-semibold italic'>
