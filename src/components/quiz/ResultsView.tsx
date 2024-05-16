@@ -17,7 +17,7 @@ function ResultsView({
   const newDeckScore = calculateNewDeckScore(userResults, questions.length);
 
   return (
-    <div className='mt-2 flex h-full flex-col items-center justify-evenly pb-4 md:mt-8'>
+    <div className='flex h-full flex-col items-center justify-evenly gap-4 pb-3 md:px-0 md:py-2'>
       <h1 className='text-5xl font-bold uppercase italic tracking-wider'>
         Results
       </h1>

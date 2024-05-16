@@ -1,6 +1,6 @@
 import React from 'react';
-import AnswerCircle from './AnswerCircle';
-import formatCountrySuccessPercentage from '../../lib/utils/countryStats';
+import Gauge from '@components/_commons/Gauge';
+import RecallIndex from '@components/_commons/RecallIndex';
 
 type Props = {
   questions: Question[];
@@ -21,7 +21,8 @@ const ResultsTable = ({ questions, userResults }: Props) => {
           <tr>
             <th className='px-2 py-2 font-normal'>Country</th>
             <th className='px-2 py-2 font-normal'>Capital</th>
-            <th className='px-2 py-2 font-normal'>Answer</th>
+            <th className='px-2 py-2 font-normal'>Result</th>
+            <th className='px-2 py-2 font-normal'>Recall Index</th>
             <th className='px-2 py-2 font-normal'>Community</th>
           </tr>
         </thead>
@@ -41,10 +42,19 @@ const ResultsTable = ({ questions, userResults }: Props) => {
                 className='px-2 py-2 font-extralight'
                 aria-label={`Result for question ${index + 1}: ${question.userResult} `}
               >
-                <AnswerCircle status={question.userResult} />
+                <span
+                  className={`${question.userResult === 'valid' ? 'text-green-500' : 'text-red-500'}`}
+                >
+                  {question.userResult === 'valid' ? '✔' : '✘'}
+                </span>
               </td>
               <td className='px-2 py-2 font-extralight'>
-                {formatCountrySuccessPercentage(question.countryData)}
+                <RecallIndex countryId={question.countryData.id} />
+              </td>
+              <td className='px-2 py-2 font-extralight'>
+                <Gauge
+                  value={Math.round(question.countryData.success_rate * 100)}
+                />
               </td>
             </tr>
           ))}

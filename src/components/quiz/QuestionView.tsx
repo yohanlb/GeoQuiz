@@ -6,6 +6,7 @@ import formatCountrySuccessPercentage from '../../lib/utils/countryStats';
 import CountryShape from './CountryShape';
 import { useCountryScores } from '@/src/hooks/useCountryScores';
 import LastAttempts from './LastAttempts';
+import RecallIndex from '@components/_commons/RecallIndex';
 
 type QuestionViewProps = {
   questions: Question[];
@@ -62,10 +63,12 @@ const QuestionView = ({
           {countryCapitalScore && (
             <LastAttempts results={countryCapitalScore} />
           )}
-          {/* <p>
-            <span>Population: </span>
-            <strong className='font-semibold italic'>_</strong>
-          </p> */}
+          <p>
+            <span>Recall Index: </span>
+            <div className='inline-block'>
+              <RecallIndex countryId={currentQuestion.countryData.id} />
+            </div>
+          </p>
           <p>
             <span>Community average: </span>
             <strong className='font-semibold italic'>
