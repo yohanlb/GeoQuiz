@@ -3,7 +3,6 @@ import React from 'react';
 const LastAttempts = ({ results }: { results: boolean[] }) => {
   return (
     <div className='flex items-center space-x-1'>
-      <span>Last Attempts:</span>
       {results
         .slice(-10)
         .reverse()

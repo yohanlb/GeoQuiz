@@ -60,9 +60,16 @@ const QuestionView = ({
               {currentQuestion.countryData.subregion}
             </strong>
           </p>
-          {countryCapitalScore && (
-            <LastAttempts results={countryCapitalScore} />
-          )}
+          <p>
+            <span>Last Attempts: </span>
+            <div className='inline-block'>
+              {countryCapitalScore ? (
+                <LastAttempts results={countryCapitalScore} />
+              ) : (
+                <strong className='font-semibold italic'>Unplayed</strong>
+              )}
+            </div>
+          </p>
           <p>
             <span>Recall Index: </span>
             <div className='inline-block'>
