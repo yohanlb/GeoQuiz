@@ -49,6 +49,7 @@ declare global {
     averageSuccessRatio: number;
     categories: string[] | null;
     displayName: string;
+    displayPriority: number;
   };
 
   export type Question = {

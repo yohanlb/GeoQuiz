@@ -6,6 +6,9 @@ import southAmerica from '@assets/deckImages/SouthAmerica.jpg';
 import worldwide from '@assets/deckImages/Worldwide.jpg';
 import caribbean from '@assets/deckImages/Caribbean.jpg';
 import oceania from '@assets/deckImages/Oceania.jpg';
+import easiest from '@assets/deckImages/Easy.jpg';
+import medium from '@assets/deckImages/Medium.jpg';
+import hardest from '@assets/deckImages/Hardest.jpg';
 import northernAndCentralAmerica from '@assets/deckImages/NorthAmerica.jpg';
 import { StaticImageData } from 'next/image';
 
@@ -23,4 +26,7 @@ export const gameDeckImages: GameDeckImages = {
   caribbean,
   oceania,
   northernAndCentralAmerica,
+  easiest,
+  medium,
+  hardest,
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import { getDecks } from '../queries/gameDecks';
 import dynamic from 'next/dynamic';
 import FeaturedAndPopularSection from '@components/home/FeaturedAndPopularSection';
+import DifficultySection from '@components/home/DifficultySection';
 
 // Dynamically import components to avoid client-side hydration
 const UnplayedDecksSection = dynamic(
@@ -24,6 +25,7 @@ async function Home() {
     <div className='flex flex-col gap-6 px-4 py-2 text-center md:px-0 md:[&_h2]:text-xl'>
       <FeaturedAndPopularSection decks={decks} />
       <UnplayedDecksSection decks={decks} />
+      <DifficultySection decks={decks} />
       <LowestScoresDecksSection decks={decks} />
     </div>
   );

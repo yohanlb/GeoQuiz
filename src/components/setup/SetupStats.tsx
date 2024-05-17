@@ -31,22 +31,24 @@ function SetupStats({ gameDeck }: Props) {
           <strong className='font-medium'>{userScoreFormatted}</strong>.
         </span>
       </div>
-      <div className='flex'>
-        <Image
-          className='mr-2 inline-block'
-          src={peopleIcon}
-          width={14}
-          height={14}
-          alt='people-icon'
-        />
-        <span>
-          Community Average Score:{' '}
-          <strong className='font-medium'>
-            {gameDeck.averageSuccessRatio}%
-          </strong>
-          .
-        </span>
-      </div>
+      {gameDeck.averageSuccessRatio && (
+        <div className='flex'>
+          <Image
+            className='mr-2 inline-block'
+            src={peopleIcon}
+            width={14}
+            height={14}
+            alt='people-icon'
+          />
+          <span>
+            Community Average Score:{' '}
+            <strong className='font-medium'>
+              {gameDeck.averageSuccessRatio}%
+            </strong>
+            .
+          </span>
+        </div>
+      )}
       <div className='flex'>
         <Image
           className='mr-2 inline-block'

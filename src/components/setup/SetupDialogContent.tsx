@@ -30,7 +30,10 @@ export default function SetupDialogContent({ gameDeck }: Props) {
         {gameDeck.description && (
           <p className='text-left text-sm italic'>{gameDeck.description}</p>
         )}
-        <DeckImage imageName={gameDeck.name} alt={gameDeck.displayName} />
+        <DeckImage
+          imageName={gameDeck.name}
+          alt={gameDeck.displayName || gameDeck.name}
+        />
         <SetupStats gameDeck={gameDeck} />
         <div className='flex justify-center'>
           <Link href={`/quiz/${gameDeck.name || ''}?length=10`}>

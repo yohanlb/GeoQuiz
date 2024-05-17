@@ -25,8 +25,8 @@ const GameDeckCard = ({ deck }: Props) => {
         {image && (
           <div className='absolute inset-0 h-full w-full'>
             <Image
-              alt={deck.displayName}
               src={image}
+              alt={deck.displayName || deck.name}
               fill
               sizes={'600px'}
               className='opacity-70 duration-300 ease-out group-hover:scale-105 group-hover:opacity-50'
