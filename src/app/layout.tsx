@@ -3,9 +3,8 @@ import NavBar from '@components/_commons/NavBar';
 import BackgroundGradient from '@components/_commons/BackgroundGradient';
 import { inter, notoEmoji } from '../lib/utils/font';
 import { PHProvider } from './providers';
+import dynamic from 'next/dynamic';
 import './globals.css';
-import PostHogPageView from './PostHogPageView';
-import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   title: 'Geo Quiz! - Country, Capitals, and Flag questions!',
@@ -15,6 +14,10 @@ export const metadata: Metadata = {
     'geography, quiz, trivia quiz, country, capitals, flag, questions, learn',
 };
 
+const PostHogPageView = dynamic(() => import('./PostHogPageView'), {
+  ssr: false,
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -23,9 +26,7 @@ export default function RootLayout({
   return (
     <html lang='en' className={`${inter.variable} ${notoEmoji.variable} dark`}>
       <PHProvider>
-        <Suspense>
-          <PostHogPageView />
-        </Suspense>
+        <PostHogPageView />
         <body className={`h-dvh  bg-background`}>
           <div className='mx-auto flex h-full max-w-screen-md flex-col'>
             <NavBar />
