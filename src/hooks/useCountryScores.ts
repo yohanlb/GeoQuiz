@@ -34,8 +34,6 @@ export function useCountryScores() {
     gameType: GameType,
     newResult: boolean,
   ) {
-    console.log('updateCountryScore', countryID, gameType, newResult);
-
     const updatedScoresData = {
       ...countryScoresData,
       [gameType]: {

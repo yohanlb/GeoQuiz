@@ -18,7 +18,7 @@ const GameDeckCard = ({ deck }: Props) => {
     <div className='group relative aspect-[16/10] w-full justify-between overflow-hidden rounded-lg bg-background text-left text-sm hover:bg-zinc-700'>
       <SetupDialog gameDeck={deck} dialogContent={dialogContent}>
         <div className='relative z-10'>
-          <h3 className='line-clamp-2 text-lg font-bold leading-none tracking-wide text-white underline-offset-4 group-hover:underline sm:text-xl'>
+          <h3 className='line-clamp-3 text-base font-normal  leading-none tracking-tight text-white underline-offset-4 group-hover:underline sm:text-xl'>
             {deck.displayName}
           </h3>
         </div>
@@ -29,7 +29,7 @@ const GameDeckCard = ({ deck }: Props) => {
               src={image}
               fill
               sizes={'600px'}
-              className='opacity-90 duration-300 ease-out group-hover:scale-105 group-hover:opacity-50'
+              className='opacity-70 duration-300 ease-out group-hover:scale-105 group-hover:opacity-50'
               style={{
                 objectFit: 'cover',
               }}

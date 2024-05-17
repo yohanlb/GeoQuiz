@@ -28,6 +28,14 @@ export function useDeckScores() {
       flag: flagScore,
     };
   }
+  function getAllDeckScores(gameType: GameType = 'capital') {
+    return deckScoresData[gameType] || undefined;
+  }
+
+  function getAllPlayedDeckIds(gameType: GameType) {
+    const keys = Object.keys(deckScoresData[gameType]);
+    return keys;
+  }
 
   function updateDeckScore(
     deckID: Deck['id'],
@@ -44,5 +52,11 @@ export function useDeckScores() {
     setDeckScoresData(updatedScoresData);
   }
 
-  return { getDeckScores, clearAllDeckScores, updateDeckScore };
+  return {
+    getDeckScores,
+    getAllDeckScores,
+    getAllPlayedDeckIds,
+    clearAllDeckScores,
+    updateDeckScore,
+  };
 }
