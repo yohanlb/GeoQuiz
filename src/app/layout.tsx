@@ -26,8 +26,8 @@ export default function RootLayout({
   return (
     <html lang='en' className={`${inter.variable} ${notoEmoji.variable} dark`}>
       <PHProvider>
-        <PostHogPageView />
         <body className={`h-dvh  bg-background`}>
+          <PostHogPageView />
           <div className='mx-auto flex h-full max-w-screen-md flex-col'>
             <NavBar />
             <main className='flex-grow'>{children}</main>
