@@ -24,9 +24,9 @@ async function Home() {
   return (
     <div className='flex flex-col gap-6 px-4 py-2 text-center md:px-0 md:[&_h2]:text-xl'>
       <FeaturedAndPopularSection decks={decks} />
-      <UnplayedDecksSection decks={decks} />
       <DifficultySection decks={decks} />
       <LowestScoresDecksSection decks={decks} />
+      <UnplayedDecksSection decks={decks} />
     </div>
   );
 }
