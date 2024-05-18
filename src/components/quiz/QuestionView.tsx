@@ -71,7 +71,7 @@ const QuestionView = ({
             </div>
           </div>
           <div>
-            <span>Recall Index: </span>
+            <span>Memorization Index: </span>
             <div className='inline-block'>
               <RecallIndex countryId={currentQuestion.countryData.id} />
             </div>

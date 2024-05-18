@@ -14,6 +14,8 @@ const FeaturedAndPopularSection = ({ decks }: Props) => {
       deck.categories?.includes('popular'),
   );
 
+  console.log('LOGGG', featuredAndPopularDecks.length);
+
   return (
     <section>
       <h2>Featured and Popular 🔥</h2>
