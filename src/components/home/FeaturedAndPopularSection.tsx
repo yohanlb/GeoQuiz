@@ -12,14 +12,6 @@ const FeaturedAndPopularSection = ({ decks }: Props) => {
     deck.categories?.includes('featured'),
   );
 
-  console.log(
-    featuredAndPopularDecks.map((deck) => [
-      deck.id,
-      deck.name,
-      deck.categories,
-    ]),
-  );
-
   return (
     <section>
       <h2>Featured and Popular 🔥</h2>
