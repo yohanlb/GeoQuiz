@@ -9,7 +9,15 @@ const FeaturedAndPopularSection = ({ decks }: Props) => {
   const howManyToDisplay = 6;
 
   const featuredAndPopularDecks = decks.filter((deck) =>
-    deck.categories?.includes('continent'),
+    deck.categories?.includes('featured'),
+  );
+
+  console.log(
+    featuredAndPopularDecks.map((deck) => [
+      deck.id,
+      deck.name,
+      deck.categories,
+    ]),
   );
 
   return (
