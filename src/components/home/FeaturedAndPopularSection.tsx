@@ -8,16 +8,16 @@ type Props = {
 const FeaturedAndPopularSection = ({ decks }: Props) => {
   const howManyToDisplay = 6;
 
-  // const featuredAndPopularDecks = decks.filter(
-  //   (deck) =>
-  //     deck.categories?.includes('featured') ||
-  //     deck.categories?.includes('popular'),
-  // );
+  const featuredAndPopularDecks = decks.filter((deck) =>
+    deck.categories?.includes('featured'),
+  );
 
   return (
     <section>
       <h2>Featured and Popular 🔥</h2>
-      <GameDeckGrid decks={decks.slice(0, howManyToDisplay)} />
+      <GameDeckGrid
+        decks={featuredAndPopularDecks.slice(0, howManyToDisplay)}
+      />
     </section>
   );
 };
