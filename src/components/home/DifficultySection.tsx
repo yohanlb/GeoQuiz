@@ -5,6 +5,8 @@ type Props = {
   decks: Deck[];
 };
 
+const defaultPriority = 50;
+
 const DifficultySection = ({ decks }: Props) => {
   const howManyToDisplay = 3;
 
@@ -12,7 +14,11 @@ const DifficultySection = ({ decks }: Props) => {
     deck.categories?.includes('difficulty'),
   );
   const sortedDecks = difficultyDecks
-    .sort((a, b) => a.displayPriority - b.displayPriority)
+    .sort(
+      (a, b) =>
+        (a.displayPriority || defaultPriority) -
+        (b.displayPriority || defaultPriority),
+    )
     .slice(0, howManyToDisplay);
 
   return (
