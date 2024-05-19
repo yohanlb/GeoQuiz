@@ -1,8 +1,8 @@
 'use client';
 import React from 'react';
-import axios from 'axios';
 import GameController from './GameController';
 import LoadingSpinner from '@components/_commons/LoadingSpinner';
+import { useFetchQuestions } from '@/src/hooks/useFetchQuestions';
 
 type Props = {
   deck: Deck;
@@ -10,39 +10,25 @@ type Props = {
 };
 
 const GameClientWrapper = ({ deck, amountOfQuestions }: Props) => {
-  const [questions, setQuestions] = React.useState<Question[] | null>(null);
+  const { questions, isLoading } = useFetchQuestions(deck, amountOfQuestions);
 
-  React.useEffect(() => {
-    const fetchQuestions = async () => {
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_GEOQUIZ_API_BASE_URL as string}questions`,
-        {
-          countryIds: deck.countryIds,
-          amountOfQuestions,
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        },
-      );
-      setQuestions(response.data as Question[]);
-    };
-
-    fetchQuestions();
-  }, [amountOfQuestions, deck]);
-
-  if (questions && questions.length > 0) {
-    return (
-      <>
-        <GameController questions={questions} deck={deck} />
-      </>
-    );
-  } else {
+  if (isLoading) {
     return (
       <div className='flex h-full w-full items-center justify-center'>
         <LoadingSpinner />
       </div>
+    );
+  } else if (questions.length < 1) {
+    return (
+      <div className='flex h-full w-full items-center justify-center'>
+        Error: No questions found. Try another deck.
+      </div>
+    );
+  } else {
+    return (
+      <>
+        <GameController questions={questions} deck={deck} />
+      </>
     );
   }
 };

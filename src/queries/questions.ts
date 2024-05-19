@@ -1,10 +1,11 @@
 const baseUrl = process.env.NEXT_PUBLIC_GEOQUIZ_API_BASE_URL as string;
 
-// TODO: Remove. Deprecated cause now the fetch is done via Post, and Vercel did not work with it,
-// so i decided to do the fetch FE
-export async function getQuestions(gameDeck: string, amountOfQuestions = 10) {
+export async function getQuestionsFromDeckId(
+  deckId: Deck['id'],
+  amountOfQuestions = 10,
+) {
   const response = await fetch(
-    `${baseUrl}/questions/${gameDeck}?length=${amountOfQuestions}`,
+    `${baseUrl}questions/?length=${amountOfQuestions}&deckId=${deckId}`,
     {
       cache: 'no-store',
     },
