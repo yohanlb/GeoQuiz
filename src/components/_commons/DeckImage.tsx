@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { gameDeckImages } from '@lib/utils/importImages';
+import { DECK_IMAGES } from '@lib/utils/importImages';
 
 type Props = {
   imageName: string;
@@ -8,7 +8,7 @@ type Props = {
 };
 
 const DeckImage = ({ imageName, alt }: Props) => {
-  const image = gameDeckImages[imageName];
+  const image = DECK_IMAGES[imageName];
 
   return (
     image && (
