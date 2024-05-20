@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import GameDeckGrid from './GameDeckGrid';
+import DeckGrid from './DeckGrid';
 import { useDeckScores } from '@/src/hooks/useDeckScores';
 import { isBreakpoint } from '@lib/utils/screen';
 
@@ -25,7 +25,7 @@ const UnplayedDecksSection = ({ decks }: Props) => {
   return (
     <section>
       <h2>Unplayed 📦</h2>
-      <GameDeckGrid decks={unplayedDecks} />
+      <DeckGrid decks={unplayedDecks} />
     </section>
   );
 };

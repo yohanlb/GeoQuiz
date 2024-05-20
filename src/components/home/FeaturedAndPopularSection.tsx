@@ -1,5 +1,5 @@
 import React from 'react';
-import GameDeckGrid from './GameDeckGrid';
+import DeckGrid from './DeckGrid';
 
 type Props = {
   decks: Deck[];
@@ -15,9 +15,7 @@ const FeaturedAndPopularSection = ({ decks }: Props) => {
   return (
     <section>
       <h2>Featured and Popular 🔥</h2>
-      <GameDeckGrid
-        decks={featuredAndPopularDecks.slice(0, howManyToDisplay)}
-      />
+      <DeckGrid decks={featuredAndPopularDecks.slice(0, howManyToDisplay)} />
     </section>
   );
 };

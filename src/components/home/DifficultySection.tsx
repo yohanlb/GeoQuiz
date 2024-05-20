@@ -1,5 +1,5 @@
 import React from 'react';
-import GameDeckGrid from './GameDeckGrid';
+import DeckGrid from './DeckGrid';
 
 type Props = {
   decks: Deck[];
@@ -24,7 +24,7 @@ const DifficultySection = ({ decks }: Props) => {
   return (
     <section>
       <h2>By Difficulty 🤯</h2>
-      <GameDeckGrid decks={sortedDecks} />
+      <DeckGrid decks={sortedDecks} />
     </section>
   );
 };

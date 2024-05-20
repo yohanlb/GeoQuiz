@@ -12,11 +12,11 @@ import hardest from '@assets/deckImages/Hardest.jpg';
 import northernAndCentralAmerica from '@assets/deckImages/NorthAmerica.jpg';
 import { StaticImageData } from 'next/image';
 
-type GameDeckImages = {
+type DeckImages = {
   [key: string]: StaticImageData;
 };
 
-export const gameDeckImages: GameDeckImages = {
+export const DECK_IMAGES: DeckImages = {
   africa,
   europe,
   asia,

@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { gameDeckImages } from '@lib/utils/importImages';
+import { DECK_IMAGES } from '@lib/utils/importImages';
 import SetupDialog from '@components/setup/SetupDialog';
 import SetupDialogContent from '@components/setup/SetupDialogContent';
 
@@ -8,9 +8,9 @@ type Props = {
   deck: Deck;
 };
 
-const GameDeckCard = ({ deck }: Props) => {
+const DeckCard = ({ deck }: Props) => {
   const dynamicImageName = deck.name as Deck['name'];
-  const image = gameDeckImages[dynamicImageName];
+  const image = DECK_IMAGES[dynamicImageName];
 
   const dialogContent = <SetupDialogContent gameDeck={deck} />;
 
@@ -41,4 +41,4 @@ const GameDeckCard = ({ deck }: Props) => {
   );
 };
 
-export default GameDeckCard;
+export default DeckCard;

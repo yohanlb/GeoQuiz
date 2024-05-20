@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import GameDeckGrid from './GameDeckGrid';
+import DeckGrid from './DeckGrid';
 import { useDeckScores } from '@/src/hooks/useDeckScores';
 import { isBreakpoint } from '@lib/utils/screen';
 
@@ -29,7 +29,7 @@ const LowestScoresDecksSection = ({ decks }: Props) => {
   return (
     <section>
       <h2>We need to practice those! 📖</h2>
-      <GameDeckGrid decks={lowestScoreDecks.slice(0, howManyToDisplay)} />
+      <DeckGrid decks={lowestScoreDecks.slice(0, howManyToDisplay)} />
     </section>
   );
 };
