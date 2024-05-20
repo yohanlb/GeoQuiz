@@ -49,6 +49,7 @@ declare global {
     averageSuccessRatio: number;
     categories: string[] | null;
     displayName: string;
+    isTextTransparent: boolean;
     displayPriority?: number;
   };
 

@@ -18,7 +18,9 @@ const DeckCard = ({ deck }: Props) => {
     <div className='group relative aspect-[16/10] w-full justify-between overflow-hidden rounded-lg bg-background text-left text-sm hover:bg-zinc-700'>
       <SetupDialog gameDeck={deck} dialogContent={dialogContent}>
         <div className='relative z-10'>
-          <h3 className='line-clamp-3 text-base font-normal  leading-none tracking-tight text-white underline-offset-4 group-hover:underline sm:text-xl'>
+          <h3
+            className={`line-clamp-3	text-base font-normal leading-none  tracking-tight text-white underline-offset-4 ${deck.isTextTransparent ? 'opacity-0' : ''} group-hover:underline sm:text-xl`}
+          >
             {deck.displayName}
           </h3>
         </div>
