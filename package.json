@@ -1,7 +1,17 @@
 {
-  "name": "geoquiz-webapp-next",
-  "version": "0.1.0",
+  "name": "geoquiz",
+  "version": "1.0.0",
+  "description": "A capital and flag quiz web application.",
   "private": true,
+  "engines": {
+    "node": "^20.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yohanlb/GeoQuiz-WebApp.git"
+  },
+  "author": "Yohan LB",
+  "homepage": "https://geoquiz.co",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
