@@ -3,6 +3,7 @@ import React from 'react';
 import DeckGrid from './DeckGrid';
 import { useDeckScores } from '@/src/hooks/useDeckScores';
 import { isBreakpoint } from '@lib/utils/screen';
+import SectionTitle from '@components/_commons/SectionTitle';
 
 type Props = {
   decks: Deck[];
@@ -24,7 +25,7 @@ const UnplayedDecksSection = ({ decks }: Props) => {
 
   return (
     <section>
-      <h2>Unplayed 📦</h2>
+      <SectionTitle text='Unplayed 📦' />
       <DeckGrid decks={unplayedDecks} />
     </section>
   );

@@ -2,6 +2,7 @@
 import React from 'react';
 import { useDeckScores } from '@/src/hooks/useDeckScores';
 import DeckItem from '@components/decks/DeckItem';
+import SectionTitle from '@components/_commons/SectionTitle';
 
 type Props = { decks: Deck[] };
 
@@ -30,12 +31,16 @@ const DeckStats = ({ decks }: Props) => {
 
   return (
     <div className='space-y-3'>
-      <h3>Last Played Decks</h3>
-      <ul className='flex flex-col space-y-1'>
-        {lastPlayedDecks.map((deck) => (
-          <DeckItem key={deck.id} deck={deck} />
-        ))}
-      </ul>
+      <SectionTitle text='Last Played Decks' variant='h3' />
+      {lastPlayedDecks.length < 0 ? (
+        <ul className='flex flex-col space-y-1'>
+          {lastPlayedDecks.map((deck) => (
+            <DeckItem key={deck.id} deck={deck} />
+          ))}
+        </ul>
+      ) : (
+        <p className='text-sm font-thin'>No deck played recently.</p>
+      )}
     </div>
   );
 };

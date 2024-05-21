@@ -1,5 +1,6 @@
 import { getDecks } from '@/src/queries/gameDecks';
 import PageCenteredLink from '@components/_commons/PageCenteredLink';
+import SectionTitle from '@components/_commons/SectionTitle';
 import DeckList from '@components/decks/DeckList';
 import React from 'react';
 
@@ -8,8 +9,8 @@ async function page() {
   decks.sort((a, b) => a.name.localeCompare(b.name));
 
   return (
-    <div className='mx-auto max-w-md px-2 md:px-0'>
-      <h2 className='my-2 text-base tracking-wide'>All Decks</h2>
+    <div className='mx-auto flex max-w-md flex-col gap-2 px-2 py-2 md:px-0'>
+      <SectionTitle text='All Decks' />
       <DeckList decks={decks} />
       <PageCenteredLink href='/' label='Back' />
     </div>

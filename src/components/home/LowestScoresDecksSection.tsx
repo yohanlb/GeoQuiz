@@ -3,6 +3,7 @@ import React from 'react';
 import DeckGrid from './DeckGrid';
 import { useDeckScores } from '@/src/hooks/useDeckScores';
 import { isBreakpoint } from '@lib/utils/screen';
+import SectionTitle from '@components/_commons/SectionTitle';
 
 type Props = {
   decks: Deck[];
@@ -16,8 +17,11 @@ const LowestScoresDecksSection = ({ decks }: Props) => {
   const sortedScoresIds = sortedScores.map(([id]) => id);
   const lowestScoreDecks = [];
   for (let i = 0; i < sortedScoresIds.length; i++) {
+    const hasNotAGoodScore = sortedScores[i][1] < 60;
     const id = sortedScoresIds[i];
-    const deck = decks.find((deck) => deck.id === Number(id));
+    const deck = decks.find(
+      (deck) => deck.id === Number(id) && hasNotAGoodScore,
+    );
     if (deck) {
       lowestScoreDecks.push(deck);
     }
@@ -28,7 +32,7 @@ const LowestScoresDecksSection = ({ decks }: Props) => {
   }
   return (
     <section>
-      <h2>We need to practice those! 📖</h2>
+      <SectionTitle text='We need to practice those! 📖' />
       <DeckGrid decks={lowestScoreDecks.slice(0, howManyToDisplay)} />
     </section>
   );

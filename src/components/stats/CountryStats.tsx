@@ -2,6 +2,7 @@
 import { useCountryScores } from '@/src/hooks/useCountryScores';
 import React from 'react';
 import CountryTable from './CountryTable';
+import SectionTitle from '@components/_commons/SectionTitle';
 
 type Props = { countries: CountryData[] };
 
@@ -18,7 +19,6 @@ const CountryStats = ({ countries }: Props) => {
   }
 
   const countryHistory = getHistoryCountriesGuessed('capital');
-
   const lastPlayedCountries: CountryWithScores[] = [];
   for (let i = 0; i < countryHistory.length; i++) {
     const country = countries.find(
@@ -35,8 +35,12 @@ const CountryStats = ({ countries }: Props) => {
 
   return (
     <div className='space-y-3'>
-      <h3>Last Countries Guessed</h3>
-      <CountryTable countries={lastPlayedCountries.slice(0, 10)} />
+      <SectionTitle text='Last Countries Guessed' variant='h3' />
+      {lastPlayedCountries.length < 0 ? (
+        <CountryTable countries={lastPlayedCountries.slice(0, 10)} />
+      ) : (
+        <p className='text-sm font-thin'>No country guessed recently.</p>
+      )}
     </div>
   );
 };

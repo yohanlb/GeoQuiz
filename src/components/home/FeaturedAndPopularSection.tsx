@@ -1,5 +1,6 @@
 import React from 'react';
 import DeckGrid from './DeckGrid';
+import SectionTitle from '@components/_commons/SectionTitle';
 
 type Props = {
   decks: Deck[];
@@ -14,7 +15,7 @@ const FeaturedAndPopularSection = ({ decks }: Props) => {
 
   return (
     <section>
-      <h2>Featured and Popular 🔥</h2>
+      <SectionTitle text='Featured and Popular 🔥' />
       <DeckGrid decks={featuredAndPopularDecks.slice(0, howManyToDisplay)} />
     </section>
   );
