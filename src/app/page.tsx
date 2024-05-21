@@ -3,7 +3,7 @@ import { getDecks } from '../queries/gameDecks';
 import dynamic from 'next/dynamic';
 import FeaturedAndPopularSection from '@components/home/FeaturedAndPopularSection';
 import DifficultySection from '@components/home/DifficultySection';
-import Link from 'next/link';
+import PageCenteredLink from '@components/_commons/PageCenteredLink';
 
 // Dynamically import components to avoid client-side hydration
 const UnplayedDecksSection = dynamic(
@@ -28,14 +28,7 @@ async function Home() {
       <DifficultySection decks={decks} />
       <LowestScoresDecksSection decks={decks} />
       <UnplayedDecksSection decks={decks} />
-      <div className='mb-4 w-full text-center'>
-        <Link
-          href='/decks'
-          className='underline underline-offset-4 hover:text-blue-500'
-        >
-          See all decks
-        </Link>
-      </div>
+      <PageCenteredLink href='/decks' label='See all decks' />
     </div>
   );
 }
