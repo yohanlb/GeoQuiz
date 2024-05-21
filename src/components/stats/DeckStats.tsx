@@ -6,7 +6,7 @@ import DeckItem from '@components/decks/DeckItem';
 type Props = { decks: Deck[] };
 
 const DeckStats = ({ decks }: Props) => {
-  const { getAllDeckScores } = useDeckScores();
+  const { getLastPlayedDeckIds } = useDeckScores();
 
   // Trick to avoid client-side hydration error
   const [isMounted, setIsMounted] = React.useState(false);
@@ -17,9 +17,7 @@ const DeckStats = ({ decks }: Props) => {
     return null;
   }
 
-  const deckScoresCapital = getAllDeckScores('capital');
-  const idsLastDeckPlayed = Object.keys(deckScoresCapital || {});
-
+  const idsLastDeckPlayed = getLastPlayedDeckIds('capital');
   const lastPlayedDecks = [];
   for (let i = 0; i < idsLastDeckPlayed.length; i++) {
     const deck = decks.find((deck) => deck.id === Number(idsLastDeckPlayed[i]));
@@ -32,7 +30,7 @@ const DeckStats = ({ decks }: Props) => {
   return (
     <div className='space-y-3'>
       <h3>Last Played Decks</h3>
-      <ul>
+      <ul className='flex flex-col space-y-1'>
         {lastPlayedDecks.map((deck) => (
           <DeckItem key={deck.id} deck={deck} />
         ))}
