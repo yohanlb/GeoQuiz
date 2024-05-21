@@ -24,7 +24,9 @@ function Menu({ trigger }: Props) {
           <DropdownMenuItem>All Decks</DropdownMenuItem>
         </Link>
         <DropdownMenuItem disabled>Countries</DropdownMenuItem>
-        <DropdownMenuItem disabled>My Stats</DropdownMenuItem>
+        <Link href='/stats'>
+          <DropdownMenuItem>My Stats</DropdownMenuItem>
+        </Link>
         <DropdownMenuSeparator />
         <DropdownMenuItem disabled>Settings</DropdownMenuItem>
         <DropdownMenuItem disabled>Feedback</DropdownMenuItem>
