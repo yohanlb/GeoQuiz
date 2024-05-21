@@ -3,8 +3,10 @@ import { calculateRecallIndex } from '@lib/utils/score';
 import React from 'react';
 
 const RecallIndex = ({ countryId }: { countryId: CountryData['id'] }) => {
-  const { getCountryScores } = useCountryScores();
-  const userCountryScores = getCountryScores(countryId).capital;
+  const { getLastScoresForCountry } = useCountryScores();
+  const userCountryScores = getLastScoresForCountry(countryId, 'capital').map(
+    (scoreObject) => scoreObject.scores,
+  );
 
   const index = userCountryScores ? calculateRecallIndex(userCountryScores) : 0;
   const clampedIndex = Math.max(Math.min(index, 10), 0);

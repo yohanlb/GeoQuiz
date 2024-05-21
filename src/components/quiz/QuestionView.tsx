@@ -23,7 +23,7 @@ const QuestionView = ({
   handleClickAnswerOption,
   userResults,
 }: QuestionViewProps) => {
-  const { getCountryScores } = useCountryScores();
+  const { getLastScoresForCountry } = useCountryScores();
 
   const currentQuestion = questions[currentQuestionIndex];
 
@@ -40,9 +40,10 @@ const QuestionView = ({
     };
   }) as AnswerOptionButton[];
 
-  const countryCapitalScore = getCountryScores(
+  const countryCapitalScore = getLastScoresForCountry(
     currentQuestion.countryData.id,
-  ).capital;
+    'capital',
+  ).map((scoreObject) => scoreObject.scores);
 
   return (
     <div className='mx-auto flex h-full max-w-lg flex-col justify-between px-4 pb-3 md:px-0 md:py-2'>
@@ -64,7 +65,7 @@ const QuestionView = ({
             <span>Last Attempts: </span>
             <div className='inline-block'>
               {countryCapitalScore ? (
-                <LastAttempts results={countryCapitalScore} />
+                <LastAttempts results={[...countryCapitalScore].reverse()} />
               ) : (
                 <strong className='font-semibold italic'>Unplayed</strong>
               )}

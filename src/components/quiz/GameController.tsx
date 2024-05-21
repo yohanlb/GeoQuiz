@@ -17,7 +17,7 @@ function GameController({ questions, deck }: Props) {
   const [isShowingAnswer, setIsShowingAnswer] = React.useState<boolean>(false);
   const [userResults, setUserResults] = React.useState<UserResults>([]);
   const { updateDeckScore } = useDeckScores();
-  const { updateCountryScore } = useCountryScores();
+  const { addCountryScores } = useCountryScores();
 
   const handleNextQuestion = () => {
     startTransition(() => {
@@ -57,9 +57,9 @@ function GameController({ questions, deck }: Props) {
         newUserResults[currentQuestionIndex] = newResult;
         return newUserResults;
       });
-      updateCountryScore(
-        questions[currentQuestionIndex].countryData.id,
+      addCountryScores(
         'capital',
+        questions[currentQuestionIndex].countryData.id,
         newResult === 'valid' ? true : false,
       );
       setTimeout(handleNextQuestion, 700);
