@@ -36,7 +36,7 @@ const CountryStats = ({ countries }: Props) => {
   return (
     <div className='space-y-3'>
       <SectionTitle text='Last Countries Guessed' variant='h3' />
-      {lastPlayedCountries.length < 0 ? (
+      {lastPlayedCountries.length > 0 ? (
         <CountryTable countries={lastPlayedCountries.slice(0, 10)} />
       ) : (
         <p className='text-sm font-thin'>No country guessed recently.</p>

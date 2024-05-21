@@ -1,5 +1,5 @@
 import React from 'react';
-import DeckItem from './DeckItem';
+import DeckItem from '@components/_commons/DeckItem';
 
 type DeckListProps = {
   decks: Deck[];
