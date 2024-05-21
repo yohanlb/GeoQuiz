@@ -1,4 +1,4 @@
-import { GuessScore } from "@/src/hooks/useCountryScores";
+import { GuessScore } from '@/src/hooks/useCountryScores';
 
 export {};
 
@@ -82,7 +82,5 @@ declare global {
     [key in GameType]: boolean[] | undefined;
   };
 
-  export type CountryWithScores = CountryData & GuessScore
-
-
-
+  export type CountryWithScores = CountryData & GuessScore;
+}
