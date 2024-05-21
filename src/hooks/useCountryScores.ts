@@ -8,7 +8,7 @@ interface CountryScore {
   timestamp: string; // ISO 8601 formatted date-time string
 }
 
-interface GuessScore extends CountryScore {
+export interface GuessScore extends CountryScore {
   countryId: CountryData['id'];
 }
 

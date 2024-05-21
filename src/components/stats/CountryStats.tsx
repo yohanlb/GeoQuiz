@@ -1,6 +1,7 @@
 'use client';
 import { useCountryScores } from '@/src/hooks/useCountryScores';
 import React from 'react';
+import CountryTable from './CountryTable';
 
 type Props = { countries: CountryData[] };
 
@@ -18,7 +19,7 @@ const CountryStats = ({ countries }: Props) => {
 
   const countryHistory = getHistoryCountriesGuessed('capital');
 
-  const lastPlayedCountries = [];
+  const lastPlayedCountries: CountryWithScores[] = [];
   for (let i = 0; i < countryHistory.length; i++) {
     const country = countries.find(
       (ctr) => ctr.id === Number(countryHistory[i].countryId),
@@ -28,19 +29,14 @@ const CountryStats = ({ countries }: Props) => {
     }
     lastPlayedCountries.push({
       ...country,
-      timestamp: countryHistory[i].timestamp,
+      ...countryHistory[i],
     });
   }
 
   return (
     <div className='space-y-3'>
-      <h2 className='text-center'>Countries</h2>
-      <h3>Last Played Decks</h3>
-      <ul className='flex flex-col space-y-1'>
-        {lastPlayedCountries.slice(0, 10).map((country) => (
-          <span key={country.timestamp}>{country.name}</span>
-        ))}
-      </ul>
+      <h3>Last Countries Guessed</h3>
+      <CountryTable countries={lastPlayedCountries.slice(0, 10)} />
     </div>
   );
 };
