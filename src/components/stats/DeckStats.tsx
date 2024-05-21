@@ -33,7 +33,7 @@ const DeckStats = ({ decks }: Props) => {
       <h2 className='text-center'>Decks</h2>
       <div>
         <p>
-          {/* TODO: there are gonne be a problem when number of decks changes */}
+          {/* TODO: there are gonna be a problem when number of decks changes */}
           Total decks played: {numberOfDecksPlayed} / {decks.length}
         </p>
       </div>
