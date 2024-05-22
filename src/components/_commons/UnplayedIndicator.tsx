@@ -1,11 +1,11 @@
 'use client';
-import { useDeckScores } from '@/src/hooks/useDeckScores';
+import { useDeckStatsStore } from '@/src/stores/deckStatsStore';
 import React from 'react';
 
 type Props = { deckId: Deck['id'] };
 
 const UnplayedIndicator = ({ deckId }: Props) => {
-  const { getDeckScores } = useDeckScores();
+  const getDeckScores = useDeckStatsStore((state) => state.getDeckScores);
   const deckScore = getDeckScores(deckId).capital;
 
   if (!deckScore) {

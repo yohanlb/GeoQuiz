@@ -3,14 +3,14 @@ import React from 'react';
 import deckIcon from '@icons/deck-icon.svg';
 import peopleIcon from '@icons/people-icon.svg';
 import personIcon from '@icons/person-icon.svg';
-import { useDeckScores } from '@/src/hooks/useDeckScores';
+import { useDeckStatsStore } from '@/src/stores/deckStatsStore';
 
 type Props = {
   gameDeck: Deck;
 };
 
 function SetupStats({ gameDeck }: Props) {
-  const { getDeckScores } = useDeckScores();
+  const getDeckScores = useDeckStatsStore((state) => state.getDeckScores);
   const userScore = getDeckScores(gameDeck.id);
   const userScoreFormatted = userScore?.capital
     ? `${userScore.capital}%`

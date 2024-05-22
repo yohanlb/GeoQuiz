@@ -1,24 +1,16 @@
 'use client';
 import React from 'react';
-import { useDeckScores } from '@/src/hooks/useDeckScores';
 import DeckItem from '@components/_commons/DeckItem';
 import SectionTitle from '@components/_commons/SectionTitle';
+import { useDeckStatsStore } from '@/src/stores/deckStatsStore';
 
 type Props = { decks: Deck[] };
 
 const DeckStats = ({ decks }: Props) => {
-  const { getLastPlayedDeckIds } = useDeckScores();
+  const getLastPlayedDeckIds = useDeckStatsStore(
+    (state) => state.getLastPlayedDeckIds,
+  );
 
-  // Trick to avoid client-side hydration error
-  const [isMounted, setIsMounted] = React.useState(false);
-  React.useEffect(() => {
-    setIsMounted(true);
-  }, []);
-  if (!isMounted) {
-    return null;
-  }
-
-  // const numberOfDecksPlayed = getAllPlayedDeckIds('capital').length;
   const idsLastDeckPlayed = getLastPlayedDeckIds('capital');
   const lastPlayedDecks = [];
   for (let i = 0; i < idsLastDeckPlayed.length; i++) {

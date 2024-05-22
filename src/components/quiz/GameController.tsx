@@ -4,8 +4,8 @@ import ResultView from './ResultsView';
 import QuestionView from './QuestionView';
 import { postCountryStats } from '../../actions/countryStats';
 import { calculateNewDeckScore } from '@lib/utils/score';
-import { useDeckScores } from '@/src/hooks/useDeckScores';
 import { useCountryScores } from '@/src/hooks/useCountryScores';
+import { useDeckStatsStore } from '@/src/stores/deckStatsStore';
 
 type Props = { questions: Question[]; deck: Deck };
 
@@ -16,7 +16,8 @@ function GameController({ questions, deck }: Props) {
   const [gameState, setGameState] = React.useState<GameState>('playing');
   const [isShowingAnswer, setIsShowingAnswer] = React.useState<boolean>(false);
   const [userResults, setUserResults] = React.useState<UserResults>([]);
-  const { updateDeckScore } = useDeckScores();
+  const updateDeckScore = useDeckStatsStore((state) => state.updateDeckScore);
+
   const { addCountryScores } = useCountryScores();
 
   const handleNextQuestion = () => {
