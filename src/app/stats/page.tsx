@@ -11,7 +11,7 @@ const Stats = async () => {
   const countries = await getAllCountries();
 
   return (
-    <div className='flex flex-col gap-6 px-4 py-2 md:px-0 md:[&_h2]:text-xl'>
+    <div className='flex flex-col gap-6 px-4 py-2 md:px-0'>
       <SectionTitle text='Stats and History' />
       <CountryStats countries={countries} />
       <DeckStats decks={decks} />

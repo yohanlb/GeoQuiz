@@ -17,7 +17,7 @@ const DeckItem = ({ deck }: DeckItemProps) => {
         <div className='flex items-center justify-between rounded-md border-[0.5px] border-gray-700 px-2 py-1 shadow-md shadow-gray-950 transition hover:border-gray-500 active:bg-gray-300 active:text-black'>
           <div className='inline-flex items-center'>
             <UnplayedIndicator deckId={deck.id} />
-            <h2 className='max-w-52 truncate text-sm font-light'>
+            <h2 className='max-w-52 truncate text-sm font-light md:max-w-96'>
               {deck.displayName}
             </h2>
           </div>
