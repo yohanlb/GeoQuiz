@@ -3,7 +3,7 @@ import { persist } from 'zustand/middleware';
 
 const HISTORY_LENGTH = 5;
 
-export type DeckScoresData = {
+export type DeckResultsData = {
   capital: {
     scores: { [deckID: Deck['id']]: number };
     history: Deck['id'][];
@@ -14,15 +14,15 @@ export type DeckScoresData = {
   };
 };
 
-const defaultDeckScoresData: DeckScoresData = {
+const defaultDeckResultsData: DeckResultsData = {
   capital: { scores: {}, history: [] },
   flag: { scores: {}, history: [] },
 };
 
 type GameType = 'capital' | 'flag';
 
-interface DeckScoresState {
-  deckScoresData: DeckScoresData;
+interface DeckResultsState {
+  DeckResultsData: DeckResultsData;
   clearAllDeckScores: () => void;
   getDeckScores: (deckID: Deck['id']) => { capital?: number; flag?: number };
   getAllDeckScores: (gameType: GameType) => { [deckID: Deck['id']]: number };
@@ -35,34 +35,35 @@ interface DeckScoresState {
   ) => void;
 }
 
-export const useDeckStatsStore = create<DeckScoresState>()(
+export const useStoreDeckResults = create<DeckResultsState>()(
   persist(
     (set, get) => ({
-      deckScoresData: defaultDeckScoresData,
+      DeckResultsData: defaultDeckResultsData,
 
-      clearAllDeckScores: () => set({ deckScoresData: defaultDeckScoresData }),
+      clearAllDeckScores: () =>
+        set({ DeckResultsData: defaultDeckResultsData }),
 
       getDeckScores: (deckID: Deck['id']) => {
-        const { deckScoresData } = get();
+        const { DeckResultsData } = get();
         return {
-          capital: deckScoresData.capital.scores[deckID],
-          flag: deckScoresData.flag.scores[deckID],
+          capital: DeckResultsData.capital.scores[deckID],
+          flag: DeckResultsData.flag.scores[deckID],
         };
       },
 
       getAllDeckScores: (gameType: GameType) => {
-        const { deckScoresData } = get();
-        return deckScoresData[gameType]?.scores || undefined;
+        const { DeckResultsData } = get();
+        return DeckResultsData[gameType]?.scores || undefined;
       },
 
       getAllPlayedDeckIds: (gameType: GameType) => {
-        const { deckScoresData } = get();
-        return Object.keys(deckScoresData[gameType].scores).map(Number);
+        const { DeckResultsData } = get();
+        return Object.keys(DeckResultsData[gameType].scores).map(Number);
       },
 
       getLastPlayedDeckIds: (gameType: GameType) => {
-        const { deckScoresData } = get();
-        const history = deckScoresData[gameType]?.history || [];
+        const { DeckResultsData } = get();
+        const history = DeckResultsData[gameType]?.history || [];
         return [...history].reverse();
       },
 
@@ -71,23 +72,23 @@ export const useDeckStatsStore = create<DeckScoresState>()(
         gameType: GameType,
         newScore: number,
       ) => {
-        const { deckScoresData } = get();
+        const { DeckResultsData } = get();
         const updatedScoresData = {
-          ...deckScoresData,
+          ...DeckResultsData,
           [gameType]: {
             scores: {
-              ...deckScoresData[gameType].scores,
+              ...DeckResultsData[gameType].scores,
               [deckID]: newScore,
             },
             history: [
-              ...deckScoresData[gameType].history
+              ...DeckResultsData[gameType].history
                 .filter((id) => id !== deckID)
                 .slice(-HISTORY_LENGTH + 1),
               deckID,
             ],
           },
         };
-        set({ deckScoresData: updatedScoresData });
+        set({ DeckResultsData: updatedScoresData });
       },
     }),
     {

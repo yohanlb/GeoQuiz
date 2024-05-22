@@ -3,14 +3,14 @@ import React from 'react';
 import DeckGrid from './DeckGrid';
 import { isBreakpoint } from '@lib/utils/screen';
 import SectionTitle from '@components/_commons/SectionTitle';
-import { useDeckStatsStore } from '@/src/stores/deckStatsStore';
+import { useStoreDeckResults } from '@/src/stores/deckResults';
 
 type Props = {
   decks: Deck[];
 };
 
 const UnplayedDecksSection = ({ decks }: Props) => {
-  const getAllPlayedDeckIds = useDeckStatsStore(
+  const getAllPlayedDeckIds = useStoreDeckResults(
     (state) => state.getAllPlayedDeckIds,
   );
   const storedDecksIds = getAllPlayedDeckIds('capital');

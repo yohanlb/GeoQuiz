@@ -2,12 +2,12 @@
 import React from 'react';
 import DeckItem from '@components/_commons/DeckItem';
 import SectionTitle from '@components/_commons/SectionTitle';
-import { useDeckStatsStore } from '@/src/stores/deckStatsStore';
+import { useStoreDeckResults } from '@/src/stores/deckResults';
 
 type Props = { decks: Deck[] };
 
 const DeckStats = ({ decks }: Props) => {
-  const getLastPlayedDeckIds = useDeckStatsStore(
+  const getLastPlayedDeckIds = useStoreDeckResults(
     (state) => state.getLastPlayedDeckIds,
   );
 

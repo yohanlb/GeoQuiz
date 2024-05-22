@@ -68,9 +68,9 @@ export const useStoreCountryResults = create<CountryScoresState>()(
         scores: boolean,
       ) => {
         set((state) => {
-          const countryScores =
+          const updatedCountryScores =
             state.countryScoresData.country_scores[gameType];
-          const countryScoreList = countryScores[countryId] || [];
+          const countryScoreList = updatedCountryScores[countryId] || [];
           const newScore: CountryScore = {
             scores: scores,
             timestamp: new Date().toISOString(),
@@ -80,7 +80,7 @@ export const useStoreCountryResults = create<CountryScoresState>()(
             countryScoreList.shift();
           }
           countryScoreList.push(newScore);
-          countryScores[countryId] = countryScoreList;
+          updatedCountryScores[countryId] = countryScoreList;
 
           const globalScores = state.countryScoresData.global_scores[gameType];
           if (globalScores.length >= GLOBAL_COUNTRY_HISTORY_LENGTH) {
@@ -93,7 +93,7 @@ export const useStoreCountryResults = create<CountryScoresState>()(
               ...state.countryScoresData,
               country_scores: {
                 ...state.countryScoresData.country_scores,
-                [gameType]: countryScores,
+                [gameType]: updatedCountryScores,
               },
               global_scores: {
                 ...state.countryScoresData.global_scores,
