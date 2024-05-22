@@ -1,4 +1,4 @@
-import create from 'zustand';
+import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 const NUMBER_OF_SCORES_TO_KEEP = 10;
