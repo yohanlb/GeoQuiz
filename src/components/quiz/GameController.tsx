@@ -5,7 +5,7 @@ import QuestionView from './QuestionView';
 import { postCountryStats } from '../../actions/countryStats';
 import { calculateNewDeckScore } from '@lib/utils/score';
 import { useStoreDeckResults } from '@/src/stores/deckResults';
-import { useStoreCountryResults } from '@/src/stores/countryStats';
+import { useStoreCountryResults } from '@/src/stores/countryResults';
 
 type Props = { questions: Question[]; deck: Deck };
 

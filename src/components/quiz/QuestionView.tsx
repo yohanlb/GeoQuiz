@@ -6,7 +6,7 @@ import formatCountrySuccessPercentage from '../../lib/utils/countryStats';
 import CountryShape from './CountryShape';
 import LastAttempts from './LastAttempts';
 import RecallIndex from '@components/_commons/RecallIndex';
-import { useStoreCountryResults } from '@/src/stores/countryStats';
+import { useStoreCountryResults } from '@/src/stores/countryResults';
 
 type QuestionViewProps = {
   questions: Question[];

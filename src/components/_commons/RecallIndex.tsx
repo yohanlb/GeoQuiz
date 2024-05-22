@@ -1,4 +1,4 @@
-import { useStoreCountryResults } from '@/src/stores/countryStats';
+import { useStoreCountryResults } from '@/src/stores/countryResults';
 import { calculateRecallIndex } from '@lib/utils/score';
 import React from 'react';
 

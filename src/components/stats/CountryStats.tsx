@@ -2,7 +2,7 @@
 import React from 'react';
 import CountryTable from './CountryTable';
 import SectionTitle from '@components/_commons/SectionTitle';
-import { useStoreCountryResults } from '@/src/stores/countryStats';
+import { useStoreCountryResults } from '@/src/stores/countryResults';
 
 type Props = { countries: CountryData[] };
 

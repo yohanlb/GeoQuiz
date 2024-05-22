@@ -4,7 +4,7 @@ import { persist } from 'zustand/middleware';
 const NUMBER_OF_SCORES_TO_KEEP = 10;
 const GLOBAL_COUNTRY_HISTORY_LENGTH = 20;
 
-interface CountryScoresData {
+interface CountryResultsData {
   country_scores: {
     flag: { [countryId: string]: CountryScore[] };
     capital: { [countryId: string]: CountryScore[] };
@@ -15,7 +15,7 @@ interface CountryScoresData {
   };
 }
 
-const defaultCountryScoresData: CountryScoresData = {
+const defaultCountryResultsData: CountryResultsData = {
   country_scores: {
     capital: {},
     flag: {},
@@ -28,8 +28,8 @@ const defaultCountryScoresData: CountryScoresData = {
 
 type GameType = 'flag' | 'capital';
 
-interface CountryScoresState {
-  countryScoresData: CountryScoresData;
+interface CountryResultsState {
+  countryResultsData: CountryResultsData;
   clearAllCountryScores: () => void;
   getLastScoresForCountry: (
     countryId: Deck['id'],
@@ -43,22 +43,22 @@ interface CountryScoresState {
   ) => void;
 }
 
-export const useStoreCountryResults = create<CountryScoresState>()(
+export const useStoreCountryResults = create<CountryResultsState>()(
   persist(
     (set, get) => ({
-      countryScoresData: defaultCountryScoresData,
+      countryResultsData: defaultCountryResultsData,
 
       clearAllCountryScores: () =>
-        set({ countryScoresData: defaultCountryScoresData }),
+        set({ countryResultsData: defaultCountryResultsData }),
 
       getLastScoresForCountry: (countryId: Deck['id'], gameType: GameType) => {
-        const { countryScoresData } = get();
-        return countryScoresData.country_scores[gameType][countryId] || [];
+        const { countryResultsData } = get();
+        return countryResultsData.country_scores[gameType][countryId] || [];
       },
 
       getHistoryCountriesGuessed: (gameType: GameType) => {
-        const { countryScoresData } = get();
-        const countryGuessHistory = countryScoresData.global_scores[gameType];
+        const { countryResultsData } = get();
+        const countryGuessHistory = countryResultsData.global_scores[gameType];
         return countryGuessHistory.slice(-20).reverse();
       },
 
@@ -69,7 +69,7 @@ export const useStoreCountryResults = create<CountryScoresState>()(
       ) => {
         set((state) => {
           const updatedCountryScores =
-            state.countryScoresData.country_scores[gameType];
+            state.countryResultsData.country_scores[gameType];
           const countryScoreList = updatedCountryScores[countryId] || [];
           const newScore: CountryScore = {
             scores: scores,
@@ -82,21 +82,21 @@ export const useStoreCountryResults = create<CountryScoresState>()(
           countryScoreList.push(newScore);
           updatedCountryScores[countryId] = countryScoreList;
 
-          const globalScores = state.countryScoresData.global_scores[gameType];
+          const globalScores = state.countryResultsData.global_scores[gameType];
           if (globalScores.length >= GLOBAL_COUNTRY_HISTORY_LENGTH) {
             globalScores.shift();
           }
           globalScores.push({ countryId, ...newScore });
 
           return {
-            countryScoresData: {
-              ...state.countryScoresData,
+            CountryResultsData: {
+              ...state.countryResultsData,
               country_scores: {
-                ...state.countryScoresData.country_scores,
+                ...state.countryResultsData.country_scores,
                 [gameType]: updatedCountryScores,
               },
               global_scores: {
-                ...state.countryScoresData.global_scores,
+                ...state.countryResultsData.global_scores,
                 [gameType]: globalScores,
               },
             },
