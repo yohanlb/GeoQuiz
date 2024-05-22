@@ -1,6 +1,5 @@
 import { getCountryById } from '@/src/queries/countries';
 import PageCenteredLink from '@components/_commons/PageCenteredLink';
-import SectionTitle from '@components/_commons/SectionTitle';
 import CountryShape from '@components/quiz/CountryShape';
 import React from 'react';
 
