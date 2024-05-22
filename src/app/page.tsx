@@ -23,7 +23,7 @@ async function Home() {
   const decks = await getDecks();
 
   return (
-    <div className='flex flex-col gap-6 px-4 py-2 text-center md:px-0 md:[&_h2]:text-xl'>
+    <div className='flex flex-col gap-6 px-4 py-2 text-center md:px-0'>
       <FeaturedAndPopularSection decks={decks} />
       <DifficultySection decks={decks} />
       <LowestScoresDecksSection decks={decks} />

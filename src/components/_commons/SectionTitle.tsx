@@ -8,7 +8,7 @@ const SectionTitle = ({ text, variant = 'h2' }: Props) => {
   switch (variant) {
     case 'h2':
       return (
-        <Tag className='text-center text-xs font-medium tracking-wide md:text-2xl'>
+        <Tag className='text-center text-lg font-medium tracking-wide md:text-2xl'>
           {text}
         </Tag>
       );
