@@ -11,7 +11,7 @@ const CountryTable = ({ countries }: Props) => {
     <Table>
       <TableBody>
         {countries.map((country) => (
-          <TableRow key={country.id} className='border-gray-600 text-xs'>
+          <TableRow key={country.timestamp} className='border-gray-600 text-xs'>
             <TableCell className='px-0 py-1 font-thin'>
               {country.name}
             </TableCell>

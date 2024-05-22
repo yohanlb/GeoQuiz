@@ -11,6 +11,15 @@ const DeckStats = ({ decks }: Props) => {
     (state) => state.getLastPlayedDeckIds,
   );
 
+  // Trick to avoid client-side hydration error
+  const [isMounted, setIsMounted] = React.useState(false);
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
+  if (!isMounted) {
+    return null;
+  }
+
   const idsLastDeckPlayed = getLastPlayedDeckIds('capital');
   const lastPlayedDecks = [];
   for (let i = 0; i < idsLastDeckPlayed.length; i++) {
