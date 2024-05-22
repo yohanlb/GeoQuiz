@@ -48,7 +48,7 @@ const QuestionView = ({
 
   let displayedName = currentQuestion.countryData.name;
   if (currentQuestion.countryData.sovereignCountry) {
-    displayedName += `(${currentQuestion.countryData.sovereignCountry})`;
+    displayedName += ` (${currentQuestion.countryData.sovereignCountry})`;
   }
 
   return (

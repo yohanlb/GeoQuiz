@@ -1,4 +1,5 @@
 import { Table, TableBody, TableCell, TableRow } from '@components/ui/table';
+import Link from 'next/link';
 
 import React from 'react';
 
@@ -13,7 +14,7 @@ const CountryTable = ({ countries }: Props) => {
         {countries.map((country) => (
           <TableRow
             key={country.timestamp}
-            className='border-gray-600 text-xs md:text-base'
+            className='group border-gray-600 text-xs md:text-base'
           >
             <TableCell className='px-0 py-1 font-thin'>
               <span
@@ -25,9 +26,11 @@ const CountryTable = ({ countries }: Props) => {
             <TableCell className='px-0 py-1 font-emoji font-thin'>
               {country.emoji}
             </TableCell>
-            <TableCell className='px-0 py-1 font-thin'>
-              {country.name}
-            </TableCell>
+            <Link href={`/countries/${country.id}`}>
+              <TableCell className='px-0 py-1 font-thin underline-offset-2 group-hover:underline'>
+                {country.name}
+              </TableCell>
+            </Link>
             <TableCell className='px-0 py-1 font-thin'>
               {country.capital}
             </TableCell>

@@ -11,16 +11,21 @@ type Props = {
 const Country = async ({ params }: Props) => {
   const country = await getCountryById(params.countryId);
 
+  let displayedName = country.name;
+  if (country.sovereignCountry) {
+    displayedName += ` (${country.sovereignCountry})`;
+  }
+
   return (
     <div className='mx-auto flex max-w-md flex-col gap-2 px-2 py-2 md:px-0'>
-      <SectionTitle text={country.name} />
+      <h1 className='text-center text-3xl'>
+        <span className='font-emoji'>{country.emoji}</span> {displayedName}
+      </h1>
       <CountryShape countryCode={country.iso2} />
       <ul>
         <li>Capital: {country.capital}</li>
-        <li>
-          Flag: <span className='font-emoji'>{country.emoji}</span>
-        </li>
         <li>Region: {country.region}</li>
+        <li>Subregion: {country.subregion}</li>
       </ul>
       <PageCenteredLink href='/countries' label='Back' />
     </div>
