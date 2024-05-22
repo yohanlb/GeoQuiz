@@ -89,7 +89,7 @@ export const useStoreCountryResults = create<CountryResultsState>()(
           globalScores.push({ countryId, ...newScore });
 
           return {
-            CountryResultsData: {
+            countryResultsData: {
               ...state.countryResultsData,
               country_scores: {
                 ...state.countryResultsData.country_scores,
