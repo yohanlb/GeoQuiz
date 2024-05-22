@@ -1,9 +1,11 @@
-import { useCountryScores } from '@/src/hooks/useCountryScores';
+import { useStoreCountryResults } from '@/src/stores/countryStats';
 import { calculateRecallIndex } from '@lib/utils/score';
 import React from 'react';
 
 const RecallIndex = ({ countryId }: { countryId: CountryData['id'] }) => {
-  const { getLastScoresForCountry } = useCountryScores();
+  const getLastScoresForCountry = useStoreCountryResults(
+    (state) => state.getLastScoresForCountry,
+  );
   const userCountryScores = getLastScoresForCountry(countryId, 'capital').map(
     (scoreObject) => scoreObject.scores,
   );

@@ -4,9 +4,9 @@ import AnswerCirclesList from './AnswerCirclesList';
 import ChoiceOptionButtons from './AnswerButtonsList';
 import formatCountrySuccessPercentage from '../../lib/utils/countryStats';
 import CountryShape from './CountryShape';
-import { useCountryScores } from '@/src/hooks/useCountryScores';
 import LastAttempts from './LastAttempts';
 import RecallIndex from '@components/_commons/RecallIndex';
+import { useStoreCountryResults } from '@/src/stores/countryStats';
 
 type QuestionViewProps = {
   questions: Question[];
@@ -23,8 +23,9 @@ const QuestionView = ({
   handleClickAnswerOption,
   userResults,
 }: QuestionViewProps) => {
-  const { getLastScoresForCountry } = useCountryScores();
-
+  const getLastScoresForCountry = useStoreCountryResults(
+    (state) => state.getLastScoresForCountry,
+  );
   const currentQuestion = questions[currentQuestionIndex];
 
   const options = currentQuestion.answerOptions.map((option) => {

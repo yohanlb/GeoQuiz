@@ -1,13 +1,15 @@
 'use client';
-import { useCountryScores } from '@/src/hooks/useCountryScores';
 import React from 'react';
 import CountryTable from './CountryTable';
 import SectionTitle from '@components/_commons/SectionTitle';
+import { useStoreCountryResults } from '@/src/stores/countryStats';
 
 type Props = { countries: CountryData[] };
 
 const CountryStats = ({ countries }: Props) => {
-  const { getHistoryCountriesGuessed } = useCountryScores();
+  const getHistoryCountriesGuessed = useStoreCountryResults(
+    (state) => state.getHistoryCountriesGuessed,
+  );
 
   // Trick to avoid client-side hydration error
   const [isMounted, setIsMounted] = React.useState(false);

@@ -1,5 +1,3 @@
-import { GuessScore } from '@/src/hooks/useCountryScores';
-
 export {};
 
 declare global {
@@ -82,5 +80,14 @@ declare global {
     [key in GameType]: boolean[] | undefined;
   };
 
-  export type CountryWithScores = CountryData & GuessScore;
+  interface CountryScore {
+    scores: boolean;
+    timestamp: string; // ISO 8601 formatted date-time string
+  }
+
+  export interface CountryGuessHistory extends CountryScore {
+    countryId: Deck['id'];
+  }
+
+  export type CountryWithScores = CountryData & CountryGuessHistory;
 }
