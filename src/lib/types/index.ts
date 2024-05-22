@@ -27,6 +27,7 @@ declare global {
     subregion: string;
     success_rate: number;
     updated_at: string;
+    sovereignCountry?: string;
   };
 
   //Deprecated

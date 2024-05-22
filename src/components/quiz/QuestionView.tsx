@@ -46,6 +46,11 @@ const QuestionView = ({
     'capital',
   ).map((scoreObject) => scoreObject.scores);
 
+  let displayedName = currentQuestion.countryData.name;
+  if (currentQuestion.countryData.sovereignCountry) {
+    displayedName += `(${currentQuestion.countryData.sovereignCountry})`;
+  }
+
   return (
     <div className='mx-auto flex h-full max-w-lg flex-col justify-between px-4 pb-3 md:px-0 md:py-2'>
       <div className='text-left '>
@@ -53,7 +58,7 @@ const QuestionView = ({
           <span className='font-emoji'>
             {currentQuestion.countryData.emoji}
           </span>{' '}
-          {currentQuestion.countryData.name}
+          {displayedName}
         </h1>
         <div className='text-xs'>
           <p>
