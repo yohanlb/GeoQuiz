@@ -6,6 +6,8 @@ type Props = {
   decks: Deck[];
 };
 
+const defaultPriority = 50;
+
 const FeaturedAndPopularSection = ({ decks }: Props) => {
   const howManyToDisplay = 6;
 
@@ -13,10 +15,18 @@ const FeaturedAndPopularSection = ({ decks }: Props) => {
     deck.categories?.includes('featured'),
   );
 
+  const sortedDecks = featuredAndPopularDecks
+    .sort(
+      (a, b) =>
+        (a.displayPriority || defaultPriority) -
+        (b.displayPriority || defaultPriority),
+    )
+    .slice(0, howManyToDisplay);
+
   return (
     <section>
       <SectionTitle text='Featured and Popular 🔥' />
-      <DeckGrid decks={featuredAndPopularDecks.slice(0, howManyToDisplay)} />
+      <DeckGrid decks={sortedDecks.slice(0, howManyToDisplay)} />
     </section>
   );
 };
