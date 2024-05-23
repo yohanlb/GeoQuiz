@@ -3,7 +3,7 @@ import europe from '@assets/deckImages/Europe.jpg';
 import asia from '@assets/deckImages/Asia.jpg';
 import islands from '@assets/deckImages/Islands.jpg';
 import southAmerica from '@assets/deckImages/SouthAmerica.jpg';
-import worldwide from '@assets/deckImages/Worldwide.jpg';
+import world from '@assets/deckImages/Worldwide.jpg';
 import caribbean from '@assets/deckImages/Caribbean.jpg';
 import oceania from '@assets/deckImages/Oceania.jpg';
 import easiest from '@assets/deckImages/Easy.jpg';
@@ -22,7 +22,7 @@ export const DECK_IMAGES: DeckImages = {
   asia,
   islands,
   southAmerica,
-  worldwide,
+  world,
   caribbean,
   oceania,
   northernAndCentralAmerica,

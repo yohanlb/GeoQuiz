@@ -22,7 +22,7 @@ const ResultsTable = ({ questions, userResults }: Props) => {
             <th className='px-2 py-2 font-normal'>Country</th>
             <th className='px-2 py-2 font-normal'>Capital</th>
             <th className='px-2 py-2 font-normal'>Result</th>
-            <th className='text-wrap px-2 py-2 font-normal'>Memorization</th>
+            <th className='text-wrap px-2 py-2 font-normal'>Memory Index</th>
             <th className='px-2 py-2 font-normal'>Community</th>
           </tr>
         </thead>

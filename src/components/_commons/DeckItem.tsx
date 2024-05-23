@@ -22,7 +22,7 @@ const DeckItem = ({ deck }: DeckItemProps) => {
             </h2>
           </div>
           <div className='flex items-center space-x-1 font-mono'>
-            <span className='text-right'>🌍{deck.countryIds.length}</span>
+            <span className='text-right'>🌍{deck.countryIds?.length}</span>
             <span className='text-right'>
               📈{Math.round(deck.averageSuccessRatio)}%
             </span>
