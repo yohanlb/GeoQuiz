@@ -10,6 +10,7 @@ import easiest from '@assets/deckImages/Easy.jpg';
 import medium from '@assets/deckImages/Medium.jpg';
 import hardest from '@assets/deckImages/Hardest.jpg';
 import northernAndCentralAmerica from '@assets/deckImages/NorthAmerica.jpg';
+import europeanUnion from '@assets/deckImages/europeanUnion.jpg';
 import { StaticImageData } from 'next/image';
 
 type DeckImages = {
@@ -29,4 +30,5 @@ export const DECK_IMAGES: DeckImages = {
   easiest,
   medium,
   hardest,
+  europeanUnion,
 };
