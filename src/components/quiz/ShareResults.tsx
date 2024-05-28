@@ -1,4 +1,5 @@
 import { Button } from '@components/ui/button';
+import { EMOJIS, WEBSITE_URL } from '@lib/consts';
 import React from 'react';
 
 type Props = {
@@ -13,11 +14,11 @@ const ShareResults = ({ questions, userResults, deckName }: Props) => {
     userResult: userResults[i],
   }));
 
-  const websiteUrl = 'https://geoquiz.co';
-
   const generateShareText = () => {
     const resultsSummary = questionsWithResults
-      .map((question) => (question.userResult === 'valid' ? '🟩' : '🟥'))
+      .map((question) =>
+        question.userResult === 'valid' ? EMOJIS.valid : EMOJIS.invalid,
+      )
       .join('');
 
     const correctAnswers = userResults.filter(
@@ -26,7 +27,7 @@ const ShareResults = ({ questions, userResults, deckName }: Props) => {
     const totalQuestions = questions.length;
     const scorePercentage = Math.round((correctAnswers / totalQuestions) * 100);
 
-    const shareMessage = `Check out my GeoQuiz Results!\n\nScore: ${correctAnswers}/${totalQuestions} (${scorePercentage}%)\n${resultsSummary}\n\n${websiteUrl}\nDeck: ${deckName}`;
+    const shareMessage = `Check out my GeoQuiz Results!\n\nScore: ${correctAnswers}/${totalQuestions} (${scorePercentage}%)\n${resultsSummary}\n\n${WEBSITE_URL}\nDeck: ${deckName}`;
     return shareMessage;
   };
 
