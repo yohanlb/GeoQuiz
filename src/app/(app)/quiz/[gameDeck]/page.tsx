@@ -18,7 +18,11 @@ const Quiz = async ({ params, searchParams }: Props) => {
   }
   return (
     <div className='h-full'>
-      <GameClientWrapper deck={deck} amountOfQuestions={searchParams.length} />
+      <GameClientWrapper
+        deck={deck}
+        amountOfQuestions={searchParams.length}
+        deckName={params.gameDeck}
+      />
     </div>
   );
 };

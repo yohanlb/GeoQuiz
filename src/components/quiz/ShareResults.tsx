@@ -13,14 +13,20 @@ const ShareResults = ({ questions, userResults, deckName }: Props) => {
     userResult: userResults[i],
   }));
 
-  const shareUrl = window.location.href;
+  const websiteUrl = 'https://geoquiz.co';
 
   const generateShareText = () => {
     const resultsSummary = questionsWithResults
-      .map((question) => (question.userResult === 'valid' ? '🟩' : '⬛'))
+      .map((question) => (question.userResult === 'valid' ? '🟩' : '🟥'))
       .join('');
 
-    const shareMessage = `Check out my results for the ${deckName} deck!\n\n${resultsSummary}\n\n${shareUrl}`;
+    const correctAnswers = userResults.filter(
+      (result) => result === 'valid',
+    ).length;
+    const totalQuestions = questions.length;
+    const scorePercentage = Math.round((correctAnswers / totalQuestions) * 100);
+
+    const shareMessage = `GeoQuiz Results\n\nScore: ${correctAnswers}/${totalQuestions} (${scorePercentage}%)\n${resultsSummary}\n\n${websiteUrl}\nDeck: ${deckName}`;
     return shareMessage;
   };
 
@@ -34,9 +40,8 @@ const ShareResults = ({ questions, userResults, deckName }: Props) => {
     if (isMobileDevice() && navigator.share) {
       try {
         await navigator.share({
-          title: 'My Results',
+          title: 'GeoQuiz Results',
           text: shareText,
-          url: shareUrl,
         });
       } catch (error) {
         console.error('Error sharing', error);
@@ -54,11 +59,7 @@ const ShareResults = ({ questions, userResults, deckName }: Props) => {
   };
 
   return (
-    <Button
-      variant={'secondary'}
-      onClick={handleShare}
-      className='rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700'
-    >
+    <Button variant={'secondary'} onClick={handleShare}>
       Share Results
     </Button>
   );

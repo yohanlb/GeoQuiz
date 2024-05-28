@@ -8,12 +8,14 @@ import ShareResults from './ShareResults';
 type ResultsViewProps = {
   questions: Question[];
   userResults: UserResults;
+  deckName: string;
   handleRestart: () => void;
 };
 
 function ResultsView({
   questions,
   userResults,
+  deckName,
   handleRestart,
 }: ResultsViewProps) {
   const newDeckScore = calculateNewDeckScore(userResults, questions.length);
@@ -34,7 +36,7 @@ function ResultsView({
         <ShareResults
           questions={questions}
           userResults={userResults}
-          deckName={'deckName'}
+          deckName={deckName}
         />
       </div>
       <div className='flex gap-6 md:gap-16'>

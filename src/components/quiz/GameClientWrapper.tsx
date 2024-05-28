@@ -7,9 +7,10 @@ import { useFetchQuestions } from '@/src/hooks/useFetchQuestions';
 type Props = {
   deck: Deck;
   amountOfQuestions: number;
+  deckName: string;
 };
 
-const GameClientWrapper = ({ deck, amountOfQuestions }: Props) => {
+const GameClientWrapper = ({ deck, amountOfQuestions, deckName }: Props) => {
   const { questions, isLoading } = useFetchQuestions(deck, amountOfQuestions);
 
   if (isLoading) {
@@ -27,7 +28,7 @@ const GameClientWrapper = ({ deck, amountOfQuestions }: Props) => {
   } else {
     return (
       <>
-        <GameController questions={questions} deck={deck} />
+        <GameController questions={questions} deck={deck} deckName={deckName} />
       </>
     );
   }

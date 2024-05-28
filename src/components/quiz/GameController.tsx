@@ -7,7 +7,7 @@ import { calculateNewDeckScore } from '@lib/utils/score';
 import { useStoreDeckResults } from '@/src/stores/deckResults';
 import { useStoreCountryResults } from '@/src/stores/countryResults';
 
-type Props = { questions: Question[]; deck: Deck };
+type Props = { questions: Question[]; deck: Deck; deckName: string };
 
 function GameController({ questions, deck }: Props) {
   const [userAnswers, setUserAnswers] = React.useState<string[]>([]);
@@ -94,6 +94,7 @@ function GameController({ questions, deck }: Props) {
       <ResultView
         questions={questions}
         userResults={userResults}
+        deckName={deck.name}
         handleRestart={handleRestart}
       />
     );
