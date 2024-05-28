@@ -26,7 +26,7 @@ const ShareResults = ({ questions, userResults, deckName }: Props) => {
     const totalQuestions = questions.length;
     const scorePercentage = Math.round((correctAnswers / totalQuestions) * 100);
 
-    const shareMessage = `GeoQuiz Results\n\nScore: ${correctAnswers}/${totalQuestions} (${scorePercentage}%)\n${resultsSummary}\n\n${websiteUrl}\nDeck: ${deckName}`;
+    const shareMessage = `Check out my GeoQuiz Results!\n\nScore: ${correctAnswers}/${totalQuestions} (${scorePercentage}%)\n${resultsSummary}\n\n${websiteUrl}\nDeck: ${deckName}`;
     return shareMessage;
   };
 
