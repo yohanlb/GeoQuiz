@@ -2,6 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 import ResultsTable from './ResultsTable';
 import { calculateNewDeckScore } from '@lib/utils/score';
+import { navigationLinks } from '@lib/navigationLinks';
 
 type ResultsViewProps = {
   questions: Question[];
@@ -29,7 +30,7 @@ function ResultsView({
       </div>
 
       <div className='flex gap-6 md:gap-16'>
-        <Link href='/'>
+        <Link href={navigationLinks.home.href}>
           <button
             type='submit'
             className='w-36 rounded-lg border border-gray-700 py-2 text-xl font-normal md:w-60 md:text-2xl'

@@ -2,6 +2,7 @@ import { getDecks } from '@/src/queries/gameDecks';
 import PageCenteredLink from '@components/_commons/PageCenteredLink';
 import SectionTitle from '@components/_commons/SectionTitle';
 import DeckList from '@components/decks/DeckList';
+import { navigationLinks } from '@lib/navigationLinks';
 import React from 'react';
 
 async function page() {
@@ -12,7 +13,7 @@ async function page() {
     <div className='mx-auto flex max-w-md flex-col gap-2 px-2 py-2 md:px-0'>
       <SectionTitle text='All Decks' />
       <DeckList decks={decks} />
-      <PageCenteredLink href='/' label='Back' />
+      <PageCenteredLink href={navigationLinks.home.href} label='Back' />
     </div>
   );
 }

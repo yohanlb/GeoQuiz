@@ -24,7 +24,11 @@ const config = {
       },
       colors: {
         background: '#1E2228',
-        accent: '#e0881b',
+        accent: {
+          DEFAULT: '#FFB800',
+          light: '#FFCA33',
+          dark: '#CC9200',
+        },
         'bg-gradient-start': '#22262C',
         'bg-gradient-end': '#0F141C',
       },

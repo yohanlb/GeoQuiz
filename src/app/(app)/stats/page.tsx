@@ -4,6 +4,7 @@ import PageCenteredLink from '@components/_commons/PageCenteredLink';
 import SectionTitle from '@components/_commons/SectionTitle';
 import CountryStats from '@components/stats/CountryStats';
 import DeckStats from '@components/stats/DeckStats';
+import { navigationLinks } from '@lib/navigationLinks';
 import React from 'react';
 
 const Stats = async () => {
@@ -15,7 +16,7 @@ const Stats = async () => {
       <SectionTitle text='Stats and History' />
       <CountryStats countries={countries} />
       <DeckStats decks={decks} />
-      <PageCenteredLink href='/' label='Back' />
+      <PageCenteredLink href={navigationLinks.home.href} label='Back' />
     </div>
   );
 };

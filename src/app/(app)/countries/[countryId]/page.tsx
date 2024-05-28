@@ -1,6 +1,7 @@
 import { getCountryById } from '@/src/queries/countries';
 import PageCenteredLink from '@components/_commons/PageCenteredLink';
 import CountryShape from '@components/quiz/CountryShape';
+import { navigationLinks } from '@lib/navigationLinks';
 import React from 'react';
 
 type Props = {
@@ -26,7 +27,10 @@ const Country = async ({ params }: Props) => {
         <li>Region: {country.region}</li>
         <li>Subregion: {country.subregion}</li>
       </ul>
-      <PageCenteredLink href='/countries' label='Back' />
+      <PageCenteredLink
+        href={navigationLinks.countries.href}
+        label='All Countries'
+      />
     </div>
   );
 };

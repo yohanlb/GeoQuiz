@@ -1,4 +1,4 @@
-import { getDeckByName } from '../../../queries/gameDecks';
+import { getDeckByName } from '../../../../queries/gameDecks';
 import GameClientWrapper from '@components/quiz/GameClientWrapper';
 
 type Props = {

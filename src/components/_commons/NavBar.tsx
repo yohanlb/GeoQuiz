@@ -8,11 +8,13 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Menu from '@components/_commons/Menu';
+import { Button } from '@components/ui/button';
+import { navigationLinks } from '@lib/navigationLinks';
 
 const ExpandedHeader = () => (
   <div className='grid grid-cols-5 grid-rows-1 gap-0 px-4 py-4 md:px-0'>
     <div className='col-span-3 col-start-2'>
-      <Link href='/'>
+      <Link href={navigationLinks.home.href}>
         <Image
           src={GeoQuizLogoExpanded}
           alt='GeoQuiz Logo'
@@ -33,7 +35,7 @@ const ExpandedHeader = () => (
 );
 const CompactHeader = () => (
   <div className='flex items-start justify-between  px-4 py-4 md:px-0'>
-    <Link href='/'>
+    <Link href={navigationLinks.home.href}>
       <Image
         src={GeoQuizLogoCompact}
         alt='GeoQuiz Logo'
@@ -50,10 +52,36 @@ const CompactHeader = () => (
   </div>
 );
 
+const LandingHeader = () => (
+  <>
+    <header className='mb-2'>
+      <div className='flex items-start justify-between  px-4 py-4 md:px-0'>
+        <Link href='/'>
+          <Image
+            src={GeoQuizLogoCompact}
+            alt='GeoQuiz Logo'
+            className='w-16 md:w-20'
+          />
+        </Link>
+        <div>
+          <Link href={navigationLinks.home.href}>
+            <Button variant={'accent'} className='h-8 font-bold'>
+              <span>Play</span>
+            </Button>
+          </Link>
+        </div>
+      </div>
+    </header>
+  </>
+);
+
 function NavBar() {
   const currentPath = usePathname();
-  const isExpanded = currentPath === '/';
+  if (currentPath === '/') {
+    return <LandingHeader />;
+  }
 
+  const isExpanded = currentPath === navigationLinks.home.href;
   return (
     <header className='mb-2'>
       {isExpanded ? <ExpandedHeader /> : <CompactHeader />}

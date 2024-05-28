@@ -7,6 +7,7 @@ import {
   DropdownMenuTrigger,
 } from '@components/ui/dropdown-menu';
 import Link from 'next/link';
+import { navigationLinks } from '@lib/navigationLinks';
 
 type Props = {
   trigger: React.ReactNode;
@@ -17,22 +18,21 @@ function Menu({ trigger }: Props) {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger>
       <DropdownMenuContent>
-        <Link href='/'>
-          <DropdownMenuItem>Home</DropdownMenuItem>
-        </Link>
-        <Link href='/decks'>
-          <DropdownMenuItem>All Decks</DropdownMenuItem>
-        </Link>
-        <Link href='/countries'>
-          <DropdownMenuItem>Countries</DropdownMenuItem>
-        </Link>
-        <Link href='/stats'>
-          <DropdownMenuItem>My Stats</DropdownMenuItem>
-        </Link>
+        {Object.entries(navigationLinks)
+          .filter(([key]) => !['settings', 'feedback', 'about'].includes(key))
+          .map(([key, link]) => (
+            <Link key={key} href={link.href}>
+              <DropdownMenuItem>{link.label}</DropdownMenuItem>
+            </Link>
+          ))}
         <DropdownMenuSeparator />
-        <DropdownMenuItem disabled>Settings</DropdownMenuItem>
-        <DropdownMenuItem disabled>Feedback</DropdownMenuItem>
-        <DropdownMenuItem disabled>About</DropdownMenuItem>
+        {Object.entries(navigationLinks)
+          .filter(([key]) => ['settings', 'feedback', 'about'].includes(key))
+          .map(([key, link]) => (
+            <DropdownMenuItem key={key} disabled={link.disabled}>
+              {link.label}
+            </DropdownMenuItem>
+          ))}
       </DropdownMenuContent>
     </DropdownMenu>
   );

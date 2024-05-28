@@ -1,6 +1,7 @@
 import { getAllCountries } from '@/src/queries/countries';
 import PageCenteredLink from '@components/_commons/PageCenteredLink';
 import SectionTitle from '@components/_commons/SectionTitle';
+import { navigationLinks } from '@lib/navigationLinks';
 import Link from 'next/link';
 import React from 'react';
 
@@ -22,7 +23,7 @@ const Country = async () => {
           </li>
         ))}
       </ul>
-      <PageCenteredLink href='/' label='Back' />
+      <PageCenteredLink href={navigationLinks.home.href} label='Back' />
     </div>
   );
 };

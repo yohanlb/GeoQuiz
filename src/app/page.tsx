@@ -1,38 +1,38 @@
+import { Button } from '@components/ui/button';
+import Image from 'next/image';
 import React from 'react';
-import { getDecks } from '../queries/gameDecks';
-import dynamic from 'next/dynamic';
-import FeaturedAndPopularSection from '@components/home/FeaturedAndPopularSection';
-import DifficultySection from '@components/home/DifficultySection';
-import PageCenteredLink from '@components/_commons/PageCenteredLink';
-import ContinentsSection from '@components/home/ContinentsSection';
+import GeoQuizLogo from '@assets/GeoQuizGlobeLogo.png';
+import Link from 'next/link';
+import { navigationLinks } from '@lib/navigationLinks';
 
-// Dynamically import components to avoid client-side hydration
-const UnplayedDecksSection = dynamic(
-  () => import('@components/home/UnplayedDecksSection'),
-  {
-    ssr: false,
-  },
-);
-const LowestScoresDecksSection = dynamic(
-  () => import('@components/home/LowestScoresDecksSection'),
-  {
-    ssr: false,
-  },
-);
-
-async function Home() {
-  const decks = await getDecks();
-
+const Landing = () => {
   return (
-    <div className='flex flex-col gap-6 px-4 py-2 text-center md:px-0'>
-      <FeaturedAndPopularSection decks={decks} />
-      <DifficultySection decks={decks} />
-      <LowestScoresDecksSection decks={decks} />
-      <UnplayedDecksSection decks={decks} />
-      <ContinentsSection decks={decks} />
-      <PageCenteredLink href='/decks' label='See all decks' />
+    <div>
+      <section className='flex w-full flex-col items-center gap-y-8 px-4 py-24 text-center md:flex-row  md:justify-between md:text-left'>
+        <div className='flex max-w-sm flex-col justify-center gap-8'>
+          <h1 className='text-2xl font-extrabold'>
+            Learn Geography the Fun Way with GeoQuiz!
+          </h1>
+          <p className='font-thin capitalize'>
+            Master <strong>capitals</strong> and <strong>flags</strong>, track
+            your progress, and <strong>challenge</strong> your friends!
+          </p>
+          <Link href={navigationLinks.home.href}>
+            <Button
+              size={'lg'}
+              variant={'accent'}
+              className='w-fit font-extrabold'
+            >
+              <span>{'Start!'}</span>
+            </Button>
+          </Link>
+        </div>
+        <div className='max-w-44 md:max-w-80'>
+          <Image src={GeoQuizLogo} alt='GeoQuiz Logo' />
+        </div>
+      </section>
     </div>
   );
-}
+};
 
-export default Home;
+export default Landing;
