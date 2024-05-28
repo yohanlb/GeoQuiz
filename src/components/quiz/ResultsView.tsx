@@ -3,6 +3,7 @@ import React from 'react';
 import ResultsTable from './ResultsTable';
 import { calculateNewDeckScore } from '@lib/utils/score';
 import { navigationLinks } from '@lib/navigationLinks';
+import ShareResults from './ShareResults';
 
 type ResultsViewProps = {
   questions: Question[];
@@ -29,6 +30,13 @@ function ResultsView({
         <p>{newDeckScore}% of correct answers!</p>
       </div>
 
+      <div>
+        <ShareResults
+          questions={questions}
+          userResults={userResults}
+          deckName={'deckName'}
+        />
+      </div>
       <div className='flex gap-6 md:gap-16'>
         <Link href={navigationLinks.home.href}>
           <button
