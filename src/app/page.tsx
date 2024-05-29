@@ -1,8 +1,8 @@
 import { Button } from '@components/ui/button';
-import Image from 'next/image';
-import React from 'react';
 import GeoQuizLogo from '@assets/GeoQuizGlobeLogo.png';
+import Image from 'next/image';
 import Link from 'next/link';
+import React from 'react';
 import { navigationLinks } from '@lib/navigationLinks';
 
 const Landing = () => {
