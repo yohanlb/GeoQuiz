@@ -18,7 +18,12 @@ const ShareResults = ({ questions, userResults, deckName }: Props) => {
   const generateShareText = () => {
     const resultsSummary = questionsWithResults
       .map((question) =>
-        question.userResult === 'valid' ? EMOJIS.valid : EMOJIS.invalid,
+        [
+          question.userResult === 'valid' ? EMOJIS.valid : EMOJIS.invalid,
+          ' ' + question.countryData.emoji,
+          ' ' + question.countryData.name,
+          '\n',
+        ].join(''),
       )
       .join('');
 
@@ -28,7 +33,7 @@ const ShareResults = ({ questions, userResults, deckName }: Props) => {
     const totalQuestions = questions.length;
     const scorePercentage = Math.round((correctAnswers / totalQuestions) * 100);
 
-    const shareMessage = `Check out my GeoQuiz Results!\n\nScore: ${correctAnswers}/${totalQuestions} (${scorePercentage}%)\n${resultsSummary}\n\n${WEBSITE_URL}\nDeck: ${deckName}`;
+    const shareMessage = `Check out my GeoQuiz Results!\n\nScore: ${correctAnswers}/${totalQuestions} (${scorePercentage}%)\nDeck: ${deckName}\n${resultsSummary}\n\n${WEBSITE_URL}`;
     return shareMessage;
   };
 
