@@ -25,14 +25,9 @@ function ResultsView({
       <h1 className='text-5xl font-bold uppercase italic tracking-wider'>
         Results
       </h1>
-
       <ResultsTable questions={questions} userResults={userResults} />
-
-      <div className='text-xl tracking-wider'>
+      <div className='flex flex-wrap items-center justify-center gap-2 text-xl tracking-wider'>
         <p>{newDeckScore}% of correct answers!</p>
-      </div>
-
-      <div>
         <ShareResults
           questions={questions}
           userResults={userResults}

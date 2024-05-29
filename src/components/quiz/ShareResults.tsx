@@ -1,6 +1,7 @@
+import React from 'react';
+import ShareIcon from '@components/_commons/icons/ShareIcon';
 import { Button } from '@components/ui/button';
 import { EMOJIS, WEBSITE_URL } from '@lib/consts';
-import React from 'react';
 
 type Props = {
   questions: Question[];
@@ -61,7 +62,8 @@ const ShareResults = ({ questions, userResults, deckName }: Props) => {
 
   return (
     <Button variant={'secondary'} onClick={handleShare}>
-      Share Results
+      Share
+      <ShareIcon className='ml-2' />
     </Button>
   );
 };
