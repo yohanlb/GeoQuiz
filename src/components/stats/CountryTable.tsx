@@ -2,6 +2,7 @@ import { Table, TableBody, TableCell, TableRow } from '@components/ui/table';
 import Link from 'next/link';
 
 import React from 'react';
+import ReactCountryFlag from 'react-country-flag';
 
 type Props = {
   countries: CountryWithScores[];
@@ -23,8 +24,12 @@ const CountryTable = ({ countries }: Props) => {
                 {country.scores ? '✔' : '✘'}
               </span>
             </TableCell>
-            <TableCell className='px-0 py-1 font-emoji font-thin'>
-              {country.emoji}
+            <TableCell className='px-0 py-1 font-thin'>
+              <ReactCountryFlag
+                countryCode={country.iso2}
+                svg
+                aria-label={country.name}
+              />
             </TableCell>
             <Link href={`/countries/${country.id}`}>
               <TableCell className='px-0 py-1 font-thin underline-offset-2 group-hover:underline'>

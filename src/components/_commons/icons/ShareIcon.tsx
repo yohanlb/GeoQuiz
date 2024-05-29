@@ -10,7 +10,6 @@ export default function ShareIcon({ className }: Props) {
       height={20}
       aria-hidden='true'
       className={'inline-block ' + className}
-      data-testid='icon-share'
       viewBox='0 0 24 24'
       fill='currentColor'
     >

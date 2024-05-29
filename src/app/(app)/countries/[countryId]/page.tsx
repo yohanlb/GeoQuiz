@@ -1,8 +1,9 @@
+import React from 'react';
 import { getCountryById } from '@/src/queries/countries';
 import PageCenteredLink from '@components/_commons/PageCenteredLink';
 import CountryShape from '@components/quiz/CountryShape';
 import { navigationLinks } from '@lib/navigationLinks';
-import React from 'react';
+import ReactCountryFlag from 'react-country-flag';
 
 type Props = {
   params: { countryId: number };
@@ -19,7 +20,12 @@ const Country = async ({ params }: Props) => {
   return (
     <div className='mx-auto flex max-w-md flex-col gap-2 px-2 py-2 md:px-0'>
       <h1 className='text-center text-3xl'>
-        <span className='font-emoji'>{country.emoji}</span> {displayedName}
+        <ReactCountryFlag
+          countryCode={country.iso2}
+          svg
+          aria-label={country.name}
+        />{' '}
+        {displayedName}
       </h1>
       <CountryShape countryCode={country.iso2} />
       <ul>

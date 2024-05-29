@@ -4,6 +4,7 @@ import SectionTitle from '@components/_commons/SectionTitle';
 import { navigationLinks } from '@lib/navigationLinks';
 import Link from 'next/link';
 import React from 'react';
+import ReactCountryFlag from 'react-country-flag';
 
 const Country = async () => {
   const countries = await getAllCountries();
@@ -18,7 +19,11 @@ const Country = async () => {
             key={country.id}
             className='tracking-thin text-sm font-light md:text-base'
           >
-            <span className='font-emoji'>{country.emoji}</span>{' '}
+            <ReactCountryFlag
+              countryCode={country.iso2}
+              svg
+              aria-label={country.name}
+            />{' '}
             <Link href={`/countries/${country.id}`}>{country.name}</Link>
           </li>
         ))}
