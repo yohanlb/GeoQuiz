@@ -1,9 +1,11 @@
-import Image from 'next/image';
+'use client';
+
 import React from 'react';
-import deckIcon from '@icons/deck-icon.svg';
+import { TbCardsFilled } from 'react-icons/tb';
+import { useStoreDeckResults } from '@/src/stores/deckResults';
+import Image from 'next/image';
 import peopleIcon from '@icons/people-icon.svg';
 import personIcon from '@icons/person-icon.svg';
-import { useStoreDeckResults } from '@/src/stores/deckResults';
 
 type Props = {
   gameDeck: Deck;
@@ -50,14 +52,10 @@ function SetupStats({ gameDeck }: Props) {
         </div>
       )}
       <div className='flex'>
-        <Image
-          className='mr-2 inline-block'
-          src={deckIcon}
-          width={14}
-          height={14}
-          alt='deck-icon'
-        />
-        <span>{gameDeck.countryIds.length} Countries.</span>
+        <span>
+          <TbCardsFilled className='inline size-5' />{' '}
+          {gameDeck.countryIds.length} Countries.
+        </span>
       </div>
     </div>
   );

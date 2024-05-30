@@ -1,6 +1,6 @@
 import React from 'react';
-import personIcon from '@icons/person-icon.svg';
 import Image from 'next/image';
+import personIcon from '@icons/person-icon.svg';
 
 type Props = {
   label?: string;

@@ -1,6 +1,7 @@
-import Link from 'next/link';
 import { TbCardsFilled } from 'react-icons/tb';
+import { navigationLinks } from '@lib/navigationLinks';
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 
 type DeckItemProps = {
   deck: Deck;
@@ -15,7 +16,10 @@ const UnplayedIndicator = dynamic(
 const DeckItem = ({ deck }: DeckItemProps) => {
   return (
     <li>
-      <Link href={`./quiz/${deck.name}`} className='block'>
+      <Link
+        href={`${navigationLinks.allDecks.href}/${deck.name}`}
+        className='block'
+      >
         <div className='flex items-center justify-between rounded-md border-[0.5px] border-gray-700 px-2 py-1 text-gray-200 shadow-md shadow-gray-950 transition hover:border-gray-500 hover:text-white active:bg-gray-300 active:text-black'>
           <div className='inline-flex items-center'>
             <h2 className='max-w-52 truncate text-sm font-light md:max-w-96'>

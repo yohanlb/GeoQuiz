@@ -1,14 +1,14 @@
 'use client';
+
+import React from 'react';
+import Link from 'next/link';
+import DeckImage from '@components/_commons/DeckImage';
 import {
   DialogContent,
   DialogHeader,
   DialogTitle,
 } from '@components/ui/dialog';
-import React from 'react';
-import Link from 'next/link';
-
 import SetupStats from './SetupStats';
-import DeckImage from '@components/_commons/DeckImage';
 
 type Props = {
   gameDeck: Deck;
