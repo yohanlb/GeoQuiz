@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import NavBar from '@components/_commons/NavBar';
+import dynamic from 'next/dynamic';
 import BackgroundGradient from '@components/_commons/BackgroundGradient';
+import MetaTags from '@components/_commons/MetaTags';
+import NavBar from '@components/_commons/NavBar';
 import { inter, notoEmoji } from '../lib/utils/font';
 import { PHProvider } from './providers';
-import dynamic from 'next/dynamic';
 import './globals.css';
-import MetaTags from '@components/_commons/MetaTags';
 
 export const metadata: Metadata = {
   title: 'Geo Quiz! - Country, Capitals, and Flag questions!',

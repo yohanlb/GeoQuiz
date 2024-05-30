@@ -1,9 +1,9 @@
+import React from 'react';
 import { getDecks } from '@/src/queries/gameDecks';
+import { navigationLinks } from '@lib/navigationLinks';
 import PageCenteredLink from '@components/_commons/PageCenteredLink';
 import SectionTitle from '@components/_commons/SectionTitle';
 import DeckList from '@components/decks/DeckList';
-import { navigationLinks } from '@lib/navigationLinks';
-import React from 'react';
 
 async function page() {
   const decks = await getDecks();

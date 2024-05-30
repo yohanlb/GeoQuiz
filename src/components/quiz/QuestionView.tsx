@@ -1,13 +1,13 @@
 import React from 'react';
-import { AnswerOptionButton } from './AnswerButton';
-import AnswerCirclesList from './AnswerCirclesList';
-import ChoiceOptionButtons from './AnswerButtonsList';
+import ReactCountryFlag from 'react-country-flag';
+import { useStoreCountryResults } from '@/src/stores/countryResults';
+import RecallIndex from '@components/_commons/RecallIndex';
 import formatCountrySuccessPercentage from '../../lib/utils/countryStats';
+import { AnswerOptionButton } from './AnswerButton';
+import ChoiceOptionButtons from './AnswerButtonsList';
+import AnswerCirclesList from './AnswerCirclesList';
 import CountryShape from './CountryShape';
 import LastAttempts from './LastAttempts';
-import RecallIndex from '@components/_commons/RecallIndex';
-import { useStoreCountryResults } from '@/src/stores/countryResults';
-import ReactCountryFlag from 'react-country-flag';
 
 type QuestionViewProps = {
   questions: Question[];
