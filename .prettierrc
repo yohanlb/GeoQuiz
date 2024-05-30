@@ -5,7 +5,21 @@
   "singleQuote": true,
   "jsxSingleQuote": true,
   "arrowParens": "always",
-  "plugins": ["prettier-plugin-tailwindcss"],
+  "plugins": [
+    "prettier-plugin-tailwindcss",
+    "@trivago/prettier-plugin-sort-imports"
+  ],
   "useTabs": false,
-  "endOfLine": "lf"
+  "endOfLine": "lf",
+  "importOrder": [
+    "^react(.*)",
+    "<THIRD_PARTY_MODULES>",
+    "^@icons/(.*)$",
+    "^@assets/(.*)$",
+    "^@components/(.*)$",
+    "^(?!.*[.]css$)[./].*$",
+    ".css$"
+  ],
+  "importOrderSeparation": false,
+  "importOrderSortSpecifiers": true
 }
