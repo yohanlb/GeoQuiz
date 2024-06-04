@@ -1,12 +1,13 @@
 'use client';
+
 import React from 'react';
+import { useStoreDeckResults } from '@/src/stores/deckResults';
 import DeckItem from '@components/_commons/DeckItem';
 import SectionTitle from '@components/_commons/SectionTitle';
-import { useStoreDeckResults } from '@/src/stores/deckResults';
 
 type Props = { decks: Deck[] };
 
-const DeckStats = ({ decks }: Props) => {
+const DeckHistory = ({ decks }: Props) => {
   const getLastPlayedDeckIds = useStoreDeckResults(
     (state) => state.getLastPlayedDeckIds,
   );
@@ -46,4 +47,4 @@ const DeckStats = ({ decks }: Props) => {
   );
 };
 
-export default DeckStats;
+export default DeckHistory;
