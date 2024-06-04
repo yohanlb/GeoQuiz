@@ -1,15 +1,29 @@
 import React from 'react';
 
-const Gauge = ({ value }: { value: number }) => {
+const Gauge = ({
+  value,
+  variant = 'score',
+}: {
+  value: number;
+  variant?: 'progress' | 'score';
+}) => {
   const clampedValue = Math.max(Math.min(value, 100), 0);
 
   let color = 'bg-green-500';
 
   if (value < 66) {
-    color = 'bg-yellow-500';
+    if (variant === 'progress') {
+      color = 'bg-blue-500';
+    } else {
+      color = 'bg-yellow-500';
+    }
   }
   if (value < 33) {
-    color = 'bg-red-500';
+    if (variant === 'progress') {
+      color = 'bg-gray-800';
+    } else {
+      color = 'bg-red-500';
+    }
   }
 
   return (

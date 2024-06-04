@@ -14,7 +14,7 @@ const RecallIndex = ({ countryId }: { countryId: CountryData['id'] }) => {
   const index = userCountryScores ? calculateRecallIndex(userCountryScores) : 0;
   const clampedIndex = Math.max(Math.min(index, 10), 0);
 
-  return <Gauge value={Math.round(clampedIndex * 10)} />;
+  return <Gauge value={Math.round(clampedIndex * 10)} variant='progress' />;
 };
 
 export default RecallIndex;

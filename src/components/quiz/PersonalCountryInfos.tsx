@@ -8,21 +8,23 @@ type Props = {
 };
 
 const PersonalCountryInfos = ({ countryScores, countryId }: Props) => {
+  const unplayed = countryScores.length === 0;
+
   return (
     <div className='flex flex-col items-end justify-end'>
-      <div>
-        <span>Last Attempts: </span>
-        <div className='inline-block'>
-          {countryScores ? (
-            <LastAttempts results={[...countryScores].reverse()} />
-          ) : (
-            <strong className='font-semibold italic'>Unplayed</strong>
-          )}
-        </div>
-      </div>
       <div className='flex items-center gap-2 justify-end text-left'>
         <span>Memory Index: </span>
         <RecallIndex countryId={countryId} />
+      </div>
+      <div>
+        <span>Last Attempts: </span>
+        <div className='inline-block'>
+          {unplayed ? (
+            <strong className='font-semibold italic'>Unplayed</strong>
+          ) : (
+            <LastAttempts results={[...countryScores].reverse()} />
+          )}
+        </div>
       </div>
     </div>
   );
