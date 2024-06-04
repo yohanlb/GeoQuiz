@@ -17,11 +17,15 @@ function Menu({ trigger }: Props) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent align='end'>
         {Object.entries(navigationLinks)
           .filter(([key]) => !['help', 'more'].includes(key))
           .map(([key, link]) => (
-            <DropdownMenuItem key={key} disabled={link.disabled}>
+            <DropdownMenuItem
+              key={key}
+              disabled={link.disabled}
+              className='text-lg'
+            >
               <Link href={link.href}>{link.label}</Link>
             </DropdownMenuItem>
           ))}
@@ -29,7 +33,11 @@ function Menu({ trigger }: Props) {
         {Object.entries(navigationLinks)
           .filter(([key]) => ['help', 'more'].includes(key))
           .map(([key, link]) => (
-            <DropdownMenuItem key={key} disabled={link.disabled}>
+            <DropdownMenuItem
+              key={key}
+              disabled={link.disabled}
+              className='text-lg'
+            >
               <Link href={link.href}>{link.label}</Link>
             </DropdownMenuItem>
           ))}
