@@ -69,11 +69,13 @@ const QuestionView = ({
 
   return (
     <div className='mx-auto flex h-full max-w-lg flex-col justify-between px-4 pb-3 md:px-0 md:py-2'>
-      <CountryDescription
-        countryData={currentQuestion.countryData}
-        countryScores={countryScoreForQuestionType}
-        hideFlag={questionType === 'CountryToFlag'}
-      />
+      <div>
+        <CountryDescription
+          countryData={currentQuestion.countryData}
+          countryScores={countryScoreForQuestionType}
+          hideFlag={questionType === 'CountryToFlag'}
+        />
+      </div>
       <CountryShape countryCode={currentQuestion.countryData.iso2} />
       {questionType === 'CountryToFlag' ? (
         <AnswerButtonsFlagList

@@ -23,8 +23,8 @@ const ResultsTable = ({ questions, userResults }: Props) => {
             <th className='px-2 py-2 font-normal'>Country</th>
             <th className='px-2 py-2 font-normal'>Capital</th>
             <th className='px-2 py-2 font-normal'>Result</th>
-            <th className='text-wrap px-2 py-2 font-normal'>Memory Index</th>
-            <th className='px-2 py-2 font-normal'>Community</th>
+            <th className='text-wrap px-2 py-2 font-normal'>Memory Progress</th>
+            <th className='px-2 py-2 font-normal'>Community Avg</th>
           </tr>
         </thead>
         <tbody className='text-xs md:text-base'>
@@ -33,11 +33,12 @@ const ResultsTable = ({ questions, userResults }: Props) => {
               className='border-b border-gray-500 hover:bg-gray-800'
               key={question.countryData.id}
             >
-              <td className='text-wrap break-words px-2  py-2 font-extralight'>
+              <td className='text-wrap break-words px-2 py-2 font-extralight'>
                 <ReactCountryFlag
                   aria-label={question.countryData.name}
                   svg
                   countryCode={question.countryData.iso2}
+                  className='align-middle'
                 />{' '}
                 {question.countryData.name}
               </td>

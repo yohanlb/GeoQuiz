@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
-import formatCountrySuccessPercentage from '@lib/utils/countryStats';
-import RecallIndex from '@components/_commons/RecallIndex';
-import LastAttempts from './LastAttempts';
+import Gauge from '@components/_commons/Gauge';
+import PersonalCountryInfos from './PersonalCountryInfos';
 
 type Props = {
   countryData: CountryData;
@@ -12,8 +11,8 @@ type Props = {
 
 const CountryDescription = ({
   countryData,
-  countryScores,
   hideFlag = false,
+  countryScores,
 }: Props) => {
   let displayedName = countryData.name;
   if (countryData.sovereignCountry) {
@@ -21,7 +20,7 @@ const CountryDescription = ({
   }
 
   return (
-    <div className='text-left '>
+    <div className='text-sm'>
       <h1 className='text-3xl md:text-5xl'>
         {!hideFlag && (
           <ReactCountryFlag
@@ -33,35 +32,27 @@ const CountryDescription = ({
         )}
         {displayedName}
       </h1>
-      <div className='text-xs'>
-        <p>
-          <span>Continent: </span>
-          <strong className='font-semibold italic'>
-            {countryData.subregion}
-          </strong>
-        </p>
+
+      <div className='w-full flex flex-col md:flex-row md:justify-between gap-2'>
         <div>
-          <span>Last Attempts: </span>
-          <div className='inline-block'>
-            {countryScores ? (
-              <LastAttempts results={[...countryScores].reverse()} />
-            ) : (
-              <strong className='font-semibold italic'>Unplayed</strong>
-            )}
+          <p>
+            <span>Continent: </span>
+            <strong className='font-semibold italic'>
+              {countryData.subregion}
+            </strong>
+          </p>
+          <div className='flex items-center gap-2'>
+            <span>Community average: </span>
+            <div className='inline-block '>
+              <Gauge value={Math.round(countryData.success_rate * 100)} />
+            </div>
           </div>
         </div>
-        <div>
-          <span>Memory Index: </span>
-          <div className='inline-block'>
-            <RecallIndex countryId={countryData.id} />
-          </div>
-        </div>
-        <p>
-          <span>Community average: </span>
-          <strong className='font-semibold italic'>
-            {formatCountrySuccessPercentage(countryData)}
-          </strong>
-        </p>
+
+        <PersonalCountryInfos
+          countryScores={countryScores}
+          countryId={countryData.id}
+        />
       </div>
     </div>
   );
