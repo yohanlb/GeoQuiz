@@ -1,7 +1,7 @@
 import React from 'react';
+import { EMOJIS, WEBSITE_URL } from '@lib/consts';
 import ShareIcon from '@components/_commons/icons/ShareIcon';
 import { Button } from '@components/ui/button';
-import { EMOJIS, WEBSITE_URL } from '@lib/consts';
 
 type Props = {
   questions: Question[];
@@ -57,7 +57,7 @@ const ShareResults = ({ questions, userResults, deckName }: Props) => {
       navigator.clipboard
         .writeText(shareText)
         .then(() => {
-          alert('Results copied to clipboard');
+          alert('Message copied to clipboard!');
         })
         .catch((error) => {
           console.error('Error copying text', error);
