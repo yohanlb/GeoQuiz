@@ -30,16 +30,6 @@ declare global {
     sovereignCountry?: string;
   };
 
-  //Deprecated
-  type GameDeck = {
-    name: string;
-    available: boolean;
-    visible: boolean;
-    displayName: string;
-    description: string;
-    countryIds: number[];
-  };
-  //NEW
   type Deck = {
     id: number;
     name: string;
