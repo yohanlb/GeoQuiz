@@ -1,24 +1,29 @@
 import React from 'react';
-import ReactCountryFlag from 'react-country-flag';
 import { useStoreCountryResults } from '@/src/stores/countryResults';
-import RecallIndex from '@components/_commons/RecallIndex';
-import formatCountrySuccessPercentage from '../../lib/utils/countryStats';
 import { AnswerOptionButton } from './AnswerButton';
-import ChoiceOptionButtons from './AnswerButtonsList';
+import AnswerButtonsFlagList from './AnswerButtonsFlagList';
+import AnswerButtonsList from './AnswerButtonsList';
 import AnswerCirclesList from './AnswerCirclesList';
+import CountryDescription from './CountryDescription';
 import CountryShape from './CountryShape';
-import LastAttempts from './LastAttempts';
 
 type QuestionViewProps = {
   questions: Question[];
+  questionType: Question['questionType'];
   currentQuestionIndex: number;
   userAnswers: string[];
   userResults: UserResults;
   handleClickAnswerOption: (answer: string) => void;
 };
 
+export type OptionsFlag = {
+  codeIso2: string;
+  state: 'Default' | 'SUCCESS' | 'DISABLED';
+};
+
 const QuestionView = ({
   questions,
+  questionType,
   currentQuestionIndex,
   userAnswers,
   handleClickAnswerOption,
@@ -29,76 +34,58 @@ const QuestionView = ({
   );
   const currentQuestion = questions[currentQuestionIndex];
 
-  const options = currentQuestion.answerOptions.map((option) => {
+  const countryScoreForQuestionType = getLastScoresForCountry(
+    currentQuestion.countryData.id,
+    questionType === 'CountryToFlag' ? 'flag' : 'capital',
+  ).map((scoreObject) => scoreObject.scores);
+
+  const optionsCapital = currentQuestion.optionsCapitals.map(
+    (capitalOption) => {
+      let state = 'Default';
+      const isAlreadyClicked = userAnswers.includes(capitalOption);
+      const isCorrectAnswer = capitalOption === currentQuestion.answerCapital;
+      if (isAlreadyClicked) {
+        state = isCorrectAnswer ? 'SUCCESS' : 'DISABLED';
+      }
+      return {
+        text: capitalOption,
+        state,
+      };
+    },
+  ) as AnswerOptionButton[];
+
+  const optionsFlag = currentQuestion.optionsIso2.map((optionIso2) => {
     let state = 'Default';
-    const isAlreadyClicked = userAnswers.includes(option);
-    const isCorrectAnswer = option === currentQuestion.answer;
+    const isAlreadyClicked = userAnswers.includes(optionIso2);
+    const isCorrectAnswer = optionIso2 === currentQuestion.answerIso2;
     if (isAlreadyClicked) {
       state = isCorrectAnswer ? 'SUCCESS' : 'DISABLED';
     }
     return {
-      text: option,
+      codeIso2: optionIso2,
       state,
     };
-  }) as AnswerOptionButton[];
-
-  const countryCapitalScore = getLastScoresForCountry(
-    currentQuestion.countryData.id,
-    'capital',
-  ).map((scoreObject) => scoreObject.scores);
-
-  let displayedName = currentQuestion.countryData.name;
-  if (currentQuestion.countryData.sovereignCountry) {
-    displayedName += ` (${currentQuestion.countryData.sovereignCountry})`;
-  }
+  }) as OptionsFlag[];
 
   return (
     <div className='mx-auto flex h-full max-w-lg flex-col justify-between px-4 pb-3 md:px-0 md:py-2'>
-      <div className='text-left '>
-        <h1 className='text-3xl md:text-5xl'>
-          <ReactCountryFlag
-            countryCode={currentQuestion.countryData.iso2}
-            svg
-            aria-label={currentQuestion.countryData.name}
-          />{' '}
-          {displayedName}
-        </h1>
-        <div className='text-xs'>
-          <p>
-            <span>Continent: </span>
-            <strong className='font-semibold italic'>
-              {currentQuestion.countryData.subregion}
-            </strong>
-          </p>
-          <div>
-            <span>Last Attempts: </span>
-            <div className='inline-block'>
-              {countryCapitalScore ? (
-                <LastAttempts results={[...countryCapitalScore].reverse()} />
-              ) : (
-                <strong className='font-semibold italic'>Unplayed</strong>
-              )}
-            </div>
-          </div>
-          <div>
-            <span>Memory Index: </span>
-            <div className='inline-block'>
-              <RecallIndex countryId={currentQuestion.countryData.id} />
-            </div>
-          </div>
-          <p>
-            <span>Community average: </span>
-            <strong className='font-semibold italic'>
-              {formatCountrySuccessPercentage(currentQuestion.countryData)}
-            </strong>
-          </p>
-        </div>
-      </div>
-      <CountryShape countryCode={currentQuestion.countryData.iso2} />
-      <ChoiceOptionButtons
-        options={options}
-        handleClick={handleClickAnswerOption}
+      <CountryDescription
+        countryData={currentQuestion.countryData}
+        countryScores={countryScoreForQuestionType}
+        hideFlag={questionType === 'CountryToFlag'}
       />
+      <CountryShape countryCode={currentQuestion.countryData.iso2} />
+      {questionType === 'CountryToFlag' ? (
+        <AnswerButtonsFlagList
+          options={optionsFlag}
+          handleClick={handleClickAnswerOption}
+        />
+      ) : (
+        <AnswerButtonsList
+          options={optionsCapital}
+          handleClick={handleClickAnswerOption}
+        />
+      )}
       <AnswerCirclesList
         userResults={userResults}
         totalNumberOfQuestions={questions.length}

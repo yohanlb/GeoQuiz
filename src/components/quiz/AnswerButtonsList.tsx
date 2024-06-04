@@ -1,6 +1,6 @@
 import React from 'react';
-import AnswerButton, { AnswerOptionButton } from './AnswerButton';
 import { useHotkeys } from 'react-hotkeys-hook';
+import AnswerButton, { AnswerOptionButton } from './AnswerButton';
 
 type AnswerButtonsListProps = {
   options: AnswerOptionButton[];

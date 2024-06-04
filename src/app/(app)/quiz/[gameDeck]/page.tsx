@@ -1,9 +1,13 @@
-import { getDeckByName } from '../../../../queries/gameDecks';
 import GameClientWrapper from '@components/quiz/GameClientWrapper';
+import { getDeckByName } from '../../../../queries/gameDecks';
 
 type Props = {
   params: { gameDeck: string };
-  searchParams: { length: number; dynamicCountryIds: string };
+  searchParams: {
+    length: number;
+    dynamicCountryIds: string;
+    questionType: Question['questionType'];
+  };
 };
 const Quiz = async ({ params, searchParams }: Props) => {
   const deck = await getDeckByName(params.gameDeck);
@@ -22,6 +26,7 @@ const Quiz = async ({ params, searchParams }: Props) => {
         deck={deck}
         amountOfQuestions={searchParams.length}
         deckName={params.gameDeck}
+        questionType={searchParams.questionType || 'CountryToCapital'}
       />
     </div>
   );

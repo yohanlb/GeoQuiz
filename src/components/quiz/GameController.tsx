@@ -1,15 +1,21 @@
 'use client';
+
 import React, { startTransition } from 'react';
-import ResultView from './ResultsView';
-import QuestionView from './QuestionView';
-import { postCountryStats } from '../../actions/countryStats';
-import { calculateNewDeckScore } from '@lib/utils/score';
-import { useStoreDeckResults } from '@/src/stores/deckResults';
 import { useStoreCountryResults } from '@/src/stores/countryResults';
+import { useStoreDeckResults } from '@/src/stores/deckResults';
+import { calculateNewDeckScore } from '@lib/utils/score';
+import { postCountryStats } from '../../actions/countryStats';
+import QuestionView from './QuestionView';
+import ResultView from './ResultsView';
 
-type Props = { questions: Question[]; deck: Deck; deckName: string };
+type Props = {
+  questions: Question[];
+  deck: Deck;
+  deckName: string;
+  questionType: Question['questionType'];
+};
 
-function GameController({ questions, deck }: Props) {
+function GameController({ questions, deck, questionType }: Props) {
   const [userAnswers, setUserAnswers] = React.useState<string[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] =
     React.useState<number>(0);
@@ -20,6 +26,9 @@ function GameController({ questions, deck }: Props) {
   const addCountryScores = useStoreCountryResults(
     (state) => state.addCountryScores,
   );
+
+  const questionTypeSimplfied =
+    questionType === 'CountryToFlag' ? 'flag' : 'capital'; // todo update store so we dont use this sub type anymore
 
   const handleNextQuestion = () => {
     startTransition(() => {
@@ -42,13 +51,17 @@ function GameController({ questions, deck }: Props) {
   };
 
   const handleClickAnswerOption = (userAnswer: string) => {
+    const correctAnswer =
+      questionType === 'CountryToFlag'
+        ? questions[currentQuestionIndex].answerIso2
+        : questions[currentQuestionIndex].answerCapital;
     const isUserFirstAttempt = Boolean(userAnswers.length < 1);
 
     if (isShowingAnswer) {
       return;
     }
     setUserAnswers((prevUserAnswers) => [...prevUserAnswers, userAnswer]);
-    if (userAnswer === questions[currentQuestionIndex]?.answer) {
+    if (userAnswer === correctAnswer) {
       // Correct Answer
       setIsShowingAnswer(true);
       const newResult: UserResultsStatus = isUserFirstAttempt
@@ -60,7 +73,7 @@ function GameController({ questions, deck }: Props) {
         return newUserResults;
       });
       addCountryScores(
-        'capital',
+        questionTypeSimplfied,
         questions[currentQuestionIndex].countryData.id,
         newResult === 'valid' ? true : false,
       );
@@ -85,7 +98,7 @@ function GameController({ questions, deck }: Props) {
   React.useEffect(() => {
     if (gameState === 'finished') {
       const newDeckScore = calculateNewDeckScore(userResults, questions.length);
-      updateDeckScore(deck.id, 'capital', newDeckScore);
+      updateDeckScore(deck.id, questionTypeSimplfied, newDeckScore);
     }
   }, [gameState]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -103,6 +116,7 @@ function GameController({ questions, deck }: Props) {
   return (
     <QuestionView
       questions={questions}
+      questionType={questionType}
       userAnswers={userAnswers}
       userResults={userResults}
       currentQuestionIndex={currentQuestionIndex}

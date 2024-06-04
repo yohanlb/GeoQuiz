@@ -55,10 +55,16 @@ declare global {
   };
 
   export type Question = {
-    questionType: 'CountryToCapital' | 'CapitalToCountry';
+    questionType:
+      | 'CountryToCapital'
+      | 'CapitalToCountry'
+      | 'CountryToFlag'
+      | 'FlagToCountry';
     countryData: CountryData;
-    answerOptions: string[];
-    answer: string;
+    optionsCapitals: CountryData['capital'][];
+    optionsIso2: CountryData['iso2'][];
+    answerCapital: CountryData['capital'];
+    answerIso2: CountryData['iso2'];
   };
 
   export type UserResultsStatus = 'default' | 'valid' | 'invalid';

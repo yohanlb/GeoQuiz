@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactCountryFlag from 'react-country-flag';
 import Gauge from '@components/_commons/Gauge';
 import RecallIndex from '@components/_commons/RecallIndex';
 
@@ -33,10 +34,15 @@ const ResultsTable = ({ questions, userResults }: Props) => {
               key={question.countryData.id}
             >
               <td className='text-wrap break-words px-2  py-2 font-extralight'>
+                <ReactCountryFlag
+                  aria-label={question.countryData.name}
+                  svg
+                  countryCode={question.countryData.iso2}
+                />{' '}
                 {question.countryData.name}
               </td>
               <td className='text-wrap break-words px-2 py-2 font-extralight'>
-                {question.answer}
+                {question.countryData.capital}
               </td>
               <td
                 className='px-2 py-2 font-extralight'

@@ -1,16 +1,23 @@
 'use client';
+
 import React from 'react';
-import GameController from './GameController';
-import LoadingSpinner from '@components/_commons/LoadingSpinner';
 import { useFetchQuestions } from '@/src/hooks/useFetchQuestions';
+import LoadingSpinner from '@components/_commons/LoadingSpinner';
+import GameController from './GameController';
 
 type Props = {
   deck: Deck;
   amountOfQuestions: number;
   deckName: string;
+  questionType: Question['questionType'];
 };
 
-const GameClientWrapper = ({ deck, amountOfQuestions, deckName }: Props) => {
+const GameClientWrapper = ({
+  deck,
+  amountOfQuestions,
+  deckName,
+  questionType,
+}: Props) => {
   const { questions, isLoading } = useFetchQuestions(deck, amountOfQuestions);
 
   if (isLoading) {
@@ -28,7 +35,12 @@ const GameClientWrapper = ({ deck, amountOfQuestions, deckName }: Props) => {
   } else {
     return (
       <>
-        <GameController questions={questions} deck={deck} deckName={deckName} />
+        <GameController
+          questions={questions}
+          deck={deck}
+          deckName={deckName}
+          questionType={questionType}
+        />
       </>
     );
   }
