@@ -9,7 +9,6 @@ import { Button } from '@components/ui/button';
 const Help = async () => {
   return (
     <div className='flex flex-col gap-6 px-4 py-2 md:px-0 max-w-md mx-auto'>
-      {/* <SectionTitle text='Help' /> */}
       <HowItWorksSection />
       <hr />
       <section className='flex flex-col gap-4 '>

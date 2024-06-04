@@ -1,19 +1,21 @@
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
+import dynamic from 'next/dynamic';
 import Gauge from '@components/_commons/Gauge';
-import PersonalCountryInfos from './PersonalCountryInfos';
+
+const PersonalCountryInfos = dynamic(
+  () => import('@components/_commons/PersonalCountryInfos'),
+  {
+    ssr: false,
+  },
+);
 
 type Props = {
   countryData: CountryData;
-  countryScores: boolean[];
   hideFlag?: boolean;
 };
 
-const CountryDescription = ({
-  countryData,
-  hideFlag = false,
-  countryScores,
-}: Props) => {
+const CountryDescription = ({ countryData, hideFlag = false }: Props) => {
   let displayedName = countryData.name;
   if (countryData.sovereignCountry) {
     displayedName += ` (${countryData.sovereignCountry})`;
@@ -49,10 +51,7 @@ const CountryDescription = ({
           </div>
         </div>
 
-        <PersonalCountryInfos
-          countryScores={countryScores}
-          countryId={countryData.id}
-        />
+        <PersonalCountryInfos countryId={countryData.id} />
       </div>
     </div>
   );

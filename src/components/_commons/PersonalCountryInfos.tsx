@@ -1,13 +1,24 @@
+'use client';
+
 import React from 'react';
+import { useStoreCountryResults } from '@/src/stores/countryResults';
 import RecallIndex from '@components/_commons/RecallIndex';
-import LastAttempts from './LastAttempts';
+import LastAttempts from '../quiz/LastAttempts';
 
 type Props = {
-  countryScores: boolean[];
   countryId: CountryData['id'];
 };
 
-const PersonalCountryInfos = ({ countryScores, countryId }: Props) => {
+const PersonalCountryInfos = ({ countryId }: Props) => {
+  const getLastScoresForCountry = useStoreCountryResults(
+    (state) => state.getLastScoresForCountry,
+  );
+  const countryScores = getLastScoresForCountry(
+    countryId,
+    'capital', // TODO change this
+    // questionType === 'CountryToFlag' ? 'flag' : 'capital',
+  ).map((scoreObject) => scoreObject.scores);
+
   const unplayed = countryScores.length === 0;
 
   return (
