@@ -1,6 +1,6 @@
 import React from 'react';
-import DeckGrid from './DeckGrid';
 import SectionTitle from '@components/_commons/SectionTitle';
+import DeckGrid from './DeckGrid';
 
 type Props = {
   decks: Deck[];
@@ -25,6 +25,10 @@ const DifficultySection = ({ decks }: Props) => {
   return (
     <section>
       <SectionTitle text='By Difficulty 🤯' variant='h2' />
+      <SectionTitle
+        variant='description'
+        text="Discover decks by difficulty, ranked by the community's average success scores per country."
+      />
       <DeckGrid decks={sortedDecks} />
     </section>
   );

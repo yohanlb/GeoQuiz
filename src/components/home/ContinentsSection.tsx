@@ -1,6 +1,6 @@
 import React from 'react';
-import DeckGrid from './DeckGrid';
 import SectionTitle from '@components/_commons/SectionTitle';
+import DeckGrid from './DeckGrid';
 
 type Props = {
   decks: Deck[];
@@ -16,6 +16,10 @@ const ContinentsSection = ({ decks }: Props) => {
   return (
     <section>
       <SectionTitle text='Continents 🌏' />
+      <SectionTitle
+        text='Explore decks organized by continents.'
+        variant='description'
+      />
       <DeckGrid decks={continentsDecks.slice(0, howManyToDisplay)} />
     </section>
   );

@@ -1,9 +1,10 @@
 'use client';
+
 import React from 'react';
-import DeckGrid from './DeckGrid';
+import { useStoreDeckResults } from '@/src/stores/deckResults';
 import { isBreakpoint } from '@lib/utils/screen';
 import SectionTitle from '@components/_commons/SectionTitle';
-import { useStoreDeckResults } from '@/src/stores/deckResults';
+import DeckGrid from './DeckGrid';
 
 type Props = {
   decks: Deck[];
@@ -35,6 +36,10 @@ const LowestScoresDecksSection = ({ decks }: Props) => {
   return (
     <section>
       <SectionTitle text='We need to practice those! 📖' />
+      <SectionTitle
+        text='Review decks where your scores were low to improve your performance.'
+        variant='description'
+      />
       <DeckGrid decks={lowestScoreDecks.slice(0, howManyToDisplay)} />
     </section>
   );

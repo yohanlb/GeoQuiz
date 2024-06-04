@@ -1,11 +1,11 @@
 import React from 'react';
-import { getDecks } from '../../../queries/gameDecks';
+import { navigationLinks } from '@lib/navigationLinks';
 import dynamic from 'next/dynamic';
-import FeaturedAndPopularSection from '@components/home/FeaturedAndPopularSection';
-import DifficultySection from '@components/home/DifficultySection';
 import PageCenteredLink from '@components/_commons/PageCenteredLink';
 import ContinentsSection from '@components/home/ContinentsSection';
-import { navigationLinks } from '@lib/navigationLinks';
+import DifficultySection from '@components/home/DifficultySection';
+import FeaturedAndPopularSection from '@components/home/FeaturedAndPopularSection';
+import { getDecks } from '../../../queries/gameDecks';
 
 // Dynamically import components to avoid client-side hydration
 const UnplayedDecksSection = dynamic(
@@ -25,7 +25,7 @@ async function Home() {
   const decks = await getDecks();
 
   return (
-    <div className='flex flex-col gap-6 px-4 py-2 text-center md:px-0'>
+    <div className='flex flex-col gap-12 px-4 py-4 text-center md:px-0'>
       <FeaturedAndPopularSection decks={decks} />
       <DifficultySection decks={decks} />
       <LowestScoresDecksSection decks={decks} />

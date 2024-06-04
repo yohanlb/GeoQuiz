@@ -1,9 +1,10 @@
 'use client';
+
 import React from 'react';
-import DeckGrid from './DeckGrid';
+import { useStoreDeckResults } from '@/src/stores/deckResults';
 import { isBreakpoint } from '@lib/utils/screen';
 import SectionTitle from '@components/_commons/SectionTitle';
-import { useStoreDeckResults } from '@/src/stores/deckResults';
+import DeckGrid from './DeckGrid';
 
 type Props = {
   decks: Deck[];
@@ -28,6 +29,10 @@ const UnplayedDecksSection = ({ decks }: Props) => {
   return (
     <section>
       <SectionTitle text='Unplayed 📦' />
+      <SectionTitle
+        text='Try an unplayed deck for fresh challenges!'
+        variant='description'
+      />
       <DeckGrid decks={unplayedDecks} />
     </section>
   );

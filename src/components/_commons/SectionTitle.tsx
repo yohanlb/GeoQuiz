@@ -1,24 +1,24 @@
 type Props = {
   text: string;
-  variant?: 'h2' | 'h3';
+  variant?: 'h2' | 'h3' | 'description';
 };
 
 const SectionTitle = ({ text, variant = 'h2' }: Props) => {
-  const Tag = variant;
   switch (variant) {
     case 'h2':
       return (
-        <Tag className='text-center text-lg font-medium tracking-wide md:text-2xl'>
+        <h2 className='text-center text-lg font-medium tracking-wide md:text-2xl'>
           {text}
-        </Tag>
+        </h2>
       );
       break;
     case 'h3':
       return (
-        <Tag className='font-base text-base tracking-wide md:text-xl'>
-          {text}
-        </Tag>
+        <h3 className='font-base text-base tracking-wide md:text-xl'>{text}</h3>
       );
+      break;
+    case 'description':
+      return <p className='text-gray-400'>{text}</p>;
       break;
   }
 };
