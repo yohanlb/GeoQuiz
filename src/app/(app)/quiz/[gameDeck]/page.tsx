@@ -6,7 +6,6 @@ type Props = {
   searchParams: {
     length: number;
     dynamicCountryIds: string;
-    questionType: Question['questionType'];
   };
 };
 const Quiz = async ({ params, searchParams }: Props) => {
@@ -26,7 +25,6 @@ const Quiz = async ({ params, searchParams }: Props) => {
         deck={deck}
         amountOfQuestions={searchParams.length}
         deckName={params.gameDeck}
-        questionType={searchParams.questionType || 'CountryToCapital'}
       />
     </div>
   );

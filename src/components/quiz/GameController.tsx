@@ -3,6 +3,7 @@
 import React, { startTransition } from 'react';
 import { useStoreCountryResults } from '@/src/stores/countryResults';
 import { useStoreDeckResults } from '@/src/stores/deckResults';
+import useGameStore from '@/src/stores/gameStore';
 import { calculateNewDeckScore } from '@lib/utils/score';
 import { postCountryStats } from '../../actions/countryStats';
 import QuestionView from './QuestionView';
@@ -12,13 +13,13 @@ type Props = {
   questions: Question[];
   deck: Deck;
   deckName: string;
-  questionType: Question['questionType'];
 };
 
-function GameController({ questions, deck, questionType }: Props) {
+function GameController({ questions, deck }: Props) {
+  const { currentQuestionIndex, incrementQuestionIndex, questionType } =
+    useGameStore();
+
   const [userAnswers, setUserAnswers] = React.useState<string[]>([]);
-  const [currentQuestionIndex, setCurrentQuestionIndex] =
-    React.useState<number>(0);
   const [gameState, setGameState] = React.useState<GameState>('playing');
   const [isShowingAnswer, setIsShowingAnswer] = React.useState<boolean>(false);
   const [userResults, setUserResults] = React.useState<UserResults>([]);
@@ -42,7 +43,7 @@ function GameController({ questions, deck, questionType }: Props) {
     if (currentQuestionIndex >= questions.length - 1) {
       setGameState('finished');
     } else {
-      setCurrentQuestionIndex((prev) => prev + 1);
+      incrementQuestionIndex();
     }
   };
 
@@ -116,7 +117,6 @@ function GameController({ questions, deck, questionType }: Props) {
   return (
     <QuestionView
       questions={questions}
-      questionType={questionType}
       userAnswers={userAnswers}
       userResults={userResults}
       currentQuestionIndex={currentQuestionIndex}

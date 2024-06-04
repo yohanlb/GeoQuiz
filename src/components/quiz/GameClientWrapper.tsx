@@ -9,15 +9,9 @@ type Props = {
   deck: Deck;
   amountOfQuestions: number;
   deckName: string;
-  questionType: Question['questionType'];
 };
 
-const GameClientWrapper = ({
-  deck,
-  amountOfQuestions,
-  deckName,
-  questionType,
-}: Props) => {
+const GameClientWrapper = ({ deck, amountOfQuestions, deckName }: Props) => {
   const { questions, isLoading } = useFetchQuestions(deck, amountOfQuestions);
 
   if (isLoading) {
@@ -35,12 +29,7 @@ const GameClientWrapper = ({
   } else {
     return (
       <>
-        <GameController
-          questions={questions}
-          deck={deck}
-          deckName={deckName}
-          questionType={questionType}
-        />
+        <GameController questions={questions} deck={deck} deckName={deckName} />
       </>
     );
   }

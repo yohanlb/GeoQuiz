@@ -1,5 +1,5 @@
 import React from 'react';
-import { useStoreCountryResults } from '@/src/stores/countryResults';
+import useGameStore from '@/src/stores/gameStore';
 import { AnswerOptionButton } from './AnswerButton';
 import AnswerButtonsFlagList from './AnswerButtonsFlagList';
 import AnswerButtonsList from './AnswerButtonsList';
@@ -9,7 +9,6 @@ import CountryShape from './CountryShape';
 
 type QuestionViewProps = {
   questions: Question[];
-  questionType: Question['questionType'];
   currentQuestionIndex: number;
   userAnswers: string[];
   userResults: UserResults;
@@ -23,21 +22,14 @@ export type OptionsFlag = {
 
 const QuestionView = ({
   questions,
-  questionType,
   currentQuestionIndex,
   userAnswers,
   handleClickAnswerOption,
   userResults,
 }: QuestionViewProps) => {
-  const getLastScoresForCountry = useStoreCountryResults(
-    (state) => state.getLastScoresForCountry,
-  );
-  const currentQuestion = questions[currentQuestionIndex];
+  const { questionType } = useGameStore();
 
-  const countryScoreForQuestionType = getLastScoresForCountry(
-    currentQuestion.countryData.id,
-    questionType === 'CountryToFlag' ? 'flag' : 'capital',
-  ).map((scoreObject) => scoreObject.scores);
+  const currentQuestion = questions[currentQuestionIndex];
 
   const optionsCapital = currentQuestion.optionsCapitals.map(
     (capitalOption) => {
@@ -72,7 +64,6 @@ const QuestionView = ({
       <div>
         <CountryDescription
           countryData={currentQuestion.countryData}
-          countryScores={countryScoreForQuestionType}
           hideFlag={questionType === 'CountryToFlag'}
         />
       </div>

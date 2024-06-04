@@ -54,12 +54,13 @@ declare global {
     displayPriority?: number;
   };
 
+  export type QuestionType =
+    | 'CountryToCapital'
+    | 'CapitalToCountry'
+    | 'CountryToFlag'
+    | 'FlagToCountry';
+
   export type Question = {
-    questionType:
-      | 'CountryToCapital'
-      | 'CapitalToCountry'
-      | 'CountryToFlag'
-      | 'FlagToCountry';
     countryData: CountryData;
     optionsCapitals: CountryData['capital'][];
     optionsIso2: CountryData['iso2'][];
