@@ -13,7 +13,7 @@ export const navigationLinks: NavigationLinks = {
   allDecks: { label: 'All Decks', href: '/decks' },
   countries: { label: 'Countries', href: '/countries' },
   history: { label: 'History', href: '/history' },
-  stats: { label: 'My Stats', href: '/stats', disabled: true },
-  more: { label: 'More', href: '/more', disabled: true },
+  stats: { label: 'My Stats', href: '/stats' },
+  more: { label: 'More', href: '/more' },
   help: { label: 'Help', href: '/help' },
 };

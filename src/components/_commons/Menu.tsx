@@ -18,29 +18,42 @@ function Menu({ trigger }: Props) {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger>
       <DropdownMenuContent align='end'>
-        {Object.entries(navigationLinks)
-          .filter(([key]) => !['help', 'more'].includes(key))
-          .map(([key, link]) => (
-            <DropdownMenuItem
-              key={key}
-              disabled={link.disabled}
-              className='text-lg'
-            >
-              <Link href={link.href}>{link.label}</Link>
-            </DropdownMenuItem>
-          ))}
+        <DropdownMenuItem>
+          <Link href={navigationLinks.home.href}>
+            {navigationLinks.home.label}
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link href={navigationLinks.allDecks.href}>
+            {navigationLinks.allDecks.label}
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link href={navigationLinks.countries.href}>
+            {navigationLinks.countries.label}
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link href={navigationLinks.history.href}>
+            {navigationLinks.history.label}
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem disabled>
+          <Link href={navigationLinks.stats.href}>
+            {navigationLinks.stats.label}
+          </Link>
+        </DropdownMenuItem>
         <DropdownMenuSeparator />
-        {Object.entries(navigationLinks)
-          .filter(([key]) => ['help', 'more'].includes(key))
-          .map(([key, link]) => (
-            <DropdownMenuItem
-              key={key}
-              disabled={link.disabled}
-              className='text-lg'
-            >
-              <Link href={link.href}>{link.label}</Link>
-            </DropdownMenuItem>
-          ))}
+        <DropdownMenuItem disabled>
+          <Link href={navigationLinks.more.href}>
+            {navigationLinks.more.label}
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link href={navigationLinks.help.href}>
+            {navigationLinks.help.label}
+          </Link>
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
