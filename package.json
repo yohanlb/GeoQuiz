@@ -19,8 +19,8 @@
     "lint": "next lint",
     "format": "prettier --check --ignore-path .gitignore .",
     "format:fix": "prettier --write --ignore-path .gitignore .",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "test": "cross-env NODE_ENV=test jest",
+    "test:watch": "cross-env NODE_ENV=test jest --watch"
   },
   "dependencies": {
     "@nextui-org/react": "^2.4.1",
@@ -33,6 +33,7 @@
     "axios": "^1.6.8",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "cross-env": "^7.0.3",
     "framer-motion": "^11.2.10",
     "next": "14.2.1",
     "posthog-js": "^1.122.0",
