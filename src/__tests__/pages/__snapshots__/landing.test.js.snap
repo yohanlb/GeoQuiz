@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Landing Page renders homepage unchanged 1`] = `
+<div>
+  <div>
+    <section
+      class="flex w-full flex-col items-center gap-y-8 px-4 py-24 text-center md:flex-row  md:justify-between md:text-left"
+    >
+      <div
+        class="flex flex-col justify-center gap-8 md:max-w-[50%]"
+      >
+        <h1
+          class="text-2xl font-extrabold"
+        >
+          Learn Geography the Fun Way with GeoQuiz!
+        </h1>
+        <p
+          class="font-thin capitalize"
+        >
+          Master 
+          <strong>
+            capitals
+          </strong>
+           and 
+          <strong>
+            flags
+          </strong>
+          , track your progress, and 
+          <strong>
+            challenge
+          </strong>
+           your friends!
+        </p>
+        <a
+          href="/home"
+        >
+          <button
+            class="inline-flex items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:focus-visible:ring-gray-300 bg-accent text-gray-900 shadow-sm hover::bg-accent-light dark:bg-accent dark:text-gray-900 dark:hover:bg-accent-light h-10 rounded-md px-6 text-lg w-fit font-extrabold"
+          >
+            <span>
+              Start!
+            </span>
+          </button>
+        </a>
+      </div>
+      <div
+        class="max-w-44 md:max-w-80"
+      >
+        <img
+          alt="GeoQuiz Logo"
+          data-nimg="1"
+          decoding="async"
+          fetchpriority="high"
+          height="320"
+          src="/_next/image?url=%2Fimg.jpg&w=640&q=75"
+          srcset="/_next/image?url=%2Fimg.jpg&w=384&q=75 1x, /_next/image?url=%2Fimg.jpg&w=640&q=75 2x"
+          style="color: transparent;"
+          width="320"
+        />
+      </div>
+    </section>
+  </div>
+</div>
+`;
