@@ -15,7 +15,7 @@ const Landing = () => {
           </h1>
           <p className='font-thin capitalize'>
             Master <strong>capitals</strong> and <strong>flags</strong>, track
-            your progress, and <strong>challenge</strong> your friends!
+            your progress, and <strong>challenge</strong> your friends !
           </p>
           <Link href={navigationLinks.home.href}>
             <Button
