@@ -11,11 +11,9 @@ type Props = {
 };
 
 function SetupStats({ gameDeck }: Props) {
-  const getDeckScores = useDeckHistory((state) => state.getDeckScores);
-  const userScore = getDeckScores(gameDeck.id);
-  const userScoreFormatted = userScore?.capital
-    ? `${userScore.capital}%`
-    : 'Unplayed';
+  const getDeckScore = useDeckHistory((state) => state.getDeckScore);
+  const userScore = getDeckScore(gameDeck.id);
+  const userScoreFormatted = userScore ? `${userScore}%` : 'Unplayed';
 
   return (
     <div className='flex flex-col text-sm font-thin gap-1'>

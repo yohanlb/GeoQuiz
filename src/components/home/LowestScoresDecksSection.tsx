@@ -13,7 +13,7 @@ type Props = {
 const LowestScoresDecksSection = ({ decks }: Props) => {
   const howManyToDisplay = isBreakpoint('md') ? 3 : 4;
   const getAllDeckScores = useDeckHistory((state) => state.getAllDeckScores);
-  const deckScores = getAllDeckScores('capital');
+  const deckScores = getAllDeckScores();
   const sortedScores = Object.entries(deckScores).sort(([, a], [, b]) => a - b);
   const sortedScoresIds = sortedScores.map(([id]) => id);
   const lowestScoreDecks = [];

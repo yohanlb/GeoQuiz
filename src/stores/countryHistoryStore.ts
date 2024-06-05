@@ -1,13 +1,7 @@
+import { AVAILABLE_QUESTION_TYPES } from '@lib/consts';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import useGameStore from './gameStore';
-
-const questionTypes: QuestionType[] = [
-  'CountryToCapital',
-  'CountryToFlag',
-  // 'CapitalToCountry',
-  // 'FlagToCountry',
-];
 
 const NUMBER_OF_SCORES_TO_KEEP_PER_COUNTRY = 10;
 const USER_HISTORY_LENGTH = 20;
@@ -25,7 +19,7 @@ const initializeHistoryPerCountry = () => {
   const historyPerCountry: {
     [key in QuestionType]: { [countryId: string]: CountryScore[] };
   } = {} as CountryResultsData['history_per_country'];
-  questionTypes.forEach((type) => {
+  AVAILABLE_QUESTION_TYPES.forEach((type) => {
     historyPerCountry[type] = {};
   });
   return historyPerCountry;
@@ -34,7 +28,7 @@ const initializeHistoryPerCountry = () => {
 const initializeUserHistory = () => {
   const userHistory: { [key in QuestionType]: CountryGuessHistory[] } =
     {} as CountryResultsData['user_history'];
-  questionTypes.forEach((type) => {
+  AVAILABLE_QUESTION_TYPES.forEach((type) => {
     userHistory[type] = [];
   });
   return userHistory;
@@ -80,8 +74,6 @@ export const useCountryHistory = create<CountryResultsState>()(
       addCountryScores: (countryId: Deck['id'], scores: boolean) => {
         set((state) => {
           const { questionType } = useGameStore.getState();
-          console.log('addCountryScores', questionType);
-
           const updatedCountryScores =
             state.countryResultsData.history_per_country[questionType];
           const countryScoreList = updatedCountryScores[countryId] || [];
@@ -120,7 +112,7 @@ export const useCountryHistory = create<CountryResultsState>()(
       },
     }),
     {
-      name: 'country-stats-v2', // key in local storage
+      name: 'country-history', // key in local storage
     },
   ),
 );

@@ -14,7 +14,7 @@ const UnplayedDecksSection = ({ decks }: Props) => {
   const getAllPlayedDeckIds = useDeckHistory(
     (state) => state.getAllPlayedDeckIds,
   );
-  const storedDecksIds = getAllPlayedDeckIds('capital');
+  const storedDecksIds = getAllPlayedDeckIds();
   const howManyToDisplay = isBreakpoint('md') ? 3 : 4;
 
   const unplayedDecks = decks

@@ -1,38 +1,41 @@
+// Ensure this path is correct
+import { AVAILABLE_QUESTION_TYPES } from '@lib/consts';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import useGameStore from './gameStore';
 
-const HISTORY_LENGTH = 5;
+const DECK_HISTORY_LENGTH = 10;
+
+export const initializeDeckResults = () => {
+  const deckResults: {
+    [key in QuestionType]: {
+      scoresPerDeck: { [deckID: Deck['id']]: number };
+      history: Deck['id'][];
+    };
+  } = {} as DeckResultsData;
+  AVAILABLE_QUESTION_TYPES.forEach((type) => {
+    deckResults[type] = { scoresPerDeck: {}, history: [] };
+  });
+  return deckResults;
+};
 
 export type DeckResultsData = {
-  capital: {
-    scores: { [deckID: Deck['id']]: number };
-    history: Deck['id'][];
-  };
-  flag: {
-    scores: { [deckID: Deck['id']]: number };
+  [key in QuestionType]: {
+    scoresPerDeck: { [deckID: Deck['id']]: number };
     history: Deck['id'][];
   };
 };
 
-const defaultDeckResultsData: DeckResultsData = {
-  capital: { scores: {}, history: [] },
-  flag: { scores: {}, history: [] },
-};
-
-type GameType = 'capital' | 'flag';
+const defaultDeckResultsData = initializeDeckResults();
 
 interface DeckResultsState {
   deckResultsData: DeckResultsData;
   clearAllDeckScores: () => void;
-  getDeckScores: (deckID: Deck['id']) => { capital?: number; flag?: number };
-  getAllDeckScores: (gameType: GameType) => { [deckID: Deck['id']]: number };
-  getAllPlayedDeckIds: (gameType: GameType) => Deck['id'][];
-  getLastPlayedDeckIds: (gameType: GameType) => Deck['id'][];
-  updateDeckScore: (
-    deckID: Deck['id'],
-    gameType: GameType,
-    newScore: number,
-  ) => void;
+  getDeckScore: (deckID: Deck['id']) => number | null;
+  getAllDeckScores: () => { [deckID: Deck['id']]: number };
+  getAllPlayedDeckIds: () => Deck['id'][];
+  getLastPlayedDeckIds: () => Deck['id'][];
+  updateDeckScore: (deckID: Deck['id'], newScore: number) => void;
 }
 
 export const useDeckHistory = create<DeckResultsState>()(
@@ -43,48 +46,49 @@ export const useDeckHistory = create<DeckResultsState>()(
       clearAllDeckScores: () =>
         set({ deckResultsData: defaultDeckResultsData }),
 
-      getDeckScores: (deckID: Deck['id']) => {
+      getDeckScore: (deckID: Deck['id']) => {
         const { deckResultsData } = get();
-        return {
-          capital: deckResultsData.capital.scores[deckID],
-          flag: deckResultsData.flag.scores[deckID],
-        };
+        const { questionType } = useGameStore.getState();
+        return deckResultsData[questionType].scoresPerDeck[deckID];
       },
 
-      getAllDeckScores: (gameType: GameType) => {
+      getAllDeckScores: () => {
         const { deckResultsData } = get();
-        return deckResultsData[gameType]?.scores || undefined;
+        const { questionType } = useGameStore.getState();
+        return deckResultsData[questionType].scoresPerDeck || {};
       },
 
-      getAllPlayedDeckIds: (gameType: GameType) => {
+      getAllPlayedDeckIds: () => {
         const { deckResultsData } = get();
-        return Object.keys(deckResultsData[gameType].scores).map(Number);
+        const { questionType } = useGameStore.getState();
+        const res = Object.keys(
+          deckResultsData[questionType].scoresPerDeck,
+        ).map(Number);
+        return res;
       },
 
-      getLastPlayedDeckIds: (gameType: GameType) => {
+      getLastPlayedDeckIds: () => {
         const { deckResultsData } = get();
-        const history = deckResultsData[gameType]?.history || [];
+        const { questionType } = useGameStore.getState();
+        const history = deckResultsData[questionType]?.history || [];
         return [...history].reverse();
       },
 
-      updateDeckScore: (
-        deckID: Deck['id'],
-        gameType: GameType,
-        newScore: number,
-      ) => {
+      updateDeckScore: (deckID: Deck['id'], newScore: number) => {
         const { deckResultsData } = get();
+        const { questionType } = useGameStore.getState();
         const updatedScoresData = {
           ...deckResultsData,
-          [gameType]: {
-            scores: {
-              ...deckResultsData[gameType].scores,
+          [questionType]: {
+            scoresPerDeck: {
+              ...deckResultsData[questionType].scoresPerDeck,
               [deckID]: newScore,
             },
             history: [
-              ...deckResultsData[gameType].history
-                .filter((id) => id !== deckID)
-                .slice(-HISTORY_LENGTH + 1),
-              deckID,
+              ...deckResultsData[questionType].history
+                .filter((id) => id !== Number(deckID))
+                .slice(-DECK_HISTORY_LENGTH + 1),
+              Number(deckID),
             ],
           },
         };
@@ -92,7 +96,7 @@ export const useDeckHistory = create<DeckResultsState>()(
       },
     }),
     {
-      name: 'deck-stats-v1', // name of the item in the storage
+      name: 'deck-history', // name of the item in the storage
     },
   ),
 );

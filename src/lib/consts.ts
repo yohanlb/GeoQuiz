@@ -12,3 +12,10 @@ export const EMOJIS = {
   flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿',
   unknown: '❓',
 };
+
+export const AVAILABLE_QUESTION_TYPES: QuestionType[] = [
+  'CountryToCapital',
+  'CountryToFlag',
+  // 'CapitalToCountry',
+  // 'FlagToCountry',
+];
