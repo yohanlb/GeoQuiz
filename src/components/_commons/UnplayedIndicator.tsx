@@ -1,13 +1,13 @@
 'use client';
 
-import { FiPackage } from 'react-icons/fi';
 import React from 'react';
-import { useStoreDeckResults } from '@/src/stores/deckResults';
+import { FiPackage } from 'react-icons/fi';
+import { useDeckHistory } from '@/src/stores/deckHistoryStore';
 
 type Props = { deckId: Deck['id'] };
 
 const UnplayedIndicator = ({ deckId }: Props) => {
-  const getDeckScores = useStoreDeckResults((state) => state.getDeckScores);
+  const getDeckScores = useDeckHistory((state) => state.getDeckScores);
   const deckScore = getDeckScores(deckId).capital;
 
   if (!deckScore) {

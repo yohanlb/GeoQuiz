@@ -4,14 +4,14 @@ import React from 'react';
 import { GoPerson } from 'react-icons/go';
 import { GoPeople } from 'react-icons/go';
 import { TbCardsFilled } from 'react-icons/tb';
-import { useStoreDeckResults } from '@/src/stores/deckResults';
+import { useDeckHistory } from '@/src/stores/deckHistoryStore';
 
 type Props = {
   gameDeck: Deck;
 };
 
 function SetupStats({ gameDeck }: Props) {
-  const getDeckScores = useStoreDeckResults((state) => state.getDeckScores);
+  const getDeckScores = useDeckHistory((state) => state.getDeckScores);
   const userScore = getDeckScores(gameDeck.id);
   const userScoreFormatted = userScore?.capital
     ? `${userScore.capital}%`

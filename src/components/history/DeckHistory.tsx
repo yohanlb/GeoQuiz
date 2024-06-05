@@ -1,14 +1,14 @@
 'use client';
 
 import React from 'react';
-import { useStoreDeckResults } from '@/src/stores/deckResults';
+import { useDeckHistory } from '@/src/stores/deckHistoryStore';
 import DeckItem from '@components/_commons/DeckItem';
 import SectionTitle from '@components/_commons/SectionTitle';
 
 type Props = { decks: Deck[] };
 
 const DeckHistory = ({ decks }: Props) => {
-  const getLastPlayedDeckIds = useStoreDeckResults(
+  const getLastPlayedDeckIds = useDeckHistory(
     (state) => state.getLastPlayedDeckIds,
   );
 

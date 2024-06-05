@@ -35,7 +35,7 @@ interface DeckResultsState {
   ) => void;
 }
 
-export const useStoreDeckResults = create<DeckResultsState>()(
+export const useDeckHistory = create<DeckResultsState>()(
   persist(
     (set, get) => ({
       deckResultsData: defaultDeckResultsData,

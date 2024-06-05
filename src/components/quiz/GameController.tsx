@@ -2,7 +2,7 @@
 
 import React, { startTransition } from 'react';
 import { useCountryHistory } from '@/src/stores/countryHistoryStore';
-import { useStoreDeckResults } from '@/src/stores/deckResults';
+import { useDeckHistory } from '@/src/stores/deckHistoryStore';
 import useGameStore from '@/src/stores/gameStore';
 import { calculateNewDeckScore } from '@lib/utils/score';
 import { postCountryStats } from '../../actions/countryStats';
@@ -30,7 +30,7 @@ function GameController({ questions }: Props) {
     setGameState,
     deck,
   } = useGameStore();
-  const updateDeckScore = useStoreDeckResults((state) => state.updateDeckScore);
+  const updateDeckScore = useDeckHistory((state) => state.updateDeckScore);
   const addCountryScores = useCountryHistory((state) => state.addCountryScores);
 
   if (!deck) {

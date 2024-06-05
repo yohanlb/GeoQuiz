@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useStoreDeckResults } from '@/src/stores/deckResults';
+import { useDeckHistory } from '@/src/stores/deckHistoryStore';
 import { isBreakpoint } from '@lib/utils/screen';
 import SectionTitle from '@components/_commons/SectionTitle';
 import DeckGrid from './DeckGrid';
@@ -12,9 +12,7 @@ type Props = {
 
 const LowestScoresDecksSection = ({ decks }: Props) => {
   const howManyToDisplay = isBreakpoint('md') ? 3 : 4;
-  const getAllDeckScores = useStoreDeckResults(
-    (state) => state.getAllDeckScores,
-  );
+  const getAllDeckScores = useDeckHistory((state) => state.getAllDeckScores);
   const deckScores = getAllDeckScores('capital');
   const sortedScores = Object.entries(deckScores).sort(([, a], [, b]) => a - b);
   const sortedScoresIds = sortedScores.map(([id]) => id);

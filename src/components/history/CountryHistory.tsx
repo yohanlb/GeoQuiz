@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useCountryHistory } from '@/src/stores/countryResults';
+import { useCountryHistory } from '@/src/stores/countryHistoryStore';
 import SectionTitle from '@components/_commons/SectionTitle';
 import CountryTable from './CountryTable';
 

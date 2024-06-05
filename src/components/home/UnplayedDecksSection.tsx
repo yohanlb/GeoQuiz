@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useStoreDeckResults } from '@/src/stores/deckResults';
+import { useDeckHistory } from '@/src/stores/deckHistoryStore';
 import { isBreakpoint } from '@lib/utils/screen';
 import SectionTitle from '@components/_commons/SectionTitle';
 import DeckGrid from './DeckGrid';
@@ -11,7 +11,7 @@ type Props = {
 };
 
 const UnplayedDecksSection = ({ decks }: Props) => {
-  const getAllPlayedDeckIds = useStoreDeckResults(
+  const getAllPlayedDeckIds = useDeckHistory(
     (state) => state.getAllPlayedDeckIds,
   );
   const storedDecksIds = getAllPlayedDeckIds('capital');
