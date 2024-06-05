@@ -9,9 +9,6 @@ import CountryShape from './CountryShape';
 
 type QuestionViewProps = {
   questions: Question[];
-  currentQuestionIndex: number;
-  userAnswers: string[];
-  userResults: UserResults;
   handleClickAnswerOption: (answer: string) => void;
 };
 
@@ -22,12 +19,9 @@ export type OptionsFlag = {
 
 const QuestionView = ({
   questions,
-  currentQuestionIndex,
-  userAnswers,
   handleClickAnswerOption,
-  userResults,
 }: QuestionViewProps) => {
-  const { questionType } = useGameStore();
+  const { questionType, userAnswers, currentQuestionIndex } = useGameStore();
 
   const currentQuestion = questions[currentQuestionIndex];
 
@@ -79,11 +73,7 @@ const QuestionView = ({
           handleClick={handleClickAnswerOption}
         />
       )}
-      <AnswerCirclesList
-        userResults={userResults}
-        totalNumberOfQuestions={questions.length}
-        currentQuestionIndex={currentQuestionIndex}
-      />
+      <AnswerCirclesList totalNumberOfQuestions={questions.length} />
     </div>
   );
 };

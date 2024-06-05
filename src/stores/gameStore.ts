@@ -6,6 +6,14 @@ interface GameStoreState {
   incrementQuestionIndex: () => void;
   questionType: QuestionType;
   toggleQuestionType: () => void;
+  isShowingAnswer: boolean;
+  setIsShowingAnswer: (isShowingAnswer: boolean) => void;
+  userAnswers: string[];
+  resetUserAnswers: () => void;
+  addToUserAnswers: (userAnswer: string) => void;
+  userResults: UserResults;
+  addToUserResults: (userResult: UserResultsStatus, index: number) => void;
+  resetUserResults: () => void;
 }
 
 const useGameStore = create<GameStoreState>()(
@@ -13,10 +21,35 @@ const useGameStore = create<GameStoreState>()(
     (set) => ({
       currentQuestionIndex: 0,
       questionType: 'CountryToCapital',
+      isShowingAnswer: false,
+      userAnswers: [],
+      userResults: [],
+
+      resetUserAnswers: () => set(() => ({ userAnswers: [] })),
+      addToUserAnswers: (userAnswer: string) =>
+        set((state) => ({
+          userAnswers: [...state.userAnswers, userAnswer],
+        })),
+
+      addToUserResults: (resultToAdd: UserResultsStatus, index: number) =>
+        set((state) => {
+          const newUserResults = [...state.userResults];
+          newUserResults[index] = resultToAdd;
+          return { userResults: newUserResults };
+        }),
+
+      resetUserResults() {
+        set(() => ({ userResults: [] }));
+      },
 
       incrementQuestionIndex: () =>
         set((state) => ({
           currentQuestionIndex: state.currentQuestionIndex + 1,
+        })),
+
+      setIsShowingAnswer: (newIsShowingAnswer: boolean) =>
+        set(() => ({
+          isShowingAnswer: newIsShowingAnswer,
         })),
 
       toggleQuestionType: () => {

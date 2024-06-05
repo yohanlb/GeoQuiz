@@ -1,10 +1,9 @@
 import React from 'react';
+import useGameStore from '@/src/stores/gameStore';
 import AnswerCircle from './AnswerCircle';
 
 type AnswerCirclesListProps = {
-  userResults: UserResults;
   totalNumberOfQuestions: number;
-  currentQuestionIndex: number;
 };
 
 type CircleResult = {
@@ -14,10 +13,10 @@ type CircleResult = {
 };
 
 const AnswerCirclesList = ({
-  userResults,
   totalNumberOfQuestions,
-  currentQuestionIndex,
 }: AnswerCirclesListProps) => {
+  const { userResults, currentQuestionIndex } = useGameStore();
+
   const circles: CircleResult[] = [];
   for (let i = 0; i < totalNumberOfQuestions; i++) {
     circles.push({

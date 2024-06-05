@@ -1,23 +1,20 @@
-import Link from 'next/link';
 import React from 'react';
-import ResultsTable from './ResultsTable';
-import { calculateNewDeckScore } from '@lib/utils/score';
+import useGameStore from '@/src/stores/gameStore';
 import { navigationLinks } from '@lib/navigationLinks';
+import { calculateNewDeckScore } from '@lib/utils/score';
+import Link from 'next/link';
+import ResultsTable from './ResultsTable';
 import ShareResults from './ShareResults';
 
 type ResultsViewProps = {
   questions: Question[];
-  userResults: UserResults;
   deckName: string;
   handleRestart: () => void;
 };
 
-function ResultsView({
-  questions,
-  userResults,
-  deckName,
-  handleRestart,
-}: ResultsViewProps) {
+function ResultsView({ questions, deckName, handleRestart }: ResultsViewProps) {
+  const { userResults } = useGameStore();
+
   const newDeckScore = calculateNewDeckScore(userResults, questions.length);
 
   return (

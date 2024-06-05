@@ -16,19 +16,27 @@ type Props = {
 };
 
 function GameController({ questions, deck }: Props) {
-  const { currentQuestionIndex, incrementQuestionIndex, questionType } =
-    useGameStore();
+  const {
+    currentQuestionIndex,
+    incrementQuestionIndex,
+    questionType,
+    isShowingAnswer,
+    setIsShowingAnswer,
+    userAnswers,
+    resetUserAnswers,
+    addToUserAnswers,
+    userResults,
+    addToUserResults,
+    resetUserResults,
+  } = useGameStore();
 
-  const [userAnswers, setUserAnswers] = React.useState<string[]>([]);
   const [gameState, setGameState] = React.useState<GameState>('playing');
-  const [isShowingAnswer, setIsShowingAnswer] = React.useState<boolean>(false);
-  const [userResults, setUserResults] = React.useState<UserResults>([]);
   const updateDeckScore = useStoreDeckResults((state) => state.updateDeckScore);
   const addCountryScores = useStoreCountryResults(
     (state) => state.addCountryScores,
   );
 
-  const questionTypeSimplfied =
+  const questionTypeSimplified =
     questionType === 'CountryToFlag' ? 'flag' : 'capital'; // todo update store so we dont use this sub type anymore
 
   const handleNextQuestion = () => {
@@ -38,7 +46,7 @@ function GameController({ questions, deck }: Props) {
         userAnswers.length < 1,
       );
     });
-    setUserAnswers([]);
+    resetUserAnswers();
     setIsShowingAnswer(false);
     if (currentQuestionIndex >= questions.length - 1) {
       setGameState('finished');
@@ -61,45 +69,37 @@ function GameController({ questions, deck }: Props) {
     if (isShowingAnswer) {
       return;
     }
-    setUserAnswers((prevUserAnswers) => [...prevUserAnswers, userAnswer]);
+    addToUserAnswers(userAnswer);
     if (userAnswer === correctAnswer) {
       // Correct Answer
       setIsShowingAnswer(true);
       const newResult: UserResultsStatus = isUserFirstAttempt
         ? 'valid'
         : 'invalid';
-      setUserResults((prevUserResults) => {
-        const newUserResults = [...prevUserResults];
-        newUserResults[currentQuestionIndex] = newResult;
-        return newUserResults;
-      });
+      addToUserResults(newResult, currentQuestionIndex);
       addCountryScores(
-        questionTypeSimplfied,
+        questionTypeSimplified,
         questions[currentQuestionIndex].countryData.id,
         newResult === 'valid' ? true : false,
       );
       setTimeout(handleNextQuestion, 700);
     } else {
       // Wrong Answer
-      setUserResults((prevUserResults) => {
-        const newUserResults = [...prevUserResults];
-        newUserResults[currentQuestionIndex] = 'invalid';
-        return newUserResults;
-      });
+      addToUserResults('invalid', currentQuestionIndex);
     }
   };
 
   // FIRST INITIALIZATION
   React.useEffect(() => {
-    setUserResults([]);
+    resetUserResults();
     setGameState('playing');
-  }, []);
+  }, [resetUserResults]);
 
   // AFTER GAME FINISHED
   React.useEffect(() => {
     if (gameState === 'finished') {
       const newDeckScore = calculateNewDeckScore(userResults, questions.length);
-      updateDeckScore(deck.id, questionTypeSimplfied, newDeckScore);
+      updateDeckScore(deck.id, questionTypeSimplified, newDeckScore);
     }
   }, [gameState]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -107,7 +107,6 @@ function GameController({ questions, deck }: Props) {
     return (
       <ResultView
         questions={questions}
-        userResults={userResults}
         deckName={deck.name}
         handleRestart={handleRestart}
       />
@@ -117,9 +116,6 @@ function GameController({ questions, deck }: Props) {
   return (
     <QuestionView
       questions={questions}
-      userAnswers={userAnswers}
-      userResults={userResults}
-      currentQuestionIndex={currentQuestionIndex}
       handleClickAnswerOption={handleClickAnswerOption}
     />
   );
