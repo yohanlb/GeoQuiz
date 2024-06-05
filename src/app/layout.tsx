@@ -30,8 +30,8 @@ export default function RootLayout({
       <MetaTags />
       <PHProvider>
         <body className={`h-dvh  bg-background`}>
-          <NextUIProvider>
-            <PostHogPageView />
+          <PostHogPageView />
+          <NextUIProvider className='h-full'>
             <div className='mx-auto flex h-full max-w-screen-md flex-col'>
               <NavBar />
               <main className='flex-grow'>{children}</main>
