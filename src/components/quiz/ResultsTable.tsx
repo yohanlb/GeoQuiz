@@ -1,16 +1,18 @@
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
+import useGameStore from '@/src/stores/gameStore';
 import Gauge from '@components/_commons/Gauge';
 import RecallIndex from '@components/_commons/RecallIndex';
 
 type Props = {
   questions: Question[];
-  userResults: UserResults;
 };
 
 type QuestionWithResult = Question & { userResult: UserResultsStatus };
 
-const ResultsTable = ({ questions, userResults }: Props) => {
+const ResultsTable = ({ questions }: Props) => {
+  const { userResults } = useGameStore();
+
   const questionsWithResults: QuestionWithResult[] = questions.map(
     (question, i) => ({ ...question, userResult: userResults[i] }),
   );

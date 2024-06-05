@@ -11,11 +11,9 @@ import ResultView from './ResultsView';
 
 type Props = {
   questions: Question[];
-  deck: Deck;
-  deckName: string;
 };
 
-function GameController({ questions, deck }: Props) {
+function GameController({ questions }: Props) {
   const {
     currentQuestionIndex,
     incrementQuestionIndex,
@@ -28,13 +26,18 @@ function GameController({ questions, deck }: Props) {
     userResults,
     addToUserResults,
     resetUserResults,
+    gameState,
+    setGameState,
+    deck,
   } = useGameStore();
-
-  const [gameState, setGameState] = React.useState<GameState>('playing');
   const updateDeckScore = useStoreDeckResults((state) => state.updateDeckScore);
   const addCountryScores = useStoreCountryResults(
     (state) => state.addCountryScores,
   );
+
+  if (!deck) {
+    throw new Error('Deck is null. Ensure that the deck is set in the store.');
+  }
 
   const questionTypeSimplified =
     questionType === 'CountryToFlag' ? 'flag' : 'capital'; // todo update store so we dont use this sub type anymore
@@ -93,7 +96,7 @@ function GameController({ questions, deck }: Props) {
   React.useEffect(() => {
     resetUserResults();
     setGameState('playing');
-  }, [resetUserResults]);
+  }, [resetUserResults, setGameState]);
 
   // AFTER GAME FINISHED
   React.useEffect(() => {
@@ -104,13 +107,7 @@ function GameController({ questions, deck }: Props) {
   }, [gameState]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (gameState === 'finished') {
-    return (
-      <ResultView
-        questions={questions}
-        deckName={deck.name}
-        handleRestart={handleRestart}
-      />
-    );
+    return <ResultView questions={questions} handleRestart={handleRestart} />;
   }
 
   return (

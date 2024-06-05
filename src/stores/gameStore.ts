@@ -3,6 +3,8 @@ import { persist } from 'zustand/middleware';
 
 interface GameStoreState {
   currentQuestionIndex: number;
+  gameState: GameState;
+  setGameState: (gameState: GameState) => void;
   incrementQuestionIndex: () => void;
   questionType: QuestionType;
   toggleQuestionType: () => void;
@@ -14,16 +16,28 @@ interface GameStoreState {
   userResults: UserResults;
   addToUserResults: (userResult: UserResultsStatus, index: number) => void;
   resetUserResults: () => void;
+  deck: Deck | null;
+  setDeck: (deck: Deck) => void;
 }
 
 const useGameStore = create<GameStoreState>()(
   persist(
     (set) => ({
       currentQuestionIndex: 0,
+      gameState: 'playing',
       questionType: 'CountryToCapital',
       isShowingAnswer: false,
       userAnswers: [],
       userResults: [],
+      deck: null,
+
+      setDeck(deck) {
+        set(() => ({ deck }));
+      },
+
+      setGameState(gameState) {
+        set(() => ({ gameState }));
+      },
 
       resetUserAnswers: () => set(() => ({ userAnswers: [] })),
       addToUserAnswers: (userAnswer: string) =>

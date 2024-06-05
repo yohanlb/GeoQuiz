@@ -1,15 +1,16 @@
 import React from 'react';
+import useGameStore from '@/src/stores/gameStore';
 import { EMOJIS, WEBSITE_URL } from '@lib/consts';
 import ShareIcon from '@components/_commons/icons/ShareIcon';
 import { Button } from '@components/ui/button';
 
 type Props = {
   questions: Question[];
-  userResults: UserResults;
-  deckName: string;
 };
 
-const ShareResults = ({ questions, userResults, deckName }: Props) => {
+const ShareResults = ({ questions }: Props) => {
+  const { userResults, deck } = useGameStore();
+
   const questionsWithResults = questions.map((question, i) => ({
     ...question,
     userResult: userResults[i],
@@ -33,7 +34,7 @@ const ShareResults = ({ questions, userResults, deckName }: Props) => {
     const totalQuestions = questions.length;
     const scorePercentage = Math.round((correctAnswers / totalQuestions) * 100);
 
-    const shareMessage = `Check out my GeoQuiz Results!\n\nScore: ${correctAnswers}/${totalQuestions} (${scorePercentage}%)\nDeck: ${deckName}\n${resultsSummary}\n\n${WEBSITE_URL}`;
+    const shareMessage = `Check out my GeoQuiz Results!\n\nScore: ${correctAnswers}/${totalQuestions} (${scorePercentage}%)\nDeck: ${deck?.displayName}\n${resultsSummary}\n\n${WEBSITE_URL}`;
     return shareMessage;
   };
 

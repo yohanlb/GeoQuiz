@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { useFetchQuestions } from '@/src/hooks/useFetchQuestions';
+import useGameStore from '@/src/stores/gameStore';
 import LoadingSpinner from '@components/_commons/LoadingSpinner';
 import GameController from './GameController';
 
@@ -11,8 +12,13 @@ type Props = {
   deckName: string;
 };
 
-const GameClientWrapper = ({ deck, amountOfQuestions, deckName }: Props) => {
+const GameClientWrapper = ({ deck, amountOfQuestions }: Props) => {
+  const { setDeck } = useGameStore();
   const { questions, isLoading } = useFetchQuestions(deck, amountOfQuestions);
+
+  React.useEffect(() => {
+    setDeck(deck);
+  }, [setDeck, deck]);
 
   if (isLoading) {
     return (
@@ -29,7 +35,7 @@ const GameClientWrapper = ({ deck, amountOfQuestions, deckName }: Props) => {
   } else {
     return (
       <>
-        <GameController questions={questions} deck={deck} deckName={deckName} />
+        <GameController questions={questions} />
       </>
     );
   }

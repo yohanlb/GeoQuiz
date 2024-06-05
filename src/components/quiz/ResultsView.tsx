@@ -8,11 +8,10 @@ import ShareResults from './ShareResults';
 
 type ResultsViewProps = {
   questions: Question[];
-  deckName: string;
   handleRestart: () => void;
 };
 
-function ResultsView({ questions, deckName, handleRestart }: ResultsViewProps) {
+function ResultsView({ questions, handleRestart }: ResultsViewProps) {
   const { userResults } = useGameStore();
 
   const newDeckScore = calculateNewDeckScore(userResults, questions.length);
@@ -22,14 +21,10 @@ function ResultsView({ questions, deckName, handleRestart }: ResultsViewProps) {
       <h1 className='text-5xl font-bold uppercase italic tracking-wider'>
         Results
       </h1>
-      <ResultsTable questions={questions} userResults={userResults} />
+      <ResultsTable questions={questions} />
       <div className='flex flex-wrap items-center justify-center gap-2 text-xl tracking-wider'>
         <p>{newDeckScore}% of correct answers!</p>
-        <ShareResults
-          questions={questions}
-          userResults={userResults}
-          deckName={deckName}
-        />
+        <ShareResults questions={questions} />
       </div>
       <div className='flex gap-6 md:gap-16'>
         <Link href={navigationLinks.home.href}>
