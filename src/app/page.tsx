@@ -1,9 +1,9 @@
-import { Button } from '@components/ui/button';
-import GeoQuizLogo from '@assets/GeoQuizGlobeLogo.png';
-import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
 import { navigationLinks } from '@lib/navigationLinks';
+import Image from 'next/image';
+import Link from 'next/link';
+import GeoQuizLogo from '@assets/GeoQuizGlobeLogo.png';
+import { Button } from '@components/ui/button';
 
 const Landing = () => {
   return (
@@ -28,7 +28,13 @@ const Landing = () => {
           </Link>
         </div>
         <div className='max-w-44 md:max-w-80'>
-          <Image src={GeoQuizLogo} alt='GeoQuiz Logo' />
+          <Image
+            src={GeoQuizLogo}
+            alt='GeoQuiz Logo'
+            width={320}
+            height={320}
+            priority
+          />
         </div>
       </section>
     </div>
