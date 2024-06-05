@@ -10,12 +10,12 @@ const Landing = () => {
     <div>
       <section className='flex w-full flex-col items-center gap-y-8 px-4 py-24 text-center md:flex-row  md:justify-between md:text-left'>
         <div className='flex flex-col justify-center gap-8 md:max-w-[50%]'>
-          {/* <h1 className='text-2xl font-extrabold'>
+          <h1 className='text-2xl font-extrabold'>
             Learn Geography the Fun Way with GeoQuiz!
-          </h1> */}
+          </h1>
           <p className='font-thin capitalize'>
             Master <strong>capitals</strong> and <strong>flags</strong>, track
-            your progress, and <strong>challenge</strong> your friends !
+            your progress, and <strong>challenge</strong> your friends!
           </p>
           <Link href={navigationLinks.home.href}>
             <Button
