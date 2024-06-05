@@ -1,10 +1,10 @@
 import React from 'react';
-import { useStoreCountryResults } from '@/src/stores/countryResults';
+import { useCountryHistory } from '@/src/stores/countryHistoryStore';
 import { calculateRecallIndex } from '@lib/utils/score';
 import Gauge from './Gauge';
 
 const RecallIndex = ({ countryId }: { countryId: CountryData['id'] }) => {
-  const getLastScoresForCountry = useStoreCountryResults(
+  const getLastScoresForCountry = useCountryHistory(
     (state) => state.getLastScoresForCountry,
   );
   const userCountryScores = getLastScoresForCountry(countryId).map(

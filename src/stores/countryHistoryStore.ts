@@ -53,7 +53,7 @@ interface CountryResultsState {
   addCountryScores: (countryId: Deck['id'], scores: boolean) => void;
 }
 
-export const useStoreCountryResults = create<CountryResultsState>()(
+export const useCountryHistory = create<CountryResultsState>()(
   persist(
     (set, get) => ({
       countryResultsData: defaultCountryResultsData,

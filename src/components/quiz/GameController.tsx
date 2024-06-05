@@ -1,7 +1,7 @@
 'use client';
 
 import React, { startTransition } from 'react';
-import { useStoreCountryResults } from '@/src/stores/countryResults';
+import { useCountryHistory } from '@/src/stores/countryHistoryStore';
 import { useStoreDeckResults } from '@/src/stores/deckResults';
 import useGameStore from '@/src/stores/gameStore';
 import { calculateNewDeckScore } from '@lib/utils/score';
@@ -31,9 +31,7 @@ function GameController({ questions }: Props) {
     deck,
   } = useGameStore();
   const updateDeckScore = useStoreDeckResults((state) => state.updateDeckScore);
-  const addCountryScores = useStoreCountryResults(
-    (state) => state.addCountryScores,
-  );
+  const addCountryScores = useCountryHistory((state) => state.addCountryScores);
 
   if (!deck) {
     throw new Error('Deck is null. Ensure that the deck is set in the store.');

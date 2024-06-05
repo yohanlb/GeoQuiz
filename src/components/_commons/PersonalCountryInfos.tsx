@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useStoreCountryResults } from '@/src/stores/countryResults';
+import { useCountryHistory } from '@/src/stores/countryHistoryStore';
 import RecallIndex from '@components/_commons/RecallIndex';
 import LastAttempts from '../quiz/LastAttempts';
 
@@ -10,7 +10,7 @@ type Props = {
 };
 
 const PersonalCountryInfos = ({ countryId }: Props) => {
-  const getLastScoresForCountry = useStoreCountryResults(
+  const getLastScoresForCountry = useCountryHistory(
     (state) => state.getLastScoresForCountry,
   );
   const countryScores = getLastScoresForCountry(countryId).map(

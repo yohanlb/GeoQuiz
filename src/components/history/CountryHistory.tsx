@@ -1,14 +1,14 @@
 'use client';
 
 import React from 'react';
-import { useStoreCountryResults } from '@/src/stores/countryResults';
+import { useCountryHistory } from '@/src/stores/countryResults';
 import SectionTitle from '@components/_commons/SectionTitle';
 import CountryTable from './CountryTable';
 
 type Props = { countries: CountryData[] };
 
 const CountryHistory = ({ countries }: Props) => {
-  const getHistoryCountriesGuessed = useStoreCountryResults(
+  const getHistoryCountriesGuessed = useCountryHistory(
     (state) => state.getHistoryCountriesGuessed,
   );
 
