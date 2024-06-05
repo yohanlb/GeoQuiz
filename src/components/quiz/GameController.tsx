@@ -96,7 +96,7 @@ function GameController({ questions }: Props) {
   React.useEffect(() => {
     if (gameState === 'finished') {
       const newDeckScore = calculateNewDeckScore(userResults, questions.length);
-      updateDeckScore(deck.id, newDeckScore); //TODO change
+      updateDeckScore(deck.id, newDeckScore);
     }
   }, [gameState]); // eslint-disable-line react-hooks/exhaustive-deps
 
