@@ -41,22 +41,55 @@ export async function getAllCountries(): Promise<CountryData[]> {
   return await fetchCountries();
 }
 
-export async function getAllCountriesGrouped(): Promise<{
-  [key: string]: CountryData[];
-}> {
+export async function getAllCountriesGrouped(): Promise<GroupedCountries> {
   const allCountries = await fetchCountries();
-
   const groupedCountries = allCountries.reduce(
-    (acc: { [key: string]: CountryData[] }, country) => {
-      const subregion = country.subregion;
-      if (!acc[subregion]) {
-        acc[subregion] = [];
+    (
+      acc: { [key: string]: { [subregion: string]: CountryData[] } },
+      country,
+    ) => {
+      const { region, subregion } = country;
+
+      if (!acc[region]) {
+        acc[region] = {};
       }
-      acc[subregion].push(country);
+
+      if (!acc[region][subregion]) {
+        acc[region][subregion] = [];
+      }
+
+      acc[region][subregion].push(country);
+
       return acc;
     },
     {},
   );
 
-  return groupedCountries;
+  // Sort regions and subregions alphabetically
+  const sortedGroupedCountries = Object.keys(groupedCountries)
+    .sort((a, b) => a.localeCompare(b))
+    .reduce(
+      (
+        acc: { [key: string]: { [subregion: string]: CountryData[] } },
+        region,
+      ) => {
+        const sortedSubregions = Object.keys(groupedCountries[region])
+          .sort((a, b) => a.localeCompare(b))
+          .reduce(
+            (subAcc: { [subregion: string]: CountryData[] }, subregion) => {
+              subAcc[subregion] = groupedCountries[region][subregion].sort(
+                (a, b) => a.name.localeCompare(b.name),
+              );
+              return subAcc;
+            },
+            {},
+          );
+
+        acc[region] = sortedSubregions;
+        return acc;
+      },
+      {},
+    );
+
+  return sortedGroupedCountries;
 }

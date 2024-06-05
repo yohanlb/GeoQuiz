@@ -88,4 +88,8 @@ declare global {
   }
 
   export type CountryWithScores = CountryData & CountryGuessHistory;
+
+  export type GroupedCountries = {
+    [key: string]: { [subregion: string]: CountryData[] };
+  };
 }

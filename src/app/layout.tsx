@@ -1,3 +1,4 @@
+import { NextUIProvider } from '@nextui-org/react';
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import BackgroundGradient from '@components/_commons/BackgroundGradient';
@@ -29,12 +30,14 @@ export default function RootLayout({
       <MetaTags />
       <PHProvider>
         <body className={`h-dvh  bg-background`}>
-          <PostHogPageView />
-          <div className='mx-auto flex h-full max-w-screen-md flex-col'>
-            <NavBar />
-            <main className='flex-grow'>{children}</main>
-            <BackgroundGradient />
-          </div>
+          <NextUIProvider>
+            <PostHogPageView />
+            <div className='mx-auto flex h-full max-w-screen-md flex-col'>
+              <NavBar />
+              <main className='flex-grow'>{children}</main>
+              <BackgroundGradient />
+            </div>
+          </NextUIProvider>
         </body>
       </PHProvider>
     </html>
