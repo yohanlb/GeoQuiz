@@ -39,9 +39,6 @@ function GameController({ questions }: Props) {
     throw new Error('Deck is null. Ensure that the deck is set in the store.');
   }
 
-  const questionTypeSimplified =
-    questionType === 'CountryToFlag' ? 'flag' : 'capital'; // todo update store so we dont use this sub type anymore
-
   const handleNextQuestion = () => {
     startTransition(() => {
       postCountryStats(
@@ -81,7 +78,6 @@ function GameController({ questions }: Props) {
         : 'invalid';
       addToUserResults(newResult, currentQuestionIndex);
       addCountryScores(
-        questionTypeSimplified,
         questions[currentQuestionIndex].countryData.id,
         newResult === 'valid' ? true : false,
       );
@@ -102,7 +98,7 @@ function GameController({ questions }: Props) {
   React.useEffect(() => {
     if (gameState === 'finished') {
       const newDeckScore = calculateNewDeckScore(userResults, questions.length);
-      updateDeckScore(deck.id, questionTypeSimplified, newDeckScore);
+      updateDeckScore(deck.id, 'capital', newDeckScore); //TODO change
     }
   }, [gameState]); // eslint-disable-line react-hooks/exhaustive-deps
 

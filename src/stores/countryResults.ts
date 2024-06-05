@@ -1,46 +1,56 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import useGameStore from './gameStore';
 
-const NUMBER_OF_SCORES_TO_KEEP = 10;
-const GLOBAL_COUNTRY_HISTORY_LENGTH = 20;
+const questionTypes: QuestionType[] = [
+  'CountryToCapital',
+  'CountryToFlag',
+  // 'CapitalToCountry',
+  // 'FlagToCountry',
+];
+
+const NUMBER_OF_SCORES_TO_KEEP_PER_COUNTRY = 10;
+const USER_HISTORY_LENGTH = 20;
 
 interface CountryResultsData {
-  country_scores: {
-    flag: { [countryId: string]: CountryScore[] };
-    capital: { [countryId: string]: CountryScore[] };
+  history_per_country: {
+    [key in QuestionType]: { [countryId: string]: CountryScore[] };
   };
-  global_scores: {
-    flag: CountryGuessHistory[];
-    capital: CountryGuessHistory[];
+  user_history: {
+    [key in QuestionType]: CountryGuessHistory[];
   };
 }
 
-const defaultCountryResultsData: CountryResultsData = {
-  country_scores: {
-    capital: {},
-    flag: {},
-  },
-  global_scores: {
-    capital: [],
-    flag: [],
-  },
+const initializeHistoryPerCountry = () => {
+  const historyPerCountry: {
+    [key in QuestionType]: { [countryId: string]: CountryScore[] };
+  } = {} as CountryResultsData['history_per_country'];
+  questionTypes.forEach((type) => {
+    historyPerCountry[type] = {};
+  });
+  return historyPerCountry;
 };
 
-type GameType = 'flag' | 'capital';
+const initializeUserHistory = () => {
+  const userHistory: { [key in QuestionType]: CountryGuessHistory[] } =
+    {} as CountryResultsData['user_history'];
+  questionTypes.forEach((type) => {
+    userHistory[type] = [];
+  });
+  return userHistory;
+};
+
+const defaultCountryResultsData: CountryResultsData = {
+  history_per_country: initializeHistoryPerCountry(),
+  user_history: initializeUserHistory(),
+};
 
 interface CountryResultsState {
   countryResultsData: CountryResultsData;
   clearAllCountryScores: () => void;
-  getLastScoresForCountry: (
-    countryId: Deck['id'],
-    gameType: GameType,
-  ) => CountryScore[];
-  getHistoryCountriesGuessed: (gameType: GameType) => CountryGuessHistory[];
-  addCountryScores: (
-    gameType: GameType,
-    countryId: Deck['id'],
-    scores: boolean,
-  ) => void;
+  getLastScoresForCountry: (countryId: Deck['id']) => CountryScore[];
+  getHistoryCountriesGuessed: () => CountryGuessHistory[];
+  addCountryScores: (countryId: Deck['id'], scores: boolean) => void;
 }
 
 export const useStoreCountryResults = create<CountryResultsState>()(
@@ -51,53 +61,58 @@ export const useStoreCountryResults = create<CountryResultsState>()(
       clearAllCountryScores: () =>
         set({ countryResultsData: defaultCountryResultsData }),
 
-      getLastScoresForCountry: (countryId: Deck['id'], gameType: GameType) => {
+      getLastScoresForCountry: (countryId: Deck['id']) => {
         const { countryResultsData } = get();
-        return countryResultsData.country_scores[gameType][countryId] || [];
+        const { questionType } = useGameStore.getState();
+        return (
+          countryResultsData.history_per_country[questionType][countryId] || []
+        );
       },
 
-      getHistoryCountriesGuessed: (gameType: GameType) => {
+      getHistoryCountriesGuessed: () => {
         const { countryResultsData } = get();
-        const countryGuessHistory = countryResultsData.global_scores[gameType];
+        const { questionType } = useGameStore.getState();
+        const countryGuessHistory =
+          countryResultsData.user_history[questionType];
         return countryGuessHistory.slice(-20).reverse();
       },
 
-      addCountryScores: (
-        gameType: GameType,
-        countryId: Deck['id'],
-        scores: boolean,
-      ) => {
+      addCountryScores: (countryId: Deck['id'], scores: boolean) => {
         set((state) => {
+          const { questionType } = useGameStore.getState();
+          console.log('addCountryScores', questionType);
+
           const updatedCountryScores =
-            state.countryResultsData.country_scores[gameType];
+            state.countryResultsData.history_per_country[questionType];
           const countryScoreList = updatedCountryScores[countryId] || [];
           const newScore: CountryScore = {
             scores: scores,
             timestamp: new Date().toISOString(),
           };
 
-          if (countryScoreList.length >= NUMBER_OF_SCORES_TO_KEEP) {
+          if (countryScoreList.length >= NUMBER_OF_SCORES_TO_KEEP_PER_COUNTRY) {
             countryScoreList.shift();
           }
           countryScoreList.push(newScore);
           updatedCountryScores[countryId] = countryScoreList;
 
-          const globalScores = state.countryResultsData.global_scores[gameType];
-          if (globalScores.length >= GLOBAL_COUNTRY_HISTORY_LENGTH) {
-            globalScores.shift();
+          const userHistory =
+            state.countryResultsData.user_history[questionType];
+          if (userHistory.length >= USER_HISTORY_LENGTH) {
+            userHistory.shift();
           }
-          globalScores.push({ countryId, ...newScore });
+          userHistory.push({ countryId, ...newScore });
 
           return {
             countryResultsData: {
               ...state.countryResultsData,
-              country_scores: {
-                ...state.countryResultsData.country_scores,
-                [gameType]: updatedCountryScores,
+              history_per_country: {
+                ...state.countryResultsData.history_per_country,
+                [questionType]: updatedCountryScores,
               },
-              global_scores: {
-                ...state.countryResultsData.global_scores,
-                [gameType]: globalScores,
+              user_history: {
+                ...state.countryResultsData.user_history,
+                [questionType]: userHistory,
               },
             },
           };
@@ -105,7 +120,7 @@ export const useStoreCountryResults = create<CountryResultsState>()(
       },
     }),
     {
-      name: 'country-stats-v1', // key in local storage
+      name: 'country-stats-v2', // key in local storage
     },
   ),
 );

@@ -7,7 +7,7 @@ const RecallIndex = ({ countryId }: { countryId: CountryData['id'] }) => {
   const getLastScoresForCountry = useStoreCountryResults(
     (state) => state.getLastScoresForCountry,
   );
-  const userCountryScores = getLastScoresForCountry(countryId, 'capital').map(
+  const userCountryScores = getLastScoresForCountry(countryId).map(
     (scoreObject) => scoreObject.scores,
   );
 

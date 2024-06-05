@@ -21,7 +21,7 @@ const CountryHistory = ({ countries }: Props) => {
     return null;
   }
 
-  const countryHistory = getHistoryCountriesGuessed('capital');
+  const countryHistory = getHistoryCountriesGuessed();
   const lastPlayedCountries: CountryWithScores[] = [];
   for (let i = 0; i < countryHistory.length; i++) {
     const country = countries.find(
