@@ -1,4 +1,3 @@
-// Ensure this path is correct
 import { AVAILABLE_QUESTION_TYPES } from '@lib/consts';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';

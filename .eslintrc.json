@@ -4,6 +4,11 @@
     "next/core-web-vitals",
     "prettier",
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
-  ]
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jest/recommended"
+  ],
+  "plugins": ["jest"],
+  "env": {
+    "jest/globals": true
+  }
 }
