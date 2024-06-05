@@ -10,7 +10,7 @@ const UnplayedIndicator = ({ deckId }: Props) => {
   const getDeckScore = useDeckHistory((state) => state.getDeckScore);
   const deckScore = getDeckScore(deckId);
 
-  if (deckScore === null) {
+  if (deckScore === undefined || deckScore === null) {
     return <FiPackage className='ml-1 size-5' />;
   } else {
     // return <span className='font-mono'>{deckScore}%</span>;
