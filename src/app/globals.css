@@ -5,6 +5,5 @@
 @layer base {
   body {
     @apply font-light text-white antialiased;
-    background-image: url('/images/GrainBackground.png');
   }
 }
