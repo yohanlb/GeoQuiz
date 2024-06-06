@@ -5,6 +5,7 @@ import PageCenteredLink from '@components/_commons/PageCenteredLink';
 import ContinentsSection from '@components/home/ContinentsSection';
 import DifficultySection from '@components/home/DifficultySection';
 import FeaturedAndPopularSection from '@components/home/FeaturedAndPopularSection';
+import RegionSection from '@components/home/RegionSection';
 import { getDecks } from '../../../queries/gameDecks';
 
 // Dynamically import components to avoid client-side hydration
@@ -31,6 +32,7 @@ async function Home() {
       <LowestScoresDecksSection decks={decks} />
       <UnplayedDecksSection decks={decks} />
       <ContinentsSection decks={decks} />
+      <RegionSection decks={decks} />
       <PageCenteredLink
         href={navigationLinks.allDecks.href}
         label='See all decks'
