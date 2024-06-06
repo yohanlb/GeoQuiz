@@ -1,4 +1,5 @@
 'use server';
+
 import axios, { AxiosResponse } from 'axios';
 
 const baseUrl = process.env.NEXT_PUBLIC_GEOQUIZ_API_BASE_URL as string;

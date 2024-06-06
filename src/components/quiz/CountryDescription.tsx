@@ -35,7 +35,7 @@ const CountryDescription = ({ countryData, hideFlag = false }: Props) => {
         {displayedName}
       </h1>
 
-      <div className='w-full flex flex-col md:flex-row md:justify-between gap-2'>
+      <div className='flex w-full flex-col gap-2 md:flex-row md:justify-between'>
         <div>
           <p>
             <span>Continent: </span>
@@ -45,7 +45,7 @@ const CountryDescription = ({ countryData, hideFlag = false }: Props) => {
           </p>
           <div className='flex items-center gap-2'>
             <span>Community average: </span>
-            <div className='inline-block '>
+            <div className='inline-block'>
               <Gauge value={Math.round(countryData.success_rate * 100)} />
             </div>
           </div>

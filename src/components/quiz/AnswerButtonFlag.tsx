@@ -20,7 +20,7 @@ function AnswerButtonFlag({ index, handleClick, option }: Props) {
     <button
       key={index}
       onClick={() => handleClick(option.codeIso2)}
-      className={`border-2 p-1 color-border ${borderColor} rounded-lg`}
+      className={`color-border border-2 p-1 ${borderColor} rounded-lg`}
       disabled={option.state === 'DISABLED'}
     >
       <ReactCountryFlag

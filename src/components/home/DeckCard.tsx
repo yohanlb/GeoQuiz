@@ -42,7 +42,7 @@ const DeckCard = ({ deck }: Props) => {
       <SetupDialog gameDeck={deck} dialogContent={dialogContent}>
         <div className='relative z-10'>
           <h3
-            className={`line-clamp-3	text-base font-normal leading-none  tracking-tight text-white underline-offset-4 ${deck.isTextTransparent ? 'opacity-0' : ''} group-hover:underline sm:text-xl`}
+            className={`line-clamp-3 text-base font-normal leading-none tracking-tight text-white underline-offset-4 ${deck.isTextTransparent ? 'opacity-0' : ''} group-hover:underline sm:text-xl`}
           >
             {deck.displayName}
           </h3>

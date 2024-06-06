@@ -18,9 +18,9 @@ function AnswerButtonsFlagList({
   useHotkeys('4', () => handleClick(options[3].codeIso2), [options]);
 
   return (
-    <ul className='flex justify-center gap-2 py-2 md:flex-row flex-wrap md:gap-8 items-center'>
+    <ul className='flex flex-wrap items-center justify-center gap-2 py-2 md:flex-row md:gap-8'>
       {options.map((option, index) => (
-        <li key={option.codeIso2} className='text-center w-1/3'>
+        <li key={option.codeIso2} className='w-1/3 text-center'>
           <AnswerButtonFlag
             option={option}
             handleClick={handleClick}

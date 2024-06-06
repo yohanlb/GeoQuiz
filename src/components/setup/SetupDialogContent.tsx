@@ -26,7 +26,7 @@ export default function SetupDialogContent({ gameDeck }: Props) {
           {gameDeck.displayName}
         </DialogTitle>
       </DialogHeader>
-      <div className='flex flex-col gap-6 font-extralight '>
+      <div className='flex flex-col gap-6 font-extralight'>
         {gameDeck.description && (
           <p className='text-left text-sm italic'>{gameDeck.description}</p>
         )}

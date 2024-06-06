@@ -16,7 +16,7 @@ function SetupStats({ gameDeck }: Props) {
   const userScoreFormatted = userScore ? `${userScore}%` : 'Unplayed';
 
   return (
-    <div className='flex flex-col text-sm font-thin gap-1'>
+    <div className='flex flex-col gap-1 text-sm font-thin'>
       <div className='flex'>
         <GoPerson className='mr-1 size-5' />
         <span>

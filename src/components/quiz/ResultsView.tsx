@@ -38,7 +38,7 @@ function ResultsView({ questions, handleRestart }: ResultsViewProps) {
         <button
           onClick={handleRestart}
           type='submit'
-          className='w-36  rounded-lg bg-gray-300 py-2 text-xl font-normal text-gray-800 md:w-60 md:text-2xl'
+          className='w-36 rounded-lg bg-gray-300 py-2 text-xl font-normal text-gray-800 md:w-60 md:text-2xl'
         >
           Retry
         </button>

@@ -8,7 +8,7 @@ import { Button } from '@components/ui/button';
 const Landing = () => {
   return (
     <div>
-      <section className='flex w-full flex-col items-center gap-y-8 px-4 py-24 text-center md:flex-row  md:justify-between md:text-left'>
+      <section className='flex w-full flex-col items-center gap-y-8 px-4 py-24 text-center md:flex-row md:justify-between md:text-left'>
         <div className='flex flex-col justify-center gap-8 md:max-w-[50%]'>
           <h1 className='text-2xl font-extrabold'>
             Learn Geography the Fun Way with GeoQuiz!

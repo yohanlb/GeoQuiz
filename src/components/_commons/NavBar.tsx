@@ -1,15 +1,16 @@
 'use client';
+
 import React from 'react';
-import MenuIcon from '@icons/menu-icon.svg';
-import GeoQuizLogoExpanded from '@assets/LogoExpanded.svg';
-import GeoQuizLogoCompact from '@assets/LogoCompact.svg';
-import HeaderHeroSeparator from '@assets/HeaderHeroSeparator.svg';
+import { navigationLinks } from '@lib/navigationLinks';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import Image from 'next/image';
+import MenuIcon from '@icons/menu-icon.svg';
+import HeaderHeroSeparator from '@assets/HeaderHeroSeparator.svg';
+import GeoQuizLogoCompact from '@assets/LogoCompact.svg';
+import GeoQuizLogoExpanded from '@assets/LogoExpanded.svg';
 import Menu from '@components/_commons/Menu';
 import { Button } from '@components/ui/button';
-import { navigationLinks } from '@lib/navigationLinks';
 
 const ExpandedHeader = () => (
   <div className='grid grid-cols-5 grid-rows-1 gap-0 px-4 py-4 md:px-0'>
@@ -34,7 +35,7 @@ const ExpandedHeader = () => (
   </div>
 );
 const CompactHeader = () => (
-  <div className='flex items-start justify-between  px-4 py-4 md:px-0'>
+  <div className='flex items-start justify-between px-4 py-4 md:px-0'>
     <Link href={navigationLinks.home.href}>
       <Image
         src={GeoQuizLogoCompact}
@@ -55,7 +56,7 @@ const CompactHeader = () => (
 const LandingHeader = () => (
   <>
     <header className='mb-2'>
-      <div className='flex items-start justify-between  px-4 py-4 md:px-0'>
+      <div className='flex items-start justify-between px-4 py-4 md:px-0'>
         <Link href='/'>
           <Image
             src={GeoQuizLogoCompact}

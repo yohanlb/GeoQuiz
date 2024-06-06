@@ -1,6 +1,6 @@
 import React from 'react';
-import { getQuestionsFromDeckId } from '../queries/questions';
 import axios from 'axios';
+import { getQuestionsFromDeckId } from '../queries/questions';
 
 export function useFetchQuestions(
   { id, isDynamic, countryIds }: Deck,

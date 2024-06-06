@@ -32,7 +32,7 @@ const Gauge = ({
         className={`absolute h-full ${color} rounded-full`}
         style={{ width: `${clampedValue}%` }}
       ></div>
-      <div className='font-base absolute left-0 top-0 flex  h-full w-full items-center justify-center text-xs text-white'>
+      <div className='font-base absolute left-0 top-0 flex h-full w-full items-center justify-center text-xs text-white'>
         {value}%
       </div>
     </div>

@@ -18,7 +18,7 @@ const ResultsTable = ({ questions }: Props) => {
   );
 
   return (
-    <div className=' w-full overflow-x-auto'>
+    <div className='w-full overflow-x-auto'>
       <table className='min-w-full whitespace-nowrap text-left text-xs'>
         <thead className='border-b text-xs capitalize md:text-lg'>
           <tr>

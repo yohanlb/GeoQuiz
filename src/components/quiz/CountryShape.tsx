@@ -1,7 +1,8 @@
 'use client';
-import { Skeleton } from '@components/ui/skeleton';
+
 import React from 'react';
 import InlineSVG from 'react-inlinesvg';
+import { Skeleton } from '@components/ui/skeleton';
 
 type Props = {
   countryCode: string;

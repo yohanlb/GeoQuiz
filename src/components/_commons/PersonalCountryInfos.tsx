@@ -21,7 +21,7 @@ const PersonalCountryInfos = ({ countryId }: Props) => {
 
   return (
     <div className='flex flex-col items-end justify-end'>
-      <div className='flex items-center gap-2 justify-end text-left'>
+      <div className='flex items-center justify-end gap-2 text-left'>
         <span>Memory Index: </span>
         <RecallIndex countryId={countryId} />
       </div>

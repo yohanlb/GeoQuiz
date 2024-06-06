@@ -1,6 +1,6 @@
 import React from 'react';
-import Image from 'next/image';
 import { DECK_IMAGES } from '@lib/utils/importImages';
+import Image from 'next/image';
 
 type Props = {
   imageName: string;

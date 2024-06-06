@@ -29,9 +29,9 @@ export default function RootLayout({
     <html lang='en' className={`${inter.variable} ${notoEmoji.variable} dark`}>
       <MetaTags />
       <PHProvider>
-        <body className={`h-dvh  bg-background`}>
+        <body className={`h-dvh bg-background`}>
           <PostHogPageView />
-          <NextUIProvider className='h-full  overflow-y-auto'>
+          <NextUIProvider className='h-full overflow-y-auto'>
             <div className='mx-auto flex h-full max-w-screen-md flex-col'>
               <NavBar />
               <main className='flex-grow'>{children}</main>

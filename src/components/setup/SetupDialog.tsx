@@ -1,6 +1,7 @@
 'use client';
-import { Dialog, DialogTrigger } from '@components/ui/dialog';
+
 import React from 'react';
+import { Dialog, DialogTrigger } from '@components/ui/dialog';
 
 type Props = {
   gameDeck: Deck;

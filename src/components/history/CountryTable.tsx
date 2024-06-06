@@ -1,8 +1,7 @@
-import { Table, TableBody, TableCell, TableRow } from '@components/ui/table';
-import Link from 'next/link';
-
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
+import Link from 'next/link';
+import { Table, TableBody, TableCell, TableRow } from '@components/ui/table';
 
 type Props = {
   countries: CountryWithScores[];

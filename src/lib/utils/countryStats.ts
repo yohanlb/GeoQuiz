@@ -1,4 +1,6 @@
-export default function formatCountrySuccessPercentage(countryData:CountryData) {
+export default function formatCountrySuccessPercentage(
+  countryData: CountryData,
+) {
   if (!countryData.success_rate) {
     return '_';
   }

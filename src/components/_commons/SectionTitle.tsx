@@ -18,7 +18,7 @@ const SectionTitle = ({ text, variant = 'h2' }: Props) => {
       );
       break;
     case 'description':
-      return <p className='text-gray-400 md:text-base text-sm'>{text}</p>;
+      return <p className='text-sm text-gray-400 md:text-base'>{text}</p>;
       break;
   }
 };
