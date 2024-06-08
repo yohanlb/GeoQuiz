@@ -14,7 +14,6 @@ const CountriesTabs = dynamic(
 
 const Country = async () => {
   const groupedCountries = await getAllCountriesGrouped();
-  // countries.sort((a, b) => a.name.localeCompare(b.name));
 
   return (
     <div className='mx-auto flex flex-col gap-2 px-2 py-2 md:px-0'>
