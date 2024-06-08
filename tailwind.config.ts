@@ -25,14 +25,14 @@ const config = {
         emoji: ['var(--font-notoEmoji)'],
       },
       colors: {
-        background: '#1E2228',
+        background: '#1C2027',
         accent: {
           DEFAULT: '#FFB800',
           light: '#FFCA33',
           dark: '#CC9200',
         },
-        'bg-gradient-start': '#22262C',
-        'bg-gradient-end': '#0F141C',
+        'bg-gradient-start': '#1D2228',
+        'bg-gradient-end': '#06080B',
       },
       boxShadow: {
         light: '6px 4px 8px 0px rgba(0, 0, 0, 0.2)',
