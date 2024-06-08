@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { TbCardsFilled } from 'react-icons/tb';
 import CommunityScore from '@components/_commons/CommunityScore';
 import UserProgress from '@components/_commons/UserProgress';
 
@@ -12,12 +11,6 @@ type Props = {
 function SetupStats({ deck }: Props) {
   return (
     <div className='flex flex-col gap-4 text-sm font-thin'>
-      <div className='flex'>
-        <span>
-          <TbCardsFilled className='inline size-5' /> {deck.countryIds.length}{' '}
-          Countries.
-        </span>
-      </div>
       <div className='flex justify-between'>
         <UserProgress deck={deck} />
         <CommunityScore deck={deck} />

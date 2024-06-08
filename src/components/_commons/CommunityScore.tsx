@@ -10,7 +10,7 @@ type Props = {
 function CommunityScore({ deck }: Props) {
   return (
     <div className='flex flex-col items-end gap-2'>
-      <p className='font-medium leading-none'>Community Score</p>
+      <p className='font-normal leading-none'>Community Score</p>
       <div className='flex items-center gap-2'>
         <PiCity className='size-6 shrink-0' />
         <HorizontalBars value={deck.averageSuccessRatio} />

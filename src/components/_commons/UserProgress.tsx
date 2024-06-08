@@ -14,7 +14,7 @@ const UserProgress = ({ deck }: Props) => {
 
   return (
     <div className='flex flex-col gap-2'>
-      <p className='font-medium leading-none'>Your Progress</p>
+      <p className='font-normal leading-none'>Your Progress</p>
       <div className='flex items-center gap-1'>
         <PiCity className='size-6 shrink-0' />
         <div className='col-span-2 w-20'>
