@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { useCountryHistory } from '@/src/stores/countryHistoryStore';
-import RecallIndex from '@components/_commons/RecallIndex';
 import LastAttempts from '../quiz/LastAttempts';
+import UserProgress from './UserProgress';
 
 type Props = {
   countryId: CountryData['id'];
@@ -22,8 +22,11 @@ const PersonalCountryInfos = ({ countryId }: Props) => {
   return (
     <div className='flex flex-col items-end justify-end'>
       <div className='flex items-center justify-end gap-2 text-left'>
-        <span>Memory Index: </span>
-        <RecallIndex countryId={countryId} />
+        <UserProgress
+          countryIds={[countryId]}
+          hideTitle
+          onlyCurrentQuestionType
+        />
       </div>
       <div>
         <span>Last Attempts: </span>

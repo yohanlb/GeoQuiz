@@ -11,7 +11,7 @@ type Props = {
 function DeckItemStats({ deck }: Props) {
   return (
     <div className='flex justify-between'>
-      <UserProgress deck={deck} />
+      <UserProgress countryIds={deck.countryIds} />
       <CommunityScore deck={deck} />
     </div>
   );
