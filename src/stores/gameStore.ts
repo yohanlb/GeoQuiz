@@ -8,6 +8,7 @@ interface GameStoreState {
   incrementQuestionIndex: () => void;
   questionType: QuestionType;
   toggleQuestionType: () => void;
+  setQuestionType: (questionType: QuestionType) => void;
   isShowingAnswer: boolean;
   setIsShowingAnswer: (isShowingAnswer: boolean) => void;
   userAnswers: string[];
@@ -74,6 +75,9 @@ const useGameStore = create<GameStoreState>()(
               : 'CountryToCapital',
         }));
       },
+
+      setQuestionType: (questionType: QuestionType) =>
+        set(() => ({ questionType })),
     }),
     {
       partialize: (state) => ({ questionType: state.questionType }),
