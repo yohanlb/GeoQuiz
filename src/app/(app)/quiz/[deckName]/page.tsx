@@ -2,14 +2,14 @@ import GameClientWrapper from '@components/quiz/GameClientWrapper';
 import { getDeckByName } from '../../../../queries/gameDecks';
 
 type Props = {
-  params: { gameDeck: string };
+  params: { deckName: string };
   searchParams: {
     length: number;
     dynamicCountryIds: string;
   };
 };
 const Quiz = async ({ params, searchParams }: Props) => {
-  const deck = await getDeckByName(params.gameDeck);
+  const deck = await getDeckByName(params.deckName);
 
   if (deck.isDynamic && searchParams.dynamicCountryIds) {
     // to implement dynamic deck, provide it to search params: ?dynamicCountryIds=75,1
@@ -24,7 +24,7 @@ const Quiz = async ({ params, searchParams }: Props) => {
       <GameClientWrapper
         deck={deck}
         amountOfQuestions={searchParams.length}
-        deckName={params.gameDeck}
+        deckName={params.deckName}
       />
     </div>
   );

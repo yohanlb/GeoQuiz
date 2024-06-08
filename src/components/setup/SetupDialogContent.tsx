@@ -11,11 +11,11 @@ import {
 import SetupStats from './SetupStats';
 
 type Props = {
-  gameDeck: Deck;
+  deck: Deck;
 };
 
-export default function SetupDialogContent({ gameDeck }: Props) {
-  if (!gameDeck) {
+export default function SetupDialogContent({ deck }: Props) {
+  if (!deck) {
     return null;
   }
 
@@ -23,20 +23,17 @@ export default function SetupDialogContent({ gameDeck }: Props) {
     <DialogContent>
       <DialogHeader>
         <DialogTitle className='text-2xl font-extralight'>
-          {gameDeck.displayName}
+          {deck.displayName}
         </DialogTitle>
       </DialogHeader>
       <div className='flex flex-col gap-6 font-extralight'>
-        {gameDeck.description && (
-          <p className='text-left text-sm italic'>{gameDeck.description}</p>
+        {deck.description && (
+          <p className='text-left text-sm italic'>{deck.description}</p>
         )}
-        <DeckImage
-          imageName={gameDeck.name}
-          alt={gameDeck.displayName || gameDeck.name}
-        />
-        <SetupStats gameDeck={gameDeck} />
+        <DeckImage imageName={deck.name} alt={deck.displayName || deck.name} />
+        <SetupStats deck={deck} />
         <div className='flex justify-center'>
-          <Link href={`/quiz/${gameDeck.name || ''}?length=10`}>
+          <Link href={`/quiz/${deck.name || ''}?length=10`}>
             <button
               type='submit'
               className='w-60 rounded-xl border border-gray-400 py-2 text-2xl font-bold italic text-white hover:border-white active:bg-white active:text-background md:w-96 md:text-5xl'
