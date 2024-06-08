@@ -1,4 +1,5 @@
 import { AVAILABLE_QUESTION_TYPES } from '@lib/consts';
+import { calculateRecallIndex } from '@lib/utils/score';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import useGameStore from './gameStore';
@@ -42,9 +43,11 @@ const defaultCountryResultsData: CountryResultsData = {
 interface CountryResultsState {
   countryResultsData: CountryResultsData;
   clearAllCountryScores: () => void;
-  getLastScoresForCountry: (countryId: Deck['id']) => CountryScore[];
+  getLastScoresForCountry: (countryId: CountryData['id']) => CountryScore[];
   getHistoryCountriesGuessed: () => CountryGuessHistory[];
-  addCountryScores: (countryId: Deck['id'], scores: boolean) => void;
+  addCountryScores: (countryId: CountryData['id'], scores: boolean) => void;
+  isCountryRemembered: (countryId: CountryData['id']) => boolean;
+  getProgressPercentForCountryIds: (countryIds: CountryData['id'][]) => number;
 }
 
 export const useCountryHistory = create<CountryResultsState>()(
@@ -52,10 +55,36 @@ export const useCountryHistory = create<CountryResultsState>()(
     (set, get) => ({
       countryResultsData: defaultCountryResultsData,
 
+      isCountryRemembered(countryId) {
+        const { countryResultsData } = get();
+        const { questionType } = useGameStore.getState();
+        const countryHistory =
+          countryResultsData.history_per_country[questionType][countryId];
+
+        if (!countryHistory || countryHistory.length === 0) {
+          return false;
+        }
+        const scores = countryHistory.map((scoreObject) => scoreObject.scores);
+        return calculateRecallIndex(scores) > 7;
+      },
+
+      getProgressPercentForCountryIds: (countryIds: CountryData['id'][]) => {
+        const { isCountryRemembered } = get();
+        const countriesRemembered = countryIds.reduce((acc, countryId) => {
+          const countryProgress = isCountryRemembered(countryId);
+          if (countryProgress) {
+            acc += 1;
+          }
+          return acc;
+        }, 0);
+
+        return Math.round((countriesRemembered / countryIds.length) * 100);
+      },
+
       clearAllCountryScores: () =>
         set({ countryResultsData: defaultCountryResultsData }),
 
-      getLastScoresForCountry: (countryId: Deck['id']) => {
+      getLastScoresForCountry: (countryId: CountryData['id']) => {
         const { countryResultsData } = get();
         const { questionType } = useGameStore.getState();
         return (
@@ -71,7 +100,7 @@ export const useCountryHistory = create<CountryResultsState>()(
         return countryGuessHistory.slice(-20).reverse();
       },
 
-      addCountryScores: (countryId: Deck['id'], scores: boolean) => {
+      addCountryScores: (countryId: CountryData['id'], scores: boolean) => {
         set((state) => {
           const { questionType } = useGameStore.getState();
           const updatedCountryScores =
