@@ -17,22 +17,15 @@ type Props = {
 type ProgressLineProps = {
   icon: React.ComponentType<{ className?: string }>;
   progress: number;
-  placeholder?: boolean;
 };
 
-const ProgressLine = ({
-  icon: Icon,
-  progress,
-  placeholder = false,
-}: ProgressLineProps) => (
+const ProgressLine = ({ icon: Icon, progress }: ProgressLineProps) => (
   <div className='flex items-center gap-1'>
     <Icon className='size-6 shrink-0' />
     <div className='col-span-2 w-20'>
-      <UserProgressBar value={placeholder ? 0 : progress} />
+      <UserProgressBar value={progress} />
     </div>
-    <span className='font-mono font-medium'>
-      {placeholder ? '__' : progress}%
-    </span>
+    <span className='font-mono font-medium'>{progress}%</span>
   </div>
 );
 
@@ -41,10 +34,9 @@ const UserProgress = ({
   hideTitle = false,
   onlyCurrentQuestionType = false,
 }: Props) => {
+  const { questionType } = useGameStore();
   const { getProgressPercentForCountryIds } = useCountryHistory();
   const progress = getProgressPercentForCountryIds(countryIds);
-
-  const { questionType } = useGameStore();
 
   return (
     <div className='flex flex-col gap-2'>
@@ -58,8 +50,7 @@ const UserProgress = ({
       {(questionType === 'CountryToFlag' || !onlyCurrentQuestionType) && (
         <ProgressLine
           icon={onlyCurrentQuestionType ? GiProgression : FaRegFlag}
-          progress={0}
-          placeholder
+          progress={progress}
         />
       )}
     </div>
