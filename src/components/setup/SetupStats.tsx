@@ -12,7 +12,7 @@ function SetupStats({ deck }: Props) {
   return (
     <div className='flex flex-col gap-4 text-sm font-thin'>
       <div className='flex justify-between'>
-        <UserProgress countryIds={deck.countryIds} />
+        <UserProgress countryIds={deck.countryIds} onlyCurrentQuestionType />
         <CommunityScore deck={deck} />
       </div>
     </div>

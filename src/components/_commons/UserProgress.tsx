@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { FaRegFlag } from 'react-icons/fa6';
+import { GiProgression } from 'react-icons/gi';
 import { PiCity } from 'react-icons/pi';
 import { useCountryHistory } from '@/src/stores/countryHistoryStore';
 import useGameStore from '@/src/stores/gameStore';
@@ -49,10 +50,17 @@ const UserProgress = ({
     <div className='flex flex-col gap-2'>
       {!hideTitle && <p className='font-normal leading-none'>Your Progress</p>}
       {(questionType === 'CountryToCapital' || !onlyCurrentQuestionType) && (
-        <ProgressLine icon={PiCity} progress={progress} />
+        <ProgressLine
+          icon={onlyCurrentQuestionType ? GiProgression : PiCity}
+          progress={progress}
+        />
       )}
       {(questionType === 'CountryToFlag' || !onlyCurrentQuestionType) && (
-        <ProgressLine icon={FaRegFlag} progress={0} placeholder />
+        <ProgressLine
+          icon={onlyCurrentQuestionType ? GiProgression : FaRegFlag}
+          progress={0}
+          placeholder
+        />
       )}
     </div>
   );
