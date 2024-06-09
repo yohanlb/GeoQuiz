@@ -2,9 +2,9 @@ import React from 'react';
 import { TbCardsFilled } from 'react-icons/tb';
 import Link from 'next/link';
 import DeckImage from '@components/_commons/DeckImage';
+import PlayButton from '@components/_commons/PlayButton';
 import SelectQuestionType from '@components/_commons/SelectQuestionType';
 import SetupStats from '@components/setup/SetupStats';
-import { Button } from '@components/ui/button';
 
 type Props = {
   deck: Deck;
@@ -33,12 +33,7 @@ const DeckPageContent = ({ deck, hideTitle = false }: Props) => {
       </div>
       <div className='flex justify-center'>
         <Link href={`/quiz/${deck.name || ''}?length=10`}>
-          <Button
-            size={'lg'}
-            className='rounded-xl p-6 text-4xl font-extrabold italic'
-          >
-            Play !
-          </Button>
+          <PlayButton text={'Play!'} />
         </Link>
       </div>
     </>
