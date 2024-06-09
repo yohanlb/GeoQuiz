@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { useDeckHistory } from '@/src/stores/deckHistoryStore';
+import useGameStore from '@/src/stores/gameStore';
 import DeckItem from '@components/_commons/DeckItem';
 import SectionTitle from '@components/_commons/SectionTitle';
 
@@ -11,6 +12,10 @@ const DeckHistory = ({ decks }: Props) => {
   const getLastPlayedDeckIds = useDeckHistory(
     (state) => state.getLastPlayedDeckIds,
   );
+  const { questionType } = useGameStore();
+  React.useEffect(() => {
+    // Force re-render on questionType change
+  }, [questionType]);
 
   // Trick to avoid client-side hydration error
   const [isMounted, setIsMounted] = React.useState(false);
