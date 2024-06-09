@@ -13,8 +13,11 @@ export default function TabsQuestionType() {
     <div className='flex flex-col'>
       <Tabs
         aria-label='Options'
-        color='primary'
+        color='warning'
+        size='lg'
+        radius='sm'
         variant='bordered'
+        className='border-white'
         selectedKey={questionType}
         onSelectionChange={(key) => setQuestionType(key as QuestionType)}
       >
@@ -23,7 +26,7 @@ export default function TabsQuestionType() {
           title={
             <div className='flex items-center space-x-2'>
               <PiCity />
-              <span>Capital</span>
+              <span>Capitals</span>
             </div>
           }
         />
@@ -32,7 +35,7 @@ export default function TabsQuestionType() {
           title={
             <div className='flex items-center space-x-2'>
               <FaRegFlag />
-              <span>Flag</span>
+              <span>Flags</span>
             </div>
           }
         />

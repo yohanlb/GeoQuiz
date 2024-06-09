@@ -18,7 +18,7 @@ export default function SetupDialogContent({ deck }: Props) {
   }
 
   return (
-    <DialogContent>
+    <DialogContent className='bg-gradient-to-b from-bg-gradient-start to-bg-gradient-end'>
       <DialogHeader>
         <DialogTitle className='text-left text-2xl font-semibold'>
           {deck.displayName}
