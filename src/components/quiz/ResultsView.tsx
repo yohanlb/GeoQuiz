@@ -19,7 +19,7 @@ function ResultsView({ questions, handleRestart }: ResultsViewProps) {
 
   return (
     <div className='flex h-full flex-col items-center justify-evenly gap-4 pb-3 md:px-0 md:py-2'>
-      <div className='flex flex-col gap-4'>
+      <div className='flex flex-col gap-1 md:gap-4'>
         <h1 className='text-5xl font-bold uppercase italic tracking-wider'>
           Results
         </h1>
