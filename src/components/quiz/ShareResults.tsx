@@ -34,7 +34,8 @@ const ShareResults = ({ questions }: Props) => {
     const totalQuestions = questions.length;
     const scorePercentage = Math.round((correctAnswers / totalQuestions) * 100);
 
-    const shareMessage = `Check out my GeoQuiz Results!\n\nScore: ${correctAnswers}/${totalQuestions} (${scorePercentage}%)\nDeck: ${deck?.displayName}\n${resultsSummary}\n\n${WEBSITE_URL}`;
+    const link = WEBSITE_URL + (deck?.name ? `/decks/${deck?.name}` : '');
+    const shareMessage = `Check out my GeoQuiz Results!\n\nScore: ${correctAnswers}/${totalQuestions} (${scorePercentage}%)\nDeck: ${deck?.displayName}\n${resultsSummary}\n\n${link}`;
     return shareMessage;
   };
 
