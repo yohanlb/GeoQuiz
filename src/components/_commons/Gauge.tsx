@@ -1,4 +1,5 @@
 import React from 'react';
+import { Progress } from '@nextui-org/react';
 
 const Gauge = ({
   value,
@@ -9,31 +10,32 @@ const Gauge = ({
 }) => {
   const clampedValue = Math.max(Math.min(value, 100), 0);
 
-  let color = 'bg-green-500';
-
+  let color: any = 'success'; //eslint-disable-line
   if (value < 66) {
     if (variant === 'progress') {
-      color = 'bg-blue-500';
+      color = 'primary';
     } else {
-      color = 'bg-yellow-500';
+      color = 'warning';
     }
   }
   if (value < 33) {
     if (variant === 'progress') {
-      color = 'bg-gray-800';
+      color = 'default';
     } else {
-      color = 'bg-red-500';
+      color = 'danger';
     }
   }
 
   return (
-    <div className='relative h-4 w-16 rounded-full bg-gray-800'>
-      <div
-        className={`absolute h-full ${color} rounded-full`}
-        style={{ width: `${clampedValue}%` }}
-      ></div>
-      <div className='font-base absolute left-0 top-0 flex h-full w-full items-center justify-center text-xs text-white'>
-        {value}%
+    <div className='relative w-16'>
+      <Progress
+        size='lg'
+        aria-label={`${clampedValue}%`}
+        value={clampedValue}
+        color={color}
+      />
+      <div className='absolute left-0 top-0 flex h-full w-full items-center justify-center text-xs font-medium text-white'>
+        {clampedValue}%
       </div>
     </div>
   );

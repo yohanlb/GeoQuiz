@@ -20,12 +20,11 @@ type ProgressLineProps = {
 };
 
 const ProgressLine = ({ icon: Icon, progress }: ProgressLineProps) => (
-  <div className='flex items-center gap-1'>
+  <div className='flex items-center gap-2'>
     <Icon className='size-6 shrink-0' />
-    <div className='col-span-2 w-20'>
+    <div className='col-span-2 w-32'>
       <UserProgressBar value={progress} />
     </div>
-    <span className='font-mono font-medium'>{progress}%</span>
   </div>
 );
 
