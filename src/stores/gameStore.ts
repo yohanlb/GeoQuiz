@@ -19,6 +19,7 @@ interface GameStoreState {
   resetUserResults: () => void;
   deck: Deck | null;
   setDeck: (deck: Deck) => void;
+  resetGame: () => void;
 }
 
 const useGameStore = create<GameStoreState>()(
@@ -55,6 +56,16 @@ const useGameStore = create<GameStoreState>()(
 
       resetUserResults() {
         set(() => ({ userResults: [] }));
+      },
+
+      resetGame() {
+        set(() => ({
+          currentQuestionIndex: 0,
+          gameState: 'playing',
+          isShowingAnswer: false,
+          userAnswers: [],
+          userResults: [],
+        }));
       },
 
       incrementQuestionIndex: () =>

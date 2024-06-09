@@ -29,6 +29,7 @@ function GameController({ questions }: Props) {
     gameState,
     setGameState,
     deck,
+    resetGame,
   } = useGameStore();
   const updateDeckScore = useDeckHistory((state) => state.updateDeckScore);
   const addCountryScores = useCountryHistory((state) => state.addCountryScores);
@@ -88,8 +89,7 @@ function GameController({ questions }: Props) {
 
   // FIRST INITIALIZATION
   React.useEffect(() => {
-    resetUserResults();
-    setGameState('playing');
+    resetGame();
   }, [resetUserResults, setGameState]);
 
   // AFTER GAME FINISHED
