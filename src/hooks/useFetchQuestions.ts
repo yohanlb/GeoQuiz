@@ -7,9 +7,10 @@ export function useFetchQuestions(
   { id, isDynamic, countryIds }: Deck,
   length: number,
 ) {
+  const { questionType, isGameStoreInitialized } = useGameStore();
+
   const [questions, setQuestions] = React.useState<Question[]>([]);
   const [isLoading, setIsLoading] = React.useState(true);
-  const { questionType } = useGameStore();
 
   React.useEffect(() => {
     const fetchQuestions = async () => {
@@ -37,8 +38,10 @@ export function useFetchQuestions(
       }
       setIsLoading(false);
     };
+
+    if (!isGameStoreInitialized) return;
     fetchQuestions();
-  }, [id, length, isDynamic, countryIds, questionType]);
+  }, [id, length, isDynamic, countryIds, questionType, isGameStoreInitialized]);
 
   return { questions, isLoading };
 }

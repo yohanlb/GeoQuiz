@@ -20,6 +20,8 @@ interface GameStoreState {
   deck: Deck | null;
   setDeck: (deck: Deck) => void;
   resetGame: () => void;
+  isGameStoreInitialized: boolean;
+  setIsGameStoreInitialized: (isGameStoreInitialized: boolean) => void;
 }
 
 const useGameStore = create<GameStoreState>()(
@@ -32,6 +34,11 @@ const useGameStore = create<GameStoreState>()(
       userAnswers: [],
       userResults: [],
       deck: null,
+      isGameStoreInitialized: false,
+
+      setIsGameStoreInitialized(isGameStoreInitialized) {
+        set(() => ({ isGameStoreInitialized }));
+      },
 
       setDeck(deck) {
         set(() => ({ deck }));
@@ -91,8 +98,16 @@ const useGameStore = create<GameStoreState>()(
         set(() => ({ questionType })),
     }),
     {
-      partialize: (state) => ({ questionType: state.questionType }),
+      partialize: (state) => ({
+        questionType: state.questionType,
+        isGameStoreInitialized: state.isGameStoreInitialized,
+      }),
       name: 'game-settings', // name of the item in the storage
+      onRehydrateStorage: () => (state) => {
+        if (state) {
+          state.setIsGameStoreInitialized(true);
+        }
+      },
     },
   ),
 );
