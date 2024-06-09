@@ -3,6 +3,7 @@ import useGameStore from '@/src/stores/gameStore';
 import { navigationLinks } from '@lib/navigationLinks';
 import { calculateNewDeckScore } from '@lib/utils/score';
 import Link from 'next/link';
+import LinkToDeck from './LinkToDeck';
 import ResultsTable from './ResultsTable';
 import ShareResults from './ShareResults';
 
@@ -18,9 +19,12 @@ function ResultsView({ questions, handleRestart }: ResultsViewProps) {
 
   return (
     <div className='flex h-full flex-col items-center justify-evenly gap-4 pb-3 md:px-0 md:py-2'>
-      <h1 className='text-5xl font-bold uppercase italic tracking-wider'>
-        Results
-      </h1>
+      <div className='flex flex-col gap-4'>
+        <h1 className='text-5xl font-bold uppercase italic tracking-wider'>
+          Results
+        </h1>
+        <LinkToDeck />
+      </div>
       <ResultsTable questions={questions} />
       <div className='flex flex-wrap items-center justify-center gap-2 text-xl tracking-wider'>
         <p>{newDeckScore}% of correct answers!</p>
