@@ -35,13 +35,10 @@ const ResultsTable = ({ questions }: Props) => {
             <motion.tr
               className='border-b border-gray-500 hover:bg-gray-800'
               key={question.countryData.id}
-              initial={{ translateX: 500, opacity: 0 }}
-              animate={{ translateX: 0, opacity: 1 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{
-                type: 'spring',
-                damping: 15,
-                stiffness: 30,
-                restDelta: 0.001,
+                type: 'elastic',
                 delay: index * 0.3,
               }}
             >
@@ -62,14 +59,14 @@ const ResultsTable = ({ questions }: Props) => {
                 aria-label={`Result for question ${index + 1}: ${question.userResult} `}
               >
                 <motion.span
-                  initial={{ scale: 3, opacity: 0 }}
+                  initial={{ scale: 0, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{
                     type: 'spring',
                     damping: 15,
                     stiffness: 300,
                     restDelta: 0.001,
-                    delay: 2 + questionsWithResults.length * 0.3 + index * 0.02,
+                    delay: questionsWithResults.length * 0.3 + index * 0.02,
                   }}
                   className={`inline-block ${question.userResult === 'valid' ? 'text-green-500' : 'text-red-500'}`}
                 >
