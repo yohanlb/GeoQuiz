@@ -6,14 +6,21 @@ import DeckItemLarge from '@components/_commons/DeckItemLarge';
 
 type DeckListProps = {
   decks: Deck[];
+  filterCategory?: string;
 };
 
 const SWITCH_SIZE = false;
 
-const DeckList: React.FC<DeckListProps> = ({ decks }) => {
+const DeckList: React.FC<DeckListProps> = ({ decks, filterCategory }) => {
+  const filteredDecks = decks.filter((deck) => {
+    if (filterCategory) {
+      return !!deck.categories && deck.categories.includes(filterCategory);
+    } else return true;
+  });
+
   return (
-    <ul className='flex flex-col space-y-3'>
-      {decks.map((deck) =>
+    <ul className='mx-auto flex w-full max-w-96 flex-col space-y-3'>
+      {filteredDecks.map((deck) =>
         SWITCH_SIZE ? (
           <li key={deck.id}>
             <Link
