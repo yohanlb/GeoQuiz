@@ -45,7 +45,7 @@ const CountryHistory = ({ countries }: Props) => {
 
   return (
     <div className='space-y-3'>
-      <SectionTitle text='Last Countries Guessed' variant='h3' />
+      <SectionTitle text='Last Guessed Countries' variant='h3' />
       {lastPlayedCountries.length > 0 ? (
         <CountryTable countries={lastPlayedCountries.slice(0, 10)} />
       ) : (
