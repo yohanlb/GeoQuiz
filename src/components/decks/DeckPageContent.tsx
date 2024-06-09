@@ -2,7 +2,7 @@ import React from 'react';
 import { TbCardsFilled } from 'react-icons/tb';
 import Link from 'next/link';
 import DeckImage from '@components/_commons/DeckImage';
-import TabsQuestionType from '@components/_commons/TabsQuestionType';
+import SelectQuestionType from '@components/_commons/SelectQuestionType';
 import SetupStats from '@components/setup/SetupStats';
 import { Button } from '@components/ui/button';
 
@@ -29,7 +29,7 @@ const DeckPageContent = ({ deck, hideTitle = false }: Props) => {
       <DeckImage imageName={deck.name} alt={deck.name} />
       <SetupStats deck={deck} />
       <div className='flex justify-center'>
-        <TabsQuestionType />
+        <SelectQuestionType />
       </div>
       <div className='flex justify-center'>
         <Link href={`/quiz/${deck.name || ''}?length=10`}>
