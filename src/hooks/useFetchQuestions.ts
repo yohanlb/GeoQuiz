@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { getQuestionsFromDeckId } from '../queries/questions';
+import useGameStore from '../stores/gameStore';
 
 export function useFetchQuestions(
   { id, isDynamic, countryIds }: Deck,
@@ -8,6 +9,7 @@ export function useFetchQuestions(
 ) {
   const [questions, setQuestions] = React.useState<Question[]>([]);
   const [isLoading, setIsLoading] = React.useState(true);
+  const { questionType } = useGameStore();
 
   React.useEffect(() => {
     const fetchQuestions = async () => {
@@ -30,13 +32,13 @@ export function useFetchQuestions(
         setQuestions(response.data as Question[]);
       } else {
         // if not dynamic, questions are fetch based on deckId
-        const response = await getQuestionsFromDeckId(id, length);
+        const response = await getQuestionsFromDeckId(id, length, questionType);
         setQuestions(response as Question[]);
       }
       setIsLoading(false);
     };
     fetchQuestions();
-  }, [id, length, isDynamic, countryIds]);
+  }, [id, length, isDynamic, countryIds, questionType]);
 
   return { questions, isLoading };
 }
