@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { useCountryHistory } from '@/src/stores/countryHistoryStore';
+import useGameStore from '@/src/stores/gameStore';
 import SectionTitle from '@components/_commons/SectionTitle';
 import CountryTable from './CountryTable';
 
@@ -11,12 +12,18 @@ const CountryHistory = ({ countries }: Props) => {
   const getHistoryCountriesGuessed = useCountryHistory(
     (state) => state.getHistoryCountriesGuessed,
   );
+  const { questionType } = useGameStore();
 
   // Trick to avoid client-side hydration error
   const [isMounted, setIsMounted] = React.useState(false);
   React.useEffect(() => {
     setIsMounted(true);
   }, []);
+
+  React.useEffect(() => {
+    // Force re-render on questionType change
+  }, [questionType]);
+
   if (!isMounted) {
     return null;
   }

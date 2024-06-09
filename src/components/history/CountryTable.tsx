@@ -30,11 +30,9 @@ const CountryTable = ({ countries }: Props) => {
                 aria-label={country.name}
               />
             </TableCell>
-            <Link href={`/countries/${country.id}`}>
-              <TableCell className='px-0 py-1 font-thin underline-offset-2 group-hover:underline'>
-                {country.name}
-              </TableCell>
-            </Link>
+            <TableCell className='px-0 py-1 font-thin underline-offset-2 group-hover:underline'>
+              <Link href={`/countries/${country.id}`}>{country.name}</Link>
+            </TableCell>
             <TableCell className='px-0 py-1 font-thin'>
               {country.capital}
             </TableCell>
