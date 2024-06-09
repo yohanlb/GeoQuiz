@@ -43,6 +43,7 @@ function GameController({ questions }: Props) {
       postCountryStats(
         questions[currentQuestionIndex].countryData.id,
         userAnswers.length < 1,
+        questionType,
       );
     });
     resetUserAnswers();

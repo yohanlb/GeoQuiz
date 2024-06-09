@@ -12,6 +12,7 @@ type UpdateCountryStatsResponse = {
 export async function postCountryStats(
   countryId: number,
   guessedRight: boolean,
+  questionType: QuestionType,
 ) {
   try {
     const response: AxiosResponse<UpdateCountryStatsResponse> =
@@ -20,6 +21,7 @@ export async function postCountryStats(
         {
           countryId: countryId,
           guessedRight: guessedRight,
+          questionType,
         },
         {
           headers: {
