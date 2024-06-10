@@ -39,7 +39,9 @@ const UserProgress = ({
 
   return (
     <div className='flex flex-col gap-2'>
-      {!hideTitle && <p className='font-normal leading-none'>Your Progress</p>}
+      {!hideTitle && (
+        <p className='font-extralight leading-none'>Your Progress</p>
+      )}
       {(questionType === 'CountryToCapital' || !onlyCurrentQuestionType) && (
         <ProgressLine
           icon={onlyCurrentQuestionType ? GiProgression : PiCity}

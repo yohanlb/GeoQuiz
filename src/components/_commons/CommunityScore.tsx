@@ -17,7 +17,7 @@ function CommunityScore({ deck }: Props) {
 
   return (
     <div className='flex flex-col items-end gap-2'>
-      <p className='font-normal leading-none'>Community Score</p>
+      <p className='font-extralight leading-none'>Community Score</p>
       <div className='flex items-center gap-2'>
         <GrScorecard className='size-6 shrink-0' />
         <HorizontalBars value={scoreToDisplay} />
