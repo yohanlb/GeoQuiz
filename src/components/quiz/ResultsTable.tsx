@@ -4,8 +4,8 @@ import useGameStore from '@/src/stores/gameStore';
 import { navigationLinks } from '@lib/navigationLinks';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import Gauge from '@components/_commons/Gauge';
 import RecallIndex from '@components/_commons/RecallIndex';
+import StarDifficultyDisplay from '@components/_commons/StarDifficultyDisplay';
 
 type Props = {
   questions: Question[];
@@ -26,10 +26,11 @@ const ResultsTable = ({ questions }: Props) => {
         <thead className='border-b text-xs capitalize md:text-lg'>
           <tr>
             <th className='px-2 py-2 font-normal'>Country</th>
+            <th className='px-2 py-2 font-normal'>Difficulty</th>
+            <th className='px-2 py-2 font-normal'>Flag</th>
             <th className='px-2 py-2 font-normal'>Capital</th>
             <th className='px-2 py-2 font-normal'>Result</th>
             <th className='text-wrap px-2 py-2 font-normal'>Progress</th>
-            <th className='px-2 py-2 font-normal'>Community Avg</th>
           </tr>
         </thead>
         <tbody className='text-xs md:text-base'>
@@ -45,12 +46,6 @@ const ResultsTable = ({ questions }: Props) => {
               }}
             >
               <td className='text-wrap break-words px-2 py-2 font-extralight'>
-                <ReactCountryFlag
-                  aria-label={question.countryData.name}
-                  svg
-                  countryCode={question.countryData.iso2}
-                  className='align-middle'
-                />{' '}
                 <Link
                   href={
                     navigationLinks.countries.href +
@@ -61,6 +56,21 @@ const ResultsTable = ({ questions }: Props) => {
                 >
                   {question.countryData.name}
                 </Link>
+              </td>
+              <td className='px-2 py-2 font-extralight'>
+                <StarDifficultyDisplay
+                  percent={Math.round(
+                    question.countryData.success_rate_capital * 100,
+                  )}
+                />
+              </td>
+              <td className='text-wrap break-words px-2 py-2 font-extralight'>
+                <ReactCountryFlag
+                  aria-label={question.countryData.name}
+                  svg
+                  countryCode={question.countryData.iso2}
+                  className='align-middle text-xl md:text-3xl'
+                />
               </td>
               <td className='text-wrap break-words px-2 py-2 font-extralight'>
                 {question.countryData.capital}
@@ -86,13 +96,6 @@ const ResultsTable = ({ questions }: Props) => {
               </td>
               <td className='px-2 py-2 font-extralight'>
                 <RecallIndex countryId={question.countryData.id} />
-              </td>
-              <td className='px-2 py-2 font-extralight'>
-                <Gauge
-                  value={Math.round(
-                    question.countryData.success_rate_capital * 100,
-                  )}
-                />
               </td>
             </motion.tr>
           ))}
