@@ -69,16 +69,18 @@ export const useCountryHistory = create<CountryResultsState>()(
       },
 
       getProgressPercentForCountryIds: (countryIds: CountryData['id'][]) => {
-        const { isCountryRemembered } = get();
+        const { getLastScoresForCountry } = get();
         const countriesRemembered = countryIds.reduce((acc, countryId) => {
-          const countryProgress = isCountryRemembered(countryId);
-          if (countryProgress) {
-            acc += 1;
-          }
+          const countryScores = getLastScoresForCountry(countryId).map(
+            (scoreObject) => scoreObject.scores,
+          );
+          const recallIndex = calculateRecallIndex(countryScores);
+          const clampedIndex = Math.max(Math.min(recallIndex, 10), 0);
+          acc += clampedIndex;
           return acc;
         }, 0);
 
-        return Math.round((countriesRemembered / countryIds.length) * 100);
+        return Math.round((countriesRemembered / countryIds.length) * 10);
       },
 
       clearAllCountryScores: () =>

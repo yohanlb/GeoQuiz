@@ -1,9 +1,9 @@
 'use client';
 
 import React from 'react';
-import { FaRegFlag } from 'react-icons/fa6';
-import { GiProgression } from 'react-icons/gi';
-import { PiCity } from 'react-icons/pi';
+// import { FaRegFlag } from 'react-icons/fa6';
+// import { GiProgression } from 'react-icons/gi';
+// import { PiCity } from 'react-icons/pi';
 import { useCountryHistory } from '@/src/stores/countryHistoryStore';
 import useGameStore from '@/src/stores/gameStore';
 import UserProgressBar from './UserProgressBar';
@@ -15,13 +15,13 @@ type Props = {
 };
 
 type ProgressLineProps = {
-  icon: React.ComponentType<{ className?: string }>;
+  icon?: React.ComponentType<{ className?: string }>;
   progress: number;
 };
 
 const ProgressLine = ({ icon: Icon, progress }: ProgressLineProps) => (
   <div className='flex items-center gap-2'>
-    <Icon className='size-6 shrink-0' />
+    {!!Icon && <Icon className='size-6 shrink-0' />}
     <div className='col-span-2 w-32'>
       <UserProgressBar value={progress} />
     </div>
@@ -44,13 +44,13 @@ const UserProgress = ({
       )}
       {(questionType === 'CountryToCapital' || !onlyCurrentQuestionType) && (
         <ProgressLine
-          icon={onlyCurrentQuestionType ? GiProgression : PiCity}
+          // icon={onlyCurrentQuestionType ? GiProgression : PiCity}
           progress={progress}
         />
       )}
       {(questionType === 'CountryToFlag' || !onlyCurrentQuestionType) && (
         <ProgressLine
-          icon={onlyCurrentQuestionType ? GiProgression : FaRegFlag}
+          // icon={onlyCurrentQuestionType ? GiProgression : FaRegFlag}
           progress={progress}
         />
       )}

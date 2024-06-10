@@ -4,8 +4,8 @@ import useGameStore from '@/src/stores/gameStore';
 import { navigationLinks } from '@lib/navigationLinks';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import RecallIndex from '@components/_commons/RecallIndex';
 import StarDifficultyDisplay from '@components/_commons/StarDifficultyDisplay';
+import UserProgress from '@components/_commons/UserProgress';
 
 type Props = {
   questions: Question[];
@@ -95,7 +95,11 @@ const ResultsTable = ({ questions }: Props) => {
                 </motion.span>
               </td>
               <td className='px-2 py-2 font-extralight'>
-                <RecallIndex countryId={question.countryData.id} />
+                <UserProgress
+                  countryIds={[question.countryData.id]}
+                  hideTitle
+                  onlyCurrentQuestionType
+                />
               </td>
             </motion.tr>
           ))}
