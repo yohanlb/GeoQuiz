@@ -78,7 +78,9 @@ const ResultsTable = ({ questions }: Props) => {
               </td>
               <td className='px-2 py-2 font-extralight'>
                 <Gauge
-                  value={Math.round(question.countryData.success_rate * 100)}
+                  value={Math.round(
+                    question.countryData.success_rate_capital * 100,
+                  )}
                 />
               </td>
             </motion.tr>

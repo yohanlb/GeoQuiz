@@ -13,6 +13,9 @@ const CountryDescription = ({ countryData, hideFlag = false }: Props) => {
     displayedName += ` (${countryData.sovereignCountry})`;
   }
 
+  //TODO: switch score depending on question type, but for now there is not enough data for flags.
+  const averageCommunityScore = countryData.success_rate_capital * 100;
+
   return (
     <div className='text-sm'>
       <div className='flex items-center gap-2'>
@@ -38,7 +41,7 @@ const CountryDescription = ({ countryData, hideFlag = false }: Props) => {
           <div className='flex items-center gap-2'>
             <span>Difficulty: </span>
             <StarDifficultyDisplay
-              percent={Math.round(countryData.success_rate * 100)}
+              percent={Math.round(averageCommunityScore)}
             />
           </div>
         </div>

@@ -25,9 +25,15 @@ declare global {
     name: string;
     region: string;
     subregion: string;
-    success_rate: number;
     updated_at: string;
     sovereignCountry?: string;
+    success_rate: number; // TODO to deprecate BD side
+    success_rate_capital: number;
+    success_rate_flag: number;
+    flag_guessed_right: number;
+    flag_guessed_count: number;
+    capital_guessed_right: number;
+    capital_guessed_count: number;
   };
 
   type DeckStats = {

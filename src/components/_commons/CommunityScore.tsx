@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { GrScorecard } from 'react-icons/gr';
-import useGameStore from '@/src/stores/gameStore';
 import HorizontalBars from './HorizontalBars';
 
 type Props = {
@@ -10,8 +9,11 @@ type Props = {
 };
 
 function CommunityScore({ deck }: Props) {
-  const { questionType } = useGameStore();
-  const scoreToDisplay = deck.decks_stats[questionType].averageScore;
+  // const { questionType } = useGameStore();
+
+  //TODO: switch score depending on question type, but for now there is not enough data for flags.
+  const scoreToDisplay = deck.decks_stats['CountryToCapital'].averageScore;
+  // const scoreToDisplay = deck.decks_stats[questionType].averageScore;
 
   return (
     <div className='flex flex-col items-end gap-2'>
