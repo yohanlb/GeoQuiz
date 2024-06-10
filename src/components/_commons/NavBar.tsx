@@ -54,26 +54,24 @@ const CompactHeader = () => (
 );
 
 const LandingHeader = () => (
-  <>
-    <header className='mb-2'>
-      <div className='flex items-start justify-between px-4 py-4 md:px-0'>
-        <Link href='/'>
-          <Image
-            src={GeoQuizLogoCompact}
-            alt='GeoQuiz Logo'
-            className='w-16 md:w-20'
-          />
+  <header className='mb-2'>
+    <div className='flex items-start justify-between px-4 py-4 md:px-0'>
+      <Link href='/'>
+        <Image
+          src={GeoQuizLogoCompact}
+          alt='GeoQuiz Logo'
+          className='w-16 md:w-20'
+        />
+      </Link>
+      <div>
+        <Link href={navigationLinks.home.href}>
+          <Button variant={'accent'} className='h-8 font-bold'>
+            <span>Play</span>
+          </Button>
         </Link>
-        <div>
-          <Link href={navigationLinks.home.href}>
-            <Button variant={'accent'} className='h-8 font-bold'>
-              <span>Play</span>
-            </Button>
-          </Link>
-        </div>
       </div>
-    </header>
-  </>
+    </div>
+  </header>
 );
 
 function NavBar() {
