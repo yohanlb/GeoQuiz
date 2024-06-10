@@ -1,14 +1,6 @@
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
-import dynamic from 'next/dynamic';
-import Gauge from '@components/_commons/Gauge';
-
-const PersonalCountryInfos = dynamic(
-  () => import('@components/_commons/PersonalCountryInfos'),
-  {
-    ssr: false,
-  },
-);
+import StarDifficultyDisplay from '@components/_commons/StarDifficultyDisplay';
 
 type Props = {
   countryData: CountryData;
@@ -23,35 +15,33 @@ const CountryDescription = ({ countryData, hideFlag = false }: Props) => {
 
   return (
     <div className='text-sm'>
-      <h1 className='text-3xl md:text-5xl'>
+      <div className='flex items-center gap-2'>
         {!hideFlag && (
           <ReactCountryFlag
             countryCode={countryData.iso2}
             svg
             aria-label={countryData.name}
-            style={{ marginRight: '0.5rem' }}
+            style={{ fontSize: '3rem' }}
           />
         )}
-        {displayedName}
-      </h1>
+        <h1 className='text-3xl md:text-5xl'>{displayedName}</h1>
+      </div>
 
-      <div className='flex w-full flex-col gap-2 md:flex-row md:justify-between'>
+      <div className='flex w-full flex-col gap-2 text-xs md:flex-row md:justify-between'>
         <div>
           <p>
-            <span>Continent: </span>
+            <span>Region: </span>
             <strong className='font-semibold italic'>
               {countryData.subregion}
             </strong>
           </p>
           <div className='flex items-center gap-2'>
-            <span>Community average: </span>
-            <div className='inline-block'>
-              <Gauge value={Math.round(countryData.success_rate * 100)} />
-            </div>
+            <span>Difficulty: </span>
+            <StarDifficultyDisplay
+              percent={Math.round(countryData.success_rate * 100)}
+            />
           </div>
         </div>
-
-        <PersonalCountryInfos countryId={countryData.id} />
       </div>
     </div>
   );

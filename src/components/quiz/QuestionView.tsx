@@ -1,11 +1,19 @@
 import React from 'react';
 import useGameStore from '@/src/stores/gameStore';
+import dynamic from 'next/dynamic';
 import { AnswerOptionButton } from './AnswerButton';
 import AnswerButtonsFlagList from './AnswerButtonsFlagList';
 import AnswerButtonsList from './AnswerButtonsList';
 import AnswerCirclesList from './AnswerCirclesList';
 import CountryDescription from './CountryDescription';
 import CountryShape from './CountryShape';
+
+const PersonalCountryInfos = dynamic(
+  () => import('@components/_commons/PersonalCountryInfos'),
+  {
+    ssr: false,
+  },
+);
 
 type QuestionViewProps = {
   questions: Question[];
@@ -55,24 +63,26 @@ const QuestionView = ({
 
   return (
     <div className='mx-auto flex h-full max-w-lg flex-col justify-between px-4 pb-3 md:px-0 md:py-2'>
-      <div>
-        <CountryDescription
-          countryData={currentQuestion.countryData}
-          hideFlag={questionType === 'CountryToFlag'}
-        />
-      </div>
+      <CountryDescription
+        countryData={currentQuestion.countryData}
+        hideFlag={questionType === 'CountryToFlag'}
+      />
       <CountryShape countryCode={currentQuestion.countryData.iso2} />
-      {questionType === 'CountryToFlag' ? (
-        <AnswerButtonsFlagList
-          options={optionsFlag}
-          handleClick={handleClickAnswerOption}
-        />
-      ) : (
-        <AnswerButtonsList
-          options={optionsCapital}
-          handleClick={handleClickAnswerOption}
-        />
-      )}
+
+      <div className='flex flex-col md:gap-4'>
+        <PersonalCountryInfos countryId={currentQuestion.countryData.id} />
+        {questionType === 'CountryToFlag' ? (
+          <AnswerButtonsFlagList
+            options={optionsFlag}
+            handleClick={handleClickAnswerOption}
+          />
+        ) : (
+          <AnswerButtonsList
+            options={optionsCapital}
+            handleClick={handleClickAnswerOption}
+          />
+        )}
+      </div>
       <AnswerCirclesList totalNumberOfQuestions={questions.length} />
     </div>
   );

@@ -35,7 +35,7 @@ const ExpandedHeader = () => (
   </div>
 );
 const CompactHeader = () => (
-  <div className='flex items-start justify-between px-4 py-4 md:px-0'>
+  <div className='flex items-start justify-between px-4 pb-1 pt-2 md:px-0 md:py-4'>
     <Link href={navigationLinks.home.href}>
       <Image
         src={GeoQuizLogoCompact}
@@ -84,7 +84,7 @@ function NavBar() {
 
   const isExpanded = currentPath === navigationLinks.home.href;
   return (
-    <header className='mb-2'>
+    <header className='mb-0 md:mb-2'>
       {isExpanded ? <ExpandedHeader /> : <CompactHeader />}
       <Image
         src={HeaderHeroSeparator}

@@ -13,10 +13,10 @@ function HorizontalBars({ value }: Props) {
     if (index > numberOfBarsActive) {
       return 'bg-default-300';
     }
-    if (numberOfBarsActive > 6) {
+    if (numberOfBarsActive > NUMBER_OF_BARS * 0.5) {
       return 'bg-green-500';
     }
-    if (numberOfBarsActive > 2) {
+    if (numberOfBarsActive > NUMBER_OF_BARS * 0.3) {
       return 'bg-yellow-500';
     }
     return 'bg-red-500';
