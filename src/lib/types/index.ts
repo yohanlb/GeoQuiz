@@ -30,6 +30,19 @@ declare global {
     sovereignCountry?: string;
   };
 
+  type DeckStats = {
+    id: number;
+    deckId: number;
+    playCount: number;
+    created_at: string;
+    updated_at: string;
+    averageScore: number;
+  };
+
+  interface DeckStatsObject {
+    [questionType: string]: DeckStats;
+  }
+
   type Deck = {
     id: number;
     name: string;
@@ -41,6 +54,7 @@ declare global {
     categories: string[] | null;
     displayName: string;
     isTextTransparent: boolean;
+    decks_stats: DeckStatsObject;
     displayPriority?: number;
   };
 
