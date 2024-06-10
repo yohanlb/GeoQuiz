@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
 import useGameStore from '@/src/stores/gameStore';
+import { navigationLinks } from '@lib/navigationLinks';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import Gauge from '@components/_commons/Gauge';
 import RecallIndex from '@components/_commons/RecallIndex';
 
@@ -49,7 +51,16 @@ const ResultsTable = ({ questions }: Props) => {
                   countryCode={question.countryData.iso2}
                   className='align-middle'
                 />{' '}
-                {question.countryData.name}
+                <Link
+                  href={
+                    navigationLinks.countries.href +
+                    '/' +
+                    question.countryData.id
+                  }
+                  className='underline underline-offset-1'
+                >
+                  {question.countryData.name}
+                </Link>
               </td>
               <td className='text-wrap break-words px-2 py-2 font-extralight'>
                 {question.countryData.capital}
