@@ -35,7 +35,7 @@ const ExpandedHeader = () => (
   </div>
 );
 const CompactHeader = () => (
-  <div className='flex items-start justify-between px-4 pb-1 pt-2 md:px-0 md:py-4'>
+  <div className='flex items-start justify-between px-4 py-4 md:px-0'>
     <Link href={navigationLinks.home.href}>
       <Image
         src={GeoQuizLogoCompact}
