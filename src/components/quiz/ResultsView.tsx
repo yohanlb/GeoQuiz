@@ -14,7 +14,12 @@ type ResultsViewProps = {
 };
 
 function ResultsView({ handleRestart = () => {} }: ResultsViewProps) {
-  const { answeredQuestions, isGameStoreInitialized } = useGameStore();
+  const { answeredQuestions, isGameStoreInitialized, deck } = useGameStore();
+
+  // TODO: doesnt handle if deck is null, for dynamic deck
+  const retryUrl = deck
+    ? navigationLinks.quiz.href + '/quiz/' + deck?.name
+    : null;
 
   const averageRightAnswers =
     answeredQuestions.reduce(
@@ -53,13 +58,18 @@ function ResultsView({ handleRestart = () => {} }: ResultsViewProps) {
             Home
           </button>
         </Link>
-        <button
-          onClick={handleRestart}
-          type='submit'
-          className='w-36 rounded-lg bg-gray-300 py-2 text-xl font-normal text-gray-800 md:w-60 md:text-2xl'
-        >
-          Retry
-        </button>
+
+        {retryUrl && (
+          <Link href={retryUrl}>
+            <button
+              onClick={handleRestart}
+              type='submit'
+              className='w-36 rounded-lg bg-gray-300 py-2 text-xl font-normal text-gray-800 md:w-60 md:text-2xl'
+            >
+              Retry
+            </button>
+          </Link>
+        )}
       </div>
     </div>
   );

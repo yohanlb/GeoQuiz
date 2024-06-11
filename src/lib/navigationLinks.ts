@@ -16,4 +16,5 @@ export const navigationLinks: NavigationLinks = {
   stats: { label: 'My Stats', href: '/stats' },
   more: { label: 'More', href: '/more' },
   help: { label: 'Help', href: '/help' },
+  quiz: { label: '', href: '/quiz' },
 };
