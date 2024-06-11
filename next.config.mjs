@@ -1,5 +1,11 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+import withPWAInit from 'next-pwa';
+
+const withPWA = withPWAInit({
+  dest: 'public',
+});
+
+export default withPWA({
   images: {
     remotePatterns: [
       {
@@ -33,6 +39,4 @@ const nextConfig = {
   // eslint: {
   //   ignoreDuringBuilds: true,
   // },
-};
-
-export default nextConfig;
+});
