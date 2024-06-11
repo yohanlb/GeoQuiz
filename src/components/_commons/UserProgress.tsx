@@ -12,26 +12,42 @@ type Props = {
   countryIds: CountryData['id'][];
   hideTitle?: boolean;
   onlyCurrentQuestionType?: boolean;
+  width?: 'lg' | 'md' | 'sm';
 };
 
 type ProgressLineProps = {
   icon?: React.ComponentType<{ className?: string }>;
   progress: number;
+  width?: 'lg' | 'md' | 'sm';
 };
 
-const ProgressLine = ({ icon: Icon, progress }: ProgressLineProps) => (
-  <div className='flex items-center gap-2'>
-    {!!Icon && <Icon className='size-6 shrink-0' />}
-    <div className='col-span-2 w-32'>
-      <UserProgressBar value={progress} />
+const ProgressLine = ({
+  icon: Icon,
+  progress,
+  width = 'md',
+}: ProgressLineProps) => {
+  let widthClass = 'w-32';
+  if (width === 'lg') {
+    widthClass = 'w-48';
+  } else if (width === 'sm') {
+    widthClass = 'w-16';
+  }
+
+  return (
+    <div className='flex items-center gap-2'>
+      {!!Icon && <Icon className='size-6 shrink-0' />}
+      <div className={`col-span-2 ${widthClass}`}>
+        <UserProgressBar value={progress} />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const UserProgress = ({
   countryIds,
   hideTitle = false,
   onlyCurrentQuestionType = false,
+  width = 'md',
 }: Props) => {
   const { questionType } = useGameStore();
   const { getProgressPercentForCountryIds } = useCountryHistory();
@@ -44,12 +60,14 @@ const UserProgress = ({
       )}
       {(questionType === 'CountryToCapital' || !onlyCurrentQuestionType) && (
         <ProgressLine
+          width={width}
           // icon={onlyCurrentQuestionType ? GiProgression : PiCity}
           progress={progress}
         />
       )}
       {(questionType === 'CountryToFlag' || !onlyCurrentQuestionType) && (
         <ProgressLine
+          width={width}
           // icon={onlyCurrentQuestionType ? GiProgression : FaRegFlag}
           progress={progress}
         />

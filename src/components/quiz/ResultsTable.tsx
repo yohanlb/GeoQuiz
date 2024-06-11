@@ -99,6 +99,7 @@ const ResultsTable = ({ questions }: Props) => {
                   countryIds={[question.countryData.id]}
                   hideTitle
                   onlyCurrentQuestionType
+                  width='sm'
                 />
               </td>
             </motion.tr>
