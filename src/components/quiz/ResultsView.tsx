@@ -9,11 +9,7 @@ import LinkToDeck from './LinkToDeck';
 import ResultsTable from './ResultsTable';
 import ShareResults from './ShareResults';
 
-type ResultsViewProps = {
-  handleRestart?: () => void;
-};
-
-function ResultsView({ handleRestart = () => {} }: ResultsViewProps) {
+function ResultsView() {
   const { answeredQuestions, isGameStoreInitialized, deck } = useGameStore();
 
   // TODO: doesnt handle if deck is null, for dynamic deck
@@ -60,7 +56,6 @@ function ResultsView({ handleRestart = () => {} }: ResultsViewProps) {
         {retryUrl && (
           <Link href={retryUrl}>
             <button
-              onClick={handleRestart}
               type='submit'
               className='w-36 rounded-lg bg-gray-300 py-2 text-xl font-normal text-gray-800 md:w-60 md:text-2xl'
             >
