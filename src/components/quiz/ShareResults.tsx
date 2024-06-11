@@ -1,6 +1,7 @@
 import React from 'react';
 import useGameStore from '@/src/stores/gameStore';
 import { EMOJIS, WEBSITE_URL } from '@lib/consts';
+import { motion } from 'framer-motion';
 import ShareIcon from '@components/_commons/icons/ShareIcon';
 import { Button } from '@components/ui/button';
 
@@ -60,10 +61,28 @@ const ShareResults = () => {
   };
 
   return (
-    <Button variant={'secondary'} onClick={handleShare}>
-      Share
-      <ShareIcon className='ml-2' />
-    </Button>
+    <motion.div
+      initial={{ opacity: 0.7, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 1.5,
+        repeatType: 'reverse',
+        repeat: Infinity,
+        ease: 'easeInOut',
+      }}
+    >
+      <motion.div
+        whileTap={{ scale: 0.9 }}
+        transition={{
+          duration: 0.3,
+        }}
+      >
+        <Button variant={'secondary'} onClick={handleShare}>
+          Share
+          <ShareIcon className='ml-2' />
+        </Button>
+      </motion.div>
+    </motion.div>
   );
 };
 
