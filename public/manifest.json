@@ -1,12 +1,12 @@
 {
-  "theme_color": "#35b3f6",
-  "background_color": "#011b3a",
+  "theme_color": "#000000",
+  "background_color": "#000000",
   "orientation": "portrait",
   "display": "standalone",
   "scope": "/",
   "start_url": "/home",
-  "name": "GeoQuiz",
-  "short_name": "GeoQuiz!",
+  "name": "GeoQuiz - Learn Country Flags and Capitals!",
+  "short_name": "GeoQuiz",
   "description": "Test your geography knowledge with our trivia quiz! Learn about countries, capitals, and flags.",
   "icons": [
     {
