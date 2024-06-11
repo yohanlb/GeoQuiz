@@ -2,7 +2,7 @@
   "theme_color": "#35b3f6",
   "background_color": "#011b3a",
   "orientation": "portrait",
-  "display": "fullscreen",
+  "display": "standalone",
   "scope": "/",
   "start_url": "/home",
   "name": "GeoQuiz",
