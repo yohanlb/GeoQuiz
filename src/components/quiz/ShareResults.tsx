@@ -4,23 +4,14 @@ import { EMOJIS, WEBSITE_URL } from '@lib/consts';
 import ShareIcon from '@components/_commons/icons/ShareIcon';
 import { Button } from '@components/ui/button';
 
-type Props = {
-  questions: Question[];
-};
-
-const ShareResults = ({ questions }: Props) => {
-  const { userResults, deck } = useGameStore();
-
-  const questionsWithResults = questions.map((question, i) => ({
-    ...question,
-    userResult: userResults[i],
-  }));
+const ShareResults = () => {
+  const { deck, answeredQuestions } = useGameStore();
 
   const generateShareText = () => {
-    const resultsSummary = questionsWithResults
+    const resultsSummary = answeredQuestions
       .map((question) =>
         [
-          question.userResult === 'valid' ? EMOJIS.valid : EMOJIS.invalid,
+          question.isCorrect ? EMOJIS.valid : EMOJIS.invalid,
           ' ' + question.countryData.emoji,
           ' ' + question.countryData.name,
           '\n',
@@ -28,10 +19,11 @@ const ShareResults = ({ questions }: Props) => {
       )
       .join('');
 
-    const correctAnswers = userResults.filter(
-      (result) => result === 'valid',
+    const correctAnswers = answeredQuestions.filter(
+      (result) => result.isCorrect,
     ).length;
-    const totalQuestions = questions.length;
+
+    const totalQuestions = answeredQuestions.length;
     const scorePercentage = Math.round((correctAnswers / totalQuestions) * 100);
 
     const link = WEBSITE_URL + (deck?.name ? `/decks/${deck?.name}` : '');

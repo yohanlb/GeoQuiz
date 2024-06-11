@@ -1,3 +1,4 @@
+// TODO : to be deprecated
 export function calculateNewDeckScore(
   userResults: UserResults,
   numberOfQuestions: number,

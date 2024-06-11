@@ -7,18 +7,8 @@ import Link from 'next/link';
 import StarDifficultyDisplay from '@components/_commons/StarDifficultyDisplay';
 import UserProgress from '@components/_commons/UserProgress';
 
-type Props = {
-  questions: Question[];
-};
-
-type QuestionWithResult = Question & { userResult: UserResultsStatus };
-
-const ResultsTable = ({ questions }: Props) => {
-  const { userResults } = useGameStore();
-
-  const questionsWithResults: QuestionWithResult[] = questions.map(
-    (question, i) => ({ ...question, userResult: userResults[i] }),
-  );
+const ResultsTable = () => {
+  const { answeredQuestions } = useGameStore();
 
   return (
     <div className='w-full overflow-x-auto'>
@@ -34,7 +24,7 @@ const ResultsTable = ({ questions }: Props) => {
           </tr>
         </thead>
         <tbody className='text-xs md:text-base'>
-          {questionsWithResults.map((question, index) => (
+          {answeredQuestions.map((question, index) => (
             <motion.tr
               className='border-b border-gray-500 hover:bg-gray-800'
               key={question.countryData.id}
@@ -77,7 +67,7 @@ const ResultsTable = ({ questions }: Props) => {
               </td>
               <td
                 className='px-2 py-2 font-extralight'
-                aria-label={`Result for question ${index + 1}: ${question.userResult} `}
+                aria-label={`Result for question ${index + 1}: ${question.isCorrect} `}
               >
                 <motion.span
                   initial={{ scale: 0, opacity: 0 }}
@@ -87,11 +77,11 @@ const ResultsTable = ({ questions }: Props) => {
                     damping: 15,
                     stiffness: 300,
                     restDelta: 0.001,
-                    delay: questionsWithResults.length * 0.3 + index * 0.02,
+                    delay: answeredQuestions.length * 0.3 + index * 0.02,
                   }}
-                  className={`inline-block ${question.userResult === 'valid' ? 'text-green-500' : 'text-red-500'}`}
+                  className={`inline-block ${question.isCorrect ? 'text-green-500' : 'text-red-500'}`}
                 >
-                  {question.userResult === 'valid' ? '✔' : '✘'}
+                  {question.isCorrect ? '✔' : '✘'}
                 </motion.span>
               </td>
               <td className='px-2 py-2 font-extralight'>

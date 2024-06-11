@@ -22,8 +22,8 @@ interface GameStoreState {
   resetGame: () => void;
   isGameStoreInitialized: boolean;
   setIsGameStoreInitialized: (isGameStoreInitialized: boolean) => void;
-  answeredQuestions: answeredQuestion[];
-  addToAnsweredQuestions: (answeredQuestion: answeredQuestion) => void;
+  answeredQuestions: AnsweredQuestion[];
+  addToAnsweredQuestions: (answeredQuestion: AnsweredQuestion) => void;
 }
 
 const useGameStore = create<GameStoreState>()(
@@ -39,7 +39,7 @@ const useGameStore = create<GameStoreState>()(
       isGameStoreInitialized: false,
       answeredQuestions: [],
 
-      addToAnsweredQuestions: (answeredQuestion: answeredQuestion) =>
+      addToAnsweredQuestions: (answeredQuestion: AnsweredQuestion) =>
         set((state) => ({
           answeredQuestions: [...state.answeredQuestions, answeredQuestion],
         })),

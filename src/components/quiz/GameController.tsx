@@ -29,7 +29,6 @@ function GameController({ questions }: Props) {
     setGameState,
     deck,
     resetGame,
-    answeredQuestions,
     addToAnsweredQuestions,
   } = useGameStore();
   const updateDeckScore = useDeckHistory((state) => state.updateDeckScore);
@@ -104,13 +103,14 @@ function GameController({ questions }: Props) {
   // AFTER GAME FINISHED
   React.useEffect(() => {
     if (gameState === 'finished') {
+      // TODO modify this two next lines to not use this function, and do it directly in the store
       const newDeckScore = calculateNewDeckScore(userResults, questions.length);
       updateDeckScore(deck.id, newDeckScore);
     }
   }, [gameState]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (gameState === 'finished') {
-    return <ResultView questions={questions} handleRestart={handleRestart} />;
+    return <ResultView handleRestart={handleRestart} />;
   }
 
   return (

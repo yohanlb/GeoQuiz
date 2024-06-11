@@ -113,7 +113,7 @@ declare global {
     [key: string]: { [subregion: string]: CountryData[] };
   };
 
-  export type answeredQuestion = {
+  export type AnsweredQuestion = {
     questionId: number;
     countryData: CountryData;
     questionType: QuestionType;

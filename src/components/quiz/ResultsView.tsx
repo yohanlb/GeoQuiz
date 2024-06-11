@@ -1,21 +1,23 @@
 import React from 'react';
 import useGameStore from '@/src/stores/gameStore';
 import { navigationLinks } from '@lib/navigationLinks';
-import { calculateNewDeckScore } from '@lib/utils/score';
 import Link from 'next/link';
 import LinkToDeck from './LinkToDeck';
 import ResultsTable from './ResultsTable';
 import ShareResults from './ShareResults';
 
 type ResultsViewProps = {
-  questions: Question[];
   handleRestart: () => void;
 };
 
-function ResultsView({ questions, handleRestart }: ResultsViewProps) {
-  const { userResults } = useGameStore();
+function ResultsView({ handleRestart }: ResultsViewProps) {
+  const { answeredQuestions } = useGameStore();
 
-  const newDeckScore = calculateNewDeckScore(userResults, questions.length);
+  const averageRightAnswers =
+    answeredQuestions.reduce(
+      (total, question) => total + (question.isCorrect ? 1 : 0),
+      0,
+    ) / answeredQuestions.length;
 
   return (
     <div className='flex h-full flex-col items-center justify-evenly gap-4 pb-3 md:px-0 md:py-2'>
@@ -25,10 +27,10 @@ function ResultsView({ questions, handleRestart }: ResultsViewProps) {
         </h1>
         <LinkToDeck />
       </div>
-      <ResultsTable questions={questions} />
+      <ResultsTable />
       <div className='flex flex-wrap items-center justify-center gap-2 text-xl tracking-wider'>
-        <p>{newDeckScore}% of correct answers!</p>
-        <ShareResults questions={questions} />
+        <p>{averageRightAnswers * 100}% of correct answers!</p>
+        <ShareResults />
       </div>
       <div className='flex gap-6 md:gap-16'>
         <Link href={navigationLinks.home.href}>
