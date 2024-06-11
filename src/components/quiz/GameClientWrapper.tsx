@@ -3,13 +3,13 @@
 import React from 'react';
 import { useFetchQuestions } from '@/src/hooks/useFetchQuestions';
 import useGameStore from '@/src/stores/gameStore';
+import { motion } from 'framer-motion';
 import LoadingSpinner from '@components/_commons/LoadingSpinner';
 import GameController from './GameController';
 
 type Props = {
   deck: Deck;
   amountOfQuestions: number;
-  deckName: string;
 };
 
 const GameClientWrapper = ({ deck, amountOfQuestions }: Props) => {
@@ -22,7 +22,14 @@ const GameClientWrapper = ({ deck, amountOfQuestions }: Props) => {
 
   if (isLoading) {
     return (
-      <div className='flex h-full w-full items-center justify-center'>
+      <div className='flex h-full w-full flex-col items-center justify-center gap-8'>
+        <motion.p
+          className='text-xl'
+          initial={{ x: -300, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+        >
+          Preparing questions...
+        </motion.p>
         <LoadingSpinner />
       </div>
     );
@@ -33,11 +40,7 @@ const GameClientWrapper = ({ deck, amountOfQuestions }: Props) => {
       </div>
     );
   } else {
-    return (
-      <>
-        <GameController questions={questions} />
-      </>
-    );
+    return <GameController questions={questions} />;
   }
 };
 
