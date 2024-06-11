@@ -17,9 +17,7 @@ function ResultsView({ handleRestart = () => {} }: ResultsViewProps) {
   const { answeredQuestions, isGameStoreInitialized, deck } = useGameStore();
 
   // TODO: doesnt handle if deck is null, for dynamic deck
-  const retryUrl = deck
-    ? navigationLinks.quiz.href + '/quiz/' + deck?.name
-    : null;
+  const retryUrl = deck ? navigationLinks.quiz.href + '/' + deck?.name : null;
 
   const averageRightAnswers =
     answeredQuestions.reduce(
@@ -46,7 +44,7 @@ function ResultsView({ handleRestart = () => {} }: ResultsViewProps) {
       </div>
       <ResultsTable />
       <div className='flex flex-wrap items-center justify-center gap-2 text-xl tracking-wider'>
-        <p>{averageRightAnswers * 100}% of correct answers!</p>
+        <p>{Math.round(averageRightAnswers * 100)}% of correct answers!</p>
         <ShareResults />
       </div>
       <div className='flex gap-6 md:gap-16'>

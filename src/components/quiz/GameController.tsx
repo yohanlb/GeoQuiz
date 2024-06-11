@@ -5,9 +5,9 @@ import { useCountryHistory } from '@/src/stores/countryHistoryStore';
 import { useDeckHistory } from '@/src/stores/deckHistoryStore';
 import useGameStore from '@/src/stores/gameStore';
 import { calculateNewDeckScore } from '@lib/utils/score';
+import { useRouter } from 'next/navigation';
 import { postCountryStats } from '../../actions/countryStats';
 import QuestionView from './QuestionView';
-import ResultView from './ResultsView';
 
 type Props = {
   questions: Question[];
@@ -33,6 +33,7 @@ function GameController({ questions }: Props) {
   } = useGameStore();
   const updateDeckScore = useDeckHistory((state) => state.updateDeckScore);
   const addCountryScores = useCountryHistory((state) => state.addCountryScores);
+  const { push } = useRouter();
 
   if (!deck) {
     throw new Error('Deck is null. Ensure that the deck is set in the store.');
@@ -106,12 +107,9 @@ function GameController({ questions }: Props) {
       // TODO modify this two next lines to not use this function, and do it directly in the store
       const newDeckScore = calculateNewDeckScore(userResults, questions.length);
       updateDeckScore(deck.id, newDeckScore);
+      push('/results');
     }
   }, [gameState]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  if (gameState === 'finished') {
-    return <ResultView handleRestart={handleRestart} />;
-  }
 
   return (
     <QuestionView
