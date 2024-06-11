@@ -1,23 +1,35 @@
+'use client';
+
 import React from 'react';
 import useGameStore from '@/src/stores/gameStore';
 import { navigationLinks } from '@lib/navigationLinks';
 import Link from 'next/link';
+import LoadingSpinner from '@components/_commons/LoadingSpinner';
 import LinkToDeck from './LinkToDeck';
 import ResultsTable from './ResultsTable';
 import ShareResults from './ShareResults';
 
 type ResultsViewProps = {
-  handleRestart: () => void;
+  handleRestart?: () => void;
 };
 
-function ResultsView({ handleRestart }: ResultsViewProps) {
-  const { answeredQuestions } = useGameStore();
+function ResultsView({ handleRestart = () => {} }: ResultsViewProps) {
+  const { answeredQuestions, isGameStoreInitialized } = useGameStore();
 
   const averageRightAnswers =
     answeredQuestions.reduce(
       (total, question) => total + (question.isCorrect ? 1 : 0),
       0,
     ) / answeredQuestions.length;
+
+  if (!isGameStoreInitialized) {
+    return (
+      <div className='flex h-full flex-col items-center justify-evenly gap-4 pb-3 md:px-0 md:py-2'>
+        <p className='text-xl'>Loading Results...</p>
+        <LoadingSpinner />
+      </div>
+    );
+  }
 
   return (
     <div className='flex h-full flex-col items-center justify-evenly gap-4 pb-3 md:px-0 md:py-2'>

@@ -110,6 +110,7 @@ const useGameStore = create<GameStoreState>()(
       partialize: (state) => ({
         questionType: state.questionType,
         isGameStoreInitialized: state.isGameStoreInitialized,
+        answeredQuestions: state.answeredQuestions,
       }),
       name: 'game-settings', // name of the item in the storage
       onRehydrateStorage: () => (state) => {
