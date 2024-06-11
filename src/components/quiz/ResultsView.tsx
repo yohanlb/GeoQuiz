@@ -5,6 +5,7 @@ import useGameStore from '@/src/stores/gameStore';
 import { navigationLinks } from '@lib/navigationLinks';
 import Link from 'next/link';
 import LoadingSpinner from '@components/_commons/LoadingSpinner';
+import PageCenteredLink from '@components/_commons/PageCenteredLink';
 import LinkToDeck from './LinkToDeck';
 import ResultsTable from './ResultsTable';
 import ShareResults from './ShareResults';
@@ -21,11 +22,28 @@ function ResultsView() {
       0,
     ) / answeredQuestions.length;
 
+  const formatedCorrectAnwsers = Math.round(averageRightAnswers * 100);
+
   if (!isGameStoreInitialized) {
     return (
       <div className='flex h-full flex-col items-center justify-evenly gap-4 pb-3 md:px-0 md:py-2'>
         <p className='text-xl'>Loading Results...</p>
         <LoadingSpinner />
+      </div>
+    );
+  }
+
+  if (answeredQuestions.length <= 0) {
+    return (
+      <div className='flex h-full flex-col items-center justify-center pb-3 md:px-0 md:py-2'>
+        <div className='flex flex-col items-center gap-4 text-center'>
+          <p className='text-xl'>Now Result to show!</p>
+          <p>Choose a deck and start playing to see your results</p>
+          <PageCenteredLink
+            href={navigationLinks.allDecks.href}
+            label='See all decks'
+          />
+        </div>
       </div>
     );
   }
@@ -40,7 +58,7 @@ function ResultsView() {
       </div>
       <ResultsTable />
       <div className='flex flex-wrap items-center justify-center gap-2 text-xl tracking-wider'>
-        <p>{Math.round(averageRightAnswers * 100)}% of correct answers!</p>
+        <p>{formatedCorrectAnwsers}% of correct answers!</p>
         <ShareResults />
       </div>
       <div className='flex gap-6 md:gap-16'>

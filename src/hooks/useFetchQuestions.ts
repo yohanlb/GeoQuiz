@@ -5,7 +5,7 @@ import useGameStore from '../stores/gameStore';
 
 export function useFetchQuestions(
   { id, isDynamic, countryIds }: Deck,
-  length: number,
+  length = 10,
 ) {
   const { questionType, isGameStoreInitialized } = useGameStore();
 
@@ -34,7 +34,7 @@ export function useFetchQuestions(
       } else {
         // if not dynamic, questions are fetch based on deckId
         const response = await getQuestionsFromDeckId(id, length, questionType);
-        setQuestions(response as Question[]);
+        setQuestions(response);
       }
       setIsLoading(false);
     };
