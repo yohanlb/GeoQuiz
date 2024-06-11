@@ -56,10 +56,6 @@ function GameController({ questions }: Props) {
     }
   };
 
-  const handleRestart = () => {
-    window.location.reload();
-  };
-
   const handleClickAnswerOption = (userAnswer: string) => {
     const correctAnswer =
       questionType === 'CountryToFlag'
