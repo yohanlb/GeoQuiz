@@ -112,4 +112,12 @@ declare global {
   export type GroupedCountries = {
     [key: string]: { [subregion: string]: CountryData[] };
   };
+
+  export type answeredQuestion = {
+    questionId: number;
+    countryData: CountryData;
+    questionType: QuestionType;
+    answer: string;
+    isCorrect: boolean;
+  };
 }

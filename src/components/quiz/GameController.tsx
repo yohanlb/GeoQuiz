@@ -25,11 +25,12 @@ function GameController({ questions }: Props) {
     addToUserAnswers,
     userResults,
     addToUserResults,
-    resetUserResults,
     gameState,
     setGameState,
     deck,
     resetGame,
+    answeredQuestions,
+    addToAnsweredQuestions,
   } = useGameStore();
   const updateDeckScore = useDeckHistory((state) => state.updateDeckScore);
   const addCountryScores = useCountryHistory((state) => state.addCountryScores);
@@ -69,7 +70,7 @@ function GameController({ questions }: Props) {
     if (isShowingAnswer) {
       return;
     }
-    addToUserAnswers(userAnswer);
+    addToUserAnswers(userAnswer); // TODO deprecate this
     if (userAnswer === correctAnswer) {
       // Correct Answer
       setIsShowingAnswer(true);
@@ -79,8 +80,15 @@ function GameController({ questions }: Props) {
       addToUserResults(newResult, currentQuestionIndex);
       addCountryScores(
         questions[currentQuestionIndex].countryData.id,
-        newResult === 'valid' ? true : false,
+        newResult === 'valid',
       );
+      addToAnsweredQuestions({
+        questionId: currentQuestionIndex,
+        answer: userAnswer,
+        countryData: questions[currentQuestionIndex].countryData,
+        questionType,
+        isCorrect: newResult === 'valid',
+      });
       setTimeout(handleNextQuestion, 700);
     } else {
       // Wrong Answer
@@ -91,7 +99,7 @@ function GameController({ questions }: Props) {
   // FIRST INITIALIZATION
   React.useEffect(() => {
     resetGame();
-  }, [resetUserResults, setGameState]);
+  }, [resetGame]);
 
   // AFTER GAME FINISHED
   React.useEffect(() => {

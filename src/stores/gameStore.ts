@@ -22,6 +22,8 @@ interface GameStoreState {
   resetGame: () => void;
   isGameStoreInitialized: boolean;
   setIsGameStoreInitialized: (isGameStoreInitialized: boolean) => void;
+  answeredQuestions: answeredQuestion[];
+  addToAnsweredQuestions: (answeredQuestion: answeredQuestion) => void;
 }
 
 const useGameStore = create<GameStoreState>()(
@@ -32,9 +34,15 @@ const useGameStore = create<GameStoreState>()(
       questionType: 'CountryToCapital',
       isShowingAnswer: false,
       userAnswers: [],
-      userResults: [],
+      userResults: [], // TODO deprecate this, use answeredQuestions instead
       deck: null,
       isGameStoreInitialized: false,
+      answeredQuestions: [],
+
+      addToAnsweredQuestions: (answeredQuestion: answeredQuestion) =>
+        set((state) => ({
+          answeredQuestions: [...state.answeredQuestions, answeredQuestion],
+        })),
 
       setIsGameStoreInitialized(isGameStoreInitialized) {
         set(() => ({ isGameStoreInitialized }));
@@ -72,6 +80,7 @@ const useGameStore = create<GameStoreState>()(
           isShowingAnswer: false,
           userAnswers: [],
           userResults: [],
+          answeredQuestions: [],
         }));
       },
 
