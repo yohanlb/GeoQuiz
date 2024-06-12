@@ -2,6 +2,8 @@
 
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
+import { navigationLinks } from '@lib/navigationLinks';
+import { toCamelCase } from '@lib/utils';
 import { Card, CardBody, Tab, Tabs } from '@nextui-org/react';
 import Link from 'next/link';
 import SectionTitle from '@components/_commons/SectionTitle';
@@ -20,7 +22,7 @@ const CountriesTabs = ({ groupedCountries }: Props) => {
               {Object.entries(subregions)
                 .sort(([keyA], [keyB]) => keyA.localeCompare(keyB))
                 .map(([subregion, countries]) => (
-                  <Card key={subregion}>
+                  <Card className='group' key={subregion}>
                     <CardBody>
                       <SectionTitle text={subregion} variant='h3' />
                       <ul className='dot columns-3 md:columns-4'>
@@ -40,6 +42,17 @@ const CountriesTabs = ({ groupedCountries }: Props) => {
                           </li>
                         ))}
                       </ul>
+                      <div className='flex justify-end'>
+                        <Link
+                          className='underline-offset-2 opacity-70 hover:underline group-hover:opacity-100'
+                          href={
+                            navigationLinks.allDecks.href +
+                            `/${toCamelCase(subregion)}`
+                          }
+                        >
+                          See Deck
+                        </Link>
+                      </div>
                     </CardBody>
                   </Card>
                 ))}
