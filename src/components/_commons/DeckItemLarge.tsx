@@ -1,10 +1,5 @@
 import React from 'react';
 import { TbCardsFilled } from 'react-icons/tb';
-import dynamic from 'next/dynamic';
-
-const DeckItemStats = dynamic(() => import('./DeckItemStats'), {
-  ssr: false,
-});
 
 type Props = {
   deck: Deck;
@@ -20,7 +15,6 @@ function DeckItemLarge({ deck }: Props) {
           <TbCardsFilled className='size-6' />
         </div>
       </div>
-      <DeckItemStats deck={deck} />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
-import StarDifficultyDisplay from '@components/_commons/StarDifficultyDisplay';
+import DifficultyIndicator from '@components/_commons/DifficultyIndicator';
 
 type Props = {
   countryData: CountryData;
@@ -40,9 +40,7 @@ const CountryDescription = ({ countryData, hideFlag = false }: Props) => {
           </p>
           <div className='flex items-center gap-2'>
             <span>Difficulty: </span>
-            <StarDifficultyDisplay
-              percent={Math.round(averageCommunityScore)}
-            />
+            <DifficultyIndicator value={averageCommunityScore} />
           </div>
         </div>
       </div>

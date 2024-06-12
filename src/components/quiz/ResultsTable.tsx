@@ -4,7 +4,7 @@ import useGameStore from '@/src/stores/gameStore';
 import { navigationLinks } from '@lib/navigationLinks';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import StarDifficultyDisplay from '@components/_commons/StarDifficultyDisplay';
+import DifficultyIndicator from '@components/_commons/DifficultyIndicator';
 import UserProgress from '@components/_commons/UserProgress';
 
 const ResultsTable = () => {
@@ -16,7 +16,6 @@ const ResultsTable = () => {
         <thead className='border-b text-xs capitalize md:text-lg'>
           <tr>
             <th className='px-2 py-2 font-normal'>Country</th>
-            <th className='px-2 py-2 font-normal'>Difficulty</th>
             <th className='px-2 py-2 font-normal'>Flag</th>
             <th className='px-2 py-2 font-normal'>Capital</th>
             <th className='px-2 py-2 font-normal'>Result</th>
@@ -35,7 +34,7 @@ const ResultsTable = () => {
                 delay: index * 0.3,
               }}
             >
-              <td className='text-wrap break-words px-2 py-2 font-extralight'>
+              <td className='flex gap-x-2 text-wrap break-words px-2 py-2 font-extralight'>
                 <Link
                   href={
                     navigationLinks.countries.href +
@@ -46,12 +45,8 @@ const ResultsTable = () => {
                 >
                   {question.countryData.name}
                 </Link>
-              </td>
-              <td className='px-2 py-2 font-extralight'>
-                <StarDifficultyDisplay
-                  percent={Math.round(
-                    question.countryData.success_rate_capital * 100,
-                  )}
+                <DifficultyIndicator
+                  value={question.countryData.success_rate_capital * 100}
                 />
               </td>
               <td className='text-wrap break-words px-2 py-2 font-extralight'>
