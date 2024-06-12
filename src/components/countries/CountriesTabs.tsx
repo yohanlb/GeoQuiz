@@ -27,7 +27,7 @@ const CountriesTabs = ({ groupedCountries }: Props) => {
                         {countries.map((country) => (
                           <li
                             key={country.id}
-                            className='tracking-thin text-sm font-thin hover:font-light md:text-base'
+                            className='flex items-center justify-start gap-1 text-sm font-thin hover:font-light md:text-base'
                           >
                             <ReactCountryFlag
                               countryCode={country.iso2}
