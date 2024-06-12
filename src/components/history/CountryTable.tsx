@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
+import useGameStore from '@/src/stores/gameStore';
 import Link from 'next/link';
+import DifficultyIndicator from '@components/_commons/DifficultyIndicator';
 import { Table, TableBody, TableCell, TableRow } from '@components/ui/table';
 
 type Props = {
@@ -8,6 +10,20 @@ type Props = {
 };
 
 const CountryTable = ({ countries }: Props) => {
+  const { questionType } = useGameStore();
+  const getScore = (country: CountryWithScores) => {
+    switch (questionType) {
+      case 'CountryToCapital':
+        return country.success_rate_capital;
+      case 'CountryToFlag':
+        //TODO: switch to flag score when enough data
+        return country.success_rate_capital;
+      // return country.success_rate_flag;
+      default:
+        return country.success_rate_capital;
+    }
+  };
+
   return (
     <Table>
       <TableBody>
@@ -16,6 +32,9 @@ const CountryTable = ({ countries }: Props) => {
             key={country.timestamp}
             className='group border-gray-600 text-xs md:text-base'
           >
+            <TableCell className='px-0 py-1 font-thin'>
+              <DifficultyIndicator value={getScore(country) * 100} />
+            </TableCell>
             <TableCell className='px-0 py-1 font-thin'>
               <span
                 className={`${country.scores ? 'text-green-500' : 'text-red-500'}`}
