@@ -13,7 +13,6 @@ const UnplayedIndicator = ({ deckId }: Props) => {
   if (deckScore === undefined || deckScore === null) {
     return <FiPackage className='ml-1 size-5' />;
   } else {
-    // return <span className='font-mono'>{deckScore}%</span>;
     return null;
   }
 };

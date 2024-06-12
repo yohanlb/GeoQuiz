@@ -16,18 +16,18 @@ const DifficultyIndicator = ({ value, type = 'country', size }: Props) => {
 
   const contentDescription =
     type === 'country' ? (
-      <>
+      <div className='text-left'>
         <p>Difficulty Index: {clampedNumber}</p>
         <p>Average community score for this country: {Math.round(value)}%</p>
-      </>
+      </div>
     ) : (
-      <>
+      <div className='text-left'>
         <p>Average Difficulty Index: {clampedNumber}</p>
         <p>
           Average difficulty for the countries included in this deck:{' '}
           {Math.round(value)}%
         </p>
-      </>
+      </div>
     );
   return (
     <PopoverCustom content={contentDescription}>

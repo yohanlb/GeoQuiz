@@ -2,6 +2,7 @@ import { TbCardsFilled } from 'react-icons/tb';
 import { navigationLinks } from '@lib/navigationLinks';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
+import DifficultyIndicator from './DifficultyIndicator';
 
 type DeckItemProps = {
   deck: Deck;
@@ -32,9 +33,10 @@ const DeckItem = ({ deck }: DeckItemProps) => {
               <TbCardsFilled className='inline size-5' />
               {deck.countryIds?.length}
             </span>
-            {/* <span className='text-right'>
-              📈{Math.round(deck.averageSuccessRatio)}%
-            </span> */}
+            <DifficultyIndicator
+              size='md'
+              value={deck.decks_stats['CountryToCapital'].averageScore}
+            />
           </div>
         </div>
       </Link>
