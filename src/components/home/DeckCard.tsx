@@ -1,8 +1,8 @@
 import React from 'react';
 import { DECK_IMAGES } from '@lib/utils/importImages';
 import Image from 'next/image';
-import SetupDialog from '@components/setup/SetupDialog';
-import SetupDialogContent from '@components/setup/SetupDialogContent';
+import DeckInfoDialog from '@components/home/DeckInfoDialog';
+import DeckInfoDialogContent from '@components/home/DeckInfoDialogContent';
 
 type Props = {
   deck: Deck;
@@ -28,7 +28,7 @@ const DeckCard = ({ deck }: Props) => {
   const dynamicImageName = deck.name as Deck['name'];
   const image = DECK_IMAGES[dynamicImageName];
 
-  const dialogContent = <SetupDialogContent deck={deck} />;
+  const dialogContent = <DeckInfoDialogContent deck={deck} />;
 
   const gradientStyle = {
     backgroundImage: getRandomGradient(),
@@ -39,7 +39,7 @@ const DeckCard = ({ deck }: Props) => {
 
   return (
     <div className='group relative aspect-[16/10] w-full justify-between overflow-hidden rounded-lg bg-background text-left text-sm hover:bg-zinc-700'>
-      <SetupDialog deck={deck} dialogContent={dialogContent}>
+      <DeckInfoDialog deck={deck} dialogContent={dialogContent}>
         <div className='relative z-10'>
           <h3
             className={`line-clamp-3 text-base font-normal leading-none tracking-tight text-white underline-offset-4 ${deck.isTextTransparent ? 'opacity-0' : ''} group-hover:underline sm:text-xl`}
@@ -66,7 +66,7 @@ const DeckCard = ({ deck }: Props) => {
             className={`absolute inset-0 h-full w-full`}
           ></div>
         )}
-      </SetupDialog>
+      </DeckInfoDialog>
     </div>
   );
 };

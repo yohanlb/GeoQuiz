@@ -9,7 +9,11 @@ type Props = {
   dialogContent: React.JSX.Element;
 };
 
-export default function SetupDialog({ deck, children, dialogContent }: Props) {
+export default function DeckInfoDialog({
+  deck,
+  children,
+  dialogContent,
+}: Props) {
   if (!deck) {
     return null;
   }

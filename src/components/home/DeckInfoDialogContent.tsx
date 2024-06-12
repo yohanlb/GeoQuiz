@@ -12,7 +12,7 @@ type Props = {
   deck: Deck;
 };
 
-export default function SetupDialogContent({ deck }: Props) {
+export default function DeckInfoDialogContent({ deck }: Props) {
   if (!deck) {
     return null;
   }
