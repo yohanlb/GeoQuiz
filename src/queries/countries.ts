@@ -35,9 +35,7 @@ async function fetchCountries(): Promise<CountryData[]> {
   }
 
   const { data }: { data: CountryData[] } = await response.json();
-  console.log(
-    `Countries fetched: ${data[0].name} , ${data[0].success_rate_capital}`,
-  );
+  console.log(`Countries fetched: `, data[0]);
   return data;
 }
 
