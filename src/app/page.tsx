@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import GeoQuizLogo from '@assets/GeoQuizGlobeLogo.png';
 import { Features } from '@components/landing/Features';
+import Footer from '@components/landing/Footer';
 import { Button } from '@components/ui/button';
 
 const Landing = () => {
@@ -41,6 +42,7 @@ const Landing = () => {
       <section className='my-8'>
         <Features />
       </section>
+      <Footer />
     </div>
   );
 };
