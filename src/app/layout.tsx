@@ -1,60 +1,18 @@
 import { NextUIProvider } from '@nextui-org/react';
-import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import BackgroundGradient from '@components/_commons/BackgroundGradient';
 import MetaTags from '@components/_commons/MetaTags';
 import NavBar from '@components/_commons/NavBar';
 import { inter, notoEmoji } from '../lib/utils/font';
+import { metadatas } from './metadatas';
 import { PHProvider } from './providers';
 import './globals.css';
-
-const APP_NAME = 'Geo Quiz!';
-const APP_DEFAULT_TITLE = 'Geo Quiz! - Country, Capitals, and Flag questions!';
-const APP_TITLE_TEMPLATE = '%s - Geo Quiz!';
-const APP_DESCRIPTION =
-  'Test your geography knowledge with our trivia quiz! Learn about countries, capitals, and flags.';
-
-export const metadata: Metadata = {
-  applicationName: APP_NAME,
-  title: {
-    default: APP_DEFAULT_TITLE,
-    template: APP_TITLE_TEMPLATE,
-  },
-  description: APP_DESCRIPTION,
-  manifest: '/manifest.json',
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: 'default',
-    title: APP_DEFAULT_TITLE,
-    // startUpImage: [],
-  },
-  formatDetection: {
-    telephone: false,
-  },
-  openGraph: {
-    type: 'website',
-    siteName: APP_NAME,
-    title: {
-      default: APP_DEFAULT_TITLE,
-      template: APP_TITLE_TEMPLATE,
-    },
-    description: APP_DESCRIPTION,
-  },
-  twitter: {
-    card: 'summary',
-    title: {
-      default: APP_DEFAULT_TITLE,
-      template: APP_TITLE_TEMPLATE,
-    },
-    description: APP_DESCRIPTION,
-  },
-  keywords:
-    'geography, quiz, trivia quiz, country, capitals, flag, questions, learn',
-};
 
 const PostHogPageView = dynamic(() => import('./PostHogPageView'), {
   ssr: false,
 });
+
+export const metadata = metadatas;
 
 export default function RootLayout({
   children,

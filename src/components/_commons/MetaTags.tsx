@@ -15,7 +15,7 @@ const MetaTags: React.FC = () => {
       />
       <meta
         property='og:description'
-        content='Test your geographic knowledge with GeoQuiz. Discover capitals, flags, and much more!'
+        content='Explore the world with Geo-Quiz! Test your knowledge on capitals and flags, guess the right answers, and improve your geography skills. Challenge yourself with interactive quizzes and track your progress. Start your journey today!'
       />
       <meta property='og:site_name' content='GeoQuiz' />
       <meta property='og:locale' content='en_US' />
@@ -27,7 +27,7 @@ const MetaTags: React.FC = () => {
       />
       <meta
         name='twitter:description'
-        content='Test your geographic knowledge with GeoQuiz. Discover capitals, flags, and much more!'
+        content='Explore the world with Geo-Quiz! Test your knowledge on capitals and flags, guess the right answers, and improve your geography skills. Challenge yourself with interactive quizzes and track your progress. Start your journey today!'
       />
       <meta
         name='twitter:image'
