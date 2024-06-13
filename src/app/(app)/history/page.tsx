@@ -32,8 +32,7 @@ const History = async () => {
       <div className='flex justify-end'>
         <TabsQuestionType />
       </div>
-      {/* <CountryHistory countries={countries} /> */}
-      <CountryHistory />
+      <CountryHistory countries={countries} />
       <DeckHistory decks={decks} />
       <PageCenteredLink href={navigationLinks.home.href} label='Back' />
     </div>
