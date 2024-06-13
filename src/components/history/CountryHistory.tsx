@@ -13,27 +13,28 @@ const CountryHistory = ({ countries }: Props) => {
   const getHistoryCountriesGuessed = useCountryHistory(
     (state) => state.getHistoryCountriesGuessed,
   );
-  const countryHistory = getHistoryCountriesGuessed();
+  // const countryHistory = getHistoryCountriesGuessed();
 
   React.useEffect(() => {
     // Force re-render on questionType change
   }, [questionType]);
 
-  const lastPlayedCountries: CountryWithScores[] = [];
-  for (const record of countryHistory) {
-    const country = countries.find(
-      (ctr) => ctr.id === Number(record.countryId),
-    );
-    if (!country) {
-      console.error(`Country not found: ${record.countryId}`);
-      return;
-    }
-    lastPlayedCountries.push({
-      ...country,
-      ...record,
-    });
-  }
+  // const lastPlayedCountries: CountryWithScores[] = [];
+  // for (const record of countryHistory) {
+  //   const country = countries.find(
+  //     (ctr) => ctr.id === Number(record.countryId),
+  //   );
+  //   if (!country) {
+  //     console.error(`Country not found: ${record.countryId}`);
+  //     return;
+  //   }
+  //   lastPlayedCountries.push({
+  //     ...country,
+  //     ...record,
+  //   });
+  // }
 
+  const lastPlayedCountries: CountryWithScores[] = [];
   return (
     <div className='space-y-3'>
       <SectionTitle text='Last Guessed Countries' variant='h3' />
