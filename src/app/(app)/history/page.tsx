@@ -2,11 +2,20 @@ import React from 'react';
 import { getAllCountries } from '@/src/queries/countries';
 import { getDecks } from '@/src/queries/gameDecks';
 import { navigationLinks } from '@lib/navigationLinks';
+import dynamic from 'next/dynamic';
 import PageCenteredLink from '@components/_commons/PageCenteredLink';
 import SectionTitle from '@components/_commons/SectionTitle';
 import TabsQuestionType from '@components/_commons/TabsQuestionType';
-import CountryHistory from '@components/history/CountryHistory';
-import DeckHistory from '@components/history/DeckHistory';
+
+const CountryHistory = dynamic(
+  () => import('@components/history/CountryHistory'),
+  {
+    ssr: false,
+  },
+);
+const DeckHistory = dynamic(() => import('@components/history/DeckHistory'), {
+  ssr: false,
+});
 
 const History = async () => {
   const decks = await getDecks();

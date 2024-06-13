@@ -9,31 +9,15 @@ import CountryTable from './CountryTable';
 type Props = { countries: CountryData[] };
 
 const CountryHistory = ({ countries }: Props) => {
+  const { questionType } = useGameStore();
   const getHistoryCountriesGuessed = useCountryHistory(
     (state) => state.getHistoryCountriesGuessed,
   );
-  const { questionType } = useGameStore();
-
-  // Trick to avoid client-side hydration error
-  const [isMounted, setIsMounted] = React.useState(false);
-  React.useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  const countryHistory = getHistoryCountriesGuessed();
 
   React.useEffect(() => {
     // Force re-render on questionType change
   }, [questionType]);
-
-  if (!isMounted) {
-    return null;
-  }
-
-  console.log(
-    'render',
-    countries.map((country) => country.success_rate_capital),
-  );
-
-  const countryHistory = getHistoryCountriesGuessed();
 
   const lastPlayedCountries: CountryWithScores[] = [];
   for (const record of countryHistory) {

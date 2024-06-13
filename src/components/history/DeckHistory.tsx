@@ -17,19 +17,10 @@ const DeckHistory = ({ decks }: Props) => {
     // Force re-render on questionType change
   }, [questionType]);
 
-  // Trick to avoid client-side hydration error
-  const [isMounted, setIsMounted] = React.useState(false);
-  React.useEffect(() => {
-    setIsMounted(true);
-  }, []);
-  if (!isMounted) {
-    return null;
-  }
-
   const idsLastDeckPlayed = getLastPlayedDeckIds();
   const lastPlayedDecks = [];
-  for (let i = 0; i < idsLastDeckPlayed.length; i++) {
-    const deck = decks.find((deck) => deck.id === Number(idsLastDeckPlayed[i]));
+  for (const element of idsLastDeckPlayed) {
+    const deck = decks.find((deck) => deck.id === Number(element));
     if (!deck) {
       return;
     }
