@@ -28,7 +28,8 @@ export async function getCountryById(countryId: number) {
 
 async function fetchCountries(): Promise<CountryData[]> {
   const response = await fetch(`${baseUrl}/countries/`, {
-    next: { revalidate: ONE_HOUR * 24 },
+    cache: 'no-store',
+    // next: { revalidate: ONE_HOUR * 24 },
   });
   if (!response.ok) {
     throw new Error('Countries not found');
