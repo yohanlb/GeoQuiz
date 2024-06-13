@@ -21,14 +21,9 @@ const History = async () => {
   const decks = await getDecks();
   const countries = await getAllCountries();
 
-  const blurb = countries.slice(0, 10).map((country) => {
-    return [country.name, Math.round(country.success_rate_capital * 100)];
-  });
-
   return (
     <div className='flex flex-col gap-6 px-4 py-2 md:px-0'>
       <SectionTitle text='Stats and History' />
-      {blurb.toString()}
       <div className='flex justify-end'>
         <TabsQuestionType />
       </div>
