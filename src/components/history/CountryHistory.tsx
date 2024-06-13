@@ -1,18 +1,18 @@
 'use client';
 
 import React from 'react';
-import { useCountryHistory } from '@/src/stores/countryHistoryStore';
+// import { useCountryHistory } from '@/src/stores/countryHistoryStore';
 import useGameStore from '@/src/stores/gameStore';
 import SectionTitle from '@components/_commons/SectionTitle';
 import CountryTable from './CountryTable';
 
-type Props = { countries: CountryData[] };
+// type Props = { countries: CountryData[] };
 
-const CountryHistory = ({ countries }: Props) => {
+const CountryHistory = () => {
   const { questionType } = useGameStore();
-  const getHistoryCountriesGuessed = useCountryHistory(
-    (state) => state.getHistoryCountriesGuessed,
-  );
+  // const getHistoryCountriesGuessed = useCountryHistory(
+  //   (state) => state.getHistoryCountriesGuessed,
+  // );
   // const countryHistory = getHistoryCountriesGuessed();
 
   React.useEffect(() => {
