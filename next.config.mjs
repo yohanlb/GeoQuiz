@@ -15,12 +15,6 @@ export default withPWA({
         port: '',
         pathname: '/storage/**',
       },
-      {
-        //todo: remove via placeholder.com
-        protocol: 'https',
-        hostname: 'via.placeholder.com',
-        port: '',
-      },
     ],
   },
   logging: {

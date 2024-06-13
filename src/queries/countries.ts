@@ -28,16 +28,13 @@ export async function getCountryById(countryId: number) {
 
 async function fetchCountries(): Promise<CountryData[]> {
   const response = await fetch(`${baseUrl}/countries/`, {
-    next: { revalidate: ONE_HOUR * 24 },
+    next: { revalidate: ONE_HOUR * 12 },
   });
   if (!response.ok) {
     throw new Error('Countries not found');
   }
 
-  console.log('RESPONSE', response.body);
-
   const { data }: { data: CountryData[] } = await response.json();
-  console.log(`Countries fetched DATA: `, data[0]);
   return data;
 }
 
