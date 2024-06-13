@@ -21,12 +21,12 @@ export const FEATURES_DATA: FeatureData[] = [
     number: 3,
     title: 'Review Results',
     description:
-      'Review your performance and see detailed results of your quiz attempts.',
+      'Review your results and performance, and share it to your friends!',
   },
   {
     number: 4,
     title: 'Practice Mistakes',
     description:
-      'Focus on your weak spots by practicing questions you previously answered incorrectly.',
+      'Learn efficiently and focus on your weak spots by practicing questions you previously answered incorrectly.',
   },
 ];

@@ -49,7 +49,7 @@ export const FeatureCard = ({
           {featureData.title}
         </motion.h3>
       </div>
-      <p>{featureData.description}</p>
+      <h4>{featureData.description}</h4>
     </motion.div>
   );
 };

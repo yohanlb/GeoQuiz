@@ -4,7 +4,7 @@ const APP_NAME = 'Geo Quiz!';
 const APP_DEFAULT_TITLE = 'Geo Quiz! - Country, Capitals, and Flag questions!';
 const APP_TITLE_TEMPLATE = '%s - Geo Quiz!';
 const APP_DESCRIPTION =
-  'Explore the world with Geo-Quiz! Test your knowledge on capitals and flags, guess the right answers, and improve your geography skills. Challenge yourself with interactive quizzes and track your progress. Start your journey today!';
+  'Explore the world with Geo-Quiz! Test your knowledge on capitals and flags questions, guess the right answers, and improve your geography skills. Challenge yourself with interactive quizzes and track your progress. Start your journey today!';
 
 export const metadatas: Metadata = {
   applicationName: APP_NAME,
@@ -41,5 +41,5 @@ export const metadatas: Metadata = {
     description: APP_DESCRIPTION,
   },
   keywords:
-    'geography, quiz, trivia quiz, country, capitals, flag, questions, learn',
+    'geography, quiz, trivia quiz, country, capitals, flags, questions, learn, review, friends',
 };
