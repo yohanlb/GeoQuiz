@@ -18,10 +18,11 @@ const Landing = () => {
           <h1 className='text-3xl font-extrabold'>
             Learn Geography the Fun Way with GeoQuiz!
           </h1>
-          <p className='text-lg font-thin capitalize'>
-            Master <strong>capitals</strong> and <strong>flags</strong>, track
-            your progress, and <strong>challenge</strong> your friends!
-          </p>
+          <h2 className='text-lg font-thin capitalize'>
+            Learn <strong>countries</strong>, <strong>capitals</strong> and{' '}
+            <strong>flags</strong>, track your progress, and{' '}
+            <strong>challenge</strong> your friends!
+          </h2>
           <Link href={navigationLinks.home.href}>
             <Button
               size={'lg'}

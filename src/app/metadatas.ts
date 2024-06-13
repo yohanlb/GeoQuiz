@@ -41,5 +41,5 @@ export const metadatas: Metadata = {
     description: APP_DESCRIPTION,
   },
   keywords:
-    'geography, quiz, trivia quiz, country, capitals, flags, questions, learn, review, friends',
+    'geography, quiz, trivia quiz, country, countries, capitals, flags, questions, learn, review, friends',
 };
