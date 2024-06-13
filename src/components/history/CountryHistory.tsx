@@ -28,8 +28,12 @@ const CountryHistory = ({ countries }: Props) => {
     return null;
   }
 
+  console.log(
+    'render',
+    countries.map((country) => country.success_rate_capital),
+  );
+
   const countryHistory = getHistoryCountriesGuessed();
-  console.log(countryHistory[0]);
 
   const lastPlayedCountries: CountryWithScores[] = [];
   for (const record of countryHistory) {
@@ -37,6 +41,7 @@ const CountryHistory = ({ countries }: Props) => {
       (ctr) => ctr.id === Number(record.countryId),
     );
     if (!country) {
+      console.error(`Country not found: ${record.countryId}`);
       return;
     }
     lastPlayedCountries.push({

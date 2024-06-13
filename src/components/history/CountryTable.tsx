@@ -12,8 +12,10 @@ type Props = {
 const CountryTable = ({ countries }: Props) => {
   const { questionType } = useGameStore();
 
+  // console.log(countries.map((country) => country.success_rate_capital));
+
   const getScore = (country: CountryWithScores) => {
-    console.log('getting score', country);
+    // console.log('getting score');
 
     switch (questionType) {
       case 'CountryToCapital':
