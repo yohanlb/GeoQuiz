@@ -65,7 +65,7 @@ const LandingHeader = () => (
       </Link>
       <div>
         <Link href={navigationLinks.home.href}>
-          <Button variant={'accent'} className='h-8 font-bold'>
+          <Button variant={'accent'} className='h-8 text-xl font-bold'>
             <span>Play</span>
           </Button>
         </Link>

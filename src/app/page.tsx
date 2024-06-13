@@ -12,10 +12,10 @@ const Landing = () => {
     <div className='px-4'>
       <section className='flex w-full flex-col items-center gap-y-8 py-24 text-center md:flex-row md:justify-between md:text-left'>
         <div className='flex flex-col justify-center gap-8 md:max-w-[50%]'>
-          <h1 className='text-2xl font-extrabold'>
+          <h1 className='text-3xl font-extrabold'>
             Learn Geography the Fun Way with GeoQuiz!
           </h1>
-          <p className='font-thin capitalize'>
+          <p className='text-lg font-thin capitalize'>
             Master <strong>capitals</strong> and <strong>flags</strong>, track
             your progress, and <strong>challenge</strong> your friends!
           </p>
@@ -23,9 +23,9 @@ const Landing = () => {
             <Button
               size={'lg'}
               variant={'accent'}
-              className='w-fit font-extrabold'
+              className='w-fit text-xl font-extrabold'
             >
-              <span>{'Start!'}</span>
+              <span>Try Now! (It&apos;s free)</span>
             </Button>
           </Link>
         </div>
@@ -38,6 +38,10 @@ const Landing = () => {
             priority
           />
         </div>
+      </section>
+      <section className='space-y-8 text-xl italic'>
+        <p>"Finally beat your friends at naming capitals!"</p>
+        <p className='text-right'>"Be the new king of trivia nights!"</p>
       </section>
       <section className='my-8'>
         <Features />

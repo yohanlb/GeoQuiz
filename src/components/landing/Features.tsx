@@ -20,7 +20,7 @@ const FeatureCard = ({
         <div className='flex h-10 w-10 items-center justify-center rounded-full bg-gray-800'>
           <span className='text-2xl font-extrabold'>{featureData.number}</span>
         </div>
-        <h3 className='font-bold text-accent'>{featureData.title}</h3>
+        <h3 className='text-lg font-bold text-accent'>{featureData.title}</h3>
       </div>
       <p>{featureData.description}</p>
     </div>
