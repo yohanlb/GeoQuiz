@@ -4,7 +4,7 @@ import SectionTitle from '@components/_commons/SectionTitle';
 const HowItWorksSection = () => {
   return (
     <section className='space-y-4'>
-      <SectionTitle text='How It Works' variant='h3' />
+      <SectionTitle text='How It Works' variant='h2' />
       <div className='space-y-2'>
         <h3 className='text-base font-normal'>1. Select a Deck</h3>
         <p className='text-sm text-gray-400'>

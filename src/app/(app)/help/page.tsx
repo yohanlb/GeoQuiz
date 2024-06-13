@@ -9,10 +9,8 @@ import { Button } from '@components/ui/button';
 const Help = async () => {
   return (
     <div className='mx-auto flex max-w-md flex-col gap-6 px-4 py-2 md:px-0'>
-      <HowItWorksSection />
-      <hr />
-      <section className='flex flex-col gap-4'>
-        <SectionTitle text='Feedbacks' variant='h3' />
+      <section className='flex flex-col items-center justify-center gap-4 text-center'>
+        <SectionTitle text='Feedbacks' variant='h2' />
         <SectionTitle
           text='Any issue, feedback or suggestion ?'
           variant='description'
@@ -27,6 +25,8 @@ const Help = async () => {
           </Link>
         </Button>
       </section>
+      <hr />
+      <HowItWorksSection />
       <PageCenteredLink href={navigationLinks.home.href} label='Back' />
     </div>
   );
