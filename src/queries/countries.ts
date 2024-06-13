@@ -34,8 +34,10 @@ async function fetchCountries(): Promise<CountryData[]> {
     throw new Error('Countries not found');
   }
 
+  console.log('RESPONSE', response.body);
+
   const { data }: { data: CountryData[] } = await response.json();
-  console.log(`Countries fetched: `, data[0]);
+  console.log(`Countries fetched DATA: `, data[0]);
   return data;
 }
 
