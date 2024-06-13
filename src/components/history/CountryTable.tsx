@@ -11,16 +11,19 @@ type Props = {
 
 const CountryTable = ({ countries }: Props) => {
   const { questionType } = useGameStore();
+
   const getScore = (country: CountryWithScores) => {
+    console.log('getting score', country);
+
     switch (questionType) {
       case 'CountryToCapital':
-        return country.success_rate_capital;
+        return country.success_rate_capital || 0.5;
       case 'CountryToFlag':
         //TODO: switch to flag score when enough data
-        return country.success_rate_capital;
+        return country.success_rate_capital || 0.5;
       // return country.success_rate_flag;
       default:
-        return country.success_rate_capital;
+        return country.success_rate_capital || 0.5;
     }
   };
 

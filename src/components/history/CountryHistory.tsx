@@ -29,17 +29,19 @@ const CountryHistory = ({ countries }: Props) => {
   }
 
   const countryHistory = getHistoryCountriesGuessed();
+  console.log(countryHistory[0]);
+
   const lastPlayedCountries: CountryWithScores[] = [];
-  for (let i = 0; i < countryHistory.length; i++) {
+  for (const record of countryHistory) {
     const country = countries.find(
-      (ctr) => ctr.id === Number(countryHistory[i].countryId),
+      (ctr) => ctr.id === Number(record.countryId),
     );
     if (!country) {
       return;
     }
     lastPlayedCountries.push({
       ...country,
-      ...countryHistory[i],
+      ...record,
     });
   }
 

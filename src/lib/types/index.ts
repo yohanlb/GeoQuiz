@@ -104,7 +104,7 @@ declare global {
   }
 
   export interface CountryGuessHistory extends CountryScore {
-    countryId: Deck['id'];
+    countryId: CountryData['id'];
   }
 
   export type CountryWithScores = CountryData & CountryGuessHistory;
