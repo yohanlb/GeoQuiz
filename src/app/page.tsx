@@ -40,8 +40,8 @@ const Landing = () => {
         </div>
       </section>
       <section className='space-y-8 text-xl italic'>
-        <p>"Finally beat your friends at naming capitals!"</p>
-        <p className='text-right'>"Be the new king of trivia nights!"</p>
+        <p>{'Finally beat your friends at naming capitals!'}</p>
+        <p className='text-right'>{'Be the new king of trivia nights!'}</p>
       </section>
       <section className='my-8'>
         <Features />
