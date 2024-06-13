@@ -1,5 +1,8 @@
+'use client';
+
 import React from 'react';
 import { navigationLinks } from '@lib/navigationLinks';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import GeoQuizLogo from '@assets/GeoQuizGlobeLogo.png';
@@ -11,7 +14,7 @@ const Landing = () => {
   return (
     <div className='px-4'>
       <section className='flex w-full flex-col items-center gap-y-8 py-24 text-center md:flex-row md:justify-between md:text-left'>
-        <div className='flex flex-col justify-center gap-8 md:max-w-[50%]'>
+        <motion.div className='flex flex-col justify-center gap-8 md:max-w-[50%]'>
           <h1 className='text-3xl font-extrabold'>
             Learn Geography the Fun Way with GeoQuiz!
           </h1>
@@ -28,8 +31,8 @@ const Landing = () => {
               <span>Try Now! (It&apos;s free)</span>
             </Button>
           </Link>
-        </div>
-        <div className='max-w-44 md:max-w-80'>
+        </motion.div>
+        <div className='max-w-44 duration-300 hover:scale-105 md:max-w-80'>
           <Image
             src={GeoQuizLogo}
             alt='GeoQuiz Logo'
