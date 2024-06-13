@@ -23,6 +23,11 @@ export default withPWA({
       },
     ],
   },
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
+  },
   async rewrites() {
     return [
       {

@@ -19,6 +19,8 @@ const CountryHistory = ({ countries }: Props) => {
     // Force re-render on questionType change
   }, [questionType]);
 
+  console.log(countries.slice(0, 5));
+
   const lastPlayedCountries: CountryWithScores[] = [];
   for (const record of countryHistory) {
     const country = countries.find(
