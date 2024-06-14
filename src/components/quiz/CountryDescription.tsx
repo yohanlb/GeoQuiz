@@ -30,7 +30,7 @@ const CountryDescription = ({ countryData, hideFlag = false }: Props) => {
         <h1 className='text-3xl md:text-5xl'>{displayedName}</h1>
       </div>
 
-      <div className='flex w-full flex-col gap-2 text-xs md:flex-row md:justify-between'>
+      <div className='flex w-full flex-col gap-2 text-xs md:flex-row md:justify-between md:text-base'>
         <div>
           <p>
             <span>Region: </span>

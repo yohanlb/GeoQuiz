@@ -15,9 +15,9 @@ const bgColors = [
 ];
 
 const sizeClasses = {
-  xl: 'w-6 h-6 text-base',
-  md: 'w-5 h-5 text-sm',
-  sm: 'w-4 h-4 text-xs',
+  xl: 'w-6 h-6 text-base md:w-7 md:h-7 md:text-xl',
+  md: 'w-5 h-5 text-sm md:w-6 md:h-6 md:text-lg',
+  sm: 'w-4 h-4 text-xs md:w-5 md:h-5 md:text-base',
 };
 
 type Props = {
@@ -31,7 +31,7 @@ const DifficultyIndex: React.FC<Props> = ({ digit, size = 'sm' }) => {
   return (
     <div
       className={clsx(
-        'text flex w-3 items-center justify-center rounded-md',
+        'text flex items-center justify-center rounded-md',
         sizeClasses[size],
         bgColor,
       )}
