@@ -13,7 +13,7 @@ type Props = {
   questions: Question[];
 };
 
-function GameController({ questions }: Props) {
+function GameController({ questions }: Readonly<Props>) {
   const {
     currentQuestionIndex,
     incrementQuestionIndex,
@@ -34,6 +34,7 @@ function GameController({ questions }: Props) {
   const updateDeckScore = useDeckHistory((state) => state.updateDeckScore);
   const addCountryScores = useCountryHistory((state) => state.addCountryScores);
   const { push } = useRouter();
+  const hasInitialized = React.useRef(false);
 
   if (!deck) {
     throw new Error('Deck is null. Ensure that the deck is set in the store.');
@@ -99,7 +100,11 @@ function GameController({ questions }: Props) {
 
   // AFTER GAME FINISHED
   React.useEffect(() => {
-    if (gameState === 'finished') {
+    if (gameState === 'playing') {
+      // make sure gameState had time to be intialized.
+      hasInitialized.current = true;
+    }
+    if (hasInitialized.current && gameState === 'finished') {
       // TODO modify this two next lines to not use this function, and do it directly in the store
       const newDeckScore = calculateNewDeckScore(userResults, questions.length);
       updateDeckScore(deck.id, newDeckScore);
