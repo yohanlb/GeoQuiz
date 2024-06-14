@@ -22,7 +22,7 @@ type QuestionViewProps = {
 
 export type OptionsFlag = {
   codeIso2: string;
-  state: 'Default' | 'SUCCESS' | 'DISABLED';
+  state: AnswerOptionButton['state'];
 };
 
 const QuestionView = ({
@@ -35,7 +35,7 @@ const QuestionView = ({
 
   const optionsCapital = currentQuestion.optionsCapitals.map(
     (capitalOption) => {
-      let state = 'Default';
+      let state: AnswerOptionButton['state'] = 'DEFAULT';
       const isAlreadyClicked = userAnswers.includes(capitalOption);
       const isCorrectAnswer = capitalOption === currentQuestion.answerCapital;
       if (isAlreadyClicked) {
@@ -49,7 +49,7 @@ const QuestionView = ({
   ) as AnswerOptionButton[];
 
   const optionsFlag = currentQuestion.optionsIso2.map((optionIso2) => {
-    let state = 'Default';
+    let state: AnswerOptionButton['state'] = 'DEFAULT';
     const isAlreadyClicked = userAnswers.includes(optionIso2);
     const isCorrectAnswer = optionIso2 === currentQuestion.answerIso2;
     if (isAlreadyClicked) {

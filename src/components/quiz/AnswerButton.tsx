@@ -1,5 +1,8 @@
+'use client';
+
 import React from 'react';
 import clsx from 'clsx';
+import { motion } from 'framer-motion';
 
 export type AnswerOptionButton = {
   text: string;
@@ -19,7 +22,7 @@ function AnswerButton({
     text: 'text',
     state: 'DEFAULT',
   },
-}: AnswerButtonProps) {
+}: Readonly<AnswerButtonProps>) {
   const buttonStyle = clsx(
     'w-full border border-gray-700 drop-shadow-lg',
     'py-2 px-2 leading-6 rounded-md',
@@ -36,9 +39,6 @@ function AnswerButton({
     {
       'hover:border-slate-300 hover:text-slate-300': option.state === 'DEFAULT',
     },
-
-    // Active
-    { 'active:bg-slate-50 active:text-slate-950': option.state === 'DEFAULT' },
 
     // SUCCESS
     {
@@ -61,9 +61,20 @@ function AnswerButton({
   };
 
   return (
-    <button type='button' className={buttonStyle} onClick={onClick}>
+    <motion.button
+      type='button'
+      className={buttonStyle}
+      onClick={onClick}
+      whileTap={{
+        scale: option.state === 'DEFAULT' ? 0.95 : 1,
+        opacity: option.state !== 'DEFAULT' ? 0.5 : 1,
+      }}
+      transition={{
+        duration: 0.2,
+      }}
+    >
       {`${index + 1}. ${option.text} `}
-    </button>
+    </motion.button>
   );
 }
 
