@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
+import { motion } from 'framer-motion';
 import { OptionsFlag } from './QuestionView';
 
 type Props = {
@@ -17,11 +18,15 @@ function AnswerButtonFlag({ index, handleClick, option }: Props) {
   }
 
   return (
-    <button
+    <motion.button
       key={index}
       onClick={() => handleClick(option.codeIso2)}
       className={`color-border border-2 p-1 ${borderColor} rounded-lg`}
       disabled={option.state === 'DISABLED'}
+      whileTap={{
+        scale: option.state === 'DEFAULT' ? 0.9 : 1,
+        opacity: option.state !== 'DEFAULT' ? 0.5 : 1,
+      }}
     >
       <ReactCountryFlag
         countryCode={option.codeIso2}
@@ -32,7 +37,7 @@ function AnswerButtonFlag({ index, handleClick, option }: Props) {
           opacity: option.state === 'DISABLED' ? 0.5 : 1,
         }}
       />
-    </button>
+    </motion.button>
   );
 }
 
