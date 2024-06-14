@@ -15,7 +15,7 @@ export const navigationLinks: NavigationLinks = {
   history: { label: 'History', href: '/history' },
   stats: { label: 'My Stats', href: '/stats' },
   more: { label: 'More', href: '/more' },
-  help: { label: 'Help', href: '/help' },
+  help: { label: 'About', href: '/help' },
   quiz: { label: '', href: '/quiz' },
   landing: { label: 'Welcome', href: '/' },
 };
