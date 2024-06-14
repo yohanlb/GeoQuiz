@@ -38,17 +38,22 @@ function Menu({ trigger }: Props) {
             {navigationLinks.history.label}
           </Link>
         </DropdownMenuItem>
-        <DropdownMenuItem disabled>
+        {/* <DropdownMenuItem disabled>
           <Link href={navigationLinks.stats.href} className='w-full'>
             {navigationLinks.stats.label}
           </Link>
-        </DropdownMenuItem>
+        </DropdownMenuItem> */}
         <DropdownMenuSeparator />
-        <DropdownMenuItem disabled>
+        <DropdownMenuItem>
+          <Link href={navigationLinks.landing.href} className='w-full'>
+            {navigationLinks.landing.label}
+          </Link>
+        </DropdownMenuItem>
+        {/* <DropdownMenuItem disabled>
           <Link href={navigationLinks.more.href} className='w-full'>
             {navigationLinks.more.label}
           </Link>
-        </DropdownMenuItem>
+        </DropdownMenuItem> */}
         <DropdownMenuItem>
           <Link href={navigationLinks.help.href} className='w-full'>
             {navigationLinks.help.label}
