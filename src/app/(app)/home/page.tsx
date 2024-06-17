@@ -15,12 +15,12 @@ const UnplayedDecksSection = dynamic(
     ssr: false,
   },
 );
-const LowestScoresDecksSection = dynamic(
-  () => import('@components/home/LowestScoresDecksSection'),
-  {
-    ssr: false,
-  },
-);
+// const LowestScoresDecksSection = dynamic(
+//   () => import('@components/home/LowestScoresDecksSection'),
+//   {
+//     ssr: false,
+//   },
+// );
 
 async function Home() {
   const decks = await getDecks();
@@ -29,7 +29,9 @@ async function Home() {
     <div className='flex flex-col gap-12 px-4 py-4 text-center md:px-0'>
       <FeaturedAndPopularSection decks={decks} />
       <DifficultySection decks={decks} />
-      <LowestScoresDecksSection decks={decks} />
+      {/*  TODO Rework section to show decks already played with worth progress? 
+      or keep it based on the latest deck score */}
+      {/* <LowestScoresDecksSection decks={decks} /> */}
       <UnplayedDecksSection decks={decks} />
       <ContinentsSection decks={decks} />
       <RegionSection decks={decks} />

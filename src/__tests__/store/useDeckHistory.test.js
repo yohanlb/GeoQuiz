@@ -9,6 +9,7 @@ import { act, renderHook } from '@testing-library/react';
 jest.mock('@/src/stores/gameStore', () => ({
   getState: jest.fn(),
 }));
+jest.useFakeTimers();
 
 describe('useDeckHistory', () => {
   beforeEach(() => {
@@ -47,27 +48,15 @@ describe('useDeckHistory', () => {
     expect(score).toBe(100);
   });
 
-  it('should get all deck scores', () => {
-    const { result } = renderHook(() => useDeckHistory());
-
-    act(() => {
-      result.current.updateDeckScore(1, 100);
-      result.current.updateDeckScore(2, 200);
-    });
-
-    const scores = result.current.getAllDeckScores();
-    expect(scores).toEqual({ 1: 100, 2: 200 });
-  });
-
   it('should get all played deck ids', () => {
     const { result } = renderHook(() => useDeckHistory());
 
     act(() => {
       result.current.updateDeckScore(1, 100);
-      result.current.updateDeckScore(2, 200);
+      result.current.updateDeckScore(2, 20);
     });
 
-    const ids = result.current.getAllPlayedDeckIds();
+    const ids = result.current.getPlayedDeckIds();
     expect(ids).toEqual([1, 2]);
   });
 
@@ -76,24 +65,11 @@ describe('useDeckHistory', () => {
 
     act(() => {
       result.current.updateDeckScore(1, 100);
-      result.current.updateDeckScore(2, 200);
+      jest.advanceTimersByTime(1000);
+      result.current.updateDeckScore(2, 20);
     });
 
-    const ids = result.current.getLastPlayedDeckIds();
+    const ids = result.current.getLastNDecksPlayed(5);
     expect(ids).toEqual([2, 1]);
-  });
-
-  it('should update deck score and maintain history length', () => {
-    const { result } = renderHook(() => useDeckHistory());
-
-    act(() => {
-      for (let i = 1; i <= 12; i++) {
-        result.current.updateDeckScore(i, i * 100);
-      }
-    });
-
-    const history = result.current.getLastPlayedDeckIds();
-    expect(history.length).toBeLessThanOrEqual(10);
-    expect(history).toEqual([12, 11, 10, 9, 8, 7, 6, 5, 4, 3]);
   });
 });

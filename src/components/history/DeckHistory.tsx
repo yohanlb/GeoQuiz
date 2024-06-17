@@ -9,15 +9,15 @@ import SectionTitle from '@components/_commons/SectionTitle';
 type Props = { decks: Deck[] };
 
 const DeckHistory = ({ decks }: Props) => {
-  const getLastPlayedDeckIds = useDeckHistory(
-    (state) => state.getLastPlayedDeckIds,
+  const getLastNDecksPlayed = useDeckHistory(
+    (state) => state.getLastNDecksPlayed,
   );
   const { questionType } = useGameStore();
   React.useEffect(() => {
     // Force re-render on questionType change
   }, [questionType]);
 
-  const idsLastDeckPlayed = getLastPlayedDeckIds();
+  const idsLastDeckPlayed = getLastNDecksPlayed(5);
   const lastPlayedDecks = [];
   for (const element of idsLastDeckPlayed) {
     const deck = decks.find((deck) => deck.id === Number(element));

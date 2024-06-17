@@ -11,14 +11,12 @@ type Props = {
 };
 
 const UnplayedDecksSection = ({ decks }: Props) => {
-  const getAllPlayedDeckIds = useDeckHistory(
-    (state) => state.getAllPlayedDeckIds,
-  );
-  const storedDecksIds = getAllPlayedDeckIds();
+  const { getPlayedDeckIds } = useDeckHistory();
+  const playedDeckIds = getPlayedDeckIds();
   const howManyToDisplay = isBreakpoint('md') ? 3 : 4;
 
   const unplayedDecks = decks
-    .filter((deck) => !storedDecksIds.includes(deck.id))
+    .filter((deck) => !playedDeckIds.includes(deck.id))
     .sort(() => Math.random() - 0.5)
     .slice(0, howManyToDisplay);
 

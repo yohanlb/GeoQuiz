@@ -7,10 +7,10 @@ import { useDeckHistory } from '@/src/stores/deckHistoryStore';
 type Props = { deckId: Deck['id'] };
 
 const UnplayedIndicator = ({ deckId }: Props) => {
-  const getDeckScore = useDeckHistory((state) => state.getDeckScore);
-  const deckScore = getDeckScore(deckId);
+  const { getDeckPlayCount } = useDeckHistory();
+  const deckPlayCount = getDeckPlayCount(deckId);
 
-  if (deckScore === undefined || deckScore === null) {
+  if (deckPlayCount === undefined || deckPlayCount <= 0) {
     return <FiPackage className='ml-1 size-5' />;
   } else {
     return null;
