@@ -63,13 +63,13 @@ const LandingHeader = () => (
           className='w-16 md:w-20'
         />
       </Link>
-      <div>
-        <Link href={navigationLinks.home.href}>
-          <Button variant={'accent'} className='h-8 text-xl font-bold'>
-            <span>Play</span>
-          </Button>
-        </Link>
-      </div>
+      <Menu
+        trigger={
+          <button type='button' className='focus:outline-none'>
+            <Image src={MenuIcon} alt='Settings Icon' className='w-6 md:w-8' />
+          </button>
+        }
+      />
     </div>
   </header>
 );
