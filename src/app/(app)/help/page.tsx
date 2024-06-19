@@ -4,7 +4,6 @@ import Link from 'next/link';
 import PageCenteredLink from '@components/_commons/PageCenteredLink';
 import SectionTitle from '@components/_commons/SectionTitle';
 import HowItWorksSection from '@components/help/HowItWorksSection';
-import Footer from '@components/landing/Footer';
 import { Button } from '@components/ui/button';
 
 const Help = async () => {
