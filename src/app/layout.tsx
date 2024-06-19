@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic';
 import BackgroundGradient from '@components/_commons/BackgroundGradient';
 import MetaTags from '@components/_commons/MetaTags';
 import NavBar from '@components/_commons/NavBar';
+import Footer from '@components/landing/Footer';
 import { inter, notoEmoji } from '../lib/utils/font';
 import { metadatas } from './metadatas';
 import { PHProvider } from './providers';
@@ -29,6 +30,7 @@ export default function RootLayout({
             <div className='mx-auto flex h-full max-w-screen-md flex-col'>
               <NavBar />
               <main className='flex-grow'>{children}</main>
+              <Footer />
               <BackgroundGradient />
             </div>
           </NextUIProvider>

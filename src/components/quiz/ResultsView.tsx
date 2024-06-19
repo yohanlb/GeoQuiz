@@ -57,7 +57,7 @@ function ResultsView() {
         <LinkToDeck />
       </div>
       <ResultsTable />
-      <div className='flex flex-wrap items-center justify-center gap-2 text-xl tracking-wider'>
+      <div className='flex flex-wrap items-center justify-center gap-2 px-1 text-xl tracking-wider'>
         <p>{formatedCorrectAnwsers}% of correct answers!</p>
         <ShareResults />
       </div>

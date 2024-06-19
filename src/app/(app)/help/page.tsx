@@ -29,7 +29,6 @@ const Help = async () => {
       <hr />
       <HowItWorksSection />
       <PageCenteredLink href={navigationLinks.home.href} label='Back' />
-      <Footer />
     </div>
   );
 };

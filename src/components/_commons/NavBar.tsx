@@ -10,7 +10,6 @@ import HeaderHeroSeparator from '@assets/HeaderHeroSeparator.svg';
 import GeoQuizLogoCompact from '@assets/LogoCompact.svg';
 import GeoQuizLogoExpanded from '@assets/LogoExpanded.svg';
 import Menu from '@components/_commons/Menu';
-import { Button } from '@components/ui/button';
 
 const ExpandedHeader = () => (
   <div className='grid grid-cols-5 grid-rows-1 gap-0 px-4 py-4 md:px-0'>

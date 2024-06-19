@@ -1,9 +1,21 @@
+'use client';
+
 import React from 'react';
+import { navigationLinks } from '@lib/navigationLinks';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const Footer = () => {
+  const currentPath = usePathname();
+  if (
+    currentPath.includes(navigationLinks.quiz.href) ||
+    currentPath.includes(navigationLinks.results.href)
+  ) {
+    return null;
+  }
+
   return (
-    <div className='mb-4 mt-16 flex flex-col items-center justify-center gap-4 text-sm text-gray-400'>
+    <div className='mt-16 flex flex-col items-center justify-center gap-4 py-4 text-sm text-gray-400'>
       <hr className='w-4/5 border-gray-700' />
       <p>
         Entirely brought to you by{' - '}
