@@ -1,41 +1,17 @@
-'use client';
-
 import React from 'react';
-import { useCountryHistory } from '@/src/stores/countryHistoryStore';
 import LastAttempts from '../quiz/LastAttempts';
-import UserProgress from './UserProgress';
 
 type Props = {
   countryId: CountryData['id'];
 };
 
 const PersonalCountryInfos = ({ countryId }: Props) => {
-  const getLastScoresForCountry = useCountryHistory(
-    (state) => state.getLastScoresForCountry,
-  );
-  const countryScores = getLastScoresForCountry(countryId).map(
-    (scoreObject) => scoreObject.scores,
-  );
-
-  const unplayed = countryScores.length === 0;
-
   return (
     <div className='flex flex-col items-end justify-end'>
-      <div className='flex items-center justify-end gap-2 text-left'>
-        <UserProgress
-          countryIds={[countryId]}
-          hideTitle
-          onlyCurrentQuestionType
-        />
-      </div>
+      <span>Last Attempts</span>
       <div>
-        <span>Last Attempts: </span>
         <div className='inline-block'>
-          {unplayed ? (
-            <strong className='font-semibold italic'>Unplayed</strong>
-          ) : (
-            <LastAttempts results={[...countryScores].reverse()} />
-          )}
+          <LastAttempts countryId={countryId} />
         </div>
       </div>
     </div>

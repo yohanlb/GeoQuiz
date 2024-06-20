@@ -13,7 +13,7 @@ import ShareResults from './ShareResults';
 function ResultsView() {
   const { answeredQuestions, isGameStoreInitialized, deck } = useGameStore();
 
-  // TODO: doesnt handle if deck is null, for dynamic deck
+  // TODO: doesn't handle if deck is null, for dynamic deck
   const retryUrl = deck ? navigationLinks.quiz.href + '/' + deck?.name : null;
 
   const averageRightAnswers =
@@ -22,7 +22,7 @@ function ResultsView() {
       0,
     ) / answeredQuestions.length;
 
-  const formatedCorrectAnwsers = Math.round(averageRightAnswers * 100);
+  const formattedCorrectAnswers = Math.round(averageRightAnswers * 100);
 
   if (!isGameStoreInitialized) {
     return (
@@ -58,7 +58,7 @@ function ResultsView() {
       </div>
       <ResultsTable />
       <div className='flex flex-wrap items-center justify-center gap-2 px-1 text-xl tracking-wider'>
-        <p>{formatedCorrectAnwsers}% of correct answers!</p>
+        <p>{formattedCorrectAnswers}% of correct answers!</p>
         <ShareResults />
       </div>
       <div className='flex gap-6 md:gap-16'>
