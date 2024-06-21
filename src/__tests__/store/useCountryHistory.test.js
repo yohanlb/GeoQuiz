@@ -60,22 +60,6 @@ describe('useCountryHistory', () => {
     ).toBe(score);
   });
 
-  it('should check if country is remembered', () => {
-    const { result } = renderHook(() => useCountryHistory());
-
-    addScores(result, [
-      [1, true],
-      [1, true],
-      [1, true],
-      [1, true],
-      [1, true],
-      [2, false],
-    ]);
-
-    expect(result.current.isCountryRemembered(1)).toBe(true);
-    expect(result.current.isCountryRemembered(2)).toBe(false);
-  });
-
   it('should calculate the  right progress percent for country IDs', () => {
     const { result } = renderHook(() => useCountryHistory());
 

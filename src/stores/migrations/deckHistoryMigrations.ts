@@ -49,7 +49,7 @@ export const deckHistoryMigration = (persistedState: any): DeckResultsState => {
       deckResultsData: newDeckResultsData,
       clearAllDeckScores: () => {},
       getDeckScore: () => null,
-      updateDeckScore: () => {},
+      addNewDeckResult: () => {},
       getPlayedDeckIds: () => [],
       getLastNDecksPlayed: () => [],
       getDeckPlayCount: () => 0,

@@ -14,6 +14,15 @@ export type DeckResultsData = {
   };
 };
 
+export const DEFAULT_DECK_USER_DATA = {
+  playCountCountryToCapital: 0,
+  playCountCountryToFlag: 0,
+  lastPlayTimeCountryToCapital: null,
+  lastPlayTimeCountryToFlag: null,
+  lastScoreCountryToCapital: null,
+  lastScoreCountryToFlag: null,
+};
+
 export const initializeDeckResults = (): DeckResultsData => {
   return {};
 };
@@ -25,7 +34,7 @@ export interface DeckResultsState {
   deckResultsData: DeckResultsData;
   clearAllDeckScores: () => void;
   getDeckScore: (deckID: Deck['id']) => number | null;
-  updateDeckScore: (deckID: Deck['id'], newScore: number) => void;
+  addNewDeckResult: (deckID: Deck['id'], newScore: number) => void;
   getPlayedDeckIds: () => Deck['id'][];
   getLastNDecksPlayed: (n: number) => Deck['id'][];
   getDeckPlayCount: (deckID: Deck['id']) => number;
@@ -101,17 +110,11 @@ export const useDeckHistory = create<DeckResultsState>()(
         return playedDecks;
       },
 
-      updateDeckScore: (deckID: Deck['id'], newScore: number) => {
+      addNewDeckResult: (deckID: Deck['id'], newScore: number) => {
         const { questionType } = useGameStore.getState();
         const { deckResultsData } = get();
-        const currentDeckData = deckResultsData[deckID] || {
-          playCountCountryToCapital: 0,
-          playCountCountryToFlag: 0,
-          lastPlayTimeCountryToCapital: null,
-          lastPlayTimeCountryToFlag: null,
-          lastScoreCountryToCapital: 0,
-          lastScoreCountryToFlag: 0,
-        };
+        const currentDeckData =
+          deckResultsData[deckID] || DEFAULT_DECK_USER_DATA;
 
         type QuestionKeys = 'CountryToCapital' | 'CountryToFlag';
         const keyToUpdatePlayCount =

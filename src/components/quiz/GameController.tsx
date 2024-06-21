@@ -31,7 +31,7 @@ function GameController({ questions }: Readonly<Props>) {
     resetGame,
     addToAnsweredQuestions,
   } = useGameStore();
-  const updateDeckScore = useDeckHistory((state) => state.updateDeckScore);
+  const { addNewDeckResult } = useDeckHistory();
   const addCountryScores = useCountryHistory((state) => state.addCountryScores);
   const { push } = useRouter();
   const hasInitialized = React.useRef(false);
@@ -105,9 +105,8 @@ function GameController({ questions }: Readonly<Props>) {
       hasInitialized.current = true;
     }
     if (hasInitialized.current && gameState === 'finished') {
-      // TODO modify this two next lines to not use this function, and do it directly in the store
       const newDeckScore = calculateNewDeckScore(userResults, questions.length);
-      updateDeckScore(deck.id, newDeckScore);
+      addNewDeckResult(deck.id, newDeckScore);
       push('/results');
     }
   }, [gameState]); // eslint-disable-line react-hooks/exhaustive-deps

@@ -1,9 +1,5 @@
 import { AVAILABLE_QUESTION_TYPES } from '@lib/consts';
-import {
-  CountryScoreStatus,
-  calculateRecallIndex,
-  getCountryScoreStatus,
-} from '@lib/utils/score';
+import { CountryScoreStatus, getCountryScoreStatus } from '@lib/utils/score';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import useGameStore from './gameStore';
@@ -50,7 +46,6 @@ interface CountryResultsState {
   getLastScoresForCountry: (countryId: CountryData['id']) => CountryScore[];
   getHistoryCountriesGuessed: () => CountryGuessHistory[];
   addCountryScores: (countryId: CountryData['id'], scores: boolean) => void;
-  isCountryRemembered: (countryId: CountryData['id']) => boolean;
   getProgressPercentForCountryIds: (countryIds: CountryData['id'][]) => number;
   getSummarizedDeckCountryStatus: (countryIds: CountryData['id'][]) => {
     [key in CountryScoreStatus]: number;
@@ -61,19 +56,6 @@ export const useCountryHistory = create<CountryResultsState>()(
   persist(
     (set, get) => ({
       countryResultsData: defaultCountryResultsData,
-
-      isCountryRemembered(countryId) {
-        const { countryResultsData } = get();
-        const { questionType } = useGameStore.getState();
-        const countryHistory =
-          countryResultsData.history_per_country[questionType][countryId];
-
-        if (!countryHistory || countryHistory.length === 0) {
-          return false;
-        }
-        const scores = countryHistory.map((scoreObject) => scoreObject.scores);
-        return calculateRecallIndex(scores) > 7;
-      },
 
       getSummarizedDeckCountryStatus(countryIds: CountryData['id'][]) {
         const { getLastScoresForCountry } = get();
@@ -95,18 +77,18 @@ export const useCountryHistory = create<CountryResultsState>()(
       },
 
       getProgressPercentForCountryIds: (countryIds: CountryData['id'][]) => {
-        const { getLastScoresForCountry } = get();
-        const countriesRemembered = countryIds.reduce((acc, countryId) => {
-          const countryScores = getLastScoresForCountry(countryId).map(
-            (scoreObject) => scoreObject.scores,
-          );
-          const recallIndex = calculateRecallIndex(countryScores);
-          const clampedIndex = Math.max(Math.min(recallIndex, 10), 0);
-          acc += clampedIndex;
-          return acc;
-        }, 0);
+        const { getSummarizedDeckCountryStatus } = get();
+        const deckStatuses = getSummarizedDeckCountryStatus(countryIds);
 
-        return Math.round((countriesRemembered / countryIds.length) * 10);
+        const countriesRememberedPerfectly = deckStatuses.perfect || 0;
+        const countriesPartialyRemembered = deckStatuses.good || 0;
+
+        const amountOfRememberedCountries =
+          countriesRememberedPerfectly + countriesPartialyRemembered * 0.3;
+
+        return Math.round(
+          (amountOfRememberedCountries / countryIds.length) * 100,
+        );
       },
 
       clearAllCountryScores: () =>

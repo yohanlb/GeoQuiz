@@ -27,7 +27,7 @@ describe('useDeckHistory', () => {
     const { result } = renderHook(() => useDeckHistory());
 
     act(() => {
-      result.current.updateDeckScore(1, 100);
+      result.current.addNewDeckResult(1, 100);
     });
 
     act(() => {
@@ -41,7 +41,7 @@ describe('useDeckHistory', () => {
     const { result } = renderHook(() => useDeckHistory());
 
     act(() => {
-      result.current.updateDeckScore(1, 100);
+      result.current.addNewDeckResult(1, 100);
     });
 
     const score = result.current.getDeckScore(1);
@@ -52,8 +52,8 @@ describe('useDeckHistory', () => {
     const { result } = renderHook(() => useDeckHistory());
 
     act(() => {
-      result.current.updateDeckScore(1, 100);
-      result.current.updateDeckScore(2, 20);
+      result.current.addNewDeckResult(1, 100);
+      result.current.addNewDeckResult(2, 20);
     });
 
     const ids = result.current.getPlayedDeckIds();
@@ -64,9 +64,9 @@ describe('useDeckHistory', () => {
     const { result } = renderHook(() => useDeckHistory());
 
     act(() => {
-      result.current.updateDeckScore(1, 100);
+      result.current.addNewDeckResult(1, 100);
       jest.advanceTimersByTime(1000);
-      result.current.updateDeckScore(2, 20);
+      result.current.addNewDeckResult(2, 20);
     });
 
     const ids = result.current.getLastNDecksPlayed(5);

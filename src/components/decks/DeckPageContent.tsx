@@ -25,7 +25,7 @@ const DeckPageContent = ({ deck, hideTitle = false }: Props) => {
   // = deck.decks_stats[questionType].averageScore;
 
   return (
-    <div className='flex flex-col gap-8'>
+    <div className='flex flex-col gap-4 md:gap-8'>
       <div>
         {!hideTitle && (
           <h1 className='text-2xl font-semibold'>{deck.displayName}</h1>
