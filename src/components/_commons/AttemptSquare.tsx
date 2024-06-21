@@ -4,9 +4,14 @@ import clsx from 'clsx';
 type Props = {
   status?: 'correct' | 'wrong' | 'unplayed';
   size?: number;
+  isLast?: boolean;
 };
 
-const AttemptSquare: React.FC<Props> = ({ status = 'unplayed', size = 16 }) => {
+const AttemptSquare: React.FC<Props> = ({
+  status = 'unplayed',
+  size = 16,
+  isLast = false,
+}) => {
   const baseClasses = 'flex items-center justify-center rounded-sm';
   const statusClasses = clsx({
     'bg-green-500 border-green-500': status === 'correct',
@@ -14,12 +19,14 @@ const AttemptSquare: React.FC<Props> = ({ status = 'unplayed', size = 16 }) => {
     'bg-transparent border-gray-500': status === 'unplayed',
   });
 
+  const actualSize = isLast ? size : size - 4;
+
   return (
     <div
       className={`${baseClasses} ${statusClasses}`}
       style={{
-        width: `${size}px`,
-        height: `${size}px`,
+        width: `${actualSize}px`,
+        height: `${actualSize}px`,
         borderWidth: '2px',
       }}
     ></div>

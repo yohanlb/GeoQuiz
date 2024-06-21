@@ -5,7 +5,7 @@ import { navigationLinks } from '@lib/navigationLinks';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import DifficultyIndicator from '@components/_commons/DifficultyIndicator';
-import UserProgress from '@components/_commons/UserProgress';
+import LastAttempts from './LastAttempts';
 
 const ResultsTable = () => {
   const { answeredQuestions } = useGameStore();
@@ -19,7 +19,6 @@ const ResultsTable = () => {
             <th className='px-2 py-2 font-normal'>Flag</th>
             <th className='px-2 py-2 font-normal'>Capital</th>
             <th className='px-2 py-2 font-normal'>Result</th>
-            <th className='text-wrap px-2 py-2 font-normal'>Progress</th>
           </tr>
         </thead>
         <tbody className='text-xs md:text-base'>
@@ -76,14 +75,8 @@ const ResultsTable = () => {
                   }}
                   className={`inline-block ${question.isCorrect ? 'text-green-500' : 'text-red-500'}`}
                 >
-                  {question.isCorrect ? '✔' : '✘'}
+                  <LastAttempts countryId={question.countryData.id} />
                 </motion.span>
-              </td>
-              <td className='px-2 py-2 font-extralight'>
-                <UserProgress
-                  countryIds={[question.countryData.id]}
-                  width='sm'
-                />
               </td>
             </motion.tr>
           ))}

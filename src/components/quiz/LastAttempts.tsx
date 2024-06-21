@@ -19,6 +19,7 @@ const LastAttempts = ({ countryId }: { countryId: number }) => {
         {lastResults.map((result, index) => (
           <AttemptSquare
             key={index}
+            isLast={index === lastResults.length - 1}
             status={result.scores ? 'correct' : 'wrong'}
           />
         ))}
