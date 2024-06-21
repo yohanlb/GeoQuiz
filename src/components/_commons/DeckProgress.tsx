@@ -19,6 +19,21 @@ const getColor = (value: number) => {
   return 'default';
 };
 
+export const PopoverContentDeckProgress = () => {
+  return (
+    <div className='flex flex-col gap-2 p-4'>
+      <h4 className='text-xl font-medium'>Deck Progression Percentage:</h4>
+      <p>
+        It is calculated based on your results for every country in this deck.
+      </p>
+      <p>
+        The more countries you answer correctly, the higher your progress will
+        be.
+      </p>
+    </div>
+  );
+};
+
 const DeckProgress = ({ countryIds, width = 'md' }: Props) => {
   const { getProgressPercentForCountryIds } = useCountryHistory();
   const progress = getProgressPercentForCountryIds(countryIds);
