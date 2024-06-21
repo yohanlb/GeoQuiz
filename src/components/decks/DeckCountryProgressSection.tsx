@@ -3,7 +3,7 @@
 import React from 'react';
 import useGameStore from '@/src/stores/gameStore';
 import CountryScoreOverview from '@components/_commons/CountryScoreOverview';
-import UserProgress from '@components/_commons/UserProgress';
+import DeckProgress from '@components/_commons/DeckProgress';
 
 type Props = {
   countryIds: CountryData['id'][];
@@ -21,7 +21,7 @@ const DeckCountryProgressSection = ({ countryIds }: Props) => {
       <CountryScoreOverview countryIds={countryIds} />
       <span className='flex items-center gap-2'>
         Progress:
-        <UserProgress countryIds={countryIds} />
+        <DeckProgress countryIds={countryIds} />
       </span>
     </div>
   );
