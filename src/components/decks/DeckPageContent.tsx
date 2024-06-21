@@ -1,11 +1,18 @@
 import React from 'react';
 import { TbCardsFilled } from 'react-icons/tb';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import DeckImage from '@components/_commons/DeckImage';
 import DifficultyIndicator from '@components/_commons/DifficultyIndicator';
 import PlayButton from '@components/_commons/PlayButton';
 import SelectQuestionType from '@components/_commons/SelectQuestionType';
-import UserProgress from '@components/_commons/UserProgress';
+
+const DeckCountryProgressSection = dynamic(
+  () => import('@components/decks/DeckCountryProgressSection'),
+  {
+    ssr: false,
+  },
+);
 
 type Props = {
   deck: Deck;
@@ -18,7 +25,7 @@ const DeckPageContent = ({ deck, hideTitle = false }: Props) => {
   // = deck.decks_stats[questionType].averageScore;
 
   return (
-    <>
+    <div className='flex flex-col gap-8'>
       <div>
         {!hideTitle && (
           <h1 className='text-2xl font-semibold'>{deck.displayName}</h1>
@@ -42,9 +49,7 @@ const DeckPageContent = ({ deck, hideTitle = false }: Props) => {
       </div>
       {deck.description && <p>{deck.description}</p>}
       <DeckImage imageName={deck.name} alt={deck.name} />
-      <div className='flex justify-between'>
-        <UserProgress countryIds={deck.countryIds} onlyCurrentQuestionType />
-      </div>
+      <DeckCountryProgressSection countryIds={deck.countryIds} />
       <div className='flex justify-center'>
         <SelectQuestionType />
       </div>
@@ -53,7 +58,7 @@ const DeckPageContent = ({ deck, hideTitle = false }: Props) => {
           <PlayButton text={'Play!'} />
         </Link>
       </div>
-    </>
+    </div>
   );
 };
 

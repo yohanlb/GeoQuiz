@@ -1,5 +1,9 @@
 import { AVAILABLE_QUESTION_TYPES } from '@lib/consts';
-import { calculateRecallIndex } from '@lib/utils/score';
+import {
+  CountryScoreStatus,
+  calculateRecallIndex,
+  getCountryScoreStatus,
+} from '@lib/utils/score';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import useGameStore from './gameStore';
@@ -48,6 +52,9 @@ interface CountryResultsState {
   addCountryScores: (countryId: CountryData['id'], scores: boolean) => void;
   isCountryRemembered: (countryId: CountryData['id']) => boolean;
   getProgressPercentForCountryIds: (countryIds: CountryData['id'][]) => number;
+  getSummarizedDeckCountryStatus: (countryIds: CountryData['id'][]) => {
+    [key in CountryScoreStatus]: number;
+  };
 }
 
 export const useCountryHistory = create<CountryResultsState>()(
@@ -66,6 +73,25 @@ export const useCountryHistory = create<CountryResultsState>()(
         }
         const scores = countryHistory.map((scoreObject) => scoreObject.scores);
         return calculateRecallIndex(scores) > 7;
+      },
+
+      getSummarizedDeckCountryStatus(countryIds: CountryData['id'][]) {
+        const { getLastScoresForCountry } = get();
+        const groupedDeckStatus = countryIds.reduce(
+          (acc: Record<CountryScoreStatus, number>, countryId) => {
+            const status = getCountryScoreStatus(
+              getLastScoresForCountry(countryId),
+            );
+            if (!acc[status]) {
+              acc[status] = 0;
+            }
+            acc[status] += 1;
+            return acc;
+          },
+          {} as Record<CountryScoreStatus, number>,
+        );
+
+        return groupedDeckStatus;
       },
 
       getProgressPercentForCountryIds: (countryIds: CountryData['id'][]) => {

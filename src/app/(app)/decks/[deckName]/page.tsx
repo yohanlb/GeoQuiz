@@ -10,7 +10,7 @@ const Country = async ({ params }: Props) => {
   const deck = await getDeckByName(params.deckName);
 
   return (
-    <div className='mx-auto flex max-w-md flex-col gap-4 px-4 py-2 md:gap-8 md:px-0'>
+    <div className='mx-auto max-w-md px-4 py-2 md:px-0'>
       <DeckPageContent deck={deck} />
     </div>
   );
