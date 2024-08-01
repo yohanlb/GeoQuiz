@@ -6,7 +6,7 @@ import ContinentsSection from '@components/home/ContinentsSection';
 import DifficultySection from '@components/home/DifficultySection';
 import FeaturedAndPopularSection from '@components/home/FeaturedAndPopularSection';
 import RegionSection from '@components/home/RegionSection';
-import { getDecks } from '../../../queries/gameDecks';
+import { getDecks, getFeaturedDecks } from '../../../queries/gameDecks';
 
 // Dynamically import components to avoid client-side hydration
 const UnplayedDecksSection = dynamic(
@@ -24,12 +24,13 @@ const UnplayedDecksSection = dynamic(
 
 async function Home() {
   const decks = await getDecks();
+  const featuredDecks = await getFeaturedDecks();
 
   return (
     <div className='flex flex-col gap-12 px-4 py-4 text-center md:px-0'>
-      <FeaturedAndPopularSection decks={decks} />
+      <FeaturedAndPopularSection featuredDecks={featuredDecks} />
       <DifficultySection decks={decks} />
-      {/*  TODO Rework section to show decks already played with worth progress? 
+      {/*  TODO Rework section to show decks already played with worst progress? 
       or keep it based on the latest deck score */}
       {/* <LowestScoresDecksSection decks={decks} /> */}
       <UnplayedDecksSection decks={decks} />
