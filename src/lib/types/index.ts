@@ -56,7 +56,6 @@ declare global {
     countryIds: number[];
     isDynamic: boolean;
     isAvailable: boolean;
-    averageSuccessRatio: number;
     categories: string[] | null;
     displayName: string;
     isTextTransparent: boolean;
