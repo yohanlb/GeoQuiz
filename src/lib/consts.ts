@@ -19,3 +19,5 @@ export const AVAILABLE_QUESTION_TYPES: QuestionType[] = [
   // 'CapitalToCountry',
   // 'FlagToCountry',
 ];
+
+export const COUNTRIES_NOT_AVAILABLE = ['JE', 'XK'];

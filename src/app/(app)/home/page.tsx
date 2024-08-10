@@ -3,6 +3,7 @@ import { navigationLinks } from '@lib/navigationLinks';
 import dynamic from 'next/dynamic';
 import PageCenteredLink from '@components/_commons/PageCenteredLink';
 import ContinentsSection from '@components/home/ContinentsSection';
+import CountryOfTheDay from '@components/home/CountryOfTheDay';
 import DifficultySection from '@components/home/DifficultySection';
 import FeaturedAndPopularSection from '@components/home/FeaturedAndPopularSection';
 import RegionSection from '@components/home/RegionSection';
@@ -29,6 +30,7 @@ async function Home() {
   return (
     <div className='flex flex-col gap-12 px-4 py-4 text-center md:px-0'>
       <FeaturedAndPopularSection featuredDecks={featuredDecks} />
+      <CountryOfTheDay />
       <DifficultySection decks={decks} />
       {/*  TODO Rework section to show decks already played with worst progress? 
       or keep it based on the latest deck score */}
