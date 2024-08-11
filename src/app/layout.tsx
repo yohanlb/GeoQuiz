@@ -5,6 +5,7 @@ import MetaTags from '@components/_commons/MetaTags';
 import NavBar from '@components/_commons/NavBar';
 import Footer from '@components/landing/Footer';
 import { inter, notoEmoji } from '../lib/utils/font';
+import { MyQueryClientProvider } from './QueryClientProvider';
 import { metadatas } from './metadatas';
 import { PHProvider } from './providers';
 import './globals.css';
@@ -26,14 +27,16 @@ export default function RootLayout({
       <PHProvider>
         <body className={`h-dvh`}>
           <PostHogPageView />
-          <NextUIProvider className='h-full overflow-y-auto'>
-            <div className='mx-auto flex h-full max-w-screen-md flex-col'>
-              <NavBar />
-              <main className='flex-grow'>{children}</main>
-              <Footer />
-              <BackgroundGradient />
-            </div>
-          </NextUIProvider>
+          <MyQueryClientProvider>
+            <NextUIProvider className='h-full overflow-y-auto'>
+              <div className='mx-auto flex h-full max-w-screen-md flex-col'>
+                <NavBar />
+                <main className='flex-grow'>{children}</main>
+                <Footer />
+                <BackgroundGradient />
+              </div>
+            </NextUIProvider>
+          </MyQueryClientProvider>
         </body>
       </PHProvider>
     </html>
