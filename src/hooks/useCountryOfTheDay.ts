@@ -12,6 +12,8 @@ export const useCountryOfTheDay = () => {
     queryKey: ['cotd'],
     queryFn: queryFunction,
     refetchOnWindowFocus: false,
+    refetchOnMount: false,
+    refetchOnReconnect: false,
     staleTime: 5 * 60 * 1000, // 5 minutes
   });
 };

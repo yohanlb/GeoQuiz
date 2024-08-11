@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import { Card } from '@nextui-org/react';
 import Image from 'next/image';
@@ -12,12 +10,9 @@ const CountryOfTheDay = () => {
     <section>
       <SectionTitle text='Country of the Day 🌎' />
       <SectionTitle text='One new country each day!' variant='description' />
-      <div className='width-full h-48 py-1'>
+      <div className='h-48 py-1'>
         <Link href='/daily'>
-          <Card
-            isPressable
-            className='group flex h-full w-full items-center justify-center rounded-lg bg-neutral-800'
-          >
+          <Card className='group flex h-full w-full items-center justify-center rounded-lg bg-neutral-800'>
             <h3 className='z-10 text-8xl text-white duration-300 ease-in-out group-hover:text-9xl'>
               ?
             </h3>

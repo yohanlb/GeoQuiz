@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import LoadingSpinner from '@components/_commons/LoadingSpinner';
 import DailyCountryQuiz from '@components/daily/DailyCountryQuiz';
 
-function Daily() {
+function CountryOfTheDayPage() {
   const { data: dailyQuestion, isLoading, error } = useCountryOfTheDay();
 
   return (
@@ -33,4 +33,4 @@ function Daily() {
   );
 }
 
-export default Daily;
+export default CountryOfTheDayPage;

@@ -33,7 +33,6 @@ const QuizSteps: React.FC<Props> = ({
   handleGuess,
   handleNext,
 }) => {
-  console.log(guesses);
   return (
     <ol className='relative w-full border-s border-gray-200'>
       <QuizStep
