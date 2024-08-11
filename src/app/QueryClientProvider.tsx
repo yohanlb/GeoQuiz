@@ -21,7 +21,7 @@ const conf: QueryClientConfig = {
 };
 
 export const MyQueryClientProvider = ({ children }: Props) => {
-  const [client] = useState(new QueryClient(conf));
+  const [client] = useState(() => new QueryClient(conf));
 
   return <QueryClientProvider client={client}>{children}</QueryClientProvider>;
 };

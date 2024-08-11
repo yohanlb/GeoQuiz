@@ -1,4 +1,5 @@
 import { NextUIProvider } from '@nextui-org/react';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import dynamic from 'next/dynamic';
 import BackgroundGradient from '@components/_commons/BackgroundGradient';
 import MetaTags from '@components/_commons/MetaTags';
@@ -36,6 +37,7 @@ export default function RootLayout({
                 <BackgroundGradient />
               </div>
             </NextUIProvider>
+            <ReactQueryDevtools initialIsOpen={false} />
           </MyQueryClientProvider>
         </body>
       </PHProvider>
