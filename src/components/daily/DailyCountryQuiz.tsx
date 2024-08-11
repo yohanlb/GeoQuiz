@@ -79,11 +79,6 @@ const DailyCountryQuiz: React.FC<Props> = ({ dailyQuestion }) => {
     if (hasAlreadyPlayed) {
       setGuesses(hasAlreadyPlayed.guesses);
       setStep(nbOfQuestions * 2);
-    } else {
-      updateStatsDailyQuestion({
-        action: 'startQuiz',
-        questionId: dailyQuestion.questionId,
-      });
     }
   }, [cotdHistory, dailyQuestion, nbOfQuestions]);
 
