@@ -90,11 +90,8 @@ const DailyCountryQuiz: React.FC<Props> = ({ dailyQuestion }) => {
   const isOver = step >= nbOfQuestions * 2;
 
   return (
-    <div className='flex flex-col items-start gap-4 px-4 py-4'>
-      <header>
-        <h1>Country of the Day</h1>
-        <h3 className='text-4xl font-medium'>{dailyQuestion.countryName}</h3>
-      </header>
+    <div className='flex flex-col items-start gap-4'>
+      <h3 className='text-4xl font-medium'>{dailyQuestion.countryName}</h3>
       <QuizSteps
         step={step}
         dailyQuestion={dailyQuestion}
