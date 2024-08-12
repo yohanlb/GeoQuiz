@@ -15,7 +15,7 @@ function CountryOfTheDayTestPage() {
   return (
     <div className='mx-auto flex max-w-md flex-col gap-6 px-4 py-2 md:px-0'>
       <header>
-        <h1 className='font text-center text-xl'>Country of the Day</h1>
+        <h1 className='font text-left text-xl'>Country of the Day Test page</h1>
       </header>
       <div className='flex gap-2'>
         {TEST_DAYS.map((testDay) => (
