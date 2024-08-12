@@ -7,7 +7,7 @@ import LoadingSpinner from '@components/_commons/LoadingSpinner';
 import DailyCountryQuiz from '@components/daily/DailyCountryQuiz';
 
 function CountryOfTheDayPage() {
-  const { data: dailyQuestion, isLoading, error } = useCountryOfTheDay();
+  const { data: dailyQuestion, isLoading, error } = useCountryOfTheDay(0);
 
   return (
     <div className='mx-auto flex max-w-md flex-col gap-6 px-4 py-2 md:px-0'>
