@@ -8,9 +8,13 @@ import QuizSteps from './QuizSteps';
 
 type Props = {
   dailyQuestion: DailyQuestion;
+  showRemoveHistoryButton?: boolean;
 };
 
-const DailyCountryQuiz: React.FC<Props> = ({ dailyQuestion }) => {
+const DailyCountryQuiz: React.FC<Props> = ({
+  dailyQuestion,
+  showRemoveHistoryButton = false,
+}) => {
   const { updateStatsDailyQuestion } = useUpdateStatsDailyQuestion();
   const [cotdHistory, setCotdHistory] = useLocalStorage<DaysHistory>(
     'cotd-history',
@@ -50,6 +54,15 @@ const DailyCountryQuiz: React.FC<Props> = ({ dailyQuestion }) => {
     } else {
       setStep((prev) => prev + 1);
     }
+  };
+
+  const resetCurrentDayHistory = () => {
+    console.log(dailyQuestion.questionId);
+
+    setCotdHistory((prevHistory) => ({
+      ...prevHistory,
+      [dailyQuestion.questionId]: undefined,
+    }));
   };
 
   const handleGameOver = () => {
@@ -97,6 +110,14 @@ const DailyCountryQuiz: React.FC<Props> = ({ dailyQuestion }) => {
         handleGuess={handleGuess}
         handleNext={handleNext}
       />
+      {showRemoveHistoryButton && (
+        <button
+          onClick={() => resetCurrentDayHistory()}
+          className='rounded-lg border border-white px-2'
+        >
+          Reset
+        </button>
+      )}
     </div>
   );
 };
