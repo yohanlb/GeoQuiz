@@ -34,7 +34,7 @@ const DeckCard = ({ deck }: Props) => {
               src={'/images/deckImages/' + deck.image_name}
               alt={deck.displayName || deck.name}
               fill
-              sizes={'600px'}
+              sizes={'400px'}
               className='opacity-70 duration-300 ease-out group-hover:scale-105 group-hover:opacity-50'
               style={{
                 objectFit: 'cover',
