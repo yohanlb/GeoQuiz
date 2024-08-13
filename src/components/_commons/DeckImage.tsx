@@ -9,12 +9,12 @@ type Props = {
 const DeckImage = ({ imageName, alt }: Props) => {
   return (
     imageName && (
-      <div className='aspect-[16/10] w-full overflow-hidden rounded-lg'>
+      <div className='flex w-60 overflow-hidden rounded-lg'>
         <Image
           alt={alt}
           src={'/images/deckImages/' + imageName}
-          width={500}
-          height={500}
+          width={240}
+          height={240}
         />
       </div>
     )
