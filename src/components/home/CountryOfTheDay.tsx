@@ -16,7 +16,7 @@ const CountryOfTheDay = () => {
               ?
             </h3>
             <Image
-              src={'/images/deckImages/daily.jpg'}
+              src={'/images/deckImages/Daily.jpg'}
               alt='Country of the Day'
               fill
               sizes={'600px'}
