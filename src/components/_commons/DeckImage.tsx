@@ -1,5 +1,4 @@
 import React from 'react';
-import { DECK_IMAGES } from '@lib/utils/importImages';
 import Image from 'next/image';
 
 type Props = {
@@ -8,12 +7,15 @@ type Props = {
 };
 
 const DeckImage = ({ imageName, alt }: Props) => {
-  const image = DECK_IMAGES[imageName];
-
   return (
-    image && (
+    imageName && (
       <div className='aspect-[16/10] w-full overflow-hidden rounded-lg'>
-        <Image alt={alt} src={image} />
+        <Image
+          alt={alt}
+          src={'/images/deckImages/' + imageName}
+          width={500}
+          height={500}
+        />
       </div>
     )
   );

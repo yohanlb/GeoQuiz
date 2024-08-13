@@ -1,3 +1,4 @@
+import { DECK_CARDS_GRADIENTS } from '@lib/consts';
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -23,3 +24,15 @@ export function shuffleArray<T>(array: T[]): T[] {
 
   return newArray;
 }
+
+export const getRandomCardGradient = () => {
+  const gradient1 =
+    DECK_CARDS_GRADIENTS[
+      Math.floor(Math.random() * DECK_CARDS_GRADIENTS.length)
+    ];
+  const gradient2 =
+    DECK_CARDS_GRADIENTS[
+      Math.floor(Math.random() * DECK_CARDS_GRADIENTS.length)
+    ];
+  return `${gradient1}, ${gradient2}`;
+};

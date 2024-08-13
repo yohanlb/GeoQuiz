@@ -2,7 +2,6 @@ import React from 'react';
 import { Card } from '@nextui-org/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import daily from '@assets/deckImages/daily.jpg';
 import SectionTitle from '@components/_commons/SectionTitle';
 
 const CountryOfTheDay = () => {
@@ -17,7 +16,7 @@ const CountryOfTheDay = () => {
               ?
             </h3>
             <Image
-              src={daily}
+              src={'/images/deckImages/daily.jpg'}
               alt='Country of the Day'
               fill
               sizes={'600px'}

@@ -48,7 +48,7 @@ const DeckPageContent = ({ deck, hideTitle = false }: Props) => {
         </div>
       </div>
       {deck.description && <p>{deck.description}</p>}
-      <DeckImage imageName={deck.name} alt={deck.name} />
+      <DeckImage imageName={deck.image_name} alt={deck.name} />
       <DeckCountryProgressSection countryIds={deck.countryIds} />
       <div className='flex justify-center'>
         <SelectQuestionType />

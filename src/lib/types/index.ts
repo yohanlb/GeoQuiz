@@ -59,6 +59,7 @@ declare global {
     categories: string[] | null;
     displayName: string;
     isTextTransparent: boolean;
+    image_name: string;
     decks_stats: DeckStatsObject;
     displayPriority?: number;
   };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { DECK_IMAGES } from '@lib/utils/importImages';
+import { getRandomCardGradient } from '@lib/utils';
 import Image from 'next/image';
 import DeckInfoDialog from '@components/home/DeckInfoDialog';
 import DeckInfoDialogContent from '@components/home/DeckInfoDialogContent';
@@ -8,30 +8,11 @@ type Props = {
   deck: Deck;
 };
 
-const gradients = [
-  'radial-gradient(circle at 30% 70%, #ff9a76, #ffb899)',
-  'radial-gradient(circle at 90% 90%, #33aaff, #66d1ff)',
-  'radial-gradient(circle at 50% 50%, #ffa386, #ffccaa)',
-  'radial-gradient(circle at 20% 20%, #ff6f61, #ff9470)',
-  'radial-gradient(circle at 10% 50%, #4d8ff7, #85afff)',
-  'radial-gradient(circle at 50% 50%, #ffab73, #ffd6a5)',
-  'radial-gradient(circle at 70% 30%, #70d3a5, #a1e7cd)',
-];
-
-const getRandomGradient = () => {
-  const gradient1 = gradients[Math.floor(Math.random() * gradients.length)];
-  const gradient2 = gradients[Math.floor(Math.random() * gradients.length)];
-  return `${gradient1}, ${gradient2}`;
-};
-
 const DeckCard = ({ deck }: Props) => {
-  const dynamicImageName = deck.name as Deck['name'];
-  const image = DECK_IMAGES[dynamicImageName];
-
   const dialogContent = <DeckInfoDialogContent deck={deck} />;
 
   const gradientStyle = {
-    backgroundImage: getRandomGradient(),
+    backgroundImage: getRandomCardGradient(),
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundBlendMode: 'overlay',
@@ -47,10 +28,10 @@ const DeckCard = ({ deck }: Props) => {
             {deck.displayName}
           </h3>
         </div>
-        {image ? (
+        {deck.image_name ? (
           <div className='absolute inset-0 h-full w-full'>
             <Image
-              src={image}
+              src={'/images/deckImages/' + deck.image_name}
               alt={deck.displayName || deck.name}
               fill
               sizes={'600px'}
