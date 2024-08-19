@@ -7,7 +7,13 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:jest/recommended"
   ],
-  "plugins": ["jest"],
+  "plugins": ["jest", "@remotion"],
+  "overrides": [
+    {
+      "files": ["remotion/*.{ts,tsx}"],
+      "extends": ["plugin:@remotion/recommended"]
+    }
+  ],
   "env": {
     "jest/globals": true
   }

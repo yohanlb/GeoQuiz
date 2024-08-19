@@ -34,6 +34,7 @@ declare global {
     flag_guessed_count: number;
     capital_guessed_right: number;
     capital_guessed_count: number;
+    custom_difficulty: number;
   };
 
   type DeckStats = {
