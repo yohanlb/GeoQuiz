@@ -15,6 +15,10 @@ const PostHogPageView = dynamic(() => import('./PostHogPageView'), {
   ssr: false,
 });
 
+const TrackUserVisit = dynamic(() => import('../hooks/useTrackUserVisit'), {
+  ssr: false,
+});
+
 export const metadata = metadatas;
 
 export default function RootLayout({
@@ -29,6 +33,7 @@ export default function RootLayout({
         <body className={`h-dvh`}>
           <PostHogPageView />
           <MyQueryClientProvider>
+            <TrackUserVisit />
             <NextUIProvider className='h-full overflow-y-auto'>
               <div className='mx-auto flex h-full max-w-screen-md flex-col'>
                 <NavBar />
