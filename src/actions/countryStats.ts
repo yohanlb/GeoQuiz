@@ -17,7 +17,7 @@ export async function postCountryStats(
   try {
     const response: AxiosResponse<UpdateCountryStatsResponse> =
       await axios.post(
-        `${baseUrl}/countries/stats`,
+        `${baseUrl}countries/stats`,
         {
           countryId: countryId,
           guessedRight: guessedRight,

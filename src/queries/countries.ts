@@ -2,7 +2,7 @@ const ONE_HOUR = 60 * 60;
 const baseUrl = process.env.NEXT_PUBLIC_GEOQUIZ_API_BASE_URL as string;
 
 export async function getCountryByCode(countryCode: string) {
-  const response = await fetch(`${baseUrl}/countries/iso3/${countryCode}`, {
+  const response = await fetch(`${baseUrl}countries/iso3/${countryCode}`, {
     next: { revalidate: ONE_HOUR * 24 },
   });
   if (!response.ok) {
@@ -14,7 +14,7 @@ export async function getCountryByCode(countryCode: string) {
   return data;
 }
 export async function getCountryById(countryId: number) {
-  const response = await fetch(`${baseUrl}/countries/id/${countryId}`, {
+  const response = await fetch(`${baseUrl}countries/id/${countryId}`, {
     next: { revalidate: ONE_HOUR * 24 },
   });
   if (!response.ok) {
@@ -29,8 +29,8 @@ export async function getCountryById(countryId: number) {
 export async function fetchCountries(
   localhost = false,
 ): Promise<CountryData[]> {
-  const url = localhost ? 'http://localhost:8080/api' : baseUrl;
-  const response = await fetch(`${url}/countries/`, {
+  const url = localhost ? 'http://localhost:8080/api/' : baseUrl;
+  const response = await fetch(`${url}countries/`, {
     next: { revalidate: ONE_HOUR * 12 },
   });
   if (!response.ok) {
