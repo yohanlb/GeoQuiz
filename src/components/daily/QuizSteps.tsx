@@ -53,7 +53,7 @@ const QuizSteps: React.FC<Props> = ({
       <QuizStep
         step={2}
         currentStep={step}
-        title='Borders'
+        title='Territory Shape'
         stepGuessStatus={guesses.shape}
         handleNext={handleNext}
       >
