@@ -2,7 +2,7 @@
 
 import React from 'react';
 import InlineSVG from 'react-inlinesvg';
-import { COUNTRIES_NOT_AVAILABLE } from '@lib/consts';
+import { MISSING_COUNTRIES_SVGS } from '@lib/consts';
 import { Skeleton } from '@components/ui/skeleton';
 
 //TODO: remove this file and use CountryShape instead
@@ -21,7 +21,7 @@ function CountryShapeSmall({
   strokeColor = 'white',
   strokeWidth = 10,
 }: Props) {
-  const isAvailable = !COUNTRIES_NOT_AVAILABLE.includes(countryCode);
+  const isAvailable = !MISSING_COUNTRIES_SVGS.includes(countryCode);
 
   if (isAvailable) {
     return (

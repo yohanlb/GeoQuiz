@@ -20,7 +20,7 @@ export const AVAILABLE_QUESTION_TYPES: QuestionType[] = [
   // 'FlagToCountry',
 ];
 
-export const COUNTRIES_NOT_AVAILABLE = ['JE', 'XK'];
+export const MISSING_COUNTRIES_SVGS = ['JE', 'XK', 'PS'];
 
 export const DECK_CARDS_GRADIENTS = [
   'radial-gradient(circle at 30% 70%, #ff9a76, #ffb899)',

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import InlineSVG from 'react-inlinesvg';
-import { COUNTRIES_NOT_AVAILABLE } from '@lib/consts';
+import { MISSING_COUNTRIES_SVGS } from '@lib/consts';
 import { Skeleton } from '@components/ui/skeleton';
 
 type Props = {
@@ -18,7 +18,7 @@ function CountryShape({
   strokeColor = 'white',
   strokeWidth = 5,
 }: Props) {
-  const isAvailable = !COUNTRIES_NOT_AVAILABLE.includes(countryCode);
+  const isAvailable = !MISSING_COUNTRIES_SVGS.includes(countryCode);
 
   if (isAvailable) {
     return (
