@@ -1,31 +1,25 @@
 'use client';
 
-// Error components must be Client Components
 import { useEffect } from 'react';
+import { navigationLinks } from '@lib/navigationLinks';
+import * as Sentry from '@sentry/nextjs';
+import Error from 'next/error';
+import Link from 'next/link';
+import { Button } from '@components/ui/button';
 
-export default function Error({
-  error,
-  reset,
-}: {
-  error: Error & { digest?: string };
-  reset: () => void;
-}) {
+export default function GlobalError({ error }: { error: Error }) {
   useEffect(() => {
-    // Log the error to an error reporting service
-    console.error(error);
+    Sentry.captureException(error);
   }, [error]);
 
   return (
-    <div>
-      <h2>Something went wrong!</h2>
-      <button
-        onClick={
-          // Attempt to recover by trying to re-render the segment
-          () => reset()
-        }
-      >
-        Try again
-      </button>
+    <div className='flex w-full flex-col items-center gap-3'>
+      <h1>Oops! Something went wrong.</h1>
+      <Link href={navigationLinks.home.href} type='button'>
+        <Button variant='secondary' size='lg'>
+          Go back to Home
+        </Button>
+      </Link>
     </div>
   );
 }
