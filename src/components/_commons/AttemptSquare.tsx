@@ -12,22 +12,22 @@ const AttemptSquare: React.FC<Props> = ({
   size = 16,
   isLast = false,
 }) => {
-  const baseClasses = 'flex items-center justify-center rounded-sm';
+  const baseClasses = 'flex items-center justify-center rounded-sm border-2';
   const statusClasses = clsx({
     'bg-green-500 border-green-500': status === 'correct',
     'bg-red-500 border-red-500': status === 'wrong',
     'bg-transparent border-gray-500': status === 'unplayed',
   });
 
-  const actualSize = isLast ? size : size - 4;
+  const boxShadow = isLast ? '0 0 4px rgba(0, 0, 0, 0.5)' : 'none';
 
   return (
     <div
       className={`${baseClasses} ${statusClasses}`}
       style={{
-        width: `${actualSize}px`,
-        height: `${actualSize}px`,
-        borderWidth: '2px',
+        width: `${size}px`,
+        height: `${size}px`,
+        boxShadow: boxShadow,
       }}
     ></div>
   );

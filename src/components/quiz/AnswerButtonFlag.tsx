@@ -28,15 +28,19 @@ function AnswerButtonFlag({ index, handleClick, option }: Props) {
         opacity: option.state !== 'DEFAULT' ? 0.5 : 1,
       }}
     >
-      <ReactCountryFlag
-        countryCode={option.codeIso2}
-        svg
-        style={{
-          width: '100%',
-          height: '100%',
-          opacity: option.state === 'DISABLED' ? 0.5 : 1,
-        }}
-      />
+      <div
+        style={{ width: '100%', aspectRatio: '4 / 3', position: 'relative' }}
+      >
+        <ReactCountryFlag
+          countryCode={option.codeIso2}
+          svg
+          style={{
+            width: '100%',
+            height: '100%',
+            opacity: option.state === 'DISABLED' ? 0.5 : 1,
+          }}
+        />
+      </div>
     </motion.button>
   );
 }
