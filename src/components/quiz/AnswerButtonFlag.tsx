@@ -10,18 +10,18 @@ type Props = {
 };
 
 function AnswerButtonFlag({ index, handleClick, option }: Props) {
-  let borderColor = 'white';
+  let border = 'white';
   if (option.state === 'SUCCESS') {
-    borderColor = 'border-green-500';
+    border = 'border-green-500 bg-green-500';
   } else if (option.state === 'DISABLED') {
-    borderColor = 'border-red-500';
+    border = 'border-red-500';
   }
 
   return (
     <motion.button
       key={index}
       onClick={() => handleClick(option.codeIso2)}
-      className={`color-border border-2 p-1 ${borderColor} rounded-lg`}
+      className={`p-1 ${border} w-full rounded-lg border-2`}
       disabled={option.state === 'DISABLED'}
       whileTap={{
         scale: option.state === 'DEFAULT' ? 0.9 : 1,
@@ -33,7 +33,7 @@ function AnswerButtonFlag({ index, handleClick, option }: Props) {
         svg
         style={{
           width: '100%',
-          height: 'auto',
+          height: '100%',
           opacity: option.state === 'DISABLED' ? 0.5 : 1,
         }}
       />
