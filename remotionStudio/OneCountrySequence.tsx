@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactCountryFlag from 'react-country-flag';
 import { Sequence } from 'remotion';
 import Countdown from './components/Countdown';
 import CountryShape from './components/CountryShape';
@@ -8,9 +9,14 @@ import { TIMINGS_GLOBAL, TIMINGS_QUESTION } from './timings';
 type Props = {
   countryName: string;
   countryCode: string;
+  mode?: 'shapes' | 'flags';
 };
 
-const OneCountrySequence = ({ countryName, countryCode }: Props) => {
+const OneCountrySequence = ({
+  mode = 'shapes',
+  countryName,
+  countryCode,
+}: Props) => {
   return (
     <>
       <Sequence
@@ -30,7 +36,19 @@ const OneCountrySequence = ({ countryName, countryCode }: Props) => {
           TIMINGS_GLOBAL.question_duration - TIMINGS_QUESTION.show_question
         }
       >
-        <CountryShape countryCode={countryCode} />
+        {mode === 'shapes' && <CountryShape countryCode={countryCode} />}
+        {mode === 'flags' && (
+          <div className='absolute left-1/2 top-2/3 -translate-x-1/2 -translate-y-1/2 transform'>
+            <ReactCountryFlag
+              countryCode={countryCode}
+              svg
+              style={{
+                width: '24rem',
+                height: '24rem',
+              }}
+            />
+          </div>
+        )}
       </Sequence>
 
       <Sequence

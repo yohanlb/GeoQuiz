@@ -6,7 +6,7 @@ type Props = {
 
 const VideoLayout = ({ children }: Props) => {
   return (
-    <div className='flex h-full w-full flex-col px-20 py-32'>{children}</div>
+    <div className='flex h-full w-full flex-col px-24 py-40'>{children}</div>
   );
 };
 

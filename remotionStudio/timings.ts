@@ -12,11 +12,14 @@ export const TIMINGS_QUESTION = {
   answerDuration: FPS * 1.0,
 };
 
+const question_duration =
+  TIMINGS_TIMER.timer_start_delay +
+  TIMINGS_TIMER.timer_duration +
+  TIMINGS_QUESTION.answerDuration;
+
 export const TIMINGS_GLOBAL = {
-  question_duration:
-    TIMINGS_TIMER.timer_start_delay +
-    TIMINGS_TIMER.timer_duration +
-    TIMINGS_QUESTION.answerDuration,
+  question_duration: question_duration,
   questions_start: FPS * 2,
-  questions_end: FPS * 9,
+  questions_end: FPS * 2 + question_duration * 10,
+  end_sequence_duration: FPS * 2,
 };

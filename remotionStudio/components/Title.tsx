@@ -1,6 +1,6 @@
 import { interpolate, spring, useCurrentFrame, useVideoConfig } from 'remotion';
 
-const Title = () => {
+const Title = ({ text = 'Guess The Countries!' }: { text?: string }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const springValue = spring({
@@ -16,7 +16,7 @@ const Title = () => {
         style={{ transform: `translateX(${x}%)` }}
         className='text-7xl font-bold italic'
       >
-        Guess The Countries!
+        {text}
       </h2>
     </div>
   );

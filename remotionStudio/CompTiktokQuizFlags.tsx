@@ -10,10 +10,9 @@ import VideoLayout from './components/VideoLayout';
 import { videoPropsSchema } from './schemas';
 import { TIMINGS_GLOBAL } from './timings';
 
-export const MyComposition: React.FC<z.infer<typeof videoPropsSchema>> = ({
-  countries,
-  difficultyPercent,
-}) => {
+export const CompTiktokQuizFlags: React.FC<
+  z.infer<typeof videoPropsSchema>
+> = ({ countries, difficultyPercent }) => {
   const { fontFamily } = loadFont();
 
   return (
@@ -36,9 +35,13 @@ export const MyComposition: React.FC<z.infer<typeof videoPropsSchema>> = ({
 
       {/* Intro */}
       <div>
-        <Sequence from={0} name='Title'>
+        <Sequence
+          from={0}
+          durationInFrames={TIMINGS_GLOBAL.questions_end}
+          name='Title'
+        >
           <VideoLayout>
-            <Title />
+            <Title text='What is this flag?' />
           </VideoLayout>
         </Sequence>
 
@@ -63,17 +66,38 @@ export const MyComposition: React.FC<z.infer<typeof videoPropsSchema>> = ({
               key={iso2}
               durationInFrames={TIMINGS_GLOBAL.question_duration}
             >
-              <OneCountrySequence countryCode={iso2} countryName={name} />
+              <OneCountrySequence
+                mode='flags'
+                countryCode={iso2}
+                countryName={name}
+              />
             </Series.Sequence>
           ))}
         </Series>
       </Sequence>
 
       {/* Answers in background */}
-      <Sequence name='Answers in background'>
+      <Sequence
+        name='Answers in background'
+        durationInFrames={TIMINGS_GLOBAL.questions_end}
+      >
         <VideoLayout>
           <AnswersBackground countries={countries} />
         </VideoLayout>
+      </Sequence>
+
+      {/* End Sequence */}
+      <Sequence
+        from={TIMINGS_GLOBAL.questions_end}
+        durationInFrames={TIMINGS_GLOBAL.end_sequence_duration}
+        name='End Sequence'
+      >
+        <div className='absolute left-1/2 top-1/2 flex w-full -translate-x-1/2 -translate-y-1/2 transform flex-col gap-48 p-6 text-center'>
+          <h2 className='-rotate-3 text-6xl font-bold'>
+            Write your score in the comments,
+          </h2>
+          <h1 className='-rotate-6 text-9xl font-bold'>And follow for more!</h1>
+        </div>
       </Sequence>
     </AbsoluteFill>
   );
