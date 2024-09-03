@@ -15,7 +15,7 @@ export const defaultProps = {
 };
 
 export const getCountriesForVideo = async () => {
-  const allCountries = await fetchCountries(true); //fetch localhost because of CORS policy (need local server running)
+  const allCountries = await fetchCountries();
   const pickedCountries = pickCountries(allCountries);
   return pickedCountries;
 };

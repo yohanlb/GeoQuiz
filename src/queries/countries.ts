@@ -26,11 +26,8 @@ export async function getCountryById(countryId: number) {
   return data[0];
 }
 
-export async function fetchCountries(
-  localhost = false,
-): Promise<CountryData[]> {
-  const url = localhost ? 'http://localhost:8080/api/' : baseUrl;
-  const response = await fetch(`${url}countries/`, {
+export async function fetchCountries(): Promise<CountryData[]> {
+  const response = await fetch(`${baseUrl}countries/`, {
     next: { revalidate: ONE_HOUR * 12 },
   });
   if (!response.ok) {
