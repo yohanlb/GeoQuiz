@@ -5,6 +5,7 @@ import { navigationLinks } from '@lib/navigationLinks';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useFeatureFlagEnabled } from 'posthog-js/react';
 import MenuIcon from '@icons/menu-icon.svg';
 import HeaderHeroSeparator from '@assets/HeaderHeroSeparator.svg';
 import GeoQuizLogoCompact from '@assets/LogoCompact.svg';
@@ -74,6 +75,9 @@ const LandingHeader = () => (
 );
 
 function NavBar() {
+  const userAuthFlagEnabled = useFeatureFlagEnabled('user-auth');
+  console.log('flagEnabled', userAuthFlagEnabled);
+
   const currentPath = usePathname();
   if (currentPath === '/') {
     return <LandingHeader />;
