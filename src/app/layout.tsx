@@ -3,7 +3,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import dynamic from 'next/dynamic';
 import BackgroundGradient from '@components/_commons/BackgroundGradient';
 import MetaTags from '@components/_commons/MetaTags';
-import NavBar from '@components/_commons/NavBar';
+import NavBar from '@components/_commons/navbar/NavBar';
 import Footer from '@components/landing/Footer';
 import { inter, notoEmoji } from '../lib/utils/font';
 import { MyQueryClientProvider } from './QueryClientProvider';

@@ -13,11 +13,11 @@ type Props = {
   trigger: React.ReactNode;
 };
 
-function Menu({ trigger }: Props) {
+function MenuNavigation({ trigger }: Props) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger>
-      <DropdownMenuContent align='end'>
+      <DropdownMenuContent align='start'>
         <DropdownMenuItem>
           <Link href={navigationLinks.home.href} className='w-full'>
             {navigationLinks.home.label}
@@ -64,4 +64,4 @@ function Menu({ trigger }: Props) {
   );
 }
 
-export default Menu;
+export default MenuNavigation;
