@@ -24,7 +24,7 @@ const MenuUserButton = ({ user }: Props) => {
         name: user.user_metadata?.full_name || user.email,
         confirmed_at: user.confirmed_at,
         provider: user.app_metadata?.provider,
-        isAuthenticated: true,
+        isSignedUp: true,
       });
     }
   }, [user]);
