@@ -5,11 +5,17 @@ import { navigationLinks } from '@lib/navigationLinks';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useFeatureFlagEnabled } from 'posthog-js/react';
 import GeoQuizLogo from '@assets/GeoQuizGlobeLogo.png';
+import LoginModalTrigger from '@components/_commons/navbar/LoginModalTrigger';
 import { Features } from '@components/landing/Features';
 import { Button } from '@components/ui/button';
 
 const Landing = () => {
+  const featureFlagEnabled =
+    useFeatureFlagEnabled('user-auth') ||
+    process.env.NODE_ENV === 'development';
+
   return (
     <div className='flex flex-col gap-24 px-4 pt-24 md:gap-40'>
       <section className='flex w-full flex-col items-center gap-12 text-center md:flex-row md:justify-between md:text-left'>
@@ -22,17 +28,35 @@ const Landing = () => {
             <strong>flags</strong>, track your progress, and{' '}
             <strong>challenge</strong> your friends!
           </h2>
-          <div className='flex flex-col'>
-            <Link href={navigationLinks.home.href}>
-              <Button
+
+          {featureFlagEnabled ? (
+            <div className='flex items-center gap-4'>
+              {' '}
+              <LoginModalTrigger
+                text={'Sign in Now!'}
                 size={'lg'}
-                variant={'accent'}
-                className='play w-fit text-xl font-bold text-background'
+                classname='text-xl text-red-500'
+              />
+              <Link
+                href={navigationLinks.home.href}
+                className='text-sm text-gray-400 underline underline-offset-2'
               >
-                <span>Try It Now!</span>
-              </Button>
-            </Link>
-          </div>
+                Or try without an account
+              </Link>{' '}
+            </div>
+          ) : (
+            <div className='flex flex-col'>
+              <Link href={navigationLinks.home.href}>
+                <Button
+                  size={'lg'}
+                  variant={'accent'}
+                  className='play w-fit text-xl font-bold text-background'
+                >
+                  <span>Try It Now!</span>
+                </Button>
+              </Link>
+            </div>
+          )}
         </motion.div>
         <div className='max-w-44 duration-300 hover:scale-105 md:max-w-80'>
           <Image
