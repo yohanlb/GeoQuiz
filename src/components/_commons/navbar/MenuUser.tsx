@@ -1,38 +1,50 @@
+'use client';
+
 import React from 'react';
 import { navigationLinks } from '@lib/navigationLinks';
+import { User } from '@supabase/supabase-js';
 import Link from 'next/link';
+import LoginModalTrigger from '@components/_commons/navbar/LoginModalTrigger';
+import LogoutButton from '@components/login/LogoutButton';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@components/ui/dropdown-menu';
 
 type Props = {
+  user: User | null;
   trigger: React.ReactNode;
 };
 
-function MenuUser({ trigger }: Props) {
+function MenuUser({ trigger, user }: Readonly<Props>) {
+  if (!user) return <LoginModalTrigger />;
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger>
       <DropdownMenuContent align='end'>
+        <DropdownMenuLabel>
+          <p>{user.user_metadata?.full_name}</p>
+          <p className='font-light'>{user.email}</p>
+        </DropdownMenuLabel>
+        <DropdownMenuSeparator />
         <DropdownMenuItem>
           <Link href={navigationLinks.profile.href} className='w-full'>
             {navigationLinks.profile.label}
           </Link>
         </DropdownMenuItem>
-        <DropdownMenuItem>
+        <DropdownMenuItem disabled>
           <Link href={navigationLinks.settings.href} className='w-full'>
             {navigationLinks.settings.label}
           </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <Link href={navigationLinks.logout.href} className='w-full'>
-            {navigationLinks.logout.label}
-          </Link>
+          <LogoutButton />
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

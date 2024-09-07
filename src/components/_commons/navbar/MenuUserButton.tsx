@@ -1,10 +1,17 @@
+'use client';
+
 import React from 'react';
 import { FaUserCircle } from 'react-icons/fa';
+import { User } from '@supabase/supabase-js';
 import { useFeatureFlagEnabled } from 'posthog-js/react';
 import MenuUser from '@components/_commons/navbar/MenuUser';
 import { Button } from '@components/ui/button';
 
-const MenuUserButton = () => {
+type Props = {
+  user: User | null;
+};
+
+const MenuUserButton = ({ user }: Props) => {
   const featureFlagEnabled =
     useFeatureFlagEnabled('user-auth') ||
     process.env.NODE_ENV === 'development';
@@ -13,14 +20,20 @@ const MenuUserButton = () => {
     <div className='flex items-center justify-end'>
       {featureFlagEnabled ? (
         <MenuUser
+          user={user}
           trigger={
-            <Button variant='ghost' size='icon'>
-              <FaUserCircle className='inline h-6 w-6 md:h-8 md:w-8' />
-            </Button>
+            <div className='group flex cursor-pointer items-center gap-2'>
+              <span className='text-sm font-bold group-hover:opacity-80'>
+                {user?.user_metadata?.name || ''}
+              </span>
+              <Button variant='ghost' size='icon'>
+                <FaUserCircle className='inline h-6 w-6 group-hover:opacity-80 md:h-8 md:w-8' />{' '}
+              </Button>
+            </div>
           }
         />
       ) : (
-        <div className='h-6 w-6 md:h-8 md:w-8'></div> // placeholder
+        <div className='h-6 w-6 md:h-8 md:w-8'></div> // placeholder to avoid layout shift for user not having loggin in feature flag enabled yet
       )}
     </div>
   );

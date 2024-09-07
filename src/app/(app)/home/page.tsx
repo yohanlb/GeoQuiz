@@ -29,6 +29,7 @@ async function Home() {
 
   return (
     <div className='flex flex-col gap-12 px-4 py-4 text-center md:px-0'>
+      {/* <Hero /> */}
       <FeaturedAndPopularSection featuredDecks={featuredDecks} />
       <CountryOfTheDay />
       <DifficultySection decks={decks} />

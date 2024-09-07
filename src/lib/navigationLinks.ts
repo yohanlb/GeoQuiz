@@ -20,7 +20,7 @@ export const navigationLinks: NavigationLinks = {
   results: { label: '', href: '/results' },
   landing: { label: 'Welcome', href: '/' },
   // user menu
-  signIn: { label: 'Sign In', href: '/signin' },
+  signIn: { label: 'Sign In', href: '/sign-in' },
   profile: { label: 'Profile', href: '/profile' },
   settings: { label: 'Settings', href: '/settings' },
   logout: { label: 'Logout', href: '/logout' },

@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { navigationLinks } from '@lib/navigationLinks';
 import Link from 'next/link';
@@ -14,6 +16,9 @@ type Props = {
 };
 
 function MenuNavigation({ trigger }: Props) {
+  // TODO: use current path to show active page
+  // const currentPath = usePathname();
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger>
