@@ -15,16 +15,22 @@ async function NavBar() {
 
   return (
     <header className='mb-0 md:mb-2'>
-      <div className='flex items-center justify-between px-4 pb-3 pt-3 md:px-0'>
-        <MenuNavigationButton />
-        <Link href={navigationLinks.home.href}>
-          <Image
-            src={GeoQuizLogoCompact}
-            alt='GeoQuiz Logo'
-            className='w-12 md:w-16'
-          />
-        </Link>
-        <MenuUserButton user={user} />
+      <div className='grid grid-cols-3 items-center px-4 pb-3 pt-3 md:px-0'>
+        <div className='flex justify-start'>
+          <MenuNavigationButton />
+        </div>
+        <div className='flex justify-center'>
+          <Link href={navigationLinks.home.href}>
+            <Image
+              src={GeoQuizLogoCompact}
+              alt='GeoQuiz Logo'
+              className='w-12 md:w-16'
+            />
+          </Link>
+        </div>
+        <div className='flex justify-end'>
+          <MenuUserButton user={user} />
+        </div>
       </div>
       <Image
         src={HeaderHeroSeparator}
