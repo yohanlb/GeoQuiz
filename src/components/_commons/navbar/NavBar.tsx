@@ -29,7 +29,8 @@ async function NavBar() {
       <Image
         src={HeaderHeroSeparator}
         alt='Separator Hero Line'
-        className='w-2/3'
+        className='w-[90%]'
+        // className='w-2/3'
       />
     </header>
   );
