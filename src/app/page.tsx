@@ -30,8 +30,7 @@ const Landing = () => {
           </h2>
 
           {featureFlagEnabled ? (
-            <div className='flex items-center gap-4'>
-              {' '}
+            <div className='flex items-center justify-center gap-4 md:justify-start'>
               <LoginModalTrigger
                 text={'Sign in Now!'}
                 size={'lg'}
@@ -42,7 +41,7 @@ const Landing = () => {
                 className='text-sm text-gray-400 underline underline-offset-2'
               >
                 Or try without an account
-              </Link>{' '}
+              </Link>
             </div>
           ) : (
             <div className='flex flex-col'>

@@ -24,7 +24,7 @@ async function NavBar() {
             <Image
               src={GeoQuizLogoCompact}
               alt='GeoQuiz Logo'
-              className='w-12 md:w-16'
+              className='w-16 md:w-20'
             />
           </Link>
         </div>
