@@ -3,6 +3,7 @@
 import React from 'react';
 import { FaUserCircle } from 'react-icons/fa';
 import { User } from '@supabase/supabase-js';
+import posthog from 'posthog-js';
 import { useFeatureFlagEnabled } from 'posthog-js/react';
 import MenuUser from '@components/_commons/navbar/MenuUser';
 import { Button } from '@components/ui/button';
@@ -15,6 +16,18 @@ const MenuUserButton = ({ user }: Props) => {
   const featureFlagEnabled =
     useFeatureFlagEnabled('user-auth') ||
     process.env.NODE_ENV === 'development';
+
+  React.useEffect(() => {
+    if (user) {
+      // Identify the user in PostHog from supabase data
+      posthog.identify(user.id, {
+        email: user.email,
+        name: user.user_metadata?.full_name || user.email,
+        confirmed_at: user.confirmed_at,
+        provider: user.app_metadata?.provider,
+      });
+    }
+  }, [user]);
 
   return (
     <div className='flex items-center justify-end'>
