@@ -1,12 +1,11 @@
 'use client';
 
 import React from 'react';
-import { FaUserCircle } from 'react-icons/fa';
+import { Avatar } from '@nextui-org/react';
 import { User } from '@supabase/supabase-js';
 import posthog from 'posthog-js';
 import { useFeatureFlagEnabled } from 'posthog-js/react';
 import MenuUser from '@components/_commons/navbar/MenuUser';
-import { Button } from '@components/ui/button';
 
 type Props = {
   user: User | null;
@@ -25,6 +24,7 @@ const MenuUserButton = ({ user }: Props) => {
         name: user.user_metadata?.full_name || user.email,
         confirmed_at: user.confirmed_at,
         provider: user.app_metadata?.provider,
+        isAuthenticated: true,
       });
     }
   }, [user]);
@@ -35,14 +35,18 @@ const MenuUserButton = ({ user }: Props) => {
         <MenuUser
           user={user}
           trigger={
-            <div className='group flex cursor-pointer items-center gap-2'>
-              <span className='text-sm font-bold group-hover:opacity-80'>
-                {user?.user_metadata?.name || ''}
-              </span>
-              <Button variant='ghost' size='icon'>
-                <FaUserCircle className='inline h-6 w-6 group-hover:opacity-80 md:h-8 md:w-8' />{' '}
-              </Button>
-            </div>
+            <Avatar
+              showFallback
+              isBordered
+              src={user?.user_metadata?.avatar_url}
+              name={user?.user_metadata?.name}
+              size={'md'}
+              as={'button'}
+              classNames={{
+                base: 'bg-gradient-to-br from-[#FFB457] to-[#FF705B] ring-[#FFB457]/50',
+                icon: 'text-black/80',
+              }}
+            />
           }
         />
       ) : (
