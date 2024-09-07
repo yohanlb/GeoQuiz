@@ -25,3 +25,8 @@ export const navigationLinks: NavigationLinks = {
   settings: { label: 'Settings', href: '/settings' },
   logout: { label: 'Logout', href: '/logout' },
 };
+
+export const EXTERNAL_LINKS = {
+  twitter: 'https://twitter.com/geoquiz_daily',
+  personalWebsite: 'https://yohanlebreton.com',
+};
