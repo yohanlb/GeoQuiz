@@ -3,7 +3,7 @@ import useGameStore from '@/src/utils/stores/gameStore';
 import { AVAILABLE_QUESTION_TYPES } from '@lib/consts';
 import { act, renderHook } from '@testing-library/react';
 
-jest.mock('@/src/stores/gameStore');
+jest.mock('@stores/gameStore');
 
 const mockGameStore = useGameStore;
 
