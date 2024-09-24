@@ -1,8 +1,8 @@
 import {
   initializeDeckResults,
   useDeckHistory,
-} from '@/src/stores/deckHistoryStore';
-import useGameStore from '@/src/stores/gameStore';
+} from '@/src/utils/stores/deckHistoryStore';
+import useGameStore from '@/src/utils/stores/gameStore';
 import { AVAILABLE_QUESTION_TYPES } from '@lib/consts';
 import { act, renderHook } from '@testing-library/react';
 

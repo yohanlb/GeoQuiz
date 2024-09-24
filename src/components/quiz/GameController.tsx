@@ -1,12 +1,12 @@
 'use client';
 
 import React, { startTransition } from 'react';
-import { useCountryHistory } from '@/src/stores/countryHistoryStore';
-import { useDeckHistory } from '@/src/stores/deckHistoryStore';
-import useGameStore from '@/src/stores/gameStore';
-import { calculateNewDeckScore } from '@lib/utils/score';
+import { useCountryHistory } from '@/src/utils/stores/countryHistoryStore';
+import { useDeckHistory } from '@/src/utils/stores/deckHistoryStore';
+import useGameStore from '@/src/utils/stores/gameStore';
+import { calculateNewDeckScore } from '@utils/score';
 import { useRouter } from 'next/navigation';
-import { postCountryStats } from '../../actions/countryStats';
+import { postCountryStats } from '../../utils/actions/countryStats';
 import QuestionView from './QuestionView';
 
 type Props = {

@@ -1,11 +1,11 @@
 import { NextUIProvider } from '@nextui-org/react';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { inter, notoEmoji } from '@utils/font';
 import dynamic from 'next/dynamic';
 import BackgroundGradient from '@components/_commons/BackgroundGradient';
 import MetaTags from '@components/_commons/MetaTags';
 import NavBar from '@components/_commons/navbar/NavBar';
 import Footer from '@components/landing/Footer';
-import { inter, notoEmoji } from '../lib/utils/font';
 import { MyQueryClientProvider } from './QueryClientProvider';
 import { metadatas } from './metadatas';
 import { PHProvider } from './providers';
@@ -15,7 +15,7 @@ const PostHogPageView = dynamic(() => import('./PostHogPageView'), {
   ssr: false,
 });
 
-const TrackUserVisit = dynamic(() => import('../hooks/useTrackUserVisit'), {
+const TrackUserVisit = dynamic(() => import('@hooks/useTrackUserVisit'), {
   ssr: false,
 });
 

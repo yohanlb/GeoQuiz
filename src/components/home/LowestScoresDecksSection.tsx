@@ -2,7 +2,7 @@
 
 // import React from 'react';
 // import { useDeckHistory } from '@/src/stores/deckHistoryStore';
-// import { isBreakpoint } from '@lib/utils/screen';
+// import { isBreakpoint } from '@utils/screen';
 // import SectionTitle from '@components/_commons/SectionTitle';
 // import DeckGrid from './DeckGrid';
 

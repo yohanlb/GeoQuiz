@@ -1,5 +1,5 @@
-import { useCountryHistory } from '@/src/stores/countryHistoryStore';
-import useGameStore from '@/src/stores/gameStore';
+import { useCountryHistory } from '@/src/utils/stores/countryHistoryStore';
+import useGameStore from '@/src/utils/stores/gameStore';
 import { AVAILABLE_QUESTION_TYPES } from '@lib/consts';
 import { act, renderHook } from '@testing-library/react';
 

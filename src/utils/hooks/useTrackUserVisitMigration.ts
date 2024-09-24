@@ -1,4 +1,4 @@
-import { STORAGE_KEYS_USER_EVENT } from '@/src/hooks/useTrackUserVisit';
+import { STORAGE_KEYS_USER_EVENT } from '@hooks/useTrackUserVisit';
 
 const OLD_KEYS = {
   lastVisit: 'u_lv',

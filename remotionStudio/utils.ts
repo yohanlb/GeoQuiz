@@ -1,4 +1,4 @@
-import { fetchCountries } from '@/src/queries/countries';
+import { fetchCountries } from '@/src/utils/queries/countries';
 
 export const defaultProps = {
   difficultyPercent: 1,

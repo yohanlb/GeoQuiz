@@ -1,7 +1,7 @@
 import React from 'react';
+import { getQuestionsFromDeckId } from '@queries/questions';
+import useGameStore from '@stores/gameStore';
 import axios from 'axios';
-import { getQuestionsFromDeckId } from '../queries/questions';
-import useGameStore from '../stores/gameStore';
 
 export function useFetchQuestions(
   { id, isDynamic, countryIds }: Deck,

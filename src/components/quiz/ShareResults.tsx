@@ -1,5 +1,5 @@
 import React from 'react';
-import useGameStore from '@/src/stores/gameStore';
+import useGameStore from '@/src/utils/stores/gameStore';
 import { EMOJIS, WEBSITE_URL } from '@lib/consts';
 import { motion } from 'framer-motion';
 import ShareIcon from '@components/_commons/icons/ShareIcon';

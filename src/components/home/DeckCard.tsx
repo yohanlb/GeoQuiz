@@ -1,5 +1,5 @@
 import React from 'react';
-import { getRandomCardGradient } from '@lib/utils';
+import { getRandomCardGradient } from '@utils/utils';
 import Image from 'next/image';
 import DeckInfoDialog from '@components/home/DeckInfoDialog';
 import DeckInfoDialogContent from '@components/home/DeckInfoDialogContent';

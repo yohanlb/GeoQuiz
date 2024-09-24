@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import useGameStore from '@/src/stores/gameStore';
+import useGameStore from '@/src/utils/stores/gameStore';
 import { navigationLinks } from '@lib/navigationLinks';
 import Link from 'next/link';
 import LoadingSpinner from '@components/_commons/LoadingSpinner';

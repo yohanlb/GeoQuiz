@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { migrateOldKeys } from '@/src/hooks/useTrackUserVisitMigration';
+import { migrateOldKeys } from '@hooks/useTrackUserVisitMigration';
 import { usePostHog } from 'posthog-js/react';
 
 export const STORAGE_KEYS_USER_EVENT = {

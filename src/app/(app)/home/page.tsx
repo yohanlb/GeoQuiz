@@ -7,7 +7,7 @@ import CountryOfTheDay from '@components/home/CountryOfTheDay';
 import DifficultySection from '@components/home/DifficultySection';
 import FeaturedAndPopularSection from '@components/home/FeaturedAndPopularSection';
 import RegionSection from '@components/home/RegionSection';
-import { getDecks, getFeaturedDecks } from '../../../queries/gameDecks';
+import { getDecks, getFeaturedDecks } from '../../../utils/queries/gameDecks';
 
 // Dynamically import components to avoid client-side hydration
 const UnplayedDecksSection = dynamic(

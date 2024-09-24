@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { useCountryHistory } from '@/src/stores/countryHistoryStore';
-import useGameStore from '@/src/stores/gameStore';
+import { useCountryHistory } from '@/src/utils/stores/countryHistoryStore';
+import useGameStore from '@/src/utils/stores/gameStore';
 import SectionTitle from '@components/_commons/SectionTitle';
 import CountryTable from './CountryTable';
 

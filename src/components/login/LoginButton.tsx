@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { FaGoogle } from 'react-icons/fa';
-import useGoogleLogin from '@/src/hooks/useGoogleLogin';
+import useGoogleLogin from '@hooks/useGoogleLogin';
 import { Button } from '@components/ui/button';
 
 const LoginButton = ({ nextUrl }: { nextUrl?: string }) => {

@@ -24,6 +24,11 @@
       "@assets/*": ["./src/assets/*"],
       "@icons/*": ["./src/assets/icons/*"],
       "@lib/*": ["./src/lib/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@hooks/*": ["./src/utils/hooks/*"],
+      "@queries/*": ["./src/utils/queries/*"],
+      "@stores/*": ["./src/utils/stores/*"],
+      "@actions/*": ["./src/utils/actions/*"],
       "@/*": ["./*"]
     }
   },

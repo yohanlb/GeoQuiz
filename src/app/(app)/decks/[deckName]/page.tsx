@@ -1,5 +1,5 @@
 import React from 'react';
-import { getDeckByName } from '@/src/queries/gameDecks';
+import { getDeckByName } from '@/src/utils/queries/gameDecks';
 import DeckPageContent from '@components/decks/DeckPageContent';
 
 type Props = {

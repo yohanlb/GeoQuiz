@@ -1,5 +1,5 @@
 import React from 'react';
-import useGameStore from '@/src/stores/gameStore';
+import useGameStore from '@/src/utils/stores/gameStore';
 import AnswerCircle from './AnswerCircle';
 
 type AnswerCirclesListProps = {

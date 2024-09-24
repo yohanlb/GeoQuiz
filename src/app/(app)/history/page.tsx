@@ -1,6 +1,6 @@
 import React from 'react';
-import { getAllCountries } from '@/src/queries/countries';
-import { getDecks } from '@/src/queries/gameDecks';
+import { getAllCountries } from '@/src/utils/queries/countries';
+import { getDecks } from '@/src/utils/queries/gameDecks';
 import { navigationLinks } from '@lib/navigationLinks';
 import dynamic from 'next/dynamic';
 import PageCenteredLink from '@components/_commons/PageCenteredLink';

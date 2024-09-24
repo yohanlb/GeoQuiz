@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useCountryOfTheDay } from '@/src/hooks/useCountryOfTheDay';
+import { useCountryOfTheDay } from '@hooks/useCountryOfTheDay';
 import { motion } from 'framer-motion';
 import LoadingSpinner from '@components/_commons/LoadingSpinner';
 import DailyCountryQuiz from '@components/daily/DailyCountryQuiz';

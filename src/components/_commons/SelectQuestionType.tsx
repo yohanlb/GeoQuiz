@@ -3,8 +3,8 @@
 import React from 'react';
 import { FaRegFlag } from 'react-icons/fa6';
 import { PiCity } from 'react-icons/pi';
-import useGameStore from '@/src/stores/gameStore';
-import { cn } from '@lib/utils';
+import useGameStore from '@/src/utils/stores/gameStore';
+import { cn } from '@utils/utils';
 import { motion } from 'framer-motion';
 
 type QuestionTypeButtonProps = {

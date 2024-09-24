@@ -1,5 +1,5 @@
 import GameClientWrapper from '@components/quiz/GameClientWrapper';
-import { getDeckByName } from '../../../../queries/gameDecks';
+import { getDeckByName } from '../../../../utils/queries/gameDecks';
 
 type Props = {
   params: { deckName: string };

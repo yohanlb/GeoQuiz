@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useCountryHistory } from '@/src/stores/countryHistoryStore';
+import { useCountryHistory } from '@/src/utils/stores/countryHistoryStore';
 import { Progress } from '@nextui-org/react';
 
 type Props = {

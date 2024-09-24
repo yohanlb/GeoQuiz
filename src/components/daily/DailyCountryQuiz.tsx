@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { useLocalStorage } from '@/src/hooks/useLocalStorage';
-import useLogGameEvent, { GameEventData } from '@/src/hooks/useLogGameEvent';
+import { useLocalStorage } from '@hooks/useLocalStorage';
+import useLogGameEvent, { GameEventData } from '@hooks/useLogGameEvent';
 import { DailyQuestion, DaysHistory, Guesses } from '@lib/types/daily';
 import QuizSteps from './QuizSteps';
 

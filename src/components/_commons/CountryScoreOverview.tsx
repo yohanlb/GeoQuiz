@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { useCountryHistory } from '@/src/stores/countryHistoryStore';
-import { CountryScoreStatus } from '@lib/utils/score';
+import { useCountryHistory } from '@/src/utils/stores/countryHistoryStore';
+import { CountryScoreStatus } from '@utils/score';
 import CountryScoreBadge from './CountryScoreBadge';
 
 type Props = { countryIds: CountryData['id'][] };
