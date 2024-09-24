@@ -2,7 +2,7 @@ name: Scheduled URL Call
 
 on:
   schedule:
-    - cron: '50 * * * *'
+    - cron: '*/2 * * * *'
 
 jobs:
   call-url:
