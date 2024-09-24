@@ -1,15 +1,15 @@
-name: Scheduled URL Call
+# name: Scheduled URL Call
 
-on:
-  schedule:
-    - cron: '*/2 * * * *'
+# on:
+#   schedule:
+#     - cron: '*/2 * * * *'
 
-jobs:
-  call-url:
-    runs-on: ubuntu-latest
+# jobs:
+#   call-url:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: Call the URL
-        run: |
-          curl -X GET "https://webhook.site/c128e152-c80f-4255-bb62-396c13073401" \
-            -H "Accept: application/json"
+#     steps:
+#       - name: Call the URL
+#         run: |
+#           curl -X GET "https://webhook.site/c128e152-c80f-4255-bb62-396c13073401" \
+#             -H "Accept: application/json"
