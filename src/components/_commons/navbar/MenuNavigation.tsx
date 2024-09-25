@@ -49,14 +49,9 @@ function MenuNavigation({ trigger }: Props) {
           </Link>
         </DropdownMenuItem> */}
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        {/* <DropdownMenuItem>
           <Link href={navigationLinks.landing.href} className='w-full'>
             {navigationLinks.landing.label}
-          </Link>
-        </DropdownMenuItem>
-        {/* <DropdownMenuItem disabled>
-          <Link href={navigationLinks.more.href} className='w-full'>
-            {navigationLinks.more.label}
           </Link>
         </DropdownMenuItem> */}
         <DropdownMenuItem>
