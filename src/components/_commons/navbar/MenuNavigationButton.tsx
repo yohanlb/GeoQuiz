@@ -8,7 +8,7 @@ const MenuNavigationButton = () => {
     <MenuNavigation
       trigger={
         <Button variant='ghost' size='icon'>
-          <LuMenu className='inline h-6 w-6 md:h-8 md:w-8' />
+          <LuMenu className='inline h-8 w-8 md:h-10 md:w-10' />
         </Button>
       }
     />
