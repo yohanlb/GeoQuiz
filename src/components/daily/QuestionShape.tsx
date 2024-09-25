@@ -38,23 +38,25 @@ const QuestionShape: React.FC<Props> = ({
   );
 
   const renderCorrectAnswer = () => (
-    <Card className='border border-white bg-transparent p-4'>
+    <Card className='bg-transparent p-4 outline-2 outline-white'>
       <CountryShapeSmall countryCode={options[correctAnswerIndex]} />
     </Card>
   );
 
   const renderOptions = () => (
-    <ul className='flex flex-wrap justify-center gap-2'>
+    <ul className='flex flex-wrap justify-center gap-4'>
       {options.map((option, index) => {
         const borderColor = getBorderColor(index);
+        const isDisabled = hasAnswered && index !== correctAnswerIndex;
 
         return (
           <button
             key={index}
             disabled={hasAnswered}
             onClick={() => handleClick(index)}
+            className={`${isDisabled ? 'opacity-50' : ''}`}
           >
-            <Card className={`border ${borderColor} bg-transparent p-4`}>
+            <Card className={`${borderColor} rounded-md bg-transparent p-4`}>
               <CountryShapeSmall countryCode={option} />
             </Card>
           </button>
@@ -65,11 +67,11 @@ const QuestionShape: React.FC<Props> = ({
 
   const getBorderColor = (index: number) => {
     if (index === userIndexAnswer && index !== correctAnswerIndex) {
-      return 'border-red-400';
+      return 'outline-red-400 outline-4';
     } else if (index === correctAnswerIndex && hasAnswered) {
-      return 'border-green-400';
+      return 'outline-green-400 outline-4';
     } else {
-      return 'border-white';
+      return 'outline-white outline-1';
     }
   };
 

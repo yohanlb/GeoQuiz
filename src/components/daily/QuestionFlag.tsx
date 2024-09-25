@@ -47,9 +47,10 @@ const QuestionFlag: React.FC<Props> = ({
   );
 
   const renderOptions = () => (
-    <ul className='flex flex-wrap justify-center gap-2'>
+    <ul className='flex flex-wrap justify-center gap-4'>
       {options.map((option, index) => {
         const borderColor = getBorderColor(index);
+        const isDisabled = hasAnswered && index !== correctAnswerIndex;
 
         return (
           <button
@@ -58,7 +59,7 @@ const QuestionFlag: React.FC<Props> = ({
             key={index}
             onClick={() => handleClick(index)}
           >
-            <Card className={`border ${borderColor} bg-transparent p-2`}>
+            <Card className={`${borderColor} rounded-md bg-transparent p-1`}>
               <ReactCountryFlag
                 countryCode={option}
                 svg
@@ -66,6 +67,7 @@ const QuestionFlag: React.FC<Props> = ({
                 style={{
                   width: '4rem',
                   height: '3rem',
+                  opacity: isDisabled ? 0.5 : 1,
                 }}
               />
             </Card>
@@ -77,11 +79,11 @@ const QuestionFlag: React.FC<Props> = ({
 
   const getBorderColor = (index: number) => {
     if (index === userIndexAnswer && index !== correctAnswerIndex) {
-      return 'border-red-400';
+      return 'outline-red-400 outline-4';
     } else if (index === correctAnswerIndex && hasAnswered) {
-      return 'border-green-400';
+      return 'outline-green-400 outline-4';
     } else {
-      return 'border-white';
+      return 'outline-white outline-1';
     }
   };
 
