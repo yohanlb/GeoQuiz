@@ -4,6 +4,7 @@ import React, { startTransition } from 'react';
 import { useCountryHistory } from '@/src/utils/stores/countryHistoryStore';
 import { useDeckHistory } from '@/src/utils/stores/deckHistoryStore';
 import useGameStore from '@/src/utils/stores/gameStore';
+import { updateUserStats } from '@utils/actions/update-user-stats';
 import { calculateNewDeckScore } from '@utils/score';
 import { useRouter } from 'next/navigation';
 import { postCountryStats } from '../../utils/actions/countryStats';
@@ -74,6 +75,13 @@ function GameController({ questions }: Readonly<Props>) {
       const newResult: UserResultsStatus = isUserFirstAttempt
         ? 'valid'
         : 'invalid';
+      const countryId = questions[currentQuestionIndex].countryData.id;
+      // Add result to the user stats table
+      updateUserStats(
+        countryId,
+        questionType === 'CountryToCapital' ? 1 : 2,
+        newResult === 'valid',
+      );
       addToUserResults(newResult, currentQuestionIndex);
       addCountryScores(
         questions[currentQuestionIndex].countryData.id,
