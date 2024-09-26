@@ -479,14 +479,14 @@ function PrivacyPage() {
         </p>
         <ul className='list-inside list-disc space-y-2'>
           <li>
-            By filling the feedback form{' '}
+            By filling the{' '}
             <a
               href='https://forms.gle/YrScov3rJU7dEdWS8'
               target='blank'
               rel='noreferrer'
               className='text-blue-500 hover:underline'
             >
-              https://geoquiz.co/privacy
+              feedback form
             </a>
           </li>
         </ul>
