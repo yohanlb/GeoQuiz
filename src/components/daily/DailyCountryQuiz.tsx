@@ -57,8 +57,6 @@ const DailyCountryQuiz: React.FC<Props> = ({
   };
 
   const resetCurrentDayHistory = () => {
-    console.log(dailyQuestion.questionId);
-
     setCotdHistory((prevHistory) => ({
       ...prevHistory,
       [dailyQuestion.questionId]: undefined,

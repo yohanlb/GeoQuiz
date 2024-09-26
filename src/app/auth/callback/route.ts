@@ -9,8 +9,6 @@ export async function GET(request: NextRequest) {
 
   const next = searchParams.get('next') ?? '/';
 
-  console.log(next, searchParams);
-
   if (code) {
     const supabase = createClient();
 
