@@ -20,8 +20,11 @@ export async function getDecks() {
     throw new Error(`Couldn't fetch game decks.`);
   }
   const data: Deck[] = await response.json();
-  return data;
+  return data.filter(
+    (deck) => deck.displayPriority === undefined || deck.displayPriority >= 0,
+  );
 }
+
 export async function getFeaturedDecks() {
   const response = await fetch(`${baseUrl}decks/featured`, {
     next: { revalidate: ONE_HOUR },
@@ -30,5 +33,7 @@ export async function getFeaturedDecks() {
     throw new Error(`Couldn't fetch game decks.`);
   }
   const data: Deck[] = await response.json();
-  return data;
+  return data.filter(
+    (deck) => deck.displayPriority === undefined || deck.displayPriority >= 0,
+  );
 }
