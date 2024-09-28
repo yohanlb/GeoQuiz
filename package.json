@@ -21,8 +21,8 @@
     "format:fix": "prettier --write --ignore-path .gitignore .",
     "test": "cross-env NODE_ENV=test jest",
     "test:watch": "cross-env NODE_ENV=test jest --watch",
-    "remotion:studio": "npx remotion studio ./remotionStudio/index.ts",
-    "remotion:render": "npx remotion render ./remotionStudio/index.ts TiktokQuizFlags ./remotionStudio/renders/out.mp4"
+    "remotion:studio": "pnpm remotion studio ./remotionStudio/index.ts",
+    "remotion:render": "pnpm remotion render ./remotionStudio/index.ts TiktokQuizFlags ./remotionStudio/renders/out.mp4"
   },
   "dependencies": {
     "@nextui-org/react": "^2.4.1",
