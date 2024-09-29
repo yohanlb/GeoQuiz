@@ -16,6 +16,17 @@ The app is thought to be both a fun quiz to play and an methodical tool to help 
 
 Check out the live version of GeoQuiz at [GeoQuiz.co](https://geoquiz.co)
 
+## Roadmap
+
+GeoQuiz is still in early development! Here are the next steps:
+
+- [ ] User accounts with google authentication
+- [ ] Cloud sync progress tracking
+- [ ] Advanced user stats and charts
+- [ ] Custom decks: user tailored series of questions to practice your weak points
+- [ ] Additional daily quiz types
+- [ ] Localization support for multiple languages
+
 ## Installation and Setup
 
 1. Clone the repository
