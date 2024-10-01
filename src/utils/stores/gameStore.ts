@@ -14,9 +14,12 @@ interface GameStoreState {
   userAnswers: string[];
   resetUserAnswers: () => void;
   addToUserAnswers: (userAnswer: string) => void;
-  userResults: UserResults;
-  addToUserResults: (userResult: UserResultsStatus, index: number) => void;
-  resetUserResults: () => void;
+  userCountryResults: UserCountryResult[];
+  addToUserCountryResults: (
+    countryId: CountryData['id'],
+    result: UserResultsStatus,
+    questionIndex: number,
+  ) => void;
   deck: Deck | null;
   setDeck: (deck: Deck) => void;
   resetGame: () => void;
@@ -24,20 +27,26 @@ interface GameStoreState {
   setIsGameStoreInitialized: (isGameStoreInitialized: boolean) => void;
   answeredQuestions: AnsweredQuestion[];
   addToAnsweredQuestions: (answeredQuestion: AnsweredQuestion) => void;
+  userCountryScoresForCurrentSeries: CountryScoreHistory;
+  setUserCountryScoresForCurrentSeries: (
+    userCountryScoresForCurrentSeries: CountryScoreHistory,
+  ) => void;
+  getUseCountryScoreForCountryId: (countryId: CountryData['id']) => boolean[];
 }
 
 const useGameStore = create<GameStoreState>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       currentQuestionIndex: 0,
       gameState: 'playing',
       questionType: 'CountryToCapital',
       isShowingAnswer: false,
-      userAnswers: [],
-      userResults: [], // TODO deprecate this, use answeredQuestions instead
+      userAnswers: [], // TODO rename userGuesses / userQuestionGuesses
+      userCountryResults: [],
       deck: null,
       isGameStoreInitialized: false,
       answeredQuestions: [],
+      userCountryScoresForCurrentSeries: [],
 
       addToAnsweredQuestions: (answeredQuestion: AnsweredQuestion) =>
         set((state) => ({
@@ -57,21 +66,28 @@ const useGameStore = create<GameStoreState>()(
       },
 
       resetUserAnswers: () => set(() => ({ userAnswers: [] })),
-      addToUserAnswers: (userAnswer: string) =>
-        set((state) => ({
-          userAnswers: [...state.userAnswers, userAnswer],
-        })),
-
-      addToUserResults: (resultToAdd: UserResultsStatus, index: number) =>
+      addToUserAnswers: (userAnswer: string) => {
         set((state) => {
-          const newUserResults = [...state.userResults];
-          newUserResults[index] = resultToAdd;
-          return { userResults: newUserResults };
-        }),
-
-      resetUserResults() {
-        set(() => ({ userResults: [] }));
+          return {
+            userAnswers: [...state.userAnswers, userAnswer],
+          };
+        });
       },
+
+      addToUserCountryResults: (
+        countryId: CountryData['id'],
+        result: UserResultsStatus,
+        questionIndex: number,
+      ) =>
+        set((state) => {
+          const newResults = [...state.userCountryResults];
+          newResults[questionIndex] = {
+            countryId,
+            result,
+            questionIndex,
+          };
+          return { userCountryResults: newResults };
+        }),
 
       resetGame() {
         set(() => ({
@@ -79,7 +95,7 @@ const useGameStore = create<GameStoreState>()(
           gameState: 'playing',
           isShowingAnswer: false,
           userAnswers: [],
-          userResults: [],
+          userCountryResults: [],
           answeredQuestions: [],
         }));
       },
@@ -105,15 +121,26 @@ const useGameStore = create<GameStoreState>()(
 
       setQuestionType: (questionType: QuestionType) =>
         set(() => ({ questionType })),
+
+      setUserCountryScoresForCurrentSeries(userCountryScoresForCurrentSeries) {
+        set(() => ({ userCountryScoresForCurrentSeries }));
+      },
+      getUseCountryScoreForCountryId(countryId: CountryData['id']) {
+        const { userCountryScoresForCurrentSeries } = get();
+        return userCountryScoresForCurrentSeries[countryId] ?? [];
+      },
     }),
     {
       partialize: (state) => ({
         questionType: state.questionType,
         isGameStoreInitialized: state.isGameStoreInitialized,
         answeredQuestions: state.answeredQuestions,
+        userCountryResults: state.userCountryResults,
+        userCountryScoresForCurrentSeries:
+          state.userCountryScoresForCurrentSeries,
         deck: state.deck,
       }),
-      name: 'game-settings', // name of the item in the storage
+      name: 'game', // name of the item in the storage
       onRehydrateStorage: () => (state) => {
         if (state) {
           state.setIsGameStoreInitialized(true);

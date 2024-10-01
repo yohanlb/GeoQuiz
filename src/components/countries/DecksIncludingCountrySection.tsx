@@ -21,8 +21,9 @@ const DecksIncludingCountrySection = async ({
   return (
     <div className='space-y-2'>
       <SectionTitle
-        text='Included in the following decks:'
+        text='Included in the following decks'
         variant='description'
+        centered={true}
       />
       <DeckList decks={decksIncludingCountry} />
     </div>

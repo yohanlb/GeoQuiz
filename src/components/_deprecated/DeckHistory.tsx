@@ -21,10 +21,9 @@ const DeckHistory = ({ decks }: Props) => {
   const lastPlayedDecks = [];
   for (const element of idsLastDeckPlayed) {
     const deck = decks.find((deck) => deck.id === Number(element));
-    if (!deck) {
-      return;
+    if (deck) {
+      lastPlayedDecks.push(deck);
     }
-    lastPlayedDecks.push(deck);
   }
 
   return (

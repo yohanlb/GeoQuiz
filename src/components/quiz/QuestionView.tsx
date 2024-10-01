@@ -70,7 +70,10 @@ const QuestionView = ({
       <CountryShape countryCode={currentQuestion.countryData.iso2} />
 
       <div className='flex flex-col md:gap-4'>
-        <PersonalCountryInfos countryId={currentQuestion.countryData.id} />
+        <PersonalCountryInfos
+          countryId={currentQuestion.countryData.id}
+          showNewResult={true}
+        />
         {questionType === 'CountryToFlag' ? (
           <AnswerButtonsFlagList
             options={optionsFlag}

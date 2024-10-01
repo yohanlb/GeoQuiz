@@ -79,9 +79,15 @@ declare global {
     answerIso2: CountryData['iso2'];
   };
 
+  export type CountryScoreHistory = { [key: CountryData['id']]: boolean[] };
+
   export type UserResultsStatus = 'default' | 'valid' | 'invalid';
 
-  export type UserResults = UserResultsStatus[];
+  export type UserCountryResult = {
+    countryId: CountryData['id'];
+    result: UserResultsStatus;
+    questionIndex: number; // Could remove this field later.
+  };
 
   export type CountryStatsResponse = {
     country_id: CountryData['id'];

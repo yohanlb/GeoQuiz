@@ -3,16 +3,22 @@
 import React from 'react';
 import useGameStore from '@/src/utils/stores/gameStore';
 import { useFetchQuestions } from '@hooks/useFetchQuestions';
+import { UserGuessesHistory } from '@utils/db/userGuessesHistory';
 import { motion } from 'framer-motion';
 import LoadingSpinner from '@components/_commons/LoadingSpinner';
 import GameController from './GameController';
 
 type Props = {
+  userGuessesHistory: UserGuessesHistory[];
   deck: Deck;
   amountOfQuestions: number;
 };
 
-const GameClientWrapper = ({ deck, amountOfQuestions }: Props) => {
+const GameClientWrapper = ({
+  userGuessesHistory,
+  deck,
+  amountOfQuestions,
+}: Props) => {
   const { setDeck } = useGameStore();
   const { questions, isLoading } = useFetchQuestions(deck, amountOfQuestions);
 
@@ -40,7 +46,12 @@ const GameClientWrapper = ({ deck, amountOfQuestions }: Props) => {
       </div>
     );
   } else {
-    return <GameController questions={questions} />;
+    return (
+      <GameController
+        questions={questions}
+        userGuessesHistory={userGuessesHistory}
+      />
+    );
   }
 };
 

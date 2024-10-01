@@ -1,18 +1,15 @@
+'use client';
+
 import React from 'react';
 import { TbCardsFilled } from 'react-icons/tb';
-import dynamic from 'next/dynamic';
+import { useAuth } from '@utils/hooks/useAuth';
+import useGameStore from '@utils/stores/gameStore';
 import Link from 'next/link';
 import DeckImage from '@components/_commons/DeckImage';
 import DifficultyIndicator from '@components/_commons/DifficultyIndicator';
 import PlayButton from '@components/_commons/PlayButton';
 import SelectQuestionType from '@components/_commons/SelectQuestionType';
-
-const DeckCountryProgressSection = dynamic(
-  () => import('@components/decks/DeckCountryProgressSection'),
-  {
-    ssr: false,
-  },
-);
+import UserDeckGuessesProgressionSection from '@components/decks/UserDeckGuessesProgressionSection';
 
 type Props = {
   deck: Deck;
@@ -20,7 +17,15 @@ type Props = {
 };
 
 const DeckPageContent = ({ deck, hideTitle = false }: Props) => {
-  const difficultyScore = deck.decks_stats['CountryToCapital'].averageScore;
+  const { questionType } = useGameStore();
+
+  const { user } = useAuth();
+
+  // TODO: update store to return questionTypeId instead of questionType
+  const questionTypeId = questionType === 'CountryToCapital' ? 1 : 2;
+
+  const difficultyScore =
+    deck.decks_stats['CountryToCapital']?.averageScore ?? 50;
   //TODO: switch score depending on question type, but for now there is not enough data for flags.
   // = deck.decks_stats[questionType].averageScore;
 
@@ -51,15 +56,19 @@ const DeckPageContent = ({ deck, hideTitle = false }: Props) => {
       <div className='flex w-full justify-center'>
         <DeckImage imageName={deck.image_name} alt={deck.name} />
       </div>
-      <DeckCountryProgressSection countryIds={deck.countryIds} />
       <div className='flex justify-center'>
         <SelectQuestionType />
       </div>
       <div className='flex justify-center'>
-        <Link href={`/quiz/${deck.name || ''}?length=10`}>
+        <Link
+          href={`/quiz/${deck.name || ''}?questionTypeId=${questionTypeId}&length=10`}
+        >
           <PlayButton text={'Play!'} />
         </Link>
       </div>
+      {user && (
+        <UserDeckGuessesProgressionSection countryIds={deck.countryIds} />
+      )}
     </div>
   );
 };

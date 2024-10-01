@@ -2,12 +2,13 @@ import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
 import useGameStore from '@/src/utils/stores/gameStore';
 import { navigationLinks } from '@lib/navigationLinks';
+import { User } from '@supabase/supabase-js';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import DifficultyIndicator from '@components/_commons/DifficultyIndicator';
-import LastAttempts from './LastAttempts';
+import ResultsTableResultCell from '@components/quiz/ResultsTableResultCell';
 
-const ResultsTable = () => {
+const ResultsTable = ({ user }: { user: User | null }) => {
   const { answeredQuestions } = useGameStore();
 
   return (
@@ -75,7 +76,11 @@ const ResultsTable = () => {
                   }}
                   className={`inline-block ${question.isCorrect ? 'text-green-500' : 'text-red-500'}`}
                 >
-                  <LastAttempts countryId={question.countryData.id} />
+                  <ResultsTableResultCell
+                    user={user}
+                    countryId={question.countryData.id}
+                    questionIndex={index}
+                  />
                 </motion.span>
               </td>
             </motion.tr>

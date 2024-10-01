@@ -7,6 +7,7 @@ import CountryOfTheDay from '@components/home/CountryOfTheDay';
 import DifficultySection from '@components/home/DifficultySection';
 import FeaturedAndPopularSection from '@components/home/FeaturedAndPopularSection';
 import RegionSection from '@components/home/RegionSection';
+import UpdateMessageAlert from '@components/home/UpdateMessageAlert';
 import { getDecks, getFeaturedDecks } from '../../../utils/queries/gameDecks';
 
 // Dynamically import components to avoid client-side hydration
@@ -30,6 +31,7 @@ async function Home() {
   return (
     <div className='flex flex-col gap-12 px-4 py-4 text-center md:px-0'>
       {/* <Hero /> */}
+      <UpdateMessageAlert />
       <FeaturedAndPopularSection featuredDecks={featuredDecks} />
       <CountryOfTheDay />
       <DifficultySection decks={decks} />

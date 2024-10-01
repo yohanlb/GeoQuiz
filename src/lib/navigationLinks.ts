@@ -12,7 +12,7 @@ export const navigationLinks: NavigationLinks = {
   home: { label: 'Home', href: '/home' },
   allDecks: { label: 'All Decks', href: '/decks' },
   countries: { label: 'Countries', href: '/countries' },
-  history: { label: 'History', href: '/history' },
+  history: { label: 'History', href: '/user/history' },
   stats: { label: 'My Stats', href: '/stats' },
   more: { label: 'More', href: '/more' },
   help: { label: 'About', href: '/help' },
@@ -20,7 +20,7 @@ export const navigationLinks: NavigationLinks = {
   results: { label: '', href: '/results' },
   landing: { label: 'Welcome', href: '/' },
   // user menu
-  signIn: { label: 'Sign In', href: '/sign-in' },
+  login: { label: 'Login', href: '/login' },
   profile: { label: 'Profile', href: '/profile' },
   settings: { label: 'Settings', href: '/settings' },
   logout: { label: 'Logout', href: '/logout' },

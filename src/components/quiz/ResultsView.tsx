@@ -3,6 +3,7 @@
 import React from 'react';
 import useGameStore from '@/src/utils/stores/gameStore';
 import { navigationLinks } from '@lib/navigationLinks';
+import { User } from '@supabase/supabase-js';
 import Link from 'next/link';
 import LoadingSpinner from '@components/_commons/LoadingSpinner';
 import PageCenteredLink from '@components/_commons/PageCenteredLink';
@@ -10,7 +11,7 @@ import LinkToDeck from './LinkToDeck';
 import ResultsTable from './ResultsTable';
 import ShareResults from './ShareResults';
 
-function ResultsView() {
+function ResultsView({ user }: Readonly<{ user: User | null }>) {
   const { answeredQuestions, isGameStoreInitialized, deck } = useGameStore();
 
   // TODO: doesn't handle if deck is null, for dynamic deck
@@ -56,7 +57,7 @@ function ResultsView() {
         </h1>
         <LinkToDeck />
       </div>
-      <ResultsTable />
+      <ResultsTable user={user} />
       <div className='flex flex-wrap items-center justify-center gap-2 px-1 text-xl tracking-wider'>
         <p>{formattedCorrectAnswers}% of correct answers!</p>
         <ShareResults />

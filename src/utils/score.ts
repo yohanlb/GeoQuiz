@@ -1,11 +1,11 @@
 export function calculateNewDeckScore(
-  userResults: UserResults,
+  userCountryResults: UserCountryResult[],
   numberOfQuestions: number,
 ) {
-  const numberOfCorrectAnswers = userResults.reduce(
-    (count, result) => count + (result === 'valid' ? 1 : 0),
-    0,
-  );
+  const numberOfCorrectAnswers = userCountryResults.filter(
+    (result) => result.result === 'valid',
+  ).length;
+
   const correctAnswerPercentage =
     Math.round((numberOfCorrectAnswers / numberOfQuestions) * 1000) / 10;
   return correctAnswerPercentage;
@@ -36,15 +36,15 @@ export const getCountryScoreStatusLabel = (
 };
 
 export const getCountryScoreStatus = (
-  results: CountryScore[],
+  results: boolean[],
 ): CountryScoreStatus => {
   const baseScoreOnLastNAttempts = 3;
   if (results.length <= 0) {
     return 'notEnoughResults';
   }
   results.slice(0, baseScoreOnLastNAttempts);
-  const rightAnswers = results.filter((result) => result.scores).length;
-  const wrongAnswers = results.filter((result) => !result.scores).length;
+  const rightAnswers = results.filter((result) => result === true).length;
+  const wrongAnswers = results.filter((result) => result === false).length;
 
   if (rightAnswers >= baseScoreOnLastNAttempts) {
     return 'perfect';

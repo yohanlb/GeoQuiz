@@ -16,9 +16,6 @@ type Props = {
 };
 
 function MenuNavigation({ trigger }: Props) {
-  // TODO: use current path to show active page
-  // const currentPath = usePathname();
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger>
@@ -38,22 +35,7 @@ function MenuNavigation({ trigger }: Props) {
             {navigationLinks.countries.label}
           </Link>
         </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link href={navigationLinks.history.href} className='w-full'>
-            {navigationLinks.history.label}
-          </Link>
-        </DropdownMenuItem>
-        {/* <DropdownMenuItem disabled>
-          <Link href={navigationLinks.stats.href} className='w-full'>
-            {navigationLinks.stats.label}
-          </Link>
-        </DropdownMenuItem> */}
         <DropdownMenuSeparator />
-        {/* <DropdownMenuItem>
-          <Link href={navigationLinks.landing.href} className='w-full'>
-            {navigationLinks.landing.label}
-          </Link>
-        </DropdownMenuItem> */}
         <DropdownMenuItem>
           <Link href={navigationLinks.help.href} className='w-full'>
             {navigationLinks.help.label}

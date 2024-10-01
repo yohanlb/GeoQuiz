@@ -1,10 +1,10 @@
 'use client';
 
 import React, { startTransition } from 'react';
-import { useCountryHistory } from '@/src/utils/stores/countryHistoryStore';
 import { useDeckHistory } from '@/src/utils/stores/deckHistoryStore';
 import useGameStore from '@/src/utils/stores/gameStore';
 import { updateUserGuessesHistory } from '@utils/actions/updateUserGuessesHistory';
+import { UserGuessesHistory } from '@utils/db/userGuessesHistory';
 import { calculateNewDeckScore } from '@utils/score';
 import { useRouter } from 'next/navigation';
 import { postCountryStats } from '../../utils/actions/countryStats';
@@ -12,9 +12,10 @@ import QuestionView from './QuestionView';
 
 type Props = {
   questions: Question[];
+  userGuessesHistory: UserGuessesHistory[];
 };
 
-function GameController({ questions }: Readonly<Props>) {
+function GameController({ questions, userGuessesHistory }: Readonly<Props>) {
   const {
     currentQuestionIndex,
     incrementQuestionIndex,
@@ -24,22 +25,39 @@ function GameController({ questions }: Readonly<Props>) {
     userAnswers,
     resetUserAnswers,
     addToUserAnswers,
-    userResults,
-    addToUserResults,
+    userCountryResults,
+    addToUserCountryResults,
     gameState,
     setGameState,
     deck,
     resetGame,
     addToAnsweredQuestions,
+    setUserCountryScoresForCurrentSeries,
   } = useGameStore();
   const { addNewDeckResult } = useDeckHistory();
-  const addCountryScores = useCountryHistory((state) => state.addCountryScores);
   const { push } = useRouter();
   const hasInitialized = React.useRef(false);
 
   if (!deck) {
     throw new Error('Deck is null. Ensure that the deck is set in the store.');
   }
+
+  const questionTypeId = questionType === 'CountryToCapital' ? 1 : 2;
+
+  const prepareUserHistoryForCurrentSeries = () => {
+    // TODO: do that server side and send it with the questions.
+    const newUserHistory: { [key: CountryData['id']]: boolean[] } = {};
+    questions.forEach((question) => {
+      const userStatsForQuestion = userGuessesHistory.find(
+        (stat) =>
+          stat.country_id === question.countryData.id &&
+          stat.question_type_id === questionTypeId,
+      );
+      const resultsForQuestion = userStatsForQuestion?.guess_results ?? [];
+      newUserHistory[question.countryData.id] = resultsForQuestion;
+    });
+    setUserCountryScoresForCurrentSeries(newUserHistory);
+  };
 
   const handleNextQuestion = () => {
     startTransition(() => {
@@ -69,24 +87,20 @@ function GameController({ questions }: Readonly<Props>) {
       return;
     }
     addToUserAnswers(userAnswer); // TODO deprecate this
+    const countryId = questions[currentQuestionIndex].countryData.id;
     if (userAnswer === correctAnswer) {
       // Correct Answer
       setIsShowingAnswer(true);
       const newResult: UserResultsStatus = isUserFirstAttempt
         ? 'valid'
         : 'invalid';
-      const countryId = questions[currentQuestionIndex].countryData.id;
       // Add result to the user stats table
       updateUserGuessesHistory(
         countryId,
-        questionType === 'CountryToCapital' ? 1 : 2,
+        questionTypeId,
         newResult === 'valid',
       );
-      addToUserResults(newResult, currentQuestionIndex);
-      addCountryScores(
-        questions[currentQuestionIndex].countryData.id,
-        newResult === 'valid',
-      );
+      addToUserCountryResults(countryId, newResult, currentQuestionIndex);
       addToAnsweredQuestions({
         questionId: currentQuestionIndex,
         answer: userAnswer,
@@ -97,13 +111,14 @@ function GameController({ questions }: Readonly<Props>) {
       setTimeout(handleNextQuestion, 700);
     } else {
       // Wrong Answer
-      addToUserResults('invalid', currentQuestionIndex);
+      addToUserCountryResults(countryId, 'invalid', currentQuestionIndex);
     }
   };
 
   // FIRST INITIALIZATION
   React.useEffect(() => {
     resetGame();
+    prepareUserHistoryForCurrentSeries();
   }, [resetGame]);
 
   // AFTER GAME FINISHED
@@ -113,7 +128,10 @@ function GameController({ questions }: Readonly<Props>) {
       hasInitialized.current = true;
     }
     if (hasInitialized.current && gameState === 'finished') {
-      const newDeckScore = calculateNewDeckScore(userResults, questions.length);
+      const newDeckScore = calculateNewDeckScore(
+        userCountryResults,
+        questions.length,
+      );
       addNewDeckResult(deck.id, newDeckScore);
       push('/results');
     }

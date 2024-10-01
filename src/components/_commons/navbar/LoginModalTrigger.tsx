@@ -12,7 +12,7 @@ type Props = {
 };
 
 function LoginModalTrigger({
-  text = navigationLinks.signIn.label,
+  text = navigationLinks.login.label,
   size = 'default',
   classname = '',
 }: Props) {

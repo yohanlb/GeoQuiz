@@ -61,9 +61,9 @@ export const useCountryHistory = create<CountryResultsState>()(
         const { getLastScoresForCountry } = get();
         const groupedDeckStatus = countryIds.reduce(
           (acc: Record<CountryScoreStatus, number>, countryId) => {
-            const status = getCountryScoreStatus(
-              getLastScoresForCountry(countryId),
-            );
+            const lastScores = getLastScoresForCountry(countryId);
+            const lastScoresBoolean = lastScores.map((score) => score.scores);
+            const status = getCountryScoreStatus(lastScoresBoolean);
             if (!acc[status]) {
               acc[status] = 0;
             }

@@ -32,9 +32,19 @@ function MenuUser({ trigger, user }: Readonly<Props>) {
           <p className='font-light'>{user.email}</p>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        <DropdownMenuItem disabled>
           <Link href={navigationLinks.profile.href} className='w-full'>
             {navigationLinks.profile.label}
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link href={navigationLinks.history.href} className='w-full'>
+            {navigationLinks.history.label}
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem disabled>
+          <Link href={navigationLinks.stats.href} className='w-full'>
+            {navigationLinks.stats.label}
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem disabled>

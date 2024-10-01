@@ -18,7 +18,7 @@ export async function updateUserGuessesHistory(
       return {
         success: true,
         data: null,
-        message: 'No authenticated user, guesses history not updated',
+        message: 'No authenticated user, user guesses history not updated',
       };
     }
     const existingData = await fetchUserGuessesHistory(

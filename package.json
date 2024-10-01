@@ -22,7 +22,8 @@
     "test": "cross-env NODE_ENV=test jest",
     "test:watch": "cross-env NODE_ENV=test jest --watch",
     "remotion:studio": "pnpm remotion studio ./remotionStudio/index.ts",
-    "remotion:render": "pnpm remotion render ./remotionStudio/index.ts TiktokQuizFlags ./remotionStudio/renders/out.mp4"
+    "remotion:render": "pnpm remotion render ./remotionStudio/index.ts TiktokQuizFlags ./remotionStudio/renders/out.mp4",
+    "generate:types": "supabase gen types typescript --project-id \"adwhviervvdqnbswunen\" --schema public > ./src/lib/types/database.types.ts"
   },
   "dependencies": {
     "@nextui-org/react": "^2.4.1",
@@ -41,7 +42,7 @@
     "@remotion/zod-types": "4.0.172",
     "@sentry/nextjs": "^8.26.0",
     "@supabase/ssr": "^0.5.1",
-    "@supabase/supabase-js": "^2.45.3",
+    "@supabase/supabase-js": "^2.45.4",
     "@tanstack/react-query": "^5.51.23",
     "@tanstack/react-query-devtools": "^5.51.23",
     "axios": "^1.6.8",
@@ -49,6 +50,7 @@
     "clsx": "^2.1.1",
     "cross-env": "^7.0.3",
     "framer-motion": "^11.2.10",
+    "lucide-react": "^0.446.0",
     "next": "^14.2.3",
     "next-pwa": "^5.6.0",
     "opentelemetry-instrumentation-fetch-node": "^1.2.3",
