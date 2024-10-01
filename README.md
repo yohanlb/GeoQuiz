@@ -20,8 +20,8 @@ Check out the live version of GeoQuiz at [GeoQuiz.co](https://geoquiz.co)
 
 GeoQuiz is still in early development! Here are the next steps:
 
-- [ ] User accounts with google authentication
-- [ ] Cloud sync progress tracking
+- [x] User accounts with google authentication
+- [x] Cloud sync progress tracking
 - [ ] Advanced user stats and charts
 - [ ] Custom decks: user tailored series of questions to practice your weak points
 - [ ] Additional daily quiz types
