@@ -1,6 +1,6 @@
 import { createClient } from '@lib/supabase/server';
 
-export async function fetchUserStats(
+export async function fetchUserGuessesHistory(
   userId: string,
   countryId: number,
   questionTypeId: number,
@@ -18,14 +18,14 @@ export async function fetchUserStats(
     .single();
 
   if (error && error.code !== 'PGRST116') {
-    console.error('Error fetching existing user stats:', error);
+    console.error('Error fetching existing user guesses history:', error);
     throw error;
   }
 
   return data;
 }
 
-export async function upsertUserStats(
+export async function upsertUserGuessesHistory(
   userId: string,
   countryId: number,
   questionTypeId: number,
@@ -48,7 +48,7 @@ export async function upsertUserStats(
     .select();
 
   if (error) {
-    console.error('Error updating user stats:', error);
+    console.error('Error updating user guesses history:', error);
     throw error;
   }
 

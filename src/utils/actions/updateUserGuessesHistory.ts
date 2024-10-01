@@ -1,9 +1,12 @@
 'use server';
 
 import { getAuthenticatedUser } from '@utils/db/auth/get-authenticated-user';
-import { fetchUserStats, upsertUserStats } from '@utils/db/user-stats';
+import {
+  fetchUserGuessesHistory,
+  upsertUserGuessesHistory,
+} from '@utils/db/userGuessesHistory';
 
-export async function updateUserStats(
+export async function updateUserGuessesHistory(
   countryId: number,
   questionTypeId: number,
   newGuess: boolean,
@@ -15,10 +18,10 @@ export async function updateUserStats(
       return {
         success: true,
         data: null,
-        message: 'No authenticated user, stats not updated',
+        message: 'No authenticated user, guesses history not updated',
       };
     }
-    const existingData = await fetchUserStats(
+    const existingData = await fetchUserGuessesHistory(
       user.id,
       countryId,
       questionTypeId,
@@ -31,7 +34,7 @@ export async function updateUserStats(
       newGuessResults = [newGuess];
     }
 
-    const data = await upsertUserStats(
+    const data = await upsertUserGuessesHistory(
       user.id,
       countryId,
       questionTypeId,
@@ -40,7 +43,7 @@ export async function updateUserStats(
 
     return { success: true, data };
   } catch (error) {
-    console.error('Unexpected error updating user stats:', error);
+    console.error('Unexpected error updating user guesses history:', error);
     return { success: false, error: 'An unexpected error occurred' };
   }
 }
