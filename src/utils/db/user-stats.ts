@@ -8,7 +8,7 @@ export async function fetchUserStats(
   const supabase = createClient();
 
   const { data, error } = await supabase
-    .from('user_stats')
+    .from('user_guesses_history')
     .select('guess_results')
     .match({
       user_id: userId,
@@ -34,7 +34,7 @@ export async function upsertUserStats(
   const supabase = createClient();
 
   const { data, error } = await supabase
-    .from('user_stats')
+    .from('user_guesses_history')
     .upsert(
       {
         user_id: userId,
