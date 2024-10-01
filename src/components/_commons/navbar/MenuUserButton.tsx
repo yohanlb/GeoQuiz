@@ -43,7 +43,6 @@ const MenuUserButton = ({ user }: Props) => {
           />
         }
       />
-      )
     </div>
   );
 };
