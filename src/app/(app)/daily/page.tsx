@@ -1,39 +1,18 @@
-'use client';
-
 import React from 'react';
-import { useCountryOfTheDay } from '@hooks/useCountryOfTheDay';
-import { motion } from 'framer-motion';
-import LoadingSpinner from '@components/_commons/LoadingSpinner';
-import DailyCountryQuiz from '@components/daily/DailyCountryQuiz';
+import CotdPageContent from '@components/daily/CotdPageContent';
 
 export const metadata = {
   title: 'Country of the Day',
   description: 'Play the country of the day quiz.',
 };
 
-function CountryOfTheDayPage() {
-  const { data: dailyQuestion, isLoading, error } = useCountryOfTheDay(0);
-
+async function CountryOfTheDayPage() {
   return (
     <div className='mx-auto flex max-w-md flex-col gap-6 px-4 py-2 md:px-0'>
       <header>
         <h1 className='font text-left text-xl'>Country of the Day</h1>
       </header>
-      {error && <div>Error: {error.message}</div>}
-      {isLoading || !dailyQuestion ? (
-        <div className='mt-8 flex h-full w-full flex-col items-center justify-center gap-8'>
-          <motion.p
-            className='text-md'
-            initial={{ x: -300, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-          >
-            Preparing questions...
-          </motion.p>
-          <LoadingSpinner />
-        </div>
-      ) : (
-        <DailyCountryQuiz dailyQuestion={dailyQuestion} />
-      )}
+      <CotdPageContent />
     </div>
   );
 }
