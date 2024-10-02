@@ -1,6 +1,6 @@
 {
   "name": "geoquiz",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A capital and flag quiz web application.",
   "private": true,
   "engines": {
