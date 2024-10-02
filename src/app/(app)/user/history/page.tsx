@@ -18,7 +18,13 @@ const History = async () => {
 
   return (
     <div className='flex flex-col gap-1 px-2 py-2 md:px-0'>
-      <CountryHistory lastUserGuesses={lastUserGuesses} />
+      {lastUserGuesses.length > 0 ? (
+        <CountryHistory lastUserGuesses={lastUserGuesses} />
+      ) : (
+        <div className='flex flex-col items-center justify-center'>
+          <p>No history yet, play some games and come back here!</p>
+        </div>
+      )}
       <PageCenteredLink href={navigationLinks.home.href} label='Back' />
     </div>
   );
