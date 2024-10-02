@@ -4,6 +4,11 @@ import { createClient } from '@lib/supabase/server';
 import { redirect } from 'next/navigation';
 import LoginButton from '@components/login/LoginButton';
 
+export const metadata = {
+  title: 'Login',
+  description: 'Sign in to your account.',
+};
+
 async function LoginPage() {
   const supabase = createClient();
   const {
@@ -13,6 +18,7 @@ async function LoginPage() {
   if (user) {
     redirect(navigationLinks.home.href);
   }
+
   return (
     <div className='mt-12'>
       <p className='my-4 text-center text-sm text-gray-400'>

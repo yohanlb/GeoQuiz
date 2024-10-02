@@ -5,6 +5,11 @@ import PageCenteredLink from '@components/_commons/PageCenteredLink';
 import SectionTitle from '@components/_commons/SectionTitle';
 import FilterableDeckList from '@components/decks/FilterableDeckList';
 
+export const metadata = {
+  title: 'Decks',
+  description: 'Select a deck to start the quiz.',
+};
+
 async function page() {
   const decks = await getDecks();
   decks.sort((a, b) => a.name.localeCompare(b.name));

@@ -6,6 +6,15 @@ type Props = {
   params: { deckName: string };
 };
 
+export async function generateMetadata({ params }: Props) {
+  const { displayName } = await getDeckByName(params.deckName);
+
+  return {
+    title: `Play: ${displayName}`,
+    description: `Start a quiz about ${displayName}!`,
+  };
+}
+
 const Country = async ({ params }: Props) => {
   const deck = await getDeckByName(params.deckName);
 

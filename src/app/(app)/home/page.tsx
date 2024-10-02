@@ -17,6 +17,11 @@ const UnplayedDecksSection = dynamic(
   },
 );
 
+export const metadata = {
+  title: 'Home',
+  description: 'Select a deck to start the quiz!',
+};
+
 async function Home() {
   const decks = await getDecks();
   const featuredDecks = await getFeaturedDecks();

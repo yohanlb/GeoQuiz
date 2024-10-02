@@ -6,6 +6,11 @@ import SectionTitle from '@components/_commons/SectionTitle';
 import HowItWorksSection from '@components/help/HowItWorksSection';
 import { Button } from '@components/ui/button';
 
+export const metadata = {
+  title: 'Help',
+  description: 'Get help with Geo Quiz.',
+};
+
 const Help = async () => {
   return (
     <div className='mx-auto flex max-w-md flex-col gap-6 px-4 py-2 md:px-0'>

@@ -13,6 +13,15 @@ type Props = {
     dynamicCountryIds: string;
   };
 };
+
+export async function generateMetadata({ params }: Props) {
+  const { displayName } = await getDeckByName(params.deckName);
+  return {
+    title: `Playing: ${displayName}`,
+    description: `Playing a quiz about ${displayName}!`,
+  };
+}
+
 const Quiz = async ({ params, searchParams }: Props) => {
   const user = await getAuthenticatedUser();
   const deck = await getDeckByName(params.deckName);

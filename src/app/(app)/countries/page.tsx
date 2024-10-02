@@ -12,6 +12,11 @@ const CountriesTabs = dynamic(
   },
 );
 
+export const metadata = {
+  title: 'Countries',
+  description: 'Explore all countries.',
+};
+
 const Country = async () => {
   const groupedCountries = await getAllCountriesGrouped();
 

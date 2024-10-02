@@ -1,6 +1,11 @@
 /* eslint-disable */
 import React from 'react';
 
+export const metadata = {
+  title: 'Privacy Policy',
+  description: 'Our privacy policy.',
+};
+
 function PrivacyPage() {
   return (
     <div className='mx-auto max-w-4xl rounded-lg bg-background p-6 shadow-md'>

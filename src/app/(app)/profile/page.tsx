@@ -2,6 +2,11 @@ import React from 'react';
 import { createClient } from '@lib/supabase/server';
 import LoginButton from '@components/login/LoginButton';
 
+export const metadata = {
+  title: 'Profile',
+  description: 'Your profile page.',
+};
+
 const ProfilePage = async () => {
   const {
     data: { user },

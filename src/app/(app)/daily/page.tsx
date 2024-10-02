@@ -6,6 +6,11 @@ import { motion } from 'framer-motion';
 import LoadingSpinner from '@components/_commons/LoadingSpinner';
 import DailyCountryQuiz from '@components/daily/DailyCountryQuiz';
 
+export const metadata = {
+  title: 'Country of the Day',
+  description: 'Play the country of the day quiz.',
+};
+
 function CountryOfTheDayPage() {
   const { data: dailyQuestion, isLoading, error } = useCountryOfTheDay(0);
 

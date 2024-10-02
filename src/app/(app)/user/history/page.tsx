@@ -5,6 +5,11 @@ import { fetchLastUserGuessesHistoryWithCountryData } from '@utils/db/userGuesse
 import PageCenteredLink from '@components/_commons/PageCenteredLink';
 import CountryHistory from '@components/history/CountryHistory';
 
+export const metadata = {
+  title: 'History',
+  description: 'View your quiz history.',
+};
+
 const History = async () => {
   const user = await getAuthenticatedUser();
   if (!user) {

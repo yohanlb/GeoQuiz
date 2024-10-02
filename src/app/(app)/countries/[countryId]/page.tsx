@@ -13,6 +13,17 @@ type Props = {
   params: { countryId: number };
 };
 
+export async function generateMetadata({ params }: Props) {
+  const { countryId } = params;
+
+  const { name } = await getCountryById(countryId);
+
+  return {
+    title: `${name}`,
+    description: `All the information about ${name}.`,
+  };
+}
+
 const Country = async ({ params }: Props) => {
   const user = await getAuthenticatedUser();
   const country = await getCountryById(params.countryId);
