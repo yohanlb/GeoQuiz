@@ -18,7 +18,10 @@ export default function DeckInfoDialogContent({ deck }: Props) {
   }
 
   return (
-    <DialogContent className='bg-gradient-to-b from-bg-gradient-start to-bg-gradient-end'>
+    <DialogContent
+      className='bg-gradient-to-b from-bg-gradient-start to-bg-gradient-end'
+      aria-describedby={undefined}
+    >
       <DialogHeader>
         <DialogTitle className='text-left text-2xl font-semibold'>
           {deck.displayName}
