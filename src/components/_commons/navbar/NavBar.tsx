@@ -23,7 +23,7 @@ async function NavBar() {
           <Link href={navigationLinks.home.href}>
             <Image
               src={GeoQuizLogoCompact}
-              alt='GeoQuiz Logo'
+              alt='GeoQuiz'
               className='w-16 md:w-20'
             />
           </Link>

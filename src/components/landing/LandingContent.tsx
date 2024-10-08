@@ -38,7 +38,7 @@ function LandingContent() {
         <div className='max-w-44 duration-300 hover:scale-105 md:max-w-80'>
           <Image
             src={GeoQuizLogo}
-            alt='GeoQuiz Logo'
+            alt='GeoQuiz'
             width={320}
             height={320}
             priority

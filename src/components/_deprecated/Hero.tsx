@@ -8,7 +8,7 @@ function Hero() {
     <div>
       <Image
         src={GeoQuizLogoExpanded}
-        alt='GeoQuiz Logo'
+        alt='GeoQuiz'
         className='mx-auto w-2/3'
       />
     </div>
