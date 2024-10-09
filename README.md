@@ -12,7 +12,7 @@ The app is thought to be both a fun quiz to play and an methodical tool to help 
 - ⚡ **Fast & Interactive**: Built with a mix of client-side and server-side logic for a smooth and optimized experience.
 - 🛠 **Tech Stack**: React 18, Next.js 14, Tailwind CSS, Shadcn UI, TypeScript, and Supabase for the backend API and database.
 
-## Live Demo
+## Live Demo 
 
 Check out the live version of GeoQuiz at [GeoQuiz.co](https://geoquiz.co)
 
