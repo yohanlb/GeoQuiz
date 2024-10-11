@@ -11,8 +11,6 @@ export async function getCountriesByName(countryName: string) {
     )
     .single();
 
-  console.log(data, error);
-
   if (error && error.code !== 'PGRST116') {
     console.error('Error fetching user countries by name:', error);
     throw error;
