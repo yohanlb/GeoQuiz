@@ -107,10 +107,16 @@ const Footer = () => {
               Feedback
             </Link>
             <Link
-              href={'/privacy'}
+              href={navigationLinks.privacy.href}
               className='transition-colors duration-200 hover:text-gray-300'
             >
               Privacy
+            </Link>
+            <Link
+              href={navigationLinks.ressources.href}
+              className='transition-colors duration-200 hover:text-gray-300'
+            >
+              Ressources
             </Link>
           </motion.div>
         </motion.div>

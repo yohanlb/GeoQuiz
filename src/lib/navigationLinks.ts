@@ -24,6 +24,9 @@ export const navigationLinks: NavigationLinks = {
   profile: { label: 'Profile', href: '/profile' },
   settings: { label: 'Settings', href: '/settings' },
   logout: { label: 'Logout', href: '/logout' },
+  // footer menu
+  ressources: { label: 'Ressources', href: '/ressources' },
+  privacy: { label: 'Privacy', href: '/privacy' },
 };
 
 export const EXTERNAL_LINKS = {
