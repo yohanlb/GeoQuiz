@@ -1,5 +1,22 @@
 import { createClient } from '@lib/supabase/server';
 
+export async function getCountryById(countryId: number) {
+  const supabase = createClient();
+
+  const { data, error } = await supabase
+    .from('countries')
+    .select('*')
+    .eq('id', countryId)
+    .single();
+
+  if (error && error.code !== 'PGRST116') {
+    console.error('Error fetching user countries by id:', error);
+    throw error;
+  }
+
+  return data as CountryData;
+}
+
 export async function getCountriesByName(countryName: string) {
   const supabase = createClient();
   const { data, error } = await supabase
