@@ -35,6 +35,7 @@ declare global {
     capital_guessed_right: number;
     capital_guessed_count: number;
     custom_difficulty: number;
+    closest_country_ids: number[];
   };
 
   type DeckStats = {
