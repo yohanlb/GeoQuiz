@@ -13,7 +13,7 @@ async function page() {
         {countries.map((country) => (
           <li key={country.id} className='text-blue-500 underline'>
             <Link
-              href={`${navigationLinks.ressources.href}/what-is-capital-of/${country.id}`}
+              href={`${navigationLinks.resources.href}/what-is-capital-of/${country.id}`}
             >
               {country.name}
             </Link>

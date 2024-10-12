@@ -68,7 +68,7 @@ async function page({ params }: Props) {
               />
               <Link
                 className='text-blue-500 underline'
-                href={`${navigationLinks.ressources.href}/what-is-capital-of/${country.id}`}
+                href={`${navigationLinks.resources.href}/what-is-capital-of/${country.id}`}
               >
                 {country.name}
               </Link>

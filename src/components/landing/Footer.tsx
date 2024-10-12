@@ -113,10 +113,10 @@ const Footer = () => {
               Privacy
             </Link>
             <Link
-              href={navigationLinks.ressources.href}
+              href={navigationLinks.resources.href}
               className='transition-colors duration-200 hover:text-gray-300'
             >
-              Ressources
+              Resources
             </Link>
           </motion.div>
         </motion.div>
