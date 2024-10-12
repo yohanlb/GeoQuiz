@@ -1,3 +1,9 @@
+# *
 User-agent: *
-Disallow: 
+Allow: /
+
+# Host
+Host: https://geoquiz.co
+
+# Sitemaps
 Sitemap: https://geoquiz.co/sitemap.xml
