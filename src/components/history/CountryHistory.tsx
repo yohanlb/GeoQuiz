@@ -5,60 +5,109 @@ import { PiCity } from 'react-icons/pi';
 import { navigationLinks } from '@lib/navigationLinks';
 import { UserGuessesHistoryWithCountryData } from '@utils/db/userGuessesHistory';
 import Link from 'next/link';
+import DifficultyIndicator from '@components/_commons/DifficultyIndicator';
+import GuessesList from '@components/_commons/GuessesList';
 import SectionTitle from '@components/_commons/SectionTitle';
 
 type Props = { lastUserGuesses: UserGuessesHistoryWithCountryData[] };
 
+const HeaderCell = ({ children }: { children: React.ReactNode }) => (
+  <th className='px-2 py-1 font-normal'>{children}</th>
+);
+
+const Cell = ({ children }: { children: React.ReactNode }) => (
+  <td className='px-2 py-1'>{children}</td>
+);
+
 const CountryHistory = ({ lastUserGuesses }: Props) => {
   return (
     <div>
-      <SectionTitle text='Your Country Guess History' variant='h2' />
-      <ul className='mt-4'>
-        {lastUserGuesses.map((userGuess) => (
-          <li
-            key={userGuess.country_id + userGuess.question_type_id}
-            className='group mb-2 flex w-full items-center justify-between rounded-lg bg-gray-800 p-2 shadow-md'
-          >
-            <div className='flex items-center space-x-2'>
-              <div className='text-xl'>
-                {userGuess.question_type_id === 1 ? <PiCity /> : <FaRegFlag />}
-              </div>
-              <Link
-                href={`${navigationLinks.countries.href}/${userGuess.country_id}`}
-                className='text-base font-bold text-white group-hover:underline'
-              >
-                {userGuess.countries_complete_view.name}
-              </Link>
-              <ReactCountryFlag
-                countryCode={userGuess.countries_complete_view.iso2 as string}
-                svg
-                style={{
-                  width: '20px',
-                  height: '20px',
-                }}
-              />
-              <p className='hidden text-sm text-gray-300 md:block'>
-                {userGuess.countries_complete_view.capital}
-              </p>
-            </div>
-            <div className='flex items-center space-x-1'>
-              {userGuess.guess_results
-                ?.reverse()
-                .slice(-3)
-                .map((guess: boolean, index: number) => (
-                  <div
-                    key={userGuess.country_id + index}
-                    className={`flex h-6 w-6 items-center justify-center rounded-full ${guess ? 'bg-green-600' : 'bg-red-600'}`}
-                  >
-                    <span className='text-xs text-white'>
-                      {guess ? '✓' : '✗'}
-                    </span>
-                  </div>
-                ))}
-            </div>
-          </li>
-        ))}
-      </ul>
+      <SectionTitle text='Your Country Guesses History' variant='h2' />
+
+      <div className='w-full overflow-x-auto'>
+        <table className='min-w-full whitespace-nowrap text-left text-xs'>
+          <thead className='border-b text-xs capitalize md:text-lg'>
+            <tr>
+              <HeaderCell>Date</HeaderCell>
+              <HeaderCell>Country</HeaderCell>
+              <HeaderCell>Difficulty</HeaderCell>
+              <HeaderCell>Flag</HeaderCell>
+              <HeaderCell>Capital</HeaderCell>
+              <HeaderCell>Mode</HeaderCell>
+              <HeaderCell>Result</HeaderCell>
+            </tr>
+          </thead>
+          <tbody className='text-xs md:text-base'>
+            {lastUserGuesses.map((userGuess) => {
+              const successRate =
+                userGuess.question_type_id === 1
+                  ? (userGuess.countries_complete_view.success_rate_capital ??
+                    0.5)
+                  : (userGuess.countries_complete_view.success_rate_flag ??
+                    0.5);
+
+              console.log(userGuess);
+              return (
+                <tr
+                  key={userGuess.country_id + userGuess.question_type_id}
+                  className='border-b border-gray-500 hover:bg-gray-800'
+                >
+                  <Cell>
+                    {new Date(userGuess.updated_at).toLocaleDateString(
+                      'en-GB',
+                      { year: '2-digit', month: '2-digit', day: '2-digit' },
+                    )}
+                  </Cell>
+                  <Cell>
+                    <div className='flex gap-x-2 text-wrap break-words font-extralight'>
+                      <Link
+                        href={`${navigationLinks.countries.href}/${userGuess.country_id}`}
+                        className='text-base font-normal text-white group-hover:underline'
+                      >
+                        {userGuess.countries_complete_view.name}
+                      </Link>
+                    </div>
+                  </Cell>
+                  <Cell>
+                    <DifficultyIndicator value={successRate * 100} />
+                  </Cell>
+                  <Cell>
+                    <div className='font-extralight'>
+                      <ReactCountryFlag
+                        countryCode={
+                          userGuess.countries_complete_view.iso2 as string
+                        }
+                        svg
+                        style={{
+                          width: '20px',
+                          height: '20px',
+                        }}
+                      />
+                    </div>
+                  </Cell>
+                  <Cell>
+                    <div className='text-wrap break-words font-extralight'>
+                      {userGuess.countries_complete_view.capital}
+                    </div>
+                  </Cell>
+                  <Cell>
+                    {userGuess.question_type_id === 1 ? (
+                      <PiCity />
+                    ) : (
+                      <FaRegFlag />
+                    )}
+                  </Cell>
+                  <Cell>
+                    <GuessesList
+                      countryHistory={userGuess.guess_results ?? []}
+                    />
+                  </Cell>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

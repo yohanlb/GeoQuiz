@@ -18,7 +18,7 @@ const History = async () => {
 
   const lastUserGuesses = await fetchLastUserGuessesHistoryWithCountryData(
     user.id,
-    10,
+    50,
   );
 
   return (

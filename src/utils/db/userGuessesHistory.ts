@@ -8,11 +8,16 @@ type CountriesCompleteViewRow =
 
 export type UserGuessesHistoryWithCountryData = Pick<
   UserGuessesHistoryRow,
-  'guess_results' | 'question_type_id' | 'country_id'
+  'guess_results' | 'question_type_id' | 'country_id' | 'updated_at'
 > & {
   countries_complete_view: Pick<
     CountriesCompleteViewRow,
-    'id' | 'name' | 'iso2' | 'capital'
+    | 'id'
+    | 'name'
+    | 'iso2'
+    | 'capital'
+    | 'success_rate_capital'
+    | 'success_rate_flag'
   >;
 };
 
@@ -55,7 +60,7 @@ export async function fetchUserGuessesHistoryByCountry(
 
   const { data, error } = await supabase
     .from('user_guesses_history')
-    .select('guess_results, question_type_id, country_id')
+    .select('guess_results, question_type_id, country_id, updated_at')
     .match({
       user_id: userId,
       country_id: countryId,
@@ -74,7 +79,7 @@ export async function fetchAllUserGuessesHistory(userId: string) {
 
   const { data, error } = await supabase
     .from('user_guesses_history')
-    .select('guess_results, country_id, question_type_id')
+    .select('guess_results, country_id, question_type_id, updated_at')
     .match({
       user_id: userId,
     });
@@ -100,11 +105,14 @@ export async function fetchLastUserGuessesHistoryWithCountryData(
       guess_results,
       question_type_id,
       country_id,
+      updated_at,
       countries_complete_view(
         id,
         name,
         iso2,
-        capital
+        capital,
+        success_rate_capital,
+        success_rate_flag
       )
     `,
     )
@@ -129,6 +137,7 @@ export async function fetchLastUserGuessesHistoryWithCountryData(
       guess_results: item.guess_results,
       question_type_id: item.question_type_id,
       country_id: item.country_id,
+      updated_at: item.updated_at,
       countries_complete_view: countryData,
     } as UserGuessesHistoryWithCountryData;
   });
