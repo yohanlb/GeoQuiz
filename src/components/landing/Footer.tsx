@@ -5,20 +5,12 @@ import React from 'react';
 import { LuTwitter } from 'react-icons/lu';
 import { MdOutlineSportsGymnastics } from 'react-icons/md';
 import { EXTERNAL_LINKS, navigationLinks } from '@lib/navigationLinks';
-import { motion, useAnimation, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const Footer = () => {
-  const controls = useAnimation();
   const ref = React.useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
-
-  React.useEffect(() => {
-    if (isInView) {
-      controls.start('visible');
-    }
-  }, [controls, isInView]);
 
   const itemVariants = {
     hidden: { opacity: 0, y: 10 },
