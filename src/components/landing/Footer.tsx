@@ -20,18 +20,6 @@ const Footer = () => {
     }
   }, [controls, isInView]);
 
-  const containerVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
   const itemVariants = {
     hidden: { opacity: 0, y: 10 },
     visible: { opacity: 1, y: 0 },
@@ -46,14 +34,12 @@ const Footer = () => {
   }
 
   return (
-    <footer ref={ref} className='mt-4 border-t-1 border-gray-800'>
-      <div className='container mx-auto px-4 py-8'>
-        <motion.div
-          variants={containerVariants}
-          initial='hidden'
-          animate={controls}
-          className='flex flex-col items-center justify-center gap-4'
-        >
+    <footer
+      ref={ref}
+      className='mt-3 border-t-1 border-gray-800 text-xs font-light text-gray-400'
+    >
+      <div className='container mx-auto px-4 py-4'>
+        <div className='flex flex-col items-center justify-center gap-2'>
           <motion.div
             variants={itemVariants}
             whileHover={{ scale: 1.1 }}
@@ -68,7 +54,7 @@ const Footer = () => {
             </Link>
           </motion.div>
 
-          <motion.p variants={itemVariants} className='text-center text-sm'>
+          <p className='text-center text-sm'>
             Entirely brought to you by
             <Link
               href={EXTERNAL_LINKS.personalWebsite}
@@ -84,42 +70,38 @@ const Footer = () => {
             >
               <MdOutlineSportsGymnastics className='ml-1 inline-block h-6 w-6' />
             </motion.span>
-          </motion.p>
+          </p>
 
-          <motion.div
-            variants={itemVariants}
-            className='flex space-x-4 text-sm text-gray-400'
-          >
+          <div className='text-sm'>
             <Link
               href={'https://forms.gle/YrScov3rJU7dEdWS8'}
               target='_blank'
               rel='noreferrer'
-              className='transition-colors duration-200 hover:text-gray-300'
+              className='underline'
             >
               Contact
             </Link>
+            {' - '}
             <Link
               href={'https://forms.gle/YrScov3rJU7dEdWS8'}
               target='_blank'
               rel='noreferrer'
-              className='transition-colors duration-200 hover:text-gray-300'
+              className='underline'
             >
               Feedback
             </Link>
-            <Link
-              href={navigationLinks.privacy.href}
-              className='transition-colors duration-200 hover:text-gray-300'
-            >
+          </div>
+
+          <div className='text-xs text-gray-600'>
+            <Link href={navigationLinks.privacy.href} className='underline'>
               Privacy
             </Link>
-            <Link
-              href={navigationLinks.resources.href}
-              className='transition-colors duration-200 hover:text-gray-300'
-            >
+            {' - '}
+            <Link href={navigationLinks.resources.href} className='underline'>
               Resources
             </Link>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </footer>
   );
