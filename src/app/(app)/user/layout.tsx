@@ -11,7 +11,6 @@ async function Layout({
   const user = await getAuthenticatedUser();
 
   if (!user) {
-    console.log('redirecting to login');
     redirect(navigationLinks.login.href);
   }
 

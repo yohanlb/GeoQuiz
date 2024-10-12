@@ -1,6 +1,6 @@
 import React from 'react';
 import { navigationLinks } from '@lib/navigationLinks';
-import { createClient } from '@lib/supabase/server';
+import { getAuthenticatedUser } from '@utils/db/auth/get-authenticated-user';
 import Image from 'next/image';
 import Link from 'next/link';
 import HeaderHeroSeparator from '@assets/HeaderHeroSeparator.svg';
@@ -9,9 +9,7 @@ import MenuNavigationButton from '@components/_commons/navbar/MenuNavigationButt
 import MenuUserButton from '@components/_commons/navbar/MenuUserButton';
 
 async function NavBar() {
-  const {
-    data: { user },
-  } = await createClient().auth.getUser();
+  const user = await getAuthenticatedUser();
 
   return (
     <header className='mb-1 md:mb-2'>
