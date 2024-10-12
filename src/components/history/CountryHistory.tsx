@@ -46,7 +46,6 @@ const CountryHistory = ({ lastUserGuesses }: Props) => {
                   : (userGuess.countries_complete_view.success_rate_flag ??
                     0.5);
 
-              console.log(userGuess);
               return (
                 <tr
                   key={userGuess.country_id + userGuess.question_type_id}
