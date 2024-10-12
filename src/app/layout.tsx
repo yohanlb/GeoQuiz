@@ -1,5 +1,6 @@
 import { NextUIProvider } from '@nextui-org/react';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import UserProvider from '@utils/contexts/UserProvider';
 import { inter, notoEmoji } from '@utils/font';
 import dynamic from 'next/dynamic';
 import BackgroundGradient from '@components/_commons/BackgroundGradient';
@@ -31,19 +32,21 @@ export default function RootLayout({
       <MetaTags />
       <PHProvider>
         <body className={`h-dvh`}>
-          <PostHogPageView />
-          <MyQueryClientProvider>
-            <TrackUserVisit />
-            <NextUIProvider className='h-full overflow-y-auto'>
-              <div className='mx-auto flex h-full max-w-screen-md flex-col'>
-                <NavBar />
-                <main className='flex-grow'>{children}</main>
-                <Footer />
-                <BackgroundGradient />
-              </div>
-            </NextUIProvider>
-            <ReactQueryDevtools initialIsOpen={false} />
-          </MyQueryClientProvider>
+          <UserProvider>
+            <PostHogPageView />
+            <MyQueryClientProvider>
+              <TrackUserVisit />
+              <NextUIProvider className='h-full overflow-y-auto'>
+                <div className='mx-auto flex h-full max-w-screen-md flex-col'>
+                  <NavBar />
+                  <main className='flex-grow'>{children}</main>
+                  <Footer />
+                  <BackgroundGradient />
+                </div>
+              </NextUIProvider>
+              <ReactQueryDevtools initialIsOpen={false} />
+            </MyQueryClientProvider>
+          </UserProvider>
         </body>
       </PHProvider>
     </html>
