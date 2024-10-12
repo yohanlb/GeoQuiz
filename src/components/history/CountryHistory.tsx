@@ -24,7 +24,7 @@ const CountryHistory = ({ lastUserGuesses }: Props) => {
     <div>
       <SectionTitle text='Your Country Guesses History' variant='h2' />
 
-      <div className='w-full overflow-x-auto'>
+      <div className='mt-4 w-full overflow-x-auto'>
         <table className='min-w-full whitespace-nowrap text-left text-xs'>
           <thead className='border-b text-xs capitalize md:text-lg'>
             <tr>
