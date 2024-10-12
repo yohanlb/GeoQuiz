@@ -2,15 +2,13 @@
 
 import React from 'react';
 import { Avatar } from '@nextui-org/react';
-import { User } from '@supabase/supabase-js';
+import { UserContext } from '@utils/contexts/UserProvider';
 import posthog from 'posthog-js';
 import MenuUser from '@components/_commons/navbar/MenuUser';
 
-type Props = {
-  user: User | null;
-};
+const MenuUserButton = () => {
+  const { user, loading } = React.useContext(UserContext);
 
-const MenuUserButton = ({ user }: Props) => {
   React.useEffect(() => {
     if (user) {
       // Identify the user in PostHog from supabase data
@@ -26,23 +24,29 @@ const MenuUserButton = ({ user }: Props) => {
 
   return (
     <div className='flex items-center justify-end'>
-      <MenuUser
-        user={user}
-        trigger={
-          <Avatar
-            showFallback
-            isBordered
-            src={user?.user_metadata?.avatar_url}
-            name={user?.user_metadata?.name}
-            size={'md'}
-            as={'button'}
-            classNames={{
-              base: 'bg-gradient-to-br from-[#FFB457] to-[#FF705B] ring-[#FFB457]/50',
-              icon: 'text-black/80',
-            }}
-          />
-        }
-      />
+      {loading ? (
+        <div className='flex items-center justify-center'>
+          <div className='h-10 w-10 animate-pulse rounded-full bg-gray-300' />
+        </div>
+      ) : (
+        <MenuUser
+          user={user}
+          trigger={
+            <Avatar
+              showFallback
+              isBordered
+              src={user?.user_metadata?.avatar_url}
+              name={user?.user_metadata?.name}
+              size={'md'}
+              as={'button'}
+              classNames={{
+                base: 'bg-gradient-to-br from-[#FFB457] to-[#FF705B] ring-[#FFB457]/50',
+                icon: 'text-black/80',
+              }}
+            />
+          }
+        />
+      )}
     </div>
   );
 };
