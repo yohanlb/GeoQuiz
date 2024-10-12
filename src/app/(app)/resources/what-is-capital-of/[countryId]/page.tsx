@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
 import { navigationLinks } from '@lib/navigationLinks';
+import { supabase } from '@lib/supabase/static';
 import { getCountriesById, getCountryById } from '@utils/db/countries';
 import Link from 'next/link';
 
@@ -20,8 +21,20 @@ export async function generateMetadata({ params }: Props) {
   };
 }
 
+export async function generateStaticParams() {
+  // fetching from default supabase client cause cant work with cookies at build time
+  const { data } = await supabase.from('countries').select('id');
+  if (!data) {
+    return [];
+  }
+  return data.map((country) => ({
+    countryId: country.id.toString(),
+  }));
+}
+
 async function page({ params }: Props) {
-  const country = await getCountryById(params.countryId);
+  const { countryId } = params;
+  const country = await getCountryById(countryId);
 
   const neighboringCountries = await getCountriesById(
     country.closest_country_ids,
