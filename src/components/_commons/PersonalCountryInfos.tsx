@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useAuth } from '@utils/hooks/useAuth';
+import { UserContext } from '@utils/contexts/UserProvider';
 import useCountryLocalUserGuesses from '@utils/hooks/useCountryLocalUserGuesses';
 import GuessesList from '@components/_commons/GuessesList';
 
@@ -11,7 +11,7 @@ type Props = {
 };
 
 const PersonalCountryInfos = ({ countryId, showNewResult = false }: Props) => {
-  const { user } = useAuth();
+  const { user } = React.useContext(UserContext);
 
   // Get history from the store (local storage)
   const { countryHistory, newUserCountryResult } =

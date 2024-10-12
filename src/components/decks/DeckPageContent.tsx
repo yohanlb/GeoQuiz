@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { TbCardsFilled } from 'react-icons/tb';
-import { useAuth } from '@utils/hooks/useAuth';
+import { UserContext } from '@utils/contexts/UserProvider';
 import useGameStore from '@utils/stores/gameStore';
 import Link from 'next/link';
 import DeckImage from '@components/_commons/DeckImage';
@@ -19,7 +19,7 @@ type Props = {
 const DeckPageContent = ({ deck, hideTitle = false }: Props) => {
   const { questionType } = useGameStore();
 
-  const { user } = useAuth();
+  const { user } = React.useContext(UserContext);
 
   // TODO: update store to return questionTypeId instead of questionType
   const questionTypeId = questionType === 'CountryToCapital' ? 1 : 2;
