@@ -19,6 +19,7 @@ const DeckItem = ({ deck }: DeckItemProps) => {
     <li>
       <Link
         href={`${navigationLinks.allDecks.href}/${deck.name}`}
+        rel='canonical'
         className='block'
       >
         <div className='flex items-center justify-between rounded-md border-[0.5px] border-gray-700 px-2 py-1 text-gray-200 shadow-md shadow-gray-950 transition hover:border-gray-500 hover:text-white active:bg-gray-300 active:text-black'>

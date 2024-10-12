@@ -15,6 +15,7 @@ const LinkToDeck = () => {
         Deck:{' '}
         <Link
           href={`/decks/${deck.name}`}
+          rel='canonical'
           className='underline underline-offset-2'
         >
           {deck.displayName}

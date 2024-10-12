@@ -25,6 +25,7 @@ const DeckList: React.FC<DeckListProps> = ({ decks, filterCategory }) => {
           <li key={deck.id}>
             <Link
               href={`${navigationLinks.allDecks.href}/${deck.name}`}
+              rel='canonical'
               className='block'
             >
               <DeckItemLarge key={deck.id} deck={deck} />
