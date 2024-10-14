@@ -5,7 +5,7 @@ import DeckItem from '@components/_commons/DeckItem';
 import DeckItemLarge from '@components/_commons/DeckItemLarge';
 
 type DeckListProps = {
-  decks: Deck[];
+  decks: DeckWithStatsRecord[];
   filterCategory?: string;
 };
 

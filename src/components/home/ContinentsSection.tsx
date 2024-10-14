@@ -3,7 +3,7 @@ import SectionTitle from '@components/_commons/SectionTitle';
 import DeckGrid from './DeckGrid';
 
 type Props = {
-  decks: Deck[];
+  decks: DeckWithStatsRecord[];
 };
 
 const ContinentsSection = ({ decks }: Props) => {

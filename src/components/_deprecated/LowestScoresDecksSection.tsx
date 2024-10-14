@@ -7,7 +7,7 @@
 // import DeckGrid from './DeckGrid';
 
 // type Props = {
-//   decks: Deck[];
+//   decks: DeckRecord[];
 // };
 
 // const LowestScoresDecksSection = ({ decks }: Props) => {

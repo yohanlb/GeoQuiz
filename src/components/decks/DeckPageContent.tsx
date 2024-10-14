@@ -12,7 +12,7 @@ import SelectQuestionType from '@components/_commons/SelectQuestionType';
 import UserDeckGuessesProgressionSection from '@components/decks/UserDeckGuessesProgressionSection';
 
 type Props = {
-  deck: Deck;
+  deck: DeckWithStatsRecord;
   hideTitle?: boolean;
 };
 

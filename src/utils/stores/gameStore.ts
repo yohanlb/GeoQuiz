@@ -20,8 +20,8 @@ interface GameStoreState {
     result: UserResultsStatus,
     questionIndex: number,
   ) => void;
-  deck: Deck | null;
-  setDeck: (deck: Deck) => void;
+  deck: DeckRecord | null;
+  setDeck: (deck: DeckRecord) => void;
   resetGame: () => void;
   isGameStoreInitialized: boolean;
   setIsGameStoreInitialized: (isGameStoreInitialized: boolean) => void;

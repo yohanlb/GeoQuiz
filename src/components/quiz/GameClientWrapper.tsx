@@ -9,7 +9,7 @@ import GameController from './GameController';
 
 type Props = {
   userGuessesHistory: UserGuessHistoryPartial[];
-  deck: Deck;
+  deck: DeckRecord;
   amountOfQuestions: number;
 };
 

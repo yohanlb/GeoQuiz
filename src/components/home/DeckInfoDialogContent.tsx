@@ -9,7 +9,7 @@ import {
 } from '@components/ui/dialog';
 
 type Props = {
-  deck: Deck;
+  deck: DeckWithStatsRecord;
 };
 
 export default function DeckInfoDialogContent({ deck }: Props) {

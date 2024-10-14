@@ -4,7 +4,7 @@ import useGameStore from '@stores/gameStore';
 import axios from 'axios';
 
 export function useFetchQuestions(
-  { id, isDynamic, countryIds }: Deck,
+  { id, isDynamic, countryIds }: DeckRecord,
   length = 10,
 ) {
   const { questionType, isGameStoreInitialized } = useGameStore();

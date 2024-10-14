@@ -5,7 +5,7 @@ import DeckInfoDialog from '@components/home/DeckInfoDialog';
 import DeckInfoDialogContent from '@components/home/DeckInfoDialogContent';
 
 type Props = {
-  deck: Deck;
+  deck: DeckWithStatsRecord;
 };
 
 const DeckCard = ({ deck }: Props) => {

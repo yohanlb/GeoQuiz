@@ -14,34 +14,6 @@ declare global {
     continents: string[];
   };
 
-  type DeckStats = {
-    id: number;
-    deckId: number;
-    playCount: number;
-    created_at: string;
-    updated_at: string;
-    averageScore: number;
-  };
-
-  interface DeckStatsObject {
-    [questionType: string]: DeckStats;
-  }
-
-  type Deck = {
-    id: number;
-    name: string;
-    description: string | null;
-    countryIds: number[];
-    isDynamic: boolean;
-    isAvailable: boolean;
-    categories: string[] | null;
-    displayName: string;
-    isTextTransparent: boolean;
-    image_name: string;
-    decks_stats: DeckStatsObject;
-    displayPriority?: number;
-  };
-
   export type QuestionType =
     | 'CountryToCapital'
     | 'CapitalToCountry'

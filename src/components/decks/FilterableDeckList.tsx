@@ -5,7 +5,7 @@ import { Chip } from '@nextui-org/react';
 import DeckList from '@components/decks/DeckList';
 
 type Props = {
-  decks: Deck[];
+  decks: DeckWithStatsRecord[];
 };
 
 const chipData = [

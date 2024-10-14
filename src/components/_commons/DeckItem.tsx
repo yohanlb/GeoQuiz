@@ -5,7 +5,7 @@ import Link from 'next/link';
 import DifficultyIndicator from './DifficultyIndicator';
 
 type DeckItemProps = {
-  deck: Deck;
+  deck: DeckWithStatsRecord;
 };
 const UnplayedIndicator = dynamic(
   () => import('@components/_commons/UnplayedIndicator'),

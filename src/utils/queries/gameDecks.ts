@@ -8,7 +8,7 @@ export async function getDeckByName(deckName: string) {
   if (!response.ok) {
     throw new Error(`Couldn't fetch game deck ${deckName}.`);
   }
-  const data: Deck = await response.json();
+  const data: DeckWithStatsRecord = await response.json();
   return data;
 }
 
@@ -19,9 +19,11 @@ export async function getDecks() {
   if (!response.ok) {
     throw new Error(`Couldn't fetch game decks.`);
   }
-  const data: Deck[] = await response.json();
+  const data: DeckWithStatsRecord[] = await response.json();
+  console.log(data.map((deck) => `${deck.name} - ${deck.displayPriority}`));
+
   return data.filter(
-    (deck) => deck.displayPriority === undefined || deck.displayPriority >= 0,
+    (deck) => deck.displayPriority === null || deck.displayPriority >= 0,
   );
 }
 
@@ -32,8 +34,9 @@ export async function getFeaturedDecks() {
   if (!response.ok) {
     throw new Error(`Couldn't fetch game decks.`);
   }
-  const data: Deck[] = await response.json();
+  const data: DeckWithStatsRecord[] = await response.json();
   return data.filter(
-    (deck) => deck.displayPriority === undefined || deck.displayPriority >= 0,
+    (deck) =>
+      deck.displayPriority === undefined || (deck.displayPriority ?? -1) >= 0,
   );
 }

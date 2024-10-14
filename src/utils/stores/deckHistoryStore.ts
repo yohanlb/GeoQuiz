@@ -4,7 +4,7 @@ import { persist } from 'zustand/middleware';
 import { deckHistoryMigration } from './migrations/deckHistoryMigrations';
 
 export type DeckResultsData = {
-  [deckID: Deck['id']]: {
+  [deckID: DeckRecord['id']]: {
     playCountCountryToCapital: number;
     playCountCountryToFlag: number;
     lastPlayTimeCountryToCapital: number;
@@ -33,11 +33,11 @@ export interface DeckResultsState {
   version: number;
   deckResultsData: DeckResultsData;
   clearAllDeckScores: () => void;
-  getDeckScore: (deckID: Deck['id']) => number | null;
-  addNewDeckResult: (deckID: Deck['id'], newScore: number) => void;
-  getPlayedDeckIds: () => Deck['id'][];
-  getLastNDecksPlayed: (n: number) => Deck['id'][];
-  getDeckPlayCount: (deckID: Deck['id']) => number;
+  getDeckScore: (deckID: DeckRecord['id']) => number | null;
+  addNewDeckResult: (deckID: DeckRecord['id'], newScore: number) => void;
+  getPlayedDeckIds: () => DeckRecord['id'][];
+  getLastNDecksPlayed: (n: number) => DeckRecord['id'][];
+  getDeckPlayCount: (deckID: DeckRecord['id']) => number;
 }
 
 export const useDeckHistory = create<DeckResultsState>()(
@@ -49,22 +49,22 @@ export const useDeckHistory = create<DeckResultsState>()(
       clearAllDeckScores: () =>
         set({ deckResultsData: defaultDeckResultsData }),
 
-      getDeckScore: (deckID: Deck['id']) => {
+      getDeckScore: (deckID: DeckRecord['id']) => {
         const { questionType } = useGameStore.getState();
         const { deckResultsData } = get();
         const scoreKey =
-          `lastScore${questionType}` as keyof DeckResultsData[Deck['id']];
+          `lastScore${questionType}` as keyof DeckResultsData[DeckRecord['id']];
         if (!deckResultsData[deckID]) {
           return null;
         }
         return deckResultsData[deckID][scoreKey];
       },
 
-      getDeckPlayCount: (deckID: Deck['id']) => {
+      getDeckPlayCount: (deckID: DeckRecord['id']) => {
         const { questionType } = useGameStore.getState();
         const { deckResultsData } = get();
         const playCountKey =
-          `playCount${questionType}` as keyof DeckResultsData[Deck['id']];
+          `playCount${questionType}` as keyof DeckResultsData[DeckRecord['id']];
         if (!deckResultsData[deckID]) {
           return 0;
         }
@@ -87,7 +87,7 @@ export const useDeckHistory = create<DeckResultsState>()(
           .map((deckID) => Number(deckID));
       },
 
-      getLastNDecksPlayed: (n: number): Deck['id'][] => {
+      getLastNDecksPlayed: (n: number): DeckRecord['id'][] => {
         const { questionType } = useGameStore.getState();
         const { deckResultsData } = useDeckHistory.getState();
 
@@ -110,7 +110,7 @@ export const useDeckHistory = create<DeckResultsState>()(
         return playedDecks;
       },
 
-      addNewDeckResult: (deckID: Deck['id'], newScore: number) => {
+      addNewDeckResult: (deckID: DeckRecord['id'], newScore: number) => {
         const { questionType } = useGameStore.getState();
         const { deckResultsData } = get();
         const currentDeckData =
