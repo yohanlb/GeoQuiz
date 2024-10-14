@@ -3,7 +3,7 @@ import ReactCountryFlag from 'react-country-flag';
 import DifficultyIndicator from '@components/_commons/DifficultyIndicator';
 
 type Props = {
-  countryData: CountryData;
+  countryData: CountryCompleteViewRecord;
   hideFlag?: boolean;
 };
 
@@ -14,7 +14,7 @@ const CountryDescription = ({ countryData, hideFlag = false }: Props) => {
   }
 
   //TODO: switch score depending on question type, but for now there is not enough data for flags.
-  const averageCommunityScore = countryData.success_rate_capital * 100;
+  const averageCommunityScore = (countryData.success_rate_capital ?? 0.5) * 100;
 
   return (
     <div className='text-sm'>

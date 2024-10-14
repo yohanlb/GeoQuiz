@@ -45,7 +45,7 @@ function GameController({ questions, userGuessesHistory }: Readonly<Props>) {
 
   const prepareUserHistoryForCurrentSeries = () => {
     // TODO: do that server side and send it with the questions.
-    const newUserHistory: { [key: CountryData['id']]: boolean[] } = {};
+    const newUserHistory: { [key: CountryRecord['id']]: boolean[] } = {};
     questions.forEach((question) => {
       const userStatsForQuestion = userGuessesHistory.find(
         (stat) =>

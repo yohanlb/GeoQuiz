@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { createClient } from '@lib/supabase/client';
 
 type Props = {
-  countryIds: CountryData['id'][];
+  countryIds: CountryRecord['id'][];
 };
 
 const useFetchUserCountryGuesses = ({ countryIds }: Props) => {

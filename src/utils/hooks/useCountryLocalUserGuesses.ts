@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import useGameStore from '@utils/stores/gameStore';
 
-const useCountryLocalUserGuesses = (countryId: CountryData['id']) => {
+const useCountryLocalUserGuesses = (countryId: CountryRecord['id']) => {
   const { getUseCountryScoreForCountryId, userCountryResults } = useGameStore();
   const [countryHistory, setCountryHistory] = useState<boolean[]>([]);
   const [newUserCountryResult, setNewUserCountryResult] =

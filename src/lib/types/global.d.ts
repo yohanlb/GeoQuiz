@@ -60,10 +60,43 @@ declare global {
     Database['public']['Tables']['user_guesses_history']['Update'];
 
   // Aliases for 'countries_complete_view' view
-  type CountryCompleteViewRecord =
+  type CountryCompleteViewRecordOriginal =
     Database['public']['Views']['countries_complete_view']['Row'];
 
+  // NOTE: postgress makes the fields nullable by default. We need to make them non-nullable
+  type CountryCompleteViewRecord = {
+    id: NonNullable<CountryCompleteViewRecord['id']>;
+    name: NonNullable<CountryCompleteViewRecordOriginal['name']>;
+    capital: NonNullable<CountryCompleteViewRecordOriginal['capital']>;
+    region: NonNullable<CountryCompleteViewRecordOriginal['region']>;
+    subregion: NonNullable<CountryCompleteViewRecordOriginal['subregion']>;
+    iso2: NonNullable<CountryCompleteViewRecordOriginal['iso2']>;
+    capital_guessed_count: NonNullable<
+      CountryCompleteViewRecordOriginal['capital_guessed_count']
+    >;
+    flagGuessedCount: NonNullable<
+      CountryCompleteViewRecordOriginal['flag_guessed_count']
+    >;
+    custom_difficulty: NonNullable<
+      CountryCompleteViewRecordOriginal['custom_difficulty']
+    >;
+  } & {
+    // Include all other fields from CountryCompleteViewRecordOriginal
+    [K in Exclude<
+      keyof CountryCompleteViewRecordOriginal,
+      | 'id'
+      | 'name'
+      | 'capital'
+      | 'region'
+      | 'subregion'
+      | 'iso2'
+      | 'capital_guessed_count'
+      | 'flag_guessed_count'
+      | 'custom_difficulty'
+    >]: CountryCompleteViewRecordOriginal[K];
+  };
+
   // Aliases for 'view_cotd_with_country_names' view
-  type ViewCotdWithCountryData =
+  type ViewCotdWithCountryRecord =
     Database['public']['Views']['view_cotd_with_country_names']['Row'];
 }

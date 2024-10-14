@@ -6,7 +6,7 @@ import useCountryLocalUserGuesses from '@utils/hooks/useCountryLocalUserGuesses'
 import GuessesList from '@components/_commons/GuessesList';
 
 type Props = {
-  countryId: CountryData['id'];
+  countryId: CountryRecord['id'];
   showNewResult?: boolean;
 };
 

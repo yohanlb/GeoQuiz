@@ -5,7 +5,7 @@ import { useCountryHistory } from '@/src/utils/stores/countryHistoryStore';
 import { CountryScoreStatus } from '@utils/score';
 import CountryScoreBadge from './CountryScoreBadge';
 
-type Props = { countryIds: CountryData['id'][] };
+type Props = { countryIds: CountryRecord['id'][] };
 
 const defaultScores: Record<CountryScoreStatus, number> = {
   perfect: 0,

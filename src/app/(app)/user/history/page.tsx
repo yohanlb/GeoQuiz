@@ -1,7 +1,7 @@
 import React from 'react';
 import { navigationLinks } from '@lib/navigationLinks';
 import { getAuthenticatedUser } from '@utils/db/auth/get-authenticated-user';
-import { fetchLastUserGuessesHistoryWithCountryData } from '@utils/db/userGuessesHistory';
+import { fetchLastUserGuessesHistoryWithCountryRecord } from '@utils/db/userGuessesHistory';
 import PageCenteredLink from '@components/_commons/PageCenteredLink';
 import CountryHistory from '@components/history/CountryHistory';
 
@@ -16,7 +16,7 @@ const History = async () => {
     return <div>User data not available</div>;
   }
 
-  const lastUserGuesses = await fetchLastUserGuessesHistoryWithCountryData(
+  const lastUserGuesses = await fetchLastUserGuessesHistoryWithCountryRecord(
     user.id,
     50,
   );

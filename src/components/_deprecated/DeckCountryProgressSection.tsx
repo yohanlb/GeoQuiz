@@ -11,7 +11,7 @@ import DeckProgress, {
 import PopoverCustom from '@components/_commons/Popover';
 
 type Props = {
-  countryIds: CountryData['id'][];
+  countryIds: CountryRecord['id'][];
 };
 
 const DeckCountryProgressSection = ({ countryIds }: Props) => {

@@ -16,7 +16,7 @@ interface GameStoreState {
   addToUserAnswers: (userAnswer: string) => void;
   userCountryResults: UserCountryResult[];
   addToUserCountryResults: (
-    countryId: CountryData['id'],
+    countryId: CountryRecord['id'],
     result: UserResultsStatus,
     questionIndex: number,
   ) => void;
@@ -31,7 +31,7 @@ interface GameStoreState {
   setUserCountryScoresForCurrentSeries: (
     userCountryScoresForCurrentSeries: CountryScoreHistory,
   ) => void;
-  getUseCountryScoreForCountryId: (countryId: CountryData['id']) => boolean[];
+  getUseCountryScoreForCountryId: (countryId: CountryRecord['id']) => boolean[];
 }
 
 const useGameStore = create<GameStoreState>()(
@@ -75,7 +75,7 @@ const useGameStore = create<GameStoreState>()(
       },
 
       addToUserCountryResults: (
-        countryId: CountryData['id'],
+        countryId: CountryRecord['id'],
         result: UserResultsStatus,
         questionIndex: number,
       ) =>
@@ -125,7 +125,7 @@ const useGameStore = create<GameStoreState>()(
       setUserCountryScoresForCurrentSeries(userCountryScoresForCurrentSeries) {
         set(() => ({ userCountryScoresForCurrentSeries }));
       },
-      getUseCountryScoreForCountryId(countryId: CountryData['id']) {
+      getUseCountryScoreForCountryId(countryId: CountryRecord['id']) {
         const { userCountryScoresForCurrentSeries } = get();
         return userCountryScoresForCurrentSeries[countryId] ?? [];
       },

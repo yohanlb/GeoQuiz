@@ -34,7 +34,7 @@ const CountryTable = ({ countries }: Props) => {
             className='group border-gray-600 text-xs md:text-base'
           >
             <TableCell className='px-0 py-1 font-thin'>
-              <DifficultyIndicator value={getScore(country) * 100} />
+              <DifficultyIndicator value={(getScore(country) ?? 0.5) * 100} />
             </TableCell>
             <TableCell className='px-0 py-1 font-thin'>
               <span

@@ -1,4 +1,4 @@
-import { fetchCountries } from '@/src/utils/queries/countries';
+import { getAllCountriesCompleteView } from '@utils/db/countries';
 
 export const defaultProps = {
   difficultyPercent: 1,
@@ -15,12 +15,14 @@ export const defaultProps = {
 };
 
 export const getCountriesForVideo = async () => {
-  const allCountries = await fetchCountries();
+  const allCountries = await getAllCountriesCompleteView();
   const pickedCountries = pickCountries(allCountries);
   return pickedCountries;
 };
 
-export function groupCountriesPerSuccessRate(countries: CountryData[]) {
+export function groupCountriesPerSuccessRate(
+  countries: CountryCompleteViewRecord[],
+) {
   // filter out countries with not enough data
   const filteredCountries = countries.filter(
     (country) => country.capital_guessed_count > 4,
@@ -70,9 +72,11 @@ export function getRandomElements<T>(array: T[], count: number): T[] {
   return result;
 }
 
-export function pickCountries(countries: CountryData[]): CountryData[] {
+export function pickCountries(
+  countries: CountryCompleteViewRecord[],
+): CountryCompleteViewRecord[] {
   const groups = groupCountriesPerSuccessRate(countries);
-  const result: CountryData[] = [
+  const result: CountryCompleteViewRecord[] = [
     ...getRandomElements(groups[0], 3),
     ...getRandomElements(groups[1], 3),
     ...getRandomElements(groups[2], 3),

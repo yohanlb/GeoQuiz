@@ -14,30 +14,6 @@ declare global {
     continents: string[];
   };
 
-  type CountryData = {
-    capital: string;
-    emoji: string;
-    guessed: number;
-    guessed_right: number;
-    id: number;
-    iso2: string;
-    iso3: string;
-    name: string;
-    region: string;
-    subregion: string;
-    updated_at: string;
-    sovereignCountry?: string;
-    success_rate: number; // TODO to deprecate BD side
-    success_rate_capital: number;
-    success_rate_flag: number;
-    flag_guessed_right: number;
-    flag_guessed_count: number;
-    capital_guessed_right: number;
-    capital_guessed_count: number;
-    custom_difficulty: number;
-    closest_country_ids: number[];
-  };
-
   type DeckStats = {
     id: number;
     deckId: number;
@@ -73,25 +49,25 @@ declare global {
     | 'FlagToCountry';
 
   export type Question = {
-    countryData: CountryData;
-    optionsCapitals: CountryData['capital'][];
-    optionsIso2: CountryData['iso2'][];
-    answerCapital: CountryData['capital'];
-    answerIso2: CountryData['iso2'];
+    countryData: CountryCompleteViewRecord;
+    optionsCapitals: CountryCompleteViewRecord['capital'][];
+    optionsIso2: CountryCompleteViewRecord['iso2'][];
+    answerCapital: CountryCompleteViewRecord['capital'];
+    answerIso2: CountryCompleteViewRecord['iso2'];
   };
 
-  export type CountryScoreHistory = { [key: CountryData['id']]: boolean[] };
+  export type CountryScoreHistory = { [key: CountryRecord['id']]: boolean[] };
 
   export type UserResultsStatus = 'default' | 'valid' | 'invalid';
 
   export type UserCountryResult = {
-    countryId: CountryData['id'];
+    countryId: CountryRecord['id'];
     result: UserResultsStatus;
     questionIndex: number; // Could remove this field later.
   };
 
   export type CountryStatsResponse = {
-    country_id: CountryData['id'];
+    country_id: CountryRecord['id'];
     guessed: number;
     guessed_right: number;
   }[];
@@ -112,18 +88,19 @@ declare global {
   }
 
   export interface CountryGuessHistory extends CountryScore {
-    countryId: CountryData['id'];
+    countryId: CountryRecord['id'];
   }
 
-  export type CountryWithScores = CountryData & CountryGuessHistory;
+  export type CountryWithScores = CountryCompleteViewRecord &
+    CountryGuessHistory;
 
   export type GroupedCountries = {
-    [key: string]: { [subregion: string]: CountryData[] };
+    [key: string]: { [subregion: string]: CountryCompleteViewRecord[] };
   };
 
   export type AnsweredQuestion = {
     questionId: number;
-    countryData: CountryData;
+    countryData: CountryCompleteViewRecord;
     questionType: QuestionType;
     answer: string;
     isCorrect: boolean;

@@ -5,7 +5,7 @@ import { useCountryHistory } from '@/src/utils/stores/countryHistoryStore';
 import { Progress } from '@nextui-org/react';
 
 type Props = {
-  countryIds: CountryData['id'][];
+  countryIds: CountryRecord['id'][];
   width?: 'lg' | 'md' | 'sm';
 };
 

@@ -7,7 +7,7 @@ import { Skeleton } from '@nextui-org/react';
 import DeckProgressByQuestionType from '@components/decks/DeckProgressByQuestionType';
 
 type Props = {
-  countryIds: CountryData['id'][];
+  countryIds: CountryRecord['id'][];
   userGuessesForCapitals: UserGuessHistoryRecord[];
   userGuessesForFlags: UserGuessHistoryRecord[];
 };

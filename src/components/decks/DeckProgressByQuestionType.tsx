@@ -3,7 +3,7 @@ import { CircularProgress } from '@nextui-org/react';
 
 type Props = {
   userGuesses: UserGuessHistoryRecord[];
-  countryIds: CountryData['id'][];
+  countryIds: CountryRecord['id'][];
   icon: React.ReactNode;
 };
 

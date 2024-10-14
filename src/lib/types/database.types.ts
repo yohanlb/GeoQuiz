@@ -21,7 +21,7 @@ export type Database = {
           emojiU: string | null
           id: number
           is_disabled: boolean
-          iso2: string | null
+          iso2: string
           iso3: string
           latitude: number | null
           longitude: number | null
@@ -47,7 +47,7 @@ export type Database = {
           emojiU?: string | null
           id: number
           is_disabled?: boolean
-          iso2?: string | null
+          iso2: string
           iso3: string
           latitude?: number | null
           longitude?: number | null
@@ -73,7 +73,7 @@ export type Database = {
           emojiU?: string | null
           id?: number
           is_disabled?: boolean
-          iso2?: string | null
+          iso2?: string
           iso3?: string
           latitude?: number | null
           longitude?: number | null

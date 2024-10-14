@@ -1,6 +1,6 @@
 import { createClient } from '@lib/supabase/server';
 
-type CountryDataPartial = Pick<
+type CountryRecordPartial = Pick<
   CountryCompleteViewRecord,
   | 'id'
   | 'name'
@@ -11,7 +11,7 @@ type CountryDataPartial = Pick<
 >;
 
 export type UserGuessHistoryWithCountry = UserGuessHistoryPartial & {
-  country: CountryDataPartial;
+  country: CountryRecordPartial;
 };
 
 export async function fetchUserGuessesHistory(
@@ -79,7 +79,7 @@ export async function fetchAllUserGuessesHistory(userId: string) {
   return data as UserGuessHistoryPartial[];
 }
 
-export async function fetchLastUserGuessesHistoryWithCountryData(
+export async function fetchLastUserGuessesHistoryWithCountryRecord(
   userId: string,
   amount: number,
 ): Promise<UserGuessHistoryWithCountry[]> {

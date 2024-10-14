@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 type Props = {
   params: {
-    countryId: CountryData['id'];
+    countryId: CountryRecord['id'];
   };
 };
 
@@ -37,7 +37,7 @@ async function page({ params }: Props) {
   const country = await getCountryById(countryId);
 
   const neighboringCountries = await getCountriesById(
-    country.closest_country_ids,
+    country.closest_country_ids ?? [],
   );
 
   if (!country) {

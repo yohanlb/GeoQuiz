@@ -6,7 +6,7 @@ import UserDeckGuessesProgression, {
   UserDeckGuessesProgressionSkeleton,
 } from '@components/decks/UserDeckGuessesProgression';
 
-type Props = { countryIds: CountryData['id'][] };
+type Props = { countryIds: CountryRecord['id'][] };
 
 function UserDeckGuessesProgressionSection({ countryIds }: Readonly<Props>) {
   const { userGuesses, loading, error } = useFetchUserCountryGuesses({
