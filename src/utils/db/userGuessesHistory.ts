@@ -1,30 +1,17 @@
 import { createClient } from '@lib/supabase/server';
-import { Database } from '@lib/types/database.types';
 
-type UserGuessesHistoryRow =
-  Database['public']['Tables']['user_guesses_history']['Row'];
-type CountriesCompleteViewRow =
-  Database['public']['Views']['countries_complete_view']['Row'];
+type CountryDataPartial = Pick<
+  CountryCompleteViewRecord,
+  | 'id'
+  | 'name'
+  | 'iso2'
+  | 'capital'
+  | 'success_rate_capital'
+  | 'success_rate_flag'
+>;
 
-export type UserGuessesHistoryWithCountryData = Pick<
-  UserGuessesHistoryRow,
-  'guess_results' | 'question_type_id' | 'country_id' | 'updated_at'
-> & {
-  countries_complete_view: Pick<
-    CountriesCompleteViewRow,
-    | 'id'
-    | 'name'
-    | 'iso2'
-    | 'capital'
-    | 'success_rate_capital'
-    | 'success_rate_flag'
-  >;
-};
-
-export type UserGuessesHistory = {
-  guess_results: boolean[];
-  country_id: CountryData['id'];
-  question_type_id: number;
+export type UserGuessHistoryWithCountry = UserGuessHistoryPartial & {
+  country: CountryDataPartial;
 };
 
 export async function fetchUserGuessesHistory(
@@ -71,7 +58,7 @@ export async function fetchUserGuessesHistoryByCountry(
     throw error;
   }
 
-  return data as UserGuessesHistory[];
+  return data as UserGuessHistoryPartial[];
 }
 
 export async function fetchAllUserGuessesHistory(userId: string) {
@@ -89,13 +76,13 @@ export async function fetchAllUserGuessesHistory(userId: string) {
     throw error;
   }
 
-  return data as UserGuessesHistory[];
+  return data as UserGuessHistoryPartial[];
 }
 
 export async function fetchLastUserGuessesHistoryWithCountryData(
   userId: string,
   amount: number,
-): Promise<UserGuessesHistoryWithCountryData[]> {
+): Promise<UserGuessHistoryWithCountry[]> {
   const supabase = createClient();
 
   const { data, error } = await supabase
@@ -138,8 +125,8 @@ export async function fetchLastUserGuessesHistoryWithCountryData(
       question_type_id: item.question_type_id,
       country_id: item.country_id,
       updated_at: item.updated_at,
-      countries_complete_view: countryData,
-    } as UserGuessesHistoryWithCountryData;
+      country: countryData,
+    } as UserGuessHistoryWithCountry;
   });
 
   return adjustedData;

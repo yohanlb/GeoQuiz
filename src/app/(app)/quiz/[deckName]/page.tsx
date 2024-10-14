@@ -1,8 +1,5 @@
 import { getAuthenticatedUser } from '@utils/db/auth/get-authenticated-user';
-import {
-  UserGuessesHistory,
-  fetchAllUserGuessesHistory,
-} from '@utils/db/userGuessesHistory';
+import { fetchAllUserGuessesHistory } from '@utils/db/userGuessesHistory';
 import GameClientWrapper from '@components/quiz/GameClientWrapper';
 import { getDeckByName } from '../../../../utils/queries/gameDecks';
 
@@ -27,14 +24,12 @@ const Quiz = async ({ params, searchParams }: Props) => {
   const deck = await getDeckByName(params.deckName);
 
   const userGuessesHistory = user
-    ? ((await fetchAllUserGuessesHistory(user.id)) as UserGuessesHistory[])
+    ? await fetchAllUserGuessesHistory(user.id)
     : [];
 
   if (deck.isDynamic && searchParams.dynamicCountryIds) {
     // to implement dynamic deck, provide it to search params: ?dynamicCountryIds=75,1
-    const deckIds = searchParams.dynamicCountryIds
-      .split(',')
-      .map(Number) as CountryData['id'][];
+    const deckIds = searchParams.dynamicCountryIds.split(',').map(Number);
     deck.countryIds = deckIds;
     deck.isDynamic = true;
   }

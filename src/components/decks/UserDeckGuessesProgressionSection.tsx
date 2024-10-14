@@ -1,14 +1,10 @@
 'use client';
 
 import React from 'react';
-import { Database } from '@lib/types/database.types';
 import useFetchUserCountryGuesses from '@utils/hooks/useFetchUserCountryGuesses';
-// import Link from 'next/link';
 import UserDeckGuessesProgression, {
   UserDeckGuessesProgressionSkeleton,
 } from '@components/decks/UserDeckGuessesProgression';
-
-type UserStatsRow = Database['public']['Tables']['user_guesses_history']['Row'];
 
 type Props = { countryIds: CountryData['id'][] };
 
@@ -19,10 +15,10 @@ function UserDeckGuessesProgressionSection({ countryIds }: Readonly<Props>) {
 
   const userGuessesForCapitals = userGuesses?.filter(
     (guess) => guess.question_type_id === 1,
-  ) as UserStatsRow[];
+  ) as UserGuessHistoryRecord[];
   const userGuessesForFlags = userGuesses?.filter(
     (guess) => guess.question_type_id === 2,
-  ) as UserStatsRow[];
+  ) as UserGuessHistoryRecord[];
 
   if (error) return <div>Error: {error.message}</div>;
 

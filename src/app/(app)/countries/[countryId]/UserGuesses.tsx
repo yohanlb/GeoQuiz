@@ -1,18 +1,17 @@
 import React from 'react';
 import { FaRegFlag } from 'react-icons/fa6';
 import { PiCity } from 'react-icons/pi';
-import { UserGuessesHistory } from '@utils/db/userGuessesHistory';
 import GuessesList from '@components/_commons/GuessesList';
 
 type Props = {
-  guessesHistory: UserGuessesHistory[];
+  guessesHistory: UserGuessHistoryPartial[];
   alignment?: 'left' | 'right';
 };
 
-function UserGuesses({ guessesHistory, alignment = 'left' }: Props) {
+function UserGuesses({ guessesHistory, alignment = 'left' }: Readonly<Props>) {
   const guessHistoryByQuestionType = guessesHistory.reduce(
     (acc, stat) => {
-      acc[stat.question_type_id] = stat.guess_results;
+      acc[stat.question_type_id] = stat.guess_results ?? [];
       return acc;
     },
     {} as Record<number, boolean[]>,
