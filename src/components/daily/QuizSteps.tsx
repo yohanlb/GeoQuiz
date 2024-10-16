@@ -1,5 +1,9 @@
 import React from 'react';
-import { DailyQuestion, DailyQuestionType, Guesses } from '@lib/types/daily';
+import {
+  DailyQuestion,
+  DailyQuestionType,
+  Guesses,
+} from '@lib/types/daily-mode';
 import QuestionFlag from './QuestionFlag';
 import QuestionShape from './QuestionShape';
 import QuestionText from './QuestionText';

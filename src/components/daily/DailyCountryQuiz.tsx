@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocalStorage } from '@hooks/useLocalStorage';
 import useLogGameEvent, { GameEventData } from '@hooks/useLogGameEvent';
-import { DailyQuestion, DaysHistory, Guesses } from '@lib/types/daily';
+import { DailyQuestion, DaysHistory, Guesses } from '@lib/types/daily-mode';
 import QuizSteps from './QuizSteps';
 
 type Props = {

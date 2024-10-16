@@ -1,6 +1,6 @@
 import React from 'react';
 import { FiCheckCircle, FiXCircle } from 'react-icons/fi';
-import { Guesses } from '@lib/types/daily';
+import { Guesses } from '@lib/types/daily-mode';
 import { Button } from '@components/ui/button';
 
 export type StepStatus = 'default' | 'success' | 'error';
