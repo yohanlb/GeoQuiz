@@ -54,6 +54,7 @@ async function page({ params }: Props) {
         countryCode={country.iso2}
         svg
         aria-label={country.name}
+        alt={'flag'}
         style={{
           width: '30%',
           height: 'auto',

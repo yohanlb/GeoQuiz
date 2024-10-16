@@ -89,7 +89,11 @@ const Footer = () => {
               Privacy
             </Link>
             {' - '}
-            <Link href={navigationLinks.resources.href} className='underline'>
+            <Link
+              href={navigationLinks.resources.href}
+              rel='canonical'
+              className='underline'
+            >
               Resources
             </Link>
           </div>

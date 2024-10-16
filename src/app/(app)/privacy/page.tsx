@@ -90,7 +90,6 @@ function PrivacyPage() {
             <strong>Website</strong> refers to GeoQuiz, accessible from{' '}
             <a
               href='https://geoquiz.co'
-              rel='external nofollow noopener'
               target='_blank'
               className='text-blue-500 hover:underline'
             >

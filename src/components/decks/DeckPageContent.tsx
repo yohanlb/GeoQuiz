@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { TbCardsFilled } from 'react-icons/tb';
+import { navigationLinks } from '@lib/navigationLinks';
 import { UserContext } from '@utils/contexts/UserProvider';
 import useGameStore from '@utils/stores/gameStore';
 import Link from 'next/link';
@@ -61,7 +62,7 @@ const DeckPageContent = ({ deck, hideTitle = false }: Props) => {
       </div>
       <div className='flex justify-center'>
         <Link
-          href={`/quiz/${deck.name || ''}?questionTypeId=${questionTypeId}&length=10`}
+          href={`${navigationLinks.quiz.href}/${deck.name || ''}?questionTypeId=${questionTypeId}&length=10`}
         >
           <PlayButton text={'Play!'} />
         </Link>
