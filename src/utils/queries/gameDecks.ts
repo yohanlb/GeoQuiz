@@ -20,7 +20,6 @@ export async function getDecks() {
     throw new Error(`Couldn't fetch game decks.`);
   }
   const data: DeckWithStatsRecord[] = await response.json();
-  console.log(data.map((deck) => `${deck.name} - ${deck.displayPriority}`));
 
   return data.filter(
     (deck) => deck.displayPriority === null || deck.displayPriority >= 0,
