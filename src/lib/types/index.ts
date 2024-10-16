@@ -3,17 +3,6 @@ export {};
 declare global {
   type GameState = 'notStarted' | 'playing' | 'finished';
 
-  type Option = {
-    value: string | number;
-    text: string;
-    status: 'unclicked' | 'wrong' | 'correct';
-  };
-
-  type GameParams = {
-    length?: number;
-    continents: string[];
-  };
-
   export type QuestionType =
     | 'CountryToCapital'
     | 'CapitalToCountry'
@@ -43,16 +32,6 @@ declare global {
     guessed: number;
     guessed_right: number;
   }[];
-
-  export type GameType = 'capital' | 'flag';
-
-  export type DeckScores = {
-    [key in GameType]: number | undefined;
-  };
-
-  export type CountryScores = {
-    [key in GameType]: boolean[] | undefined;
-  };
 
   interface CountryScore {
     scores: boolean;
