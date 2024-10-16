@@ -3,8 +3,8 @@ import { persist } from 'zustand/middleware';
 
 interface GameStoreState {
   currentQuestionIndex: number;
-  gameState: GameState;
-  setGameState: (gameState: GameState) => void;
+  gameState: GameStatus; //TODO: rename game status
+  setGameState: (gameState: GameStatus) => void;
   incrementQuestionIndex: () => void;
   questionType: QuestionType;
   toggleQuestionType: () => void;

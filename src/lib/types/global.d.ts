@@ -1,6 +1,58 @@
 import { Database } from '@lib/types/database.types';
 
 declare global {
+  // GAME LOGIC TYPES
+
+  export interface CountryGuessHistory {
+    scores: boolean;
+    timestamp: string; // ISO 8601 formatted date-time string
+    countryId: CountryRecord['id'];
+  }
+
+  export type CountryWithScores = CountryCompleteViewRecord &
+    CountryGuessHistory;
+
+  export type GroupedCountries = {
+    [key: string]: { [subregion: string]: CountryCompleteViewRecord[] };
+  };
+
+  export type CountryScoreHistory = { [key: CountryRecord['id']]: boolean[] };
+
+  export type Question = {
+    countryData: CountryCompleteViewRecord;
+    optionsCapitals: CountryCompleteViewRecord['capital'][];
+    optionsIso2: CountryCompleteViewRecord['iso2'][];
+    answerCapital: CountryCompleteViewRecord['capital'];
+    answerIso2: CountryCompleteViewRecord['iso2'];
+  };
+
+  type GameStatus = 'notStarted' | 'playing' | 'finished';
+
+  export type QuestionType =
+    | 'CountryToCapital'
+    | 'CapitalToCountry'
+    | 'CountryToFlag'
+    | 'FlagToCountry';
+
+  export type UserResultsStatus = 'default' | 'valid' | 'invalid';
+
+  // rename "userQuestionResult"?
+  export type UserCountryResult = {
+    countryId: CountryRecord['id'];
+    result: UserResultsStatus;
+    questionIndex: number; // Could remove this field later.
+  };
+
+  export type AnsweredQuestion = {
+    questionId: number;
+    countryData: CountryCompleteViewRecord;
+    questionType: QuestionType;
+    answer: string;
+    isCorrect: boolean;
+  };
+  //*****************************/
+  // DATABASE TYPES
+
   // Aliases for 'countries' table
   type CountryRecord = Database['public']['Tables']['countries']['Row'];
   type CountryInsert = Database['public']['Tables']['countries']['Insert'];

@@ -7,6 +7,11 @@ import useGameStore from './gameStore';
 const NUMBER_OF_SCORES_TO_KEEP_PER_COUNTRY = 10;
 const USER_HISTORY_LENGTH = 20;
 
+interface CountryScore {
+  scores: boolean;
+  timestamp: string; // ISO 8601 formatted date-time string
+}
+
 interface CountryResultsData {
   history_per_country: {
     [key in QuestionType]: { [countryId: string]: CountryScore[] };
