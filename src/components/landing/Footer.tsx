@@ -65,6 +65,10 @@ const Footer = () => {
           </p>
 
           <div className='text-sm'>
+            <Link href={navigationLinks.changelog.href} className='underline'>
+              {navigationLinks.changelog.label}
+            </Link>
+            {' - '}
             <Link
               href={'https://forms.gle/YrScov3rJU7dEdWS8'}
               target='_blank'

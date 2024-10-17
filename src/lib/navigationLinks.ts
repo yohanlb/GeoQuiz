@@ -27,6 +27,7 @@ export const navigationLinks: NavigationLinks = {
   // footer menu
   resources: { label: 'Resources', href: '/resources' },
   privacy: { label: 'Privacy', href: '/privacy' },
+  changelog: { label: 'Changelog', href: '/changelog' },
 };
 
 export const EXTERNAL_LINKS = {
