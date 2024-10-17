@@ -30,6 +30,11 @@ const ChangelogEntryComponent = ({ entry }: { entry: ChangelogEntry }) => {
   );
 };
 
+export const metadata = {
+  title: 'Changelog',
+  description: 'GeoQuiz changelog.',
+};
+
 export default function Changelog() {
   return (
     <div className='px-4 py-12 text-gray-100 sm:px-6 lg:px-8'>

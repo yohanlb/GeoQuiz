@@ -2,6 +2,11 @@ import { ROADMAP_DATA } from '@lib/data/roadmap-data';
 import { FEEDBACK_FORM_LINK } from '@lib/navigationLinks';
 import Link from 'next/link';
 
+export const metadata = {
+  title: 'Roadmap',
+  description: 'GeoQuiz Roadmap.',
+};
+
 export default function Roadmap() {
   return (
     <div className='min-h-screen px-4 py-12 sm:px-6 lg:px-8'>
