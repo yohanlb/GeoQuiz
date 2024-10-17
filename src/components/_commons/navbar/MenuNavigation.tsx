@@ -37,6 +37,16 @@ function MenuNavigation({ trigger }: Props) {
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
+          <Link href={navigationLinks.changelog.href} className='w-full'>
+            {navigationLinks.changelog.label}
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link href={navigationLinks.roadmap.href} className='w-full'>
+            {navigationLinks.roadmap.label}
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
           <Link href={navigationLinks.help.href} className='w-full'>
             {navigationLinks.help.label}
           </Link>
