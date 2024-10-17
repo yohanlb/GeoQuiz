@@ -1,5 +1,5 @@
 import React from 'react';
-import { navigationLinks } from '@lib/navigationLinks';
+import { FEEDBACK_FORM_LINK, navigationLinks } from '@lib/navigationLinks';
 import Link from 'next/link';
 import PageCenteredLink from '@components/_commons/PageCenteredLink';
 import SectionTitle from '@components/_commons/SectionTitle';
@@ -21,11 +21,7 @@ const Help = async () => {
           variant='description'
         />
         <Button variant={'outline'} className='w-fit'>
-          <Link
-            href={'https://forms.gle/YrScov3rJU7dEdWS8'}
-            target='_blank'
-            rel='noreferrer'
-          >
+          <Link href={FEEDBACK_FORM_LINK} target='_blank' rel='noreferrer'>
             Feedback Form
           </Link>
         </Button>

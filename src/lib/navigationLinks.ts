@@ -28,9 +28,12 @@ export const navigationLinks: NavigationLinks = {
   resources: { label: 'Resources', href: '/resources' },
   privacy: { label: 'Privacy', href: '/privacy' },
   changelog: { label: 'Changelog', href: '/changelog' },
+  roadmap: { label: 'Roadmap', href: '/roadmap' },
 };
 
 export const EXTERNAL_LINKS = {
   twitter: 'https://twitter.com/geoquiz_daily',
   personalWebsite: 'https://yohanlebreton.com',
 };
+
+export const FEEDBACK_FORM_LINK = 'https://forms.gle/YrScov3rJU7dEdWS8';

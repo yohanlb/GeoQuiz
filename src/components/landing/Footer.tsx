@@ -4,7 +4,11 @@ import React from 'react';
 // import TwitterButton from '@components/_commons/TwitterButton';
 import { LuTwitter } from 'react-icons/lu';
 import { MdOutlineSportsGymnastics } from 'react-icons/md';
-import { EXTERNAL_LINKS, navigationLinks } from '@lib/navigationLinks';
+import {
+  EXTERNAL_LINKS,
+  FEEDBACK_FORM_LINK,
+  navigationLinks,
+} from '@lib/navigationLinks';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -69,8 +73,12 @@ const Footer = () => {
               {navigationLinks.changelog.label}
             </Link>
             {' - '}
+            <Link href={navigationLinks.roadmap.href} className='underline'>
+              {navigationLinks.roadmap.label}
+            </Link>
+            {' - '}
             <Link
-              href={'https://forms.gle/YrScov3rJU7dEdWS8'}
+              href={FEEDBACK_FORM_LINK}
               target='_blank'
               rel='noreferrer'
               className='underline'
@@ -79,7 +87,7 @@ const Footer = () => {
             </Link>
             {' - '}
             <Link
-              href={'https://forms.gle/YrScov3rJU7dEdWS8'}
+              href={FEEDBACK_FORM_LINK}
               target='_blank'
               rel='noreferrer'
               className='underline'
