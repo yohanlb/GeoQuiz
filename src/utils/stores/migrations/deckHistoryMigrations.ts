@@ -3,8 +3,8 @@ import { DeckResultsData, DeckResultsState } from '../deckHistoryStore';
 //v0
 export type OldDeckResultsData = {
   [key in QuestionType]: {
-    scoresPerDeck: { [deckID: Deck['id']]: number };
-    history: Deck['id'][];
+    scoresPerDeck: { [deckID: DeckRecord['id']]: number };
+    history: DeckRecord['id'][];
   };
 };
 

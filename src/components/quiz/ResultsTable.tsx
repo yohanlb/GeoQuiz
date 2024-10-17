@@ -46,7 +46,9 @@ const ResultsTable = ({ user }: { user: User | null }) => {
                   {question.countryData.name}
                 </Link>
                 <DifficultyIndicator
-                  value={question.countryData.success_rate_capital * 100}
+                  value={
+                    (question.countryData.success_rate_capital ?? 0.5) * 100
+                  }
                 />
               </td>
               <td className='text-wrap break-words px-2 py-2 font-extralight'>

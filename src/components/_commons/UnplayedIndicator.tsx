@@ -4,7 +4,7 @@ import React from 'react';
 import { FiPackage } from 'react-icons/fi';
 import { useDeckHistory } from '@/src/utils/stores/deckHistoryStore';
 
-type Props = { deckId: Deck['id'] };
+type Props = { deckId: DeckRecord['id'] };
 
 const UnplayedIndicator = ({ deckId }: Props) => {
   const { getDeckPlayCount } = useDeckHistory();

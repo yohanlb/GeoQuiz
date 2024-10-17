@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DailyQuestionType } from '@lib/types/daily';
+import { DailyQuestionType } from '@lib/types/daily-mode';
 import { Button } from '@components/ui/button';
 
 type Props = {

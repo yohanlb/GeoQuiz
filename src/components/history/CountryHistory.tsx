@@ -3,13 +3,13 @@ import ReactCountryFlag from 'react-country-flag';
 import { FaRegFlag } from 'react-icons/fa6';
 import { PiCity } from 'react-icons/pi';
 import { navigationLinks } from '@lib/navigationLinks';
-import { UserGuessesHistoryWithCountryData } from '@utils/db/userGuessesHistory';
+import { UserGuessHistoryWithCountry } from '@utils/db/userGuessesHistory';
 import Link from 'next/link';
 import DifficultyIndicator from '@components/_commons/DifficultyIndicator';
 import GuessesList from '@components/_commons/GuessesList';
 import SectionTitle from '@components/_commons/SectionTitle';
 
-type Props = { lastUserGuesses: UserGuessesHistoryWithCountryData[] };
+type Props = { lastUserGuesses: UserGuessHistoryWithCountry[] };
 
 const HeaderCell = ({ children }: { children: React.ReactNode }) => (
   <th className='px-2 py-1 font-normal'>{children}</th>
@@ -41,10 +41,8 @@ const CountryHistory = ({ lastUserGuesses }: Props) => {
             {lastUserGuesses.map((userGuess) => {
               const successRate =
                 userGuess.question_type_id === 1
-                  ? (userGuess.countries_complete_view.success_rate_capital ??
-                    0.5)
-                  : (userGuess.countries_complete_view.success_rate_flag ??
-                    0.5);
+                  ? (userGuess.country.success_rate_capital ?? 0.5)
+                  : (userGuess.country.success_rate_flag ?? 0.5);
 
               return (
                 <tr
@@ -63,7 +61,7 @@ const CountryHistory = ({ lastUserGuesses }: Props) => {
                         href={`${navigationLinks.countries.href}/${userGuess.country_id}`}
                         className='text-base font-normal text-white group-hover:underline'
                       >
-                        {userGuess.countries_complete_view.name}
+                        {userGuess.country.name}
                       </Link>
                     </div>
                   </Cell>
@@ -73,9 +71,7 @@ const CountryHistory = ({ lastUserGuesses }: Props) => {
                   <Cell>
                     <div className='font-extralight'>
                       <ReactCountryFlag
-                        countryCode={
-                          userGuess.countries_complete_view.iso2 as string
-                        }
+                        countryCode={userGuess.country.iso2 as string}
                         svg
                         style={{
                           width: '20px',
@@ -86,7 +82,7 @@ const CountryHistory = ({ lastUserGuesses }: Props) => {
                   </Cell>
                   <Cell>
                     <div className='text-wrap break-words font-extralight'>
-                      {userGuess.countries_complete_view.capital}
+                      {userGuess.country.capital}
                     </div>
                   </Cell>
                   <Cell>

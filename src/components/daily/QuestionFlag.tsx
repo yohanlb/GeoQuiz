@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ReactCountryFlag from 'react-country-flag';
-import { DailyQuestionType } from '@lib/types/daily';
+import { DailyQuestionType } from '@lib/types/daily-mode';
 import { Card } from '@nextui-org/react';
 
 type Props = {

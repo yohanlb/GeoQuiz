@@ -6,7 +6,7 @@ import useGameStore from '@/src/utils/stores/gameStore';
 import DeckItem from '@components/_commons/DeckItem';
 import SectionTitle from '@components/_commons/SectionTitle';
 
-type Props = { decks: Deck[] };
+type Props = { decks: DeckWithStatsRecord[] };
 
 const DeckHistory = ({ decks }: Props) => {
   const getLastNDecksPlayed = useDeckHistory(

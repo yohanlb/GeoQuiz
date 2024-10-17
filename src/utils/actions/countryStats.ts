@@ -5,7 +5,7 @@ import axios, { AxiosResponse } from 'axios';
 const baseUrl = process.env.NEXT_PUBLIC_GEOQUIZ_API_BASE_URL as string;
 
 type UpdateCountryStatsResponse = {
-  country_id: CountryData['id'];
+  country_id: CountryRecord['id'];
   new_guessed: 18;
   new_guessed_right: 10;
 };

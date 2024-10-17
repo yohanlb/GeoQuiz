@@ -7,6 +7,11 @@ import useGameStore from './gameStore';
 const NUMBER_OF_SCORES_TO_KEEP_PER_COUNTRY = 10;
 const USER_HISTORY_LENGTH = 20;
 
+interface CountryScore {
+  scores: boolean;
+  timestamp: string; // ISO 8601 formatted date-time string
+}
+
 interface CountryResultsData {
   history_per_country: {
     [key in QuestionType]: { [countryId: string]: CountryScore[] };
@@ -43,11 +48,13 @@ const defaultCountryResultsData: CountryResultsData = {
 interface CountryResultsState {
   countryResultsData: CountryResultsData;
   clearAllCountryScores: () => void;
-  getLastScoresForCountry: (countryId: CountryData['id']) => CountryScore[];
+  getLastScoresForCountry: (countryId: CountryRecord['id']) => CountryScore[];
   getHistoryCountriesGuessed: () => CountryGuessHistory[];
-  addCountryScores: (countryId: CountryData['id'], scores: boolean) => void;
-  getProgressPercentForCountryIds: (countryIds: CountryData['id'][]) => number;
-  getSummarizedDeckCountryStatus: (countryIds: CountryData['id'][]) => {
+  addCountryScores: (countryId: CountryRecord['id'], scores: boolean) => void;
+  getProgressPercentForCountryIds: (
+    countryIds: CountryRecord['id'][],
+  ) => number;
+  getSummarizedDeckCountryStatus: (countryIds: CountryRecord['id'][]) => {
     [key in CountryScoreStatus]: number;
   };
 }
@@ -57,7 +64,7 @@ export const useCountryHistory = create<CountryResultsState>()(
     (set, get) => ({
       countryResultsData: defaultCountryResultsData,
 
-      getSummarizedDeckCountryStatus(countryIds: CountryData['id'][]) {
+      getSummarizedDeckCountryStatus(countryIds: CountryRecord['id'][]) {
         const { getLastScoresForCountry } = get();
         const groupedDeckStatus = countryIds.reduce(
           (acc: Record<CountryScoreStatus, number>, countryId) => {
@@ -76,7 +83,7 @@ export const useCountryHistory = create<CountryResultsState>()(
         return groupedDeckStatus;
       },
 
-      getProgressPercentForCountryIds: (countryIds: CountryData['id'][]) => {
+      getProgressPercentForCountryIds: (countryIds: CountryRecord['id'][]) => {
         const { getSummarizedDeckCountryStatus } = get();
         const deckStatuses = getSummarizedDeckCountryStatus(countryIds);
 
@@ -94,7 +101,7 @@ export const useCountryHistory = create<CountryResultsState>()(
       clearAllCountryScores: () =>
         set({ countryResultsData: defaultCountryResultsData }),
 
-      getLastScoresForCountry: (countryId: CountryData['id']) => {
+      getLastScoresForCountry: (countryId: CountryRecord['id']) => {
         const { countryResultsData } = get();
         const { questionType } = useGameStore.getState();
         return (
@@ -110,7 +117,7 @@ export const useCountryHistory = create<CountryResultsState>()(
         return countryGuessHistory.slice(-20).reverse();
       },
 
-      addCountryScores: (countryId: CountryData['id'], scores: boolean) => {
+      addCountryScores: (countryId: CountryRecord['id'], scores: boolean) => {
         set((state) => {
           const { questionType } = useGameStore.getState();
           const updatedCountryScores =

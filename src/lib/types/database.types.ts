@@ -21,7 +21,7 @@ export type Database = {
           emojiU: string | null
           id: number
           is_disabled: boolean
-          iso2: string | null
+          iso2: string
           iso3: string
           latitude: number | null
           longitude: number | null
@@ -47,7 +47,7 @@ export type Database = {
           emojiU?: string | null
           id: number
           is_disabled?: boolean
-          iso2?: string | null
+          iso2: string
           iso3: string
           latitude?: number | null
           longitude?: number | null
@@ -73,7 +73,7 @@ export type Database = {
           emojiU?: string | null
           id?: number
           is_disabled?: boolean
-          iso2?: string | null
+          iso2?: string
           iso3?: string
           latitude?: number | null
           longitude?: number | null
@@ -183,10 +183,10 @@ export type Database = {
       decks: {
         Row: {
           categories: string[] | null
-          countryIds: number[] | null
+          countryIds: number[]
           created_at: string
           description: string | null
-          displayName: string | null
+          displayName: string
           displayPriority: number | null
           id: number
           image_name: string | null
@@ -197,10 +197,10 @@ export type Database = {
         }
         Insert: {
           categories?: string[] | null
-          countryIds?: number[] | null
+          countryIds: number[]
           created_at?: string
           description?: string | null
-          displayName?: string | null
+          displayName: string
           displayPriority?: number | null
           id?: number
           image_name?: string | null
@@ -211,10 +211,10 @@ export type Database = {
         }
         Update: {
           categories?: string[] | null
-          countryIds?: number[] | null
+          countryIds?: number[]
           created_at?: string
           description?: string | null
-          displayName?: string | null
+          displayName?: string
           displayPriority?: number | null
           id?: number
           image_name?: string | null
@@ -227,34 +227,34 @@ export type Database = {
       }
       decks_stats: {
         Row: {
-          averageScore: number | null
+          averageScore: number
           created_at: string
           deckId: number
           id: number
           playCount: number
           questionType: string
           questionTypeId: number
-          updated_at: string | null
+          updated_at: string
         }
         Insert: {
-          averageScore?: number | null
+          averageScore?: number
           created_at?: string
           deckId: number
           id?: number
           playCount?: number
           questionType?: string
           questionTypeId: number
-          updated_at?: string | null
+          updated_at?: string
         }
         Update: {
-          averageScore?: number | null
+          averageScore?: number
           created_at?: string
           deckId?: number
           id?: number
           playCount?: number
           questionType?: string
           questionTypeId?: number
-          updated_at?: string | null
+          updated_at?: string
         }
         Relationships: [
           {

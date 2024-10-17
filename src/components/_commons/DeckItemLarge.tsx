@@ -2,7 +2,7 @@ import React from 'react';
 import { TbCardsFilled } from 'react-icons/tb';
 
 type Props = {
-  deck: Deck;
+  deck: DeckRecord;
 };
 
 function DeckItemLarge({ deck }: Props) {

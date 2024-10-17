@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import { createClient } from '@lib/supabase/client';
-import { Database } from '@lib/types/database.types';
 
-type UserStatsRow = Database['public']['Tables']['user_guesses_history']['Row'];
 type Props = {
-  countryIds: CountryData['id'][];
+  countryIds: CountryRecord['id'][];
 };
 
 const useFetchUserCountryGuesses = ({ countryIds }: Props) => {
-  const [userGuesses, setUserGuesses] = useState<UserStatsRow[] | null>(null);
+  const [userGuesses, setUserGuesses] = useState<
+    UserGuessHistoryRecord[] | null
+  >(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
@@ -29,7 +29,7 @@ const useFetchUserCountryGuesses = ({ countryIds }: Props) => {
           throw statsError;
         }
 
-        setUserGuesses(data as UserStatsRow[]);
+        setUserGuesses(data as UserGuessHistoryRecord[]);
       } catch (err) {
         setError(err as Error);
         setUserGuesses(null);

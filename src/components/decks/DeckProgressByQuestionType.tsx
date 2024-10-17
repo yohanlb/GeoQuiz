@@ -1,12 +1,9 @@
 import React from 'react';
-import { Database } from '@lib/types/database.types';
 import { CircularProgress } from '@nextui-org/react';
 
-type UserStatsRow = Database['public']['Tables']['user_guesses_history']['Row'];
-
 type Props = {
-  userGuesses: UserStatsRow[];
-  countryIds: CountryData['id'][];
+  userGuesses: UserGuessHistoryRecord[];
+  countryIds: CountryRecord['id'][];
   icon: React.ReactNode;
 };
 

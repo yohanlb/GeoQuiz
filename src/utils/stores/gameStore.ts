@@ -3,8 +3,8 @@ import { persist } from 'zustand/middleware';
 
 interface GameStoreState {
   currentQuestionIndex: number;
-  gameState: GameState;
-  setGameState: (gameState: GameState) => void;
+  gameState: GameStatus; //TODO: rename game status
+  setGameState: (gameState: GameStatus) => void;
   incrementQuestionIndex: () => void;
   questionType: QuestionType;
   toggleQuestionType: () => void;
@@ -16,12 +16,12 @@ interface GameStoreState {
   addToUserAnswers: (userAnswer: string) => void;
   userCountryResults: UserCountryResult[];
   addToUserCountryResults: (
-    countryId: CountryData['id'],
+    countryId: CountryRecord['id'],
     result: UserResultsStatus,
     questionIndex: number,
   ) => void;
-  deck: Deck | null;
-  setDeck: (deck: Deck) => void;
+  deck: DeckRecord | null;
+  setDeck: (deck: DeckRecord) => void;
   resetGame: () => void;
   isGameStoreInitialized: boolean;
   setIsGameStoreInitialized: (isGameStoreInitialized: boolean) => void;
@@ -31,7 +31,7 @@ interface GameStoreState {
   setUserCountryScoresForCurrentSeries: (
     userCountryScoresForCurrentSeries: CountryScoreHistory,
   ) => void;
-  getUseCountryScoreForCountryId: (countryId: CountryData['id']) => boolean[];
+  getUseCountryScoreForCountryId: (countryId: CountryRecord['id']) => boolean[];
 }
 
 const useGameStore = create<GameStoreState>()(
@@ -75,7 +75,7 @@ const useGameStore = create<GameStoreState>()(
       },
 
       addToUserCountryResults: (
-        countryId: CountryData['id'],
+        countryId: CountryRecord['id'],
         result: UserResultsStatus,
         questionIndex: number,
       ) =>
@@ -125,7 +125,7 @@ const useGameStore = create<GameStoreState>()(
       setUserCountryScoresForCurrentSeries(userCountryScoresForCurrentSeries) {
         set(() => ({ userCountryScoresForCurrentSeries }));
       },
-      getUseCountryScoreForCountryId(countryId: CountryData['id']) {
+      getUseCountryScoreForCountryId(countryId: CountryRecord['id']) {
         const { userCountryScoresForCurrentSeries } = get();
         return userCountryScoresForCurrentSeries[countryId] ?? [];
       },

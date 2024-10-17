@@ -4,7 +4,7 @@ import React from 'react';
 import { Dialog, DialogTrigger } from '@components/ui/dialog';
 
 type Props = {
-  deck: Deck;
+  deck: DeckRecord;
   children: React.ReactNode;
   dialogContent: React.JSX.Element;
 };

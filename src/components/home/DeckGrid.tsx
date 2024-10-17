@@ -2,7 +2,7 @@ import React from 'react';
 import DeckCard from './DeckCard';
 
 type Props = {
-  decks: Deck[];
+  decks: DeckWithStatsRecord[];
 };
 
 const DeckGrid = ({ decks }: Props) => {

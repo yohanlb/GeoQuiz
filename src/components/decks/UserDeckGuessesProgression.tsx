@@ -3,16 +3,13 @@
 import React from 'react';
 import { FaRegFlag } from 'react-icons/fa6';
 import { PiCity } from 'react-icons/pi';
-import { Database } from '@lib/types/database.types';
 import { Skeleton } from '@nextui-org/react';
 import DeckProgressByQuestionType from '@components/decks/DeckProgressByQuestionType';
 
-type UserStatsRow = Database['public']['Tables']['user_guesses_history']['Row'];
-
 type Props = {
-  countryIds: CountryData['id'][];
-  userGuessesForCapitals: UserStatsRow[];
-  userGuessesForFlags: UserStatsRow[];
+  countryIds: CountryRecord['id'][];
+  userGuessesForCapitals: UserGuessHistoryRecord[];
+  userGuessesForFlags: UserGuessHistoryRecord[];
 };
 
 function UserDeckGuessesProgression({

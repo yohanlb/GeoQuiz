@@ -1,4 +1,4 @@
-import { DailyQuestion } from '@lib/types/daily';
+import { DailyQuestion } from '@lib/types/daily-mode';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 

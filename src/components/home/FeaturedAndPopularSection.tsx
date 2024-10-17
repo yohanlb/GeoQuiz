@@ -3,7 +3,7 @@ import SectionTitle from '@components/_commons/SectionTitle';
 import DeckGrid from './DeckGrid';
 
 type Props = {
-  featuredDecks: Deck[];
+  featuredDecks: DeckWithStatsRecord[];
 };
 
 const FeaturedAndPopularSection = ({ featuredDecks }: Props) => {

@@ -5,7 +5,7 @@ import GuessesList from '@components/_commons/GuessesList';
 import UserResult from '@components/quiz/UserResult';
 
 type Props = {
-  countryId: CountryData['id'];
+  countryId: CountryRecord['id'];
   questionIndex: number;
   user: User | null;
 };

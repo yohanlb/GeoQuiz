@@ -1,7 +1,7 @@
 const baseUrl = process.env.NEXT_PUBLIC_GEOQUIZ_API_BASE_URL as string;
 
 export async function getQuestionsFromDeckId(
-  deckId: Deck['id'],
+  deckId: DeckRecord['id'],
   amountOfQuestions = 10,
   questionType: QuestionType, // QT required by BE to update deck play count
 ) {

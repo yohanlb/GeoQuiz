@@ -4,7 +4,6 @@ import React, { startTransition } from 'react';
 import { useDeckHistory } from '@/src/utils/stores/deckHistoryStore';
 import useGameStore from '@/src/utils/stores/gameStore';
 import { updateUserGuessesHistory } from '@utils/actions/updateUserGuessesHistory';
-import { UserGuessesHistory } from '@utils/db/userGuessesHistory';
 import { calculateNewDeckScore } from '@utils/score';
 import { useRouter } from 'next/navigation';
 import { postCountryStats } from '../../utils/actions/countryStats';
@@ -12,7 +11,7 @@ import QuestionView from './QuestionView';
 
 type Props = {
   questions: Question[];
-  userGuessesHistory: UserGuessesHistory[];
+  userGuessesHistory: UserGuessHistoryPartial[];
 };
 
 function GameController({ questions, userGuessesHistory }: Readonly<Props>) {
@@ -46,7 +45,7 @@ function GameController({ questions, userGuessesHistory }: Readonly<Props>) {
 
   const prepareUserHistoryForCurrentSeries = () => {
     // TODO: do that server side and send it with the questions.
-    const newUserHistory: { [key: CountryData['id']]: boolean[] } = {};
+    const newUserHistory: { [key: CountryRecord['id']]: boolean[] } = {};
     questions.forEach((question) => {
       const userStatsForQuestion = userGuessesHistory.find(
         (stat) =>
