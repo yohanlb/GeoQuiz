@@ -156,4 +156,9 @@ declare global {
   // Aliases for 'view_cotd_with_country_names' view
   type ViewCotdWithCountryRecord =
     Database['public']['Views']['view_cotd_with_country_names']['Row'];
+
+  // Types for Supabase RPC functions
+  import type { Database } from './database.types';
+  type UpdateCountriesStatsParams = Database['rpc']['update_countries_stats']['Args'];
+  type UpdateCountriesStatsReturn = Awaited<ReturnType<UpdateCountriesStats>>;
 }

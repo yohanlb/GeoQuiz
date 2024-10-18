@@ -232,7 +232,6 @@ export type Database = {
           deckId: number
           id: number
           playCount: number
-          questionType: string
           questionTypeId: number
           updated_at: string
         }
@@ -242,7 +241,6 @@ export type Database = {
           deckId: number
           id?: number
           playCount?: number
-          questionType?: string
           questionTypeId: number
           updated_at?: string
         }
@@ -252,7 +250,6 @@ export type Database = {
           deckId?: number
           id?: number
           playCount?: number
-          questionType?: string
           questionTypeId?: number
           updated_at?: string
         }
@@ -340,15 +337,7 @@ export type Database = {
           text?: string | null
           user_id?: string
         }
-        Relationships: [
-          {
-            foreignKeyName: "test_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-        ]
+        Relationships: []
       }
       user_guesses_history: {
         Row: {
@@ -398,13 +387,6 @@ export type Database = {
             columns: ["question_type_id"]
             isOneToOne: false
             referencedRelation: "question_types"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_stats_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "users"
             referencedColumns: ["id"]
           },
         ]
@@ -482,34 +464,20 @@ export type Database = {
         }
         Returns: undefined
       }
-      update_countries_stats:
-        | {
-            Args: {
-              countryid: number
-              guessedright: boolean
-            }
-            Returns: {
-              country_id: number
-              new_guessed: number
-              new_guessed_right: number
-            }[]
-          }
-        | {
-            Args: {
-              countryid: number
-              guessedright: boolean
-              _questiontype: string
-            }
-            Returns: {
-              country_id: number
-              new_guessed: number
-              new_guessed_right: number
-              new_capital_guessed: number
-              new_capital_guessed_right: number
-              new_flag_guessed: number
-              new_flag_guessed_right: number
-            }[]
-          }
+      update_countries_stats: {
+        Args: {
+          countryid: number
+          guessedright: boolean
+          _questiontype: string
+        }
+        Returns: {
+          country_id: number
+          new_capital_guessed: number
+          new_capital_guessed_right: number
+          new_flag_guessed: number
+          new_flag_guessed_right: number
+        }[]
+      }
       update_countries_stats_bulk: {
         Args: {
           data: Json
@@ -610,4 +578,19 @@ export type Enums<
   ? Database[PublicEnumNameOrOptions["schema"]]["Enums"][EnumName]
   : PublicEnumNameOrOptions extends keyof PublicSchema["Enums"]
     ? PublicSchema["Enums"][PublicEnumNameOrOptions]
+    : never
+
+export type CompositeTypes<
+  PublicCompositeTypeNameOrOptions extends
+    | keyof PublicSchema["CompositeTypes"]
+    | { schema: keyof Database },
+  CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
+    schema: keyof Database
+  }
+    ? keyof Database[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
+    : never = never,
+> = PublicCompositeTypeNameOrOptions extends { schema: keyof Database }
+  ? Database[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
+  : PublicCompositeTypeNameOrOptions extends keyof PublicSchema["CompositeTypes"]
+    ? PublicSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
     : never
