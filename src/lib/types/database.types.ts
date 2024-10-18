@@ -98,8 +98,6 @@ export type Database = {
           created_at: string | null
           flag_guessed_count: number
           flag_guessed_right: number
-          guessed: number | null
-          guessed_right: number | null
           updated_at: string | null
         }
         Insert: {
@@ -109,8 +107,6 @@ export type Database = {
           created_at?: string | null
           flag_guessed_count?: number
           flag_guessed_right?: number
-          guessed?: number | null
-          guessed_right?: number | null
           updated_at?: string | null
         }
         Update: {
@@ -120,8 +116,6 @@ export type Database = {
           created_at?: string | null
           flag_guessed_count?: number
           flag_guessed_right?: number
-          guessed?: number | null
-          guessed_right?: number | null
           updated_at?: string | null
         }
         Relationships: []
@@ -403,8 +397,6 @@ export type Database = {
           emoji: string | null
           flag_guessed_count: number | null
           flag_guessed_right: number | null
-          guessed: number | null
-          guessed_right: number | null
           id: number | null
           is_disabled: boolean | null
           iso2: string | null
@@ -416,7 +408,6 @@ export type Database = {
           sovereignCountry: string | null
           special_classification: string | null
           subregion: string | null
-          success_rate: number | null
           success_rate_capital: number | null
           success_rate_flag: number | null
           updated_at: string | null
