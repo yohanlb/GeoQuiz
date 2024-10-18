@@ -133,10 +133,10 @@ export async function fetchLastUserGuessesHistoryWithCountryRecord(
 }
 
 export async function upsertUserGuessesHistory(
-  userId: string,
-  countryId: number,
-  questionTypeId: number,
-  guessResults: boolean[],
+  userId: UserGuessHistoryRecord['user_id'],
+  countryId: UserGuessHistoryRecord['country_id'],
+  questionTypeId: UserGuessHistoryRecord['question_type_id'],
+  guessResults: UserGuessHistoryRecord['guess_results'],
 ) {
   const supabase = createClient();
 

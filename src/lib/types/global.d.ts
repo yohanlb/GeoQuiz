@@ -158,7 +158,7 @@ declare global {
     Database['public']['Views']['view_cotd_with_country_names']['Row'];
 
   // Types for Supabase RPC functions
-  import type { Database } from './database.types';
-  type UpdateCountriesStatsParams = Database['rpc']['update_countries_stats']['Args'];
+  type UpdateCountriesStatsParams =
+    Database['rpc']['update_countries_stats']['Args'];
   type UpdateCountriesStatsReturn = Awaited<ReturnType<UpdateCountriesStats>>;
 }
