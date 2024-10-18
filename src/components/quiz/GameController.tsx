@@ -3,10 +3,10 @@
 import React, { startTransition } from 'react';
 import { useDeckHistory } from '@/src/utils/stores/deckHistoryStore';
 import useGameStore from '@/src/utils/stores/gameStore';
+import { postCountryStats } from '@utils/actions/country-stats';
 import { updateUserGuessesHistory } from '@utils/actions/updateUserGuessesHistory';
 import { calculateNewDeckScore } from '@utils/score';
 import { useRouter } from 'next/navigation';
-import { postCountryStats } from '../../utils/actions/countryStats';
 import QuestionView from './QuestionView';
 
 type Props = {
@@ -60,11 +60,12 @@ function GameController({ questions, userGuessesHistory }: Readonly<Props>) {
 
   const handleNextQuestion = () => {
     startTransition(() => {
-      postCountryStats(
-        questions[currentQuestionIndex].countryData.id,
-        userAnswers.length < 1,
+      // TODO: ISNT called for last question
+      postCountryStats({
+        countryId: questions[currentQuestionIndex].countryData.id,
+        guessedRight: userAnswers.length < 1,
         questionType,
-      );
+      });
     });
     resetUserAnswers();
     setIsShowingAnswer(false);
