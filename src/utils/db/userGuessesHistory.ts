@@ -61,6 +61,30 @@ export async function fetchUserGuessesHistoryByCountry(
   return data as UserGuessHistoryPartial[];
 }
 
+export async function fetchUserGuessesHistoryByCountryIds(
+  countryIds: number[],
+  questionTypeId?: Question['questionTypeId'],
+) {
+  const supabase = createClient();
+
+  const query = supabase
+    .from('user_guesses_history')
+    .select('*')
+    .in('country_id', countryIds);
+
+  if (questionTypeId !== undefined) {
+    query.eq('question_type_id', questionTypeId);
+  }
+  const { data, error } = await query;
+
+  if (error && error.code !== 'PGRST116') {
+    console.error('Error fetching existing user guesses history:', error);
+    throw error;
+  }
+
+  return data as UserGuessHistoryRecord[];
+}
+
 export async function fetchAllUserGuessesHistory(userId: string) {
   const supabase = createClient();
 

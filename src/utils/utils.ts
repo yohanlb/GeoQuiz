@@ -36,3 +36,23 @@ export const getRandomCardGradient = () => {
     ];
   return `${gradient1}, ${gradient2}`;
 };
+
+export const QUESTION_TYPES: Record<
+  number,
+  { name: string; displayName: string }
+> = {
+  1: { name: 'CountryToCapital', displayName: 'Guess the Capital' },
+  2: { name: 'CountryToFlag', displayName: 'Guess the Flag' },
+};
+
+export const questionTypeIdToQuestionTypeDisplayName = (
+  questionTypeId: Question['questionTypeId'] = 1,
+) => {
+  return QUESTION_TYPES[questionTypeId].displayName;
+};
+
+export const questionTypeToQuestionTypeId = (questionType: string) => {
+  return Object.keys(QUESTION_TYPES).find(
+    (key) => QUESTION_TYPES[Number(key)].name === questionType,
+  );
+};

@@ -18,21 +18,23 @@ declare global {
 
   export type CountryScoreHistory = { [key: CountryRecord['id']]: boolean[] };
 
+  export type CountryWithUserGuesses = {
+    country: CountryCompleteViewRecord;
+    userGuesses: UserGuessHistoryRecord | null;
+  };
+
+  export type QuestionType = 'CountryToCapital' | 'CountryToFlag'; //TODO: get rid of this type
+
   export type Question = {
     countryData: CountryCompleteViewRecord;
     optionsCapitals: CountryCompleteViewRecord['capital'][];
     optionsIso2: CountryCompleteViewRecord['iso2'][];
     answerCapital: CountryCompleteViewRecord['capital'];
     answerIso2: CountryCompleteViewRecord['iso2'];
+    questionTypeId: 1 | 2;
   };
 
   type GameStatus = 'notStarted' | 'playing' | 'finished';
-
-  export type QuestionType =
-    | 'CountryToCapital'
-    | 'CapitalToCountry'
-    | 'CountryToFlag'
-    | 'FlagToCountry';
 
   export type UserResultsStatus = 'default' | 'valid' | 'invalid';
 
