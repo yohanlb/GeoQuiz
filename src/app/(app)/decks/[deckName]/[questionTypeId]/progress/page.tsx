@@ -3,6 +3,7 @@ import { FaRegFlag } from 'react-icons/fa6';
 import { PiCity } from 'react-icons/pi';
 import CountryProgress from '@/src/app/(app)/decks/[deckName]/[questionTypeId]/progress/CountryProgress';
 import { getDeckByName } from '@/src/utils/queries/gameDecks';
+import { navigationLinks } from '@lib/navigationLinks';
 import { getCountriesByIds } from '@utils/db/countries';
 import { fetchUserGuessesHistoryByCountryIds } from '@utils/db/userGuessesHistory';
 import { questionTypeIdToQuestionTypeDisplayName } from '@utils/utils';
@@ -72,8 +73,17 @@ const DeckProgress = async ({ params }: Props) => {
   };
 
   return (
-    <div className='flex flex-col gap-8'>
-      <SectionTitle text={`Your Progress For Deck: ${deck.displayName}`} />
+    <div className='flex flex-col gap-4'>
+      <SectionTitle text={`Your Deck Progression`} />
+      <h3 className='text-center text-xl'>
+        Deck:{' '}
+        <Link
+          href={`${navigationLinks.allDecks.href}/${deck.name}`}
+          className='underline'
+        >
+          {deck.displayName}
+        </Link>
+      </h3>
       <div className='flex w-full items-center justify-center gap-4'>
         <QuestionTypeLink
           questionTypeId={1}
