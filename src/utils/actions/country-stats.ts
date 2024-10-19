@@ -9,8 +9,6 @@ export async function postCountryStats({
 }: UpdateCountriesStatsParams) {
   const supabase = createClient();
 
-  console.log('POST_COUNTRY_STATS gr:', countryId, guessedRight, questionType);
-
   const { data, error } = await supabase.rpc('update_countries_stats', {
     countryid: Number(countryId),
     guessedright: guessedRight,

@@ -1,14 +1,24 @@
 'use client';
 
 import React from 'react';
+import { navigationLinks } from '@lib/navigationLinks';
 import useFetchUserCountryGuesses from '@utils/hooks/useFetchUserCountryGuesses';
+import Link from 'next/link';
 import UserDeckGuessesProgression, {
   UserDeckGuessesProgressionSkeleton,
 } from '@components/decks/UserDeckGuessesProgression';
 
-type Props = { countryIds: CountryRecord['id'][] };
+type Props = {
+  countryIds: CountryRecord['id'][];
+  deckName: string;
+  questionTypeId: Question['questionTypeId'];
+};
 
-function UserDeckGuessesProgressionSection({ countryIds }: Readonly<Props>) {
+function UserDeckGuessesProgressionSection({
+  countryIds,
+  deckName,
+  questionTypeId,
+}: Readonly<Props>) {
   const { userGuesses, loading, error } = useFetchUserCountryGuesses({
     countryIds,
   });
@@ -28,9 +38,12 @@ function UserDeckGuessesProgressionSection({ countryIds }: Readonly<Props>) {
         <div className='text-base font-semibold'>
           Your Overall Deck Progress
         </div>
-        {/* <Link href='/' className='text-sm text-blue-500 hover:underline'>
+        <Link
+          href={`${navigationLinks.allDecks.href}/${deckName}/${questionTypeId}/progress`}
+          className='text-sm text-blue-500 hover:underline'
+        >
           Detailed progress
-        </Link> */}
+        </Link>
       </div>
       {loading ? (
         <UserDeckGuessesProgressionSkeleton />

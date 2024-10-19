@@ -2,11 +2,12 @@ import React from 'react';
 import { FaRegFlag } from 'react-icons/fa6';
 import { PiCity } from 'react-icons/pi';
 import CountryProgress from '@/src/app/(app)/decks/[deckName]/[questionTypeId]/progress/CountryProgress';
+import DeckProgressWidget from '@/src/app/(app)/decks/[deckName]/[questionTypeId]/progress/DeckProgressWidget';
+import QuestionTypeLink from '@/src/app/(app)/decks/[deckName]/[questionTypeId]/progress/QuestionTypeLink';
 import { getDeckByName } from '@/src/utils/queries/gameDecks';
 import { navigationLinks } from '@lib/navigationLinks';
 import { getCountriesByIds } from '@utils/db/countries';
 import { fetchUserGuessesHistoryByCountryIds } from '@utils/db/userGuessesHistory';
-import { questionTypeIdToQuestionTypeDisplayName } from '@utils/utils';
 import Link from 'next/link';
 import SectionTitle from '@components/_commons/SectionTitle';
 
@@ -46,44 +47,23 @@ const DeckProgress = async ({ params }: Props) => {
     },
   );
 
-  const QuestionTypeLink = ({
-    questionTypeId,
-    currentQuestionTypeId,
-    icon,
-    deckName,
-  }: {
-    questionTypeId: number;
-    currentQuestionTypeId: number;
-    icon: React.ReactNode;
-    deckName: DeckRecord['name'];
-  }) => {
-    return (
-      <Link
-        href={`/decks/${deckName}/${questionTypeId}/progress`}
-        className={`group flex items-center gap-2 border-b hover:border-gray-50 ${currentQuestionTypeId === questionTypeId ? 'border-gray-300' : 'border-gray-600'}`}
-      >
-        {icon}
-        <span className={`text-lg text-gray-200 group-hover:text-white`}>
-          {questionTypeIdToQuestionTypeDisplayName(
-            questionTypeId as Question['questionTypeId'],
-          )}
-        </span>
-      </Link>
-    );
-  };
-
   return (
     <div className='flex flex-col gap-4'>
       <SectionTitle text={`Your Deck Progression`} />
-      <h3 className='text-center text-xl'>
-        Deck:{' '}
-        <Link
-          href={`${navigationLinks.allDecks.href}/${deck.name}`}
-          className='underline'
-        >
-          {deck.displayName}
-        </Link>
-      </h3>
+      <div>
+        <h3 className='text-center text-xl'>
+          Deck:{' '}
+          <Link
+            href={`${navigationLinks.allDecks.href}/${deck.name}`}
+            className='underline'
+          >
+            {deck.displayName}
+          </Link>
+        </h3>
+        <p className='text-center text-sm text-gray-200'>
+          {`(${deck.countryIds.length} countries)`}
+        </p>
+      </div>
       <div className='flex w-full items-center justify-center gap-4'>
         <QuestionTypeLink
           questionTypeId={1}
@@ -98,6 +78,10 @@ const DeckProgress = async ({ params }: Props) => {
           deckName={deck.name}
         />
       </div>
+      <DeckProgressWidget
+        countriesWithUserGuesses={countriesWithUserGuesses}
+        nbOfCountriesInDeck={deckCountries.length}
+      />
       {countriesWithUserGuesses && countriesWithUserGuesses.length > 0 ? (
         <div className='flex flex-col gap-1'>
           {countriesWithUserGuesses.map((countryWithUserGuesses) => (
