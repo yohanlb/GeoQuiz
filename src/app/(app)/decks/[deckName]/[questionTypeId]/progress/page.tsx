@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaRegFlag } from 'react-icons/fa6';
 import { PiCity } from 'react-icons/pi';
+import AnonymousWarning from '@/src/app/(app)/decks/[deckName]/[questionTypeId]/progress/AnonymousWarning';
 import CountryProgress from '@/src/app/(app)/decks/[deckName]/[questionTypeId]/progress/CountryProgress';
 import DeckProgressWidget from '@/src/app/(app)/decks/[deckName]/[questionTypeId]/progress/DeckProgressWidget';
 import QuestionTypeLink from '@/src/app/(app)/decks/[deckName]/[questionTypeId]/progress/QuestionTypeLink';
@@ -78,6 +79,7 @@ const DeckProgress = async ({ params }: Props) => {
           deckName={deck.name}
         />
       </div>
+      <AnonymousWarning />
       <DeckProgressWidget
         countriesWithUserGuesses={countriesWithUserGuesses}
         nbOfCountriesInDeck={deckCountries.length}
