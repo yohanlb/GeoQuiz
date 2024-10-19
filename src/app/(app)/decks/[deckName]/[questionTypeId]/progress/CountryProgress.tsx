@@ -2,7 +2,7 @@ import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
 import { navigationLinks } from '@lib/navigationLinks';
 import Link from 'next/link';
-import DifficultyIndex from '@components/_commons/DifficultyIndex';
+import DifficultyIndicator from '@components/_commons/DifficultyIndicator';
 import GuessesList from '@components/_commons/GuessesList';
 
 type Props = {
@@ -43,8 +43,8 @@ const CountryProgress = ({ countryWithUserGuesses }: Props) => {
       <div className='flex items-center space-x-2'>
         <GuessesList countryHistory={userGuesses?.guess_results ?? []} />
         {/* TODO: change difficulty based on the question type */}
-        <DifficultyIndex
-          digit={Math.round((country.success_rate_flag ?? 0) * 10)}
+        <DifficultyIndicator
+          value={Math.round((country.success_rate_flag ?? 0) * 10)}
         />
       </div>
     </div>
