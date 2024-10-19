@@ -44,7 +44,7 @@ const CountryProgress = ({ countryWithUserGuesses }: Props) => {
         <GuessesList countryHistory={userGuesses?.guess_results ?? []} />
         {/* TODO: change difficulty based on the question type */}
         <DifficultyIndicator
-          value={Math.round((country.success_rate_flag ?? 0) * 10)}
+          value={Math.round((country.success_rate_flag ?? 0) * 100)}
         />
       </div>
     </div>
