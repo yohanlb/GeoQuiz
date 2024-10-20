@@ -7,8 +7,8 @@ import DeckProgressWidget from '@/src/app/(app)/decks/[deckName]/[questionTypeId
 import QuestionTypeLink from '@/src/app/(app)/decks/[deckName]/[questionTypeId]/progress/QuestionTypeLink';
 import { getCountriesByIds } from '@/src/server/db/countries';
 import { fetchUserGuessesHistoryByCountryIds } from '@/src/server/db/user-guesses-history';
-import { getDeckByName } from '@/src/utils/queries/gameDecks';
-import { navigationLinks } from '@lib/navigationLinks';
+import { navigationLinks } from '@data/navigationLinks';
+import { getDeckByName } from '@lib/queries/gameDecks';
 import Link from 'next/link';
 import SectionTitle from '@components/_commons/SectionTitle';
 

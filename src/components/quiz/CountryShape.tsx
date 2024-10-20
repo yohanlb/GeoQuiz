@@ -2,7 +2,7 @@
 
 import React from 'react';
 import InlineSVG from 'react-inlinesvg';
-import { MISSING_COUNTRIES_SVGS } from '@lib/consts';
+import { MISSING_COUNTRIES_SVGS } from '@lib/data/consts';
 import { Skeleton } from '@components/ui/skeleton';
 
 type Props = {

@@ -1,4 +1,4 @@
-import { DECK_CARDS_GRADIENTS } from '@lib/consts';
+import { DECK_CARDS_GRADIENTS } from '@lib/data/consts';
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 

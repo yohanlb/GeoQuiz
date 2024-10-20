@@ -1,7 +1,7 @@
 import { getAuthenticatedUser } from '@/src/server/db/auth/get-authenticated-user';
 import { fetchAllUserGuessesHistory } from '@/src/server/db/user-guesses-history';
 import GameClientWrapper from '@components/quiz/GameClientWrapper';
-import { getDeckByName } from '../../../../utils/queries/gameDecks';
+import { getDeckByName } from '../../../../lib/queries/gameDecks';
 
 type Props = {
   params: { deckName: string };

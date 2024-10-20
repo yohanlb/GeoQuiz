@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
-import useGameStore from '@/src/utils/stores/gameStore';
-import { navigationLinks } from '@lib/navigationLinks';
+import { navigationLinks } from '@data/navigationLinks';
+import useGameStore from '@stores/gameStore';
 import { User } from '@supabase/supabase-js';
 import { motion } from 'framer-motion';
 import Link from 'next/link';

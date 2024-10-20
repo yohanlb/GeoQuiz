@@ -2,9 +2,9 @@
 
 import React from 'react';
 import { TbCardsFilled } from 'react-icons/tb';
+import { navigationLinks } from '@data/navigationLinks';
 import { UserContext } from '@lib/contexts/UserProvider';
-import { navigationLinks } from '@lib/navigationLinks';
-import useGameStore from '@utils/stores/gameStore';
+import useGameStore from '@stores/gameStore';
 import Link from 'next/link';
 import DeckImage from '@components/_commons/DeckImage';
 import DifficultyIndicator from '@components/_commons/DifficultyIndicator';

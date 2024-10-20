@@ -1,5 +1,5 @@
 import React from 'react';
-import { FEEDBACK_FORM_LINK, navigationLinks } from '@lib/navigationLinks';
+import { FEEDBACK_FORM_LINK, navigationLinks } from '@data/navigationLinks';
 import Link from 'next/link';
 import PageCenteredLink from '@components/_commons/PageCenteredLink';
 import SectionTitle from '@components/_commons/SectionTitle';

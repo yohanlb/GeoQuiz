@@ -1,8 +1,8 @@
 'use client';
 
 import { createContext, useMemo } from 'react';
+import { useAuth } from '@hooks/useAuth';
 import { User } from '@supabase/supabase-js';
-import { useAuth } from '@utils/hooks/useAuth';
 
 export type UserContextType = {
   user: User | null;

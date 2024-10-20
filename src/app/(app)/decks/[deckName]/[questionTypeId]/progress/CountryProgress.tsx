@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
-import { navigationLinks } from '@lib/navigationLinks';
+import { navigationLinks } from '@data/navigationLinks';
 import Link from 'next/link';
 import DifficultyIndicator from '@components/_commons/DifficultyIndicator';
 import GuessesList from '@components/_commons/GuessesList';

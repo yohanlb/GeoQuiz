@@ -1,4 +1,4 @@
-import { FeatureData } from '@lib/featuresDescription';
+import { FeatureData } from '@lib/data/featuresDescription';
 import { motion } from 'framer-motion';
 
 type FeatureCardProps = {

@@ -1,5 +1,5 @@
 import resolveConfig from 'tailwindcss/resolveConfig';
-import tailwindConfig from '../../tailwind.config';
+import tailwindConfig from '../../../tailwind.config';
 
 type Breakpoint = 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 

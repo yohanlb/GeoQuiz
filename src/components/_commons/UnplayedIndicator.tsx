@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { FiPackage } from 'react-icons/fi';
-import { useDeckHistory } from '@/src/utils/stores/deckHistoryStore';
+import { useDeckHistory } from '@stores/deckHistoryStore';
 
 type Props = { deckId: DeckRecord['id'] };
 

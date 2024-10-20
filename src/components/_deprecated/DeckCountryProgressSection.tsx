@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import useGameStore from '@/src/utils/stores/gameStore';
+import useGameStore from '@stores/gameStore';
 import CountryScoreOverview, {
   PopoverContentScoreOverview,
 } from '@components/_commons/CountryScoreOverview';

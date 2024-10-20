@@ -1,5 +1,5 @@
 import React from 'react';
-import { getDecks } from '@/src/utils/queries/gameDecks';
+import { getDecks } from '@lib/queries/gameDecks';
 import SectionTitle from '@components/_commons/SectionTitle';
 import DeckList from '@components/decks/DeckList';
 

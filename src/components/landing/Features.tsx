@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { FEATURES_DATA } from '@lib/featuresDescription';
+import { FEATURES_DATA } from '@lib/data/featuresDescription';
 import { FeatureCard } from './FeatureCard';
 
 export function Features() {

@@ -1,9 +1,9 @@
+import { AVAILABLE_QUESTION_TYPES } from '@lib/data/consts';
 import {
   initializeDeckResults,
   useDeckHistory,
-} from '@/src/utils/stores/deckHistoryStore';
-import useGameStore from '@/src/utils/stores/gameStore';
-import { AVAILABLE_QUESTION_TYPES } from '@lib/consts';
+} from '@stores/deckHistoryStore';
+import useGameStore from '@stores/gameStore';
 import { act, renderHook } from '@testing-library/react';
 
 jest.mock('@stores/gameStore', () => ({

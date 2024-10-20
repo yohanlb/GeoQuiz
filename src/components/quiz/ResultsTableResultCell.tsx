@@ -1,6 +1,6 @@
 import React from 'react';
+import useCountryLocalUserGuesses from '@hooks/useCountryLocalUserGuesses';
 import { User } from '@supabase/supabase-js';
-import useCountryLocalUserGuesses from '@utils/hooks/useCountryLocalUserGuesses';
 import GuessesList from '@components/_commons/GuessesList';
 import UserResult from '@components/quiz/UserResult';
 

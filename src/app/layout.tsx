@@ -1,7 +1,7 @@
 import UserProvider from '@lib/contexts/UserProvider';
+import { inter, notoEmoji } from '@lib/utils/font';
 import { NextUIProvider } from '@nextui-org/react';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { inter, notoEmoji } from '@utils/font';
 import dynamic from 'next/dynamic';
 import BackgroundGradient from '@components/_commons/BackgroundGradient';
 import MetaTags from '@components/_commons/MetaTags';

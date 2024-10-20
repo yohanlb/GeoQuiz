@@ -1,4 +1,4 @@
-import useGameStore from '@/src/utils/stores/gameStore';
+import useGameStore from '@stores/gameStore';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { deckHistoryMigration } from './migrations/deckHistoryMigrations';

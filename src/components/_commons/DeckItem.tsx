@@ -1,5 +1,5 @@
 import { TbCardsFilled } from 'react-icons/tb';
-import { navigationLinks } from '@lib/navigationLinks';
+import { navigationLinks } from '@data/navigationLinks';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import DifficultyIndicator from './DifficultyIndicator';

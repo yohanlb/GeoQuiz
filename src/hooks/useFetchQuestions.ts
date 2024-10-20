@@ -1,5 +1,5 @@
 import React from 'react';
-import { getQuestionsFromDeckId } from '@queries/questions';
+import { getQuestionsFromDeckId } from '@lib/queries/questions';
 import useGameStore from '@stores/gameStore';
 import axios from 'axios';
 

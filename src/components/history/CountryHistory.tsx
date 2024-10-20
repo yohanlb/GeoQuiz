@@ -3,7 +3,7 @@ import ReactCountryFlag from 'react-country-flag';
 import { FaRegFlag } from 'react-icons/fa6';
 import { PiCity } from 'react-icons/pi';
 import { UserGuessHistoryWithCountry } from '@/src/server/db/user-guesses-history';
-import { navigationLinks } from '@lib/navigationLinks';
+import { navigationLinks } from '@data/navigationLinks';
 import Link from 'next/link';
 import DifficultyIndicator from '@components/_commons/DifficultyIndicator';
 import GuessesList from '@components/_commons/GuessesList';

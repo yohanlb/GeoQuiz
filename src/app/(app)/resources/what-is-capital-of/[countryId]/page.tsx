@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
 import { getCountriesById, getCountryById } from '@/src/server/db/countries';
-import { navigationLinks } from '@lib/navigationLinks';
+import { navigationLinks } from '@data/navigationLinks';
 import { supabase } from '@lib/supabase/static';
 import Link from 'next/link';
 

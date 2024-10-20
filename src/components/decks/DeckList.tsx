@@ -1,5 +1,5 @@
 import React from 'react';
-import { navigationLinks } from '@lib/navigationLinks';
+import { navigationLinks } from '@data/navigationLinks';
 import Link from 'next/link';
 import DeckItem from '@components/_commons/DeckItem';
 import DeckItemLarge from '@components/_commons/DeckItemLarge';

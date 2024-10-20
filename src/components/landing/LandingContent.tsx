@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { navigationLinks } from '@lib/navigationLinks';
+import { navigationLinks } from '@data/navigationLinks';
 import Image from 'next/image';
 import Link from 'next/link';
 import GeoQuizLogo from '@assets/GeoQuizGlobeLogo.png';

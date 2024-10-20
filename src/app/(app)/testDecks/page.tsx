@@ -1,4 +1,4 @@
-import { getDecks } from '@/src/utils/queries/gameDecks';
+import { getDecks } from '@lib/queries/gameDecks';
 import DeckGrid from '@components/home/DeckGrid';
 
 async function TestDecks() {

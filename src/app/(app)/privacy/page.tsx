@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from 'react';
-import { FEEDBACK_FORM_LINK } from '@lib/navigationLinks';
+import { FEEDBACK_FORM_LINK } from '@data/navigationLinks';
 
 export const metadata = {
   title: 'Privacy Policy',

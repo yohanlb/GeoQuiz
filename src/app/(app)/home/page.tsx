@@ -1,5 +1,5 @@
 import React from 'react';
-import { navigationLinks } from '@lib/navigationLinks';
+import { navigationLinks } from '@data/navigationLinks';
 import dynamic from 'next/dynamic';
 import PageCenteredLink from '@components/_commons/PageCenteredLink';
 import ContinentsSection from '@components/home/ContinentsSection';
@@ -8,7 +8,7 @@ import DifficultySection from '@components/home/DifficultySection';
 import FeaturedAndPopularSection from '@components/home/FeaturedAndPopularSection';
 import RegionSection from '@components/home/RegionSection';
 import UpdateMessageAlert from '@components/home/UpdateMessageAlert';
-import { getDecks, getFeaturedDecks } from '../../../utils/queries/gameDecks';
+import { getDecks, getFeaturedDecks } from '../../../lib/queries/gameDecks';
 
 const UnplayedDecksSection = dynamic(
   () => import('@components/home/UnplayedDecksSection'),

@@ -1,5 +1,5 @@
 import React from 'react';
-import { navigationLinks } from '@lib/navigationLinks';
+import { navigationLinks } from '@data/navigationLinks';
 import { createClient } from '@lib/supabase/server';
 import { redirect } from 'next/navigation';
 import LandingContent from '@components/landing/LandingContent';

@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { navigationLinks } from '@lib/navigationLinks';
-import useFetchUserCountryGuesses from '@utils/hooks/useFetchUserCountryGuesses';
+import { navigationLinks } from '@data/navigationLinks';
+import useFetchUserCountryGuesses from '@hooks/useFetchUserCountryGuesses';
 import Link from 'next/link';
 import UserDeckGuessesProgression, {
   UserDeckGuessesProgressionSkeleton,

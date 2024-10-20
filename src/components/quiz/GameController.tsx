@@ -3,9 +3,9 @@
 import React, { startTransition } from 'react';
 import { postCountryStats } from '@/src/server/actions/country-stats';
 import { updateUserGuessesHistory } from '@/src/server/actions/update-user-guesses-history';
-import { useDeckHistory } from '@/src/utils/stores/deckHistoryStore';
-import useGameStore from '@/src/utils/stores/gameStore';
-import { calculateNewDeckScore } from '@utils/score';
+import { calculateNewDeckScore } from '@lib/utils/score';
+import { useDeckHistory } from '@stores/deckHistoryStore';
+import useGameStore from '@stores/gameStore';
 import { useRouter } from 'next/navigation';
 import QuestionView from './QuestionView';
 

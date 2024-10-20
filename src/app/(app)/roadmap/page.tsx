@@ -1,5 +1,5 @@
+import { FEEDBACK_FORM_LINK } from '@data/navigationLinks';
 import { ROADMAP_DATA } from '@lib/data/roadmap-data';
-import { FEEDBACK_FORM_LINK } from '@lib/navigationLinks';
 import Link from 'next/link';
 
 export const metadata = {

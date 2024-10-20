@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { navigationLinks } from '@lib/navigationLinks';
+import { navigationLinks } from '@data/navigationLinks';
 import LoginModal from '@components/_commons/navbar/LoginModal';
 import { Button } from '@components/ui/button';
 

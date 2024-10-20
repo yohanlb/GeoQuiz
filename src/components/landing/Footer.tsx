@@ -8,7 +8,7 @@ import {
   EXTERNAL_LINKS,
   FEEDBACK_FORM_LINK,
   navigationLinks,
-} from '@lib/navigationLinks';
+} from '@data/navigationLinks';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';

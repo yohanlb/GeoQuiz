@@ -1,6 +1,6 @@
 import React from 'react';
-import { getDecks } from '@/src/utils/queries/gameDecks';
-import { navigationLinks } from '@lib/navigationLinks';
+import { navigationLinks } from '@data/navigationLinks';
+import { getDecks } from '@lib/queries/gameDecks';
 import PageCenteredLink from '@components/_commons/PageCenteredLink';
 import SectionTitle from '@components/_commons/SectionTitle';
 import FilterableDeckList from '@components/decks/FilterableDeckList';

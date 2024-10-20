@@ -1,5 +1,5 @@
 import React from 'react';
-import { navigationLinks } from '@lib/navigationLinks';
+import { navigationLinks } from '@data/navigationLinks';
 import PageCenteredLink from '@components/_commons/PageCenteredLink';
 
 type Props = {
