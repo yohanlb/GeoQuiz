@@ -32,7 +32,7 @@ const DeckProgress = async ({ params }: Props) => {
     getCountriesByIds(deck.countryIds),
     fetchUserGuessesHistoryByCountryIds(
       deck.countryIds,
-      params.questionTypeId || 1,
+      params.questionTypeId ?? 1,
     ),
   ]);
 
