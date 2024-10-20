@@ -21,6 +21,15 @@ export type ChangelogEntry = {
 
 export const CHANGELOG_DATA: ChangelogEntry[] = [
   {
+    date: '2024-10-20',
+    version: 'v1.1.2',
+    title: 'New Deck Progression Page!',
+    features: [
+      "Select a deck and you will now see a new 'Detailed progress' link.",
+      'Clicking on it will show you a detailed view of your progress in the deck, including which countries you have already guessed correctly.',
+    ],
+  },
+  {
     date: '2024-10-17',
     version: 'v1.1.1',
     title: 'New Changelog and Roadmap page!',
