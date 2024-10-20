@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { useDeckHistory } from '@stores/deckHistoryStore';
-import useGameStore from '@stores/gameStore';
+import { useDeckHistory } from '@stores/deck-history-store';
+import useGameStore from '@stores/game-store';
 import DeckItem from '@components/_commons/DeckItem';
 import SectionTitle from '@components/_commons/SectionTitle';
 

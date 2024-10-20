@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Progress } from '@nextui-org/react';
-import { useCountryHistory } from '@stores/countryHistoryStore';
+import { useCountryHistory } from '@stores/country-history-store';
 
 type Props = {
   countryIds: CountryRecord['id'][];

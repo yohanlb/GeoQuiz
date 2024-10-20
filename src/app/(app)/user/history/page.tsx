@@ -1,8 +1,8 @@
 import React from 'react';
-import { navigationLinks } from '@data/navigationLinks';
 import { getAuthenticatedUser } from '@features/auth/server/db/get-authenticated-user';
 import CountryHistory from '@features/userInsights/components/history/CountryHistory';
 import { fetchLastUserGuessesHistoryWithCountryRecord } from '@features/userInsights/server/db/user-guesses-history';
+import { navigationLinks } from '@lib/data/navigation-links';
 import PageCenteredLink from '@components/_commons/PageCenteredLink';
 
 export const metadata = {

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useFetchQuestions } from '@hooks/useFetchQuestions';
-import useGameStore from '@stores/gameStore';
+import useGameStore from '@lib/stores/game-store';
 import { motion } from 'framer-motion';
 import LoadingSpinner from '@components/_commons/LoadingSpinner';
 import GameController from './GameController';

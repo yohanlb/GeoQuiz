@@ -1,6 +1,6 @@
 import React from 'react';
-import { navigationLinks } from '@data/navigationLinks';
 import LoginButton from '@features/auth/components/login/LoginButton';
+import { navigationLinks } from '@lib/data/navigation-links';
 import { createClient } from '@lib/supabase/server';
 import { redirect } from 'next/navigation';
 

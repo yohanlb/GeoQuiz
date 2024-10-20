@@ -4,7 +4,7 @@ import React from 'react';
 import { FaRegFlag } from 'react-icons/fa6';
 import { PiCity } from 'react-icons/pi';
 import { cn } from '@lib/utils/utils';
-import useGameStore from '@stores/gameStore';
+import useGameStore from '@stores/game-store';
 import { motion } from 'framer-motion';
 
 type QuestionTypeButtonProps = {

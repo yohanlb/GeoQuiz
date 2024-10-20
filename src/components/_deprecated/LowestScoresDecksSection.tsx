@@ -1,7 +1,7 @@
 // 'use client';
 
 // import React from 'react';
-// import { useDeckHistory } from '@/src/stores/deckHistoryStore';
+// import { useDeckHistory } from '@/src/stores/deck-history-store';
 // import { isBreakpoint } from '@utils/screen';
 // import SectionTitle from '@components/_commons/SectionTitle';
 // import DeckGrid from './DeckGrid';

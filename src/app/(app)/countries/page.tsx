@@ -1,5 +1,5 @@
 import React from 'react';
-import { navigationLinks } from '@data/navigationLinks';
+import { navigationLinks } from '@lib/data/navigation-links';
 import { getAllCountriesGrouped } from '@lib/queries/countries';
 import dynamic from 'next/dynamic';
 import PageCenteredLink from '@components/_commons/PageCenteredLink';

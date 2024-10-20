@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { navigationLinks } from '@data/navigationLinks';
-import useGameStore from '@stores/gameStore';
+import { navigationLinks } from '@lib/data/navigation-links';
+import useGameStore from '@stores/game-store';
 import { User } from '@supabase/supabase-js';
 import Link from 'next/link';
 import LoadingSpinner from '@components/_commons/LoadingSpinner';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { EMOJIS, WEBSITE_URL } from '@lib/data/consts';
-import useGameStore from '@stores/gameStore';
+import useGameStore from '@stores/game-store';
 import { motion } from 'framer-motion';
 import ShareIcon from '@components/_commons/icons/ShareIcon';
 import { Button } from '@components/ui/button';

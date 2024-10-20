@@ -1,4 +1,4 @@
-import { FEEDBACK_FORM_LINK } from '@data/navigationLinks';
+import { FEEDBACK_FORM_LINK } from '@lib/data/navigation-links';
 import { ROADMAP_DATA } from '@lib/data/roadmap-data';
 import Link from 'next/link';
 

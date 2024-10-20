@@ -1,5 +1,5 @@
 import React from 'react';
-import useGameStore from '@stores/gameStore';
+import useGameStore from '@stores/game-store';
 import dynamic from 'next/dynamic';
 import { AnswerOptionButton } from './AnswerButton';
 import AnswerButtonsFlagList from './AnswerButtonsFlagList';

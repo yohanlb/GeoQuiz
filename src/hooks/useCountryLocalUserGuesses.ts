@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import useGameStore from '@stores/gameStore';
+import useGameStore from '@stores/game-store';
 
 const useCountryLocalUserGuesses = (countryId: CountryRecord['id']) => {
   const { getUseCountryScoreForCountryId, userCountryResults } = useGameStore();

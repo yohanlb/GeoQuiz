@@ -1,11 +1,11 @@
 import React from 'react';
-import { navigationLinks } from '@data/navigationLinks';
 import ContinentsSection from '@features/welcome/components/home/ContinentsSection';
 import CountryOfTheDay from '@features/welcome/components/home/CountryOfTheDay';
 import DifficultySection from '@features/welcome/components/home/DifficultySection';
 import FeaturedAndPopularSection from '@features/welcome/components/home/FeaturedAndPopularSection';
 import RegionSection from '@features/welcome/components/home/RegionSection';
 import UpdateMessageAlert from '@features/welcome/components/home/UpdateMessageAlert';
+import { navigationLinks } from '@lib/data/navigation-links';
 import dynamic from 'next/dynamic';
 import PageCenteredLink from '@components/_commons/PageCenteredLink';
 import { getDecks, getFeaturedDecks } from '../../../lib/queries/gameDecks';

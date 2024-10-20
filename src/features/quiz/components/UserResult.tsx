@@ -1,5 +1,5 @@
 import React from 'react';
-import useGameStore from '@stores/gameStore';
+import useGameStore from '@stores/game-store';
 
 type Props = {
   questionIndex: number;

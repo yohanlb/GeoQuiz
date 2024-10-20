@@ -1,11 +1,11 @@
 'use client';
 
 import React from 'react';
-import { navigationLinks } from '@data/navigationLinks';
 import UserDeckGuessesProgression, {
   UserDeckGuessesProgressionSkeleton,
 } from '@features/decks/components/UserDeckGuessesProgression';
 import useFetchUserCountryGuesses from '@hooks/useFetchUserCountryGuesses';
+import { navigationLinks } from '@lib/data/navigation-links';
 import Link from 'next/link';
 
 type Props = {

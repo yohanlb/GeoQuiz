@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { navigationLinks } from '@data/navigationLinks';
 import { Features } from '@features/welcome/components/landing/Features';
+import { navigationLinks } from '@lib/data/navigation-links';
 import Image from 'next/image';
 import Link from 'next/link';
 import GeoQuizLogo from '@assets/GeoQuizGlobeLogo.png';

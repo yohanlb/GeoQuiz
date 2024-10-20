@@ -1,4 +1,4 @@
-import { DeckResultsData, DeckResultsState } from '../deckHistoryStore';
+import { DeckResultsData, DeckResultsState } from '../deck-history-store';
 
 //v0
 export type OldDeckResultsData = {

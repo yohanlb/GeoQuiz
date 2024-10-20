@@ -1,6 +1,9 @@
 import React from 'react';
 import HowItWorksSection from '@/src/app/(app)/help/HowItWorksSection';
-import { FEEDBACK_FORM_LINK, navigationLinks } from '@data/navigationLinks';
+import {
+  FEEDBACK_FORM_LINK,
+  navigationLinks,
+} from '@lib/data/navigation-links';
 import Link from 'next/link';
 import PageCenteredLink from '@components/_commons/PageCenteredLink';
 import SectionTitle from '@components/_commons/SectionTitle';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { getQuestionsFromDeckId } from '@lib/queries/questions';
-import useGameStore from '@stores/gameStore';
+import useGameStore from '@stores/game-store';
 import axios from 'axios';
 
 export function useFetchQuestions(

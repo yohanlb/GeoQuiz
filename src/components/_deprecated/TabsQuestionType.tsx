@@ -4,7 +4,7 @@ import React from 'react';
 import { FaRegFlag } from 'react-icons/fa6';
 import { PiCity } from 'react-icons/pi';
 import { Tab, Tabs } from '@nextui-org/react';
-import useGameStore from '@stores/gameStore';
+import useGameStore from '@stores/game-store';
 
 export default function TabsQuestionType() {
   const { setQuestionType, questionType } = useGameStore();

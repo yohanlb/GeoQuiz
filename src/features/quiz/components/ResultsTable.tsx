@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
-import { navigationLinks } from '@data/navigationLinks';
 import ResultsTableResultCell from '@features/quiz/components/ResultsTableResultCell';
-import useGameStore from '@stores/gameStore';
+import { navigationLinks } from '@lib/data/navigation-links';
+import useGameStore from '@stores/game-store';
 import { User } from '@supabase/supabase-js';
 import { motion } from 'framer-motion';
 import Link from 'next/link';

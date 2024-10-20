@@ -1,13 +1,13 @@
 import React from 'react';
 import { FaRegFlag } from 'react-icons/fa6';
 import { PiCity } from 'react-icons/pi';
-import { navigationLinks } from '@data/navigationLinks';
 import { getCountriesByIds } from '@features/countries/server/db/countries';
 import AnonymousWarning from '@features/userInsights/components/deckProgression/AnonymousWarning';
 import CountryProgress from '@features/userInsights/components/deckProgression/CountryProgress';
 import DeckProgressWidget from '@features/userInsights/components/deckProgression/DeckProgressWidget';
 import QuestionTypeLink from '@features/userInsights/components/deckProgression/QuestionTypeLink';
 import { fetchUserGuessesHistoryByCountryIds } from '@features/userInsights/server/db/user-guesses-history';
+import { navigationLinks } from '@lib/data/navigation-links';
 import { getDeckByName } from '@lib/queries/gameDecks';
 import Link from 'next/link';
 import SectionTitle from '@components/_commons/SectionTitle';

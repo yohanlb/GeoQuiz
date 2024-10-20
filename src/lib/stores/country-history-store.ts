@@ -2,7 +2,7 @@ import { AVAILABLE_QUESTION_TYPES } from '@lib/data/consts';
 import { CountryScoreStatus, getCountryScoreStatus } from '@lib/utils/score';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import useGameStore from './gameStore';
+import useGameStore from './game-store';
 
 const NUMBER_OF_SCORES_TO_KEEP_PER_COUNTRY = 10;
 const USER_HISTORY_LENGTH = 20;

@@ -1,5 +1,5 @@
 import React from 'react';
-import useGameStore from '@stores/gameStore';
+import useGameStore from '@stores/game-store';
 import Link from 'next/link';
 
 const LinkToDeck = () => {

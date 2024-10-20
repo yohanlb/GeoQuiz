@@ -1,7 +1,7 @@
 'use client';
 
 import { LuLogOut } from 'react-icons/lu';
-import { navigationLinks } from '@data/navigationLinks';
+import { navigationLinks } from '@lib/data/navigation-links';
 import { createClient } from '@lib/supabase/client';
 import { useRouter } from 'next/navigation';
 import { Button } from '@components/ui/button';

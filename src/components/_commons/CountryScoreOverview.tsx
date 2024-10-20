@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { CountryScoreStatus } from '@lib/utils/score';
-import { useCountryHistory } from '@stores/countryHistoryStore';
+import { useCountryHistory } from '@stores/country-history-store';
 import CountryScoreBadge from './CountryScoreBadge';
 
 type Props = { countryIds: CountryRecord['id'][] };

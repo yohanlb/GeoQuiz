@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { navigationLinks } from '@data/navigationLinks';
+import { navigationLinks } from '@lib/data/navigation-links';
 import Link from 'next/link';
 import {
   DropdownMenu,
