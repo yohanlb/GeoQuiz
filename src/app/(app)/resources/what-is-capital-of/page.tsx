@@ -1,6 +1,6 @@
 import React from 'react';
+import { getAllCountries } from '@/src/server/db/countries';
 import { navigationLinks } from '@lib/navigationLinks';
-import { getAllCountries } from '@utils/db/countries';
 import Link from 'next/link';
 
 async function page() {

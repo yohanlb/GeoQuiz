@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
+import { getCountriesById, getCountryById } from '@/src/server/db/countries';
 import { navigationLinks } from '@lib/navigationLinks';
 import { supabase } from '@lib/supabase/static';
-import { getCountriesById, getCountryById } from '@utils/db/countries';
 import Link from 'next/link';
 
 type Props = {

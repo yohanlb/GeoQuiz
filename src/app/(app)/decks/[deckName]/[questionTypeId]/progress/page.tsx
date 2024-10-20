@@ -5,10 +5,10 @@ import AnonymousWarning from '@/src/app/(app)/decks/[deckName]/[questionTypeId]/
 import CountryProgress from '@/src/app/(app)/decks/[deckName]/[questionTypeId]/progress/CountryProgress';
 import DeckProgressWidget from '@/src/app/(app)/decks/[deckName]/[questionTypeId]/progress/DeckProgressWidget';
 import QuestionTypeLink from '@/src/app/(app)/decks/[deckName]/[questionTypeId]/progress/QuestionTypeLink';
+import { getCountriesByIds } from '@/src/server/db/countries';
+import { fetchUserGuessesHistoryByCountryIds } from '@/src/server/db/user-guesses-history';
 import { getDeckByName } from '@/src/utils/queries/gameDecks';
 import { navigationLinks } from '@lib/navigationLinks';
-import { getCountriesByIds } from '@utils/db/countries';
-import { fetchUserGuessesHistoryByCountryIds } from '@utils/db/userGuessesHistory';
 import Link from 'next/link';
 import SectionTitle from '@components/_commons/SectionTitle';
 

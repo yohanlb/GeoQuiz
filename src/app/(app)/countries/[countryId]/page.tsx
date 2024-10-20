@@ -1,9 +1,9 @@
 import React from 'react';
 import UserGuesses from '@/src/app/(app)/countries/[countryId]/UserGuesses';
+import { getAuthenticatedUser } from '@/src/server/db/auth/get-authenticated-user';
+import { fetchUserGuessesHistoryByCountry } from '@/src/server/db/user-guesses-history';
 import { getCountryById } from '@/src/utils/queries/countries';
 import { navigationLinks } from '@lib/navigationLinks';
-import { getAuthenticatedUser } from '@utils/db/auth/get-authenticated-user';
-import { fetchUserGuessesHistoryByCountry } from '@utils/db/userGuessesHistory';
 import PageCenteredLink from '@components/_commons/PageCenteredLink';
 import DecksIncludingCountrySection from '@components/countries/DecksIncludingCountrySection';
 import CountryDescription from '@components/quiz/CountryDescription';

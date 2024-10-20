@@ -28,7 +28,7 @@
       "@hooks/*": ["./src/utils/hooks/*"],
       "@queries/*": ["./src/utils/queries/*"],
       "@stores/*": ["./src/utils/stores/*"],
-      "@actions/*": ["./src/utils/actions/*"],
+      "@actions/*": ["src/server/actions/*"],
       "@/*": ["./*"]
     }
   },

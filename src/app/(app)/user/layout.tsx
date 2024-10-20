@@ -1,6 +1,6 @@
 import React from 'react';
+import { getAuthenticatedUser } from '@/src/server/db/auth/get-authenticated-user';
 import { navigationLinks } from '@lib/navigationLinks';
-import { getAuthenticatedUser } from '@utils/db/auth/get-authenticated-user';
 import { redirect } from 'next/navigation';
 
 async function Layout({

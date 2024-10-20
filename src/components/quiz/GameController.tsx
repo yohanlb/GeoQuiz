@@ -1,10 +1,10 @@
 'use client';
 
 import React, { startTransition } from 'react';
+import { postCountryStats } from '@/src/server/actions/country-stats';
+import { updateUserGuessesHistory } from '@/src/server/actions/update-user-guesses-history';
 import { useDeckHistory } from '@/src/utils/stores/deckHistoryStore';
 import useGameStore from '@/src/utils/stores/gameStore';
-import { postCountryStats } from '@utils/actions/country-stats';
-import { updateUserGuessesHistory } from '@utils/actions/updateUserGuessesHistory';
 import { calculateNewDeckScore } from '@utils/score';
 import { useRouter } from 'next/navigation';
 import QuestionView from './QuestionView';
