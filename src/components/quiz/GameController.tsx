@@ -1,8 +1,8 @@
 'use client';
 
 import React, { startTransition } from 'react';
-import { postCountryStats } from '@/src/server/actions/country-stats';
-import { updateUserGuessesHistory } from '@/src/server/actions/update-user-guesses-history';
+import { postCountryStats } from '@features/countries/server/actions/country-stats';
+import { updateUserGuessesHistory } from '@features/userInsights/server/actions/update-user-guesses-history';
 import { calculateNewDeckScore } from '@lib/utils/score';
 import { useDeckHistory } from '@stores/deckHistoryStore';
 import useGameStore from '@stores/gameStore';

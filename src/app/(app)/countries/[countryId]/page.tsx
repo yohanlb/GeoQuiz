@@ -1,8 +1,8 @@
 import React from 'react';
 import UserGuesses from '@/src/app/(app)/countries/[countryId]/UserGuesses';
 import { getAuthenticatedUser } from '@/src/server/db/auth/get-authenticated-user';
-import { fetchUserGuessesHistoryByCountry } from '@/src/server/db/user-guesses-history';
 import { navigationLinks } from '@data/navigationLinks';
+import { fetchUserGuessesHistoryByCountry } from '@features/userInsights/server/db/user-guesses-history';
 import { getCountryById } from '@lib/queries/countries';
 import PageCenteredLink from '@components/_commons/PageCenteredLink';
 import DecksIncludingCountrySection from '@components/countries/DecksIncludingCountrySection';

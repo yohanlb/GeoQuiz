@@ -1,5 +1,5 @@
 import React from 'react';
-import { CompTiktokQuizFlags } from '@/remotionStudio/CompTiktokQuizFlags';
+import { CompTiktokQuizFlags } from '@features/remotionStudio/CompTiktokQuizFlags';
 import { Composition, Folder } from 'remotion';
 import { CompTiktokQuizTerritories } from './CompTiktokQuizTerritories';
 import { CountryForVideo, videoPropsSchema } from './schemas';

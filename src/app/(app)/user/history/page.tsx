@@ -1,7 +1,7 @@
 import React from 'react';
 import { getAuthenticatedUser } from '@/src/server/db/auth/get-authenticated-user';
-import { fetchLastUserGuessesHistoryWithCountryRecord } from '@/src/server/db/user-guesses-history';
 import { navigationLinks } from '@data/navigationLinks';
+import { fetchLastUserGuessesHistoryWithCountryRecord } from '@features/userInsights/server/db/user-guesses-history';
 import PageCenteredLink from '@components/_commons/PageCenteredLink';
 import CountryHistory from '@components/history/CountryHistory';
 

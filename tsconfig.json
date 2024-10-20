@@ -28,8 +28,8 @@
       "@hooks/*": ["src/hooks/*"],
       "@queries/*": ["src/lib/queries/*"],
       "@stores/*": ["src/lib/stores/*"],
-      "@actions/*": ["src/server/actions/*"],
       "@data/*": ["src/lib/data/*"],
+      "@features/*": ["src/features/*"],
       "@/*": ["./*"]
     }
   },

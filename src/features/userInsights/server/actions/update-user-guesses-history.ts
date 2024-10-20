@@ -4,7 +4,7 @@ import { getAuthenticatedUser } from '@/src/server/db/auth/get-authenticated-use
 import {
   fetchUserGuessesHistory,
   upsertUserGuessesHistory,
-} from '@/src/server/db/user-guesses-history';
+} from '@features/userInsights/server/db/user-guesses-history';
 
 export async function updateUserGuessesHistory(
   countryId: number,
