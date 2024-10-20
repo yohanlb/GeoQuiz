@@ -68,7 +68,11 @@ const DeckPageContent = ({ deck, hideTitle = false }: Props) => {
         </Link>
       </div>
       {user && (
-        <UserDeckGuessesProgressionSection countryIds={deck.countryIds} />
+        <UserDeckGuessesProgressionSection
+          countryIds={deck.countryIds}
+          deckName={deck.name}
+          questionTypeId={questionTypeId}
+        />
       )}
     </div>
   );

@@ -17,6 +17,21 @@ export async function getCountryById(countryId: number) {
   return data as CountryRecord;
 }
 
+export async function getCountriesByIds(countryIds: number[]) {
+  const supabase = createClient();
+  const { data, error } = await supabase
+    .from('countries_complete_view')
+    .select('*')
+    .in('id', countryIds);
+
+  if (error && error.code !== 'PGRST116') {
+    console.error('Error fetching user countries by ids:', error);
+    throw error;
+  }
+
+  return data as CountryCompleteViewRecord[];
+}
+
 export async function getCountriesByName(countryName: string) {
   const supabase = createClient();
   const { data, error } = await supabase

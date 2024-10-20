@@ -8,7 +8,7 @@ import { Button } from '@components/ui/button';
 
 export default function UpdateMessageAlert() {
   const [isVisible, setIsVisible] = useState(true);
-  const version = 'v1.1.0';
+  const version = 'v1.1.2';
 
   if (!isVisible) return null;
 
@@ -18,13 +18,15 @@ export default function UpdateMessageAlert() {
         <div className='flex flex-col items-start space-y-2'>
           <span className='font-semibold'>
             <strong className='mr-2 text-lg'>🎉</strong>
-            <strong>New GeoQuiz Update ({version}): </strong>
-            User Accounts (Beta)
+            <strong>New GeoQuiz Update ({version}): </strong>New Deck
+            Progression page!
           </span>
           <p className='text-left text-sm'>
-            - You can now create a user account (Google sign-in) to track and
-            sync your progress across devices! Please note this is still in
-            beta, and you may encounter some bugs.
+            - Select a deck and you will now see a new &apos;Detailed
+            progress&apos; link.
+            <br />- Clicking on it will show you a detailed view of your
+            progress in the deck, including which countries you have already
+            guessed correctly.
           </p>
           {/* <Link
             href='/changelog'
