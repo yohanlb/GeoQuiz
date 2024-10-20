@@ -1,4 +1,4 @@
-import { getAuthenticatedUser } from '@/src/server/db/auth/get-authenticated-user';
+import { getAuthenticatedUser } from '@features/auth/server/db/get-authenticated-user';
 import { fetchAllUserGuessesHistory } from '@features/userInsights/server/db/user-guesses-history';
 import GameClientWrapper from '@components/quiz/GameClientWrapper';
 import { getDeckByName } from '../../../../lib/queries/gameDecks';

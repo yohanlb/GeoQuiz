@@ -1,4 +1,4 @@
-import { getAllCountriesCompleteView } from '@/src/server/db/countries';
+import { getAllCountriesCompleteView } from '@features/countries/server/db/countries';
 
 export const defaultProps = {
   difficultyPercent: 1,

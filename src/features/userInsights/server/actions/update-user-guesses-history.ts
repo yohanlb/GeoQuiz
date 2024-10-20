@@ -1,6 +1,6 @@
 'use server';
 
-import { getAuthenticatedUser } from '@/src/server/db/auth/get-authenticated-user';
+import { getAuthenticatedUser } from '@features/auth/server/db/get-authenticated-user';
 import {
   fetchUserGuessesHistory,
   upsertUserGuessesHistory,

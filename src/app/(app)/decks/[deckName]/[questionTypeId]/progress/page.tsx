@@ -5,8 +5,8 @@ import AnonymousWarning from '@/src/features/userInsights/components/AnonymousWa
 import CountryProgress from '@/src/features/userInsights/components/CountryProgress';
 import DeckProgressWidget from '@/src/features/userInsights/components/DeckProgressWidget';
 import QuestionTypeLink from '@/src/features/userInsights/components/QuestionTypeLink';
-import { getCountriesByIds } from '@/src/server/db/countries';
 import { navigationLinks } from '@data/navigationLinks';
+import { getCountriesByIds } from '@features/countries/server/db/countries';
 import { fetchUserGuessesHistoryByCountryIds } from '@features/userInsights/server/db/user-guesses-history';
 import { getDeckByName } from '@lib/queries/gameDecks';
 import Link from 'next/link';

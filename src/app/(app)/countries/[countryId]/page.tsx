@@ -1,7 +1,7 @@
 import React from 'react';
 import UserGuesses from '@/src/app/(app)/countries/[countryId]/UserGuesses';
-import { getAuthenticatedUser } from '@/src/server/db/auth/get-authenticated-user';
 import { navigationLinks } from '@data/navigationLinks';
+import { getAuthenticatedUser } from '@features/auth/server/db/get-authenticated-user';
 import { fetchUserGuessesHistoryByCountry } from '@features/userInsights/server/db/user-guesses-history';
 import { getCountryById } from '@lib/queries/countries';
 import PageCenteredLink from '@components/_commons/PageCenteredLink';
