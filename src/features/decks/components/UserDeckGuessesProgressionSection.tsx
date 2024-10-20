@@ -2,11 +2,11 @@
 
 import React from 'react';
 import { navigationLinks } from '@data/navigationLinks';
-import useFetchUserCountryGuesses from '@hooks/useFetchUserCountryGuesses';
-import Link from 'next/link';
 import UserDeckGuessesProgression, {
   UserDeckGuessesProgressionSkeleton,
-} from '@components/decks/UserDeckGuessesProgression';
+} from '@features/decks/components/UserDeckGuessesProgression';
+import useFetchUserCountryGuesses from '@hooks/useFetchUserCountryGuesses';
+import Link from 'next/link';
 
 type Props = {
   countryIds: CountryRecord['id'][];

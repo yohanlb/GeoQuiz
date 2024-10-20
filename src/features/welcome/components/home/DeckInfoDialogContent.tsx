@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import DeckPageContent from '@components/decks/DeckPageContent';
+import DeckPageContent from '@features/decks/components/DeckPageContent';
 import {
   DialogContent,
   DialogHeader,

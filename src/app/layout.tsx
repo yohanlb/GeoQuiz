@@ -1,3 +1,4 @@
+import Footer from '@features/welcome/components/landing/Footer';
 import UserProvider from '@lib/contexts/UserProvider';
 import { inter, notoEmoji } from '@lib/utils/font';
 import { NextUIProvider } from '@nextui-org/react';
@@ -6,7 +7,6 @@ import dynamic from 'next/dynamic';
 import BackgroundGradient from '@components/_commons/BackgroundGradient';
 import MetaTags from '@components/_commons/MetaTags';
 import NavBar from '@components/_commons/navbar/NavBar';
-import Footer from '@components/landing/Footer';
 import { MyQueryClientProvider } from './QueryClientProvider';
 import { metadatas } from './metadatas';
 import { PHProvider } from './providers';

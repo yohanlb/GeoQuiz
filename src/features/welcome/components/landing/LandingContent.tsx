@@ -2,11 +2,11 @@
 
 import React from 'react';
 import { navigationLinks } from '@data/navigationLinks';
+import { Features } from '@features/welcome/components/landing/Features';
 import Image from 'next/image';
 import Link from 'next/link';
 import GeoQuizLogo from '@assets/GeoQuizGlobeLogo.png';
 import LoginModalTrigger from '@components/_commons/navbar/LoginModalTrigger';
-import { Features } from '@components/landing/Features';
 
 function LandingContent() {
   return (

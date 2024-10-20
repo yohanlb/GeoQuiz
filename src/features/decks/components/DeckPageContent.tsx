@@ -3,6 +3,7 @@
 import React from 'react';
 import { TbCardsFilled } from 'react-icons/tb';
 import { navigationLinks } from '@data/navigationLinks';
+import UserDeckGuessesProgressionSection from '@features/decks/components/UserDeckGuessesProgressionSection';
 import { UserContext } from '@lib/contexts/UserProvider';
 import useGameStore from '@stores/gameStore';
 import Link from 'next/link';
@@ -10,7 +11,6 @@ import DeckImage from '@components/_commons/DeckImage';
 import DifficultyIndicator from '@components/_commons/DifficultyIndicator';
 import PlayButton from '@components/_commons/PlayButton';
 import SelectQuestionType from '@components/_commons/SelectQuestionType';
-import UserDeckGuessesProgressionSection from '@components/decks/UserDeckGuessesProgressionSection';
 
 type Props = {
   deck: DeckWithStatsRecord;

@@ -1,8 +1,8 @@
 import React from 'react';
+import DeckInfoDialog from '@features/welcome/components/home/DeckInfoDialog';
+import DeckInfoDialogContent from '@features/welcome/components/home/DeckInfoDialogContent';
 import { getRandomCardGradient } from '@lib/utils/utils';
 import Image from 'next/image';
-import DeckInfoDialog from '@components/home/DeckInfoDialog';
-import DeckInfoDialogContent from '@components/home/DeckInfoDialogContent';
 
 type Props = {
   deck: DeckWithStatsRecord;

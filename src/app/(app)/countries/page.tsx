@@ -6,7 +6,7 @@ import PageCenteredLink from '@components/_commons/PageCenteredLink';
 import SectionTitle from '@components/_commons/SectionTitle';
 
 const CountriesTabs = dynamic(
-  () => import('@components/countries/CountriesTabs'),
+  () => import('@features/countries/components/CountriesTabs'),
   {
     ssr: false,
   },

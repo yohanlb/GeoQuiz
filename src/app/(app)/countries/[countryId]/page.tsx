@@ -2,12 +2,12 @@ import React from 'react';
 import UserGuesses from '@/src/app/(app)/countries/[countryId]/UserGuesses';
 import { navigationLinks } from '@data/navigationLinks';
 import { getAuthenticatedUser } from '@features/auth/server/db/get-authenticated-user';
+import DecksIncludingCountrySection from '@features/countries/components/DecksIncludingCountrySection';
+import CountryDescription from '@features/quiz/components/CountryDescription';
+import CountryShape from '@features/quiz/components/CountryShape';
 import { fetchUserGuessesHistoryByCountry } from '@features/userInsights/server/db/user-guesses-history';
 import { getCountryById } from '@lib/queries/countries';
 import PageCenteredLink from '@components/_commons/PageCenteredLink';
-import DecksIncludingCountrySection from '@components/countries/DecksIncludingCountrySection';
-import CountryDescription from '@components/quiz/CountryDescription';
-import CountryShape from '@components/quiz/CountryShape';
 
 type Props = {
   params: { countryId: number };
