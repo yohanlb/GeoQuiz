@@ -15,17 +15,21 @@ type Props = {
   nbOfCountriesInDeck: number;
 };
 
+const calculateCountryCorrectGuesses = (country: CountryWithUserGuesses) => {
+  return (
+    country.userGuesses?.guess_results?.slice(0, 3).filter(Boolean).length ?? 0
+  );
+};
+
 export default function DeckProgressWidget({
   countriesWithUserGuesses,
   nbOfCountriesInDeck,
 }: Readonly<Props>) {
   const amountOfCorrectGuesses = countriesWithUserGuesses.reduce(
-    (acc, country) =>
-      acc +
-      (country.userGuesses?.guess_results?.reduce(
-        (acc, guess) => acc + (guess ? 1 : 0),
-        0,
-      ) || 0),
+    (totalCorrectGuesses, country) => {
+      const countryCorrectGuesses = calculateCountryCorrectGuesses(country);
+      return totalCorrectGuesses + countryCorrectGuesses;
+    },
     0,
   );
   const overallDeckProgressRatio =
