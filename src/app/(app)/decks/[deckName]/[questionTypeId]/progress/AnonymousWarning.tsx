@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { UserContext } from '@utils/contexts/UserProvider';
+import { UserContext } from '@lib/contexts/UserProvider';
 
 function AnonymousWarning() {
   const { user } = React.useContext(UserContext);

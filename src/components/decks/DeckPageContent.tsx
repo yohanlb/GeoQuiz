@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { TbCardsFilled } from 'react-icons/tb';
+import { UserContext } from '@lib/contexts/UserProvider';
 import { navigationLinks } from '@lib/navigationLinks';
-import { UserContext } from '@utils/contexts/UserProvider';
 import useGameStore from '@utils/stores/gameStore';
 import Link from 'next/link';
 import DeckImage from '@components/_commons/DeckImage';
