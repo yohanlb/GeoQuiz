@@ -1,5 +1,5 @@
 import React from 'react';
-import { navigationLinks } from '@lib/navigationLinks';
+import { navigationLinks } from '@lib/data/navigation-links';
 import Image from 'next/image';
 import Link from 'next/link';
 import HeaderHeroSeparator from '@assets/HeaderHeroSeparator.svg';

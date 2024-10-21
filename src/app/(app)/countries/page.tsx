@@ -1,12 +1,12 @@
 import React from 'react';
-import { getAllCountriesGrouped } from '@/src/utils/queries/countries';
-import { navigationLinks } from '@lib/navigationLinks';
+import { navigationLinks } from '@lib/data/navigation-links';
+import { getAllCountriesGrouped } from '@lib/queries/countries';
 import dynamic from 'next/dynamic';
 import PageCenteredLink from '@components/_commons/PageCenteredLink';
 import SectionTitle from '@components/_commons/SectionTitle';
 
 const CountriesTabs = dynamic(
-  () => import('@components/countries/CountriesTabs'),
+  () => import('@features/countries/components/CountriesTabs'),
   {
     ssr: false,
   },

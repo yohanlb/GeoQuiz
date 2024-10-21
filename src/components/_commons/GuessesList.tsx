@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { getCountryScoreStatus } from '@utils/score';
+import { getCountryScoreStatus } from '@lib/utils/score';
 import AttemptSquare from '@components/_commons/AttemptSquare';
 import CountryScoreBadge from '@components/_commons/CountryScoreBadge';
 

@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { useCountryHistory } from '@/src/utils/stores/countryHistoryStore';
 import { Progress } from '@nextui-org/react';
+import { useCountryHistory } from '@stores/country-history-store';
 
 type Props = {
   countryIds: CountryRecord['id'][];

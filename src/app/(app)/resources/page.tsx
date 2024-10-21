@@ -1,5 +1,5 @@
 import React from 'react';
-import { navigationLinks } from '@lib/navigationLinks';
+import { navigationLinks } from '@lib/data/navigation-links';
 import Link from 'next/link';
 import SectionTitle from '@components/_commons/SectionTitle';
 

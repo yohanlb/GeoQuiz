@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import LoginButton from '@features/auth/components/login/LoginButton';
 import dynamic from 'next/dynamic';
-import LoginButton from '@components/login/LoginButton';
 import {
   Dialog,
   DialogContent,

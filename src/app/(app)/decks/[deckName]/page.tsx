@@ -1,6 +1,6 @@
 import React from 'react';
-import { getDeckByName } from '@/src/utils/queries/gameDecks';
-import DeckPageContent from '@components/decks/DeckPageContent';
+import DeckPageContent from '@features/decks/components/DeckPageContent';
+import { getDeckByName } from '@lib/queries/gameDecks';
 
 type Props = {
   params: { deckName: string };

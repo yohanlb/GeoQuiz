@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
+import { UserContext } from '@lib/contexts/UserProvider';
 import { Avatar } from '@nextui-org/react';
-import { UserContext } from '@utils/contexts/UserProvider';
 import posthog from 'posthog-js';
 import MenuUser from '@components/_commons/navbar/MenuUser';
 

@@ -1,7 +1,7 @@
-import { getAuthenticatedUser } from '@utils/db/auth/get-authenticated-user';
-import { fetchAllUserGuessesHistory } from '@utils/db/userGuessesHistory';
-import GameClientWrapper from '@components/quiz/GameClientWrapper';
-import { getDeckByName } from '../../../../utils/queries/gameDecks';
+import { getAuthenticatedUser } from '@features/auth/server/db/get-authenticated-user';
+import GameClientWrapper from '@features/quiz/components/GameClientWrapper';
+import { fetchAllUserGuessesHistory } from '@features/userInsights/server/db/user-guesses-history';
+import { getDeckByName } from '../../../../lib/queries/gameDecks';
 
 type Props = {
   params: { deckName: string };

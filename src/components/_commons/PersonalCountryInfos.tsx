@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { UserContext } from '@utils/contexts/UserProvider';
-import useCountryLocalUserGuesses from '@utils/hooks/useCountryLocalUserGuesses';
+import useCountryLocalUserGuesses from '@hooks/useCountryLocalUserGuesses';
+import { UserContext } from '@lib/contexts/UserProvider';
 import GuessesList from '@components/_commons/GuessesList';
 
 type Props = {

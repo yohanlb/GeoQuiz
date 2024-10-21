@@ -1,6 +1,6 @@
 import React from 'react';
-import { getAuthenticatedUser } from '@utils/db/auth/get-authenticated-user';
-import ResultsView from '@components/quiz/ResultsView';
+import { getAuthenticatedUser } from '@features/auth/server/db/get-authenticated-user';
+import ResultsView from '@features/quiz/components/ResultsView';
 
 export const metadata = {
   title: 'Results',

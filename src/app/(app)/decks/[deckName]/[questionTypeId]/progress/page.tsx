@@ -1,14 +1,14 @@
 import React from 'react';
 import { FaRegFlag } from 'react-icons/fa6';
 import { PiCity } from 'react-icons/pi';
-import AnonymousWarning from '@/src/app/(app)/decks/[deckName]/[questionTypeId]/progress/AnonymousWarning';
-import CountryProgress from '@/src/app/(app)/decks/[deckName]/[questionTypeId]/progress/CountryProgress';
-import DeckProgressWidget from '@/src/app/(app)/decks/[deckName]/[questionTypeId]/progress/DeckProgressWidget';
-import QuestionTypeLink from '@/src/app/(app)/decks/[deckName]/[questionTypeId]/progress/QuestionTypeLink';
-import { getDeckByName } from '@/src/utils/queries/gameDecks';
-import { navigationLinks } from '@lib/navigationLinks';
-import { getCountriesByIds } from '@utils/db/countries';
-import { fetchUserGuessesHistoryByCountryIds } from '@utils/db/userGuessesHistory';
+import { getCountriesByIds } from '@features/countries/server/db/countries';
+import AnonymousWarning from '@features/userInsights/components/deckProgression/AnonymousWarning';
+import CountryProgress from '@features/userInsights/components/deckProgression/CountryProgress';
+import DeckProgressWidget from '@features/userInsights/components/deckProgression/DeckProgressWidget';
+import QuestionTypeLink from '@features/userInsights/components/deckProgression/QuestionTypeLink';
+import { fetchUserGuessesHistoryByCountryIds } from '@features/userInsights/server/db/user-guesses-history';
+import { navigationLinks } from '@lib/data/navigation-links';
+import { getDeckByName } from '@lib/queries/gameDecks';
 import Link from 'next/link';
 import SectionTitle from '@components/_commons/SectionTitle';
 
