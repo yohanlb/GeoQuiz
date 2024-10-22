@@ -1,5 +1,5 @@
 import React from 'react';
-import { getAuthenticatedUser } from '@features/auth/server/db/get-authenticated-user';
+import { getAuthenticatedUser } from '@/src/server/db/get-authenticated-user';
 import DecksIncludingCountrySection from '@features/decks/components/DecksIncludingCountrySection';
 import CountryDescription from '@features/quiz/components/CountryDescription';
 import CountryShape from '@features/quiz/components/CountryShape';

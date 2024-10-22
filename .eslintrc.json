@@ -28,7 +28,8 @@
           "src/__tests__/**/*",
           "src/assets/**/*",
           "src/hooks/**/*",
-          "src/lib/**/*"
+          "src/lib/**/*",
+          "src/server/**/*"
         ]
       },
       {
@@ -66,10 +67,7 @@
             "from": ["feature"],
             "allow": [
               "shared",
-              // Temporary setup to allow all features to call each other.
-              // Ideally, features needs to be independent of each other.
-              // ["feature", { "featureName": "${from.featureName}" }]
-              "feature"
+              ["feature", { "featureName": "${from.featureName}" }]
             ]
           },
           {

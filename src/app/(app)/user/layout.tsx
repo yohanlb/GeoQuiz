@@ -1,5 +1,5 @@
 import React from 'react';
-import { getAuthenticatedUser } from '@features/auth/server/db/get-authenticated-user';
+import { getAuthenticatedUser } from '@/src/server/db/get-authenticated-user';
 import { navigationLinks } from '@lib/data/navigation-links';
 import { redirect } from 'next/navigation';
 

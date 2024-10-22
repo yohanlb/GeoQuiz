@@ -1,5 +1,5 @@
 import React from 'react';
-import { getAuthenticatedUser } from '@features/auth/server/db/get-authenticated-user';
+import { getAuthenticatedUser } from '@/src/server/db/get-authenticated-user';
 import ResultsView from '@features/quiz/components/ResultsView';
 
 export const metadata = {
