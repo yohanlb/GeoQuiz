@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useFetchQuestions } from '@hooks/useFetchQuestions';
+import { useFetchQuestions } from '@features/quiz/hooks/useFetchQuestions';
 import useGameStore from '@lib/stores/game-store';
 import { motion } from 'framer-motion';
 import LoadingSpinner from '@components/global/LoadingSpinner';

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import DailyCountryQuiz from '@features/daily/components/DailyCountryQuiz';
-import { useCountryOfTheDay } from '@hooks/useCountryOfTheDay';
+import { useCountryOfTheDay } from '@features/daily/hooks/useCountryOfTheDay';
 import { motion } from 'framer-motion';
 import LoadingSpinner from '@components/global/LoadingSpinner';
 
