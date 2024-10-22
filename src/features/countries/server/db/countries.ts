@@ -4,7 +4,7 @@ export async function getCountryById(countryId: number) {
   const supabase = createClient();
 
   const { data, error } = await supabase
-    .from('countries')
+    .from('countries_complete_view')
     .select('*')
     .eq('id', countryId)
     .single();
@@ -14,7 +14,7 @@ export async function getCountryById(countryId: number) {
     throw error;
   }
 
-  return data as CountryRecord;
+  return data as CountryCompleteViewRecord;
 }
 
 export async function getCountriesByIds(countryIds: number[]) {

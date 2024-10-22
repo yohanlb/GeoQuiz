@@ -1,17 +1,20 @@
 import React from 'react';
+import { getCountryById } from '@features/countries/server/db/countries';
 import DecksIncludingCountrySection from '@features/decks/components/DecksIncludingCountrySection';
 import CountryDescription from '@features/quiz/components/CountryDescription';
 import CountryShape from '@features/quiz/components/CountryShape';
 import UserGuesses from '@features/userInsights/components/UserGuesses';
 import { fetchUserGuessesHistoryByCountry } from '@features/userInsights/server/db/user-guesses-history';
 import { navigationLinks } from '@lib/data/navigation-links';
-import { getCountryById } from '@lib/queries/countries';
+import { supabase } from '@lib/supabase/static';
 import { getAuthenticatedUser } from '@server/db/get-authenticated-user';
 import PageCenteredLink from '@components/global/PageCenteredLink';
 
 type Props = {
   params: { countryId: number };
 };
+
+export const revalidate = 60 * 60; // 1 hour
 
 export async function generateMetadata({ params }: Props) {
   const { countryId } = params;
@@ -22,6 +25,17 @@ export async function generateMetadata({ params }: Props) {
     title: `${name}`,
     description: `All the information about ${name}.`,
   };
+}
+
+export async function generateStaticParams() {
+  // fetching from default supabase client cause cant work with cookies at build time
+  const { data } = await supabase.from('countries').select('id');
+  if (!data) {
+    return [];
+  }
+  return data.map((country) => ({
+    countryId: country.id.toString(),
+  }));
 }
 
 const Country = async ({ params }: Props) => {

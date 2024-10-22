@@ -1,31 +1,6 @@
 const ONE_HOUR = 60 * 60;
 const baseUrl = process.env.NEXT_PUBLIC_GEOQUIZ_API_BASE_URL as string;
 
-export async function getCountryByCode(countryCode: string) {
-  const response = await fetch(`${baseUrl}countries/iso3/${countryCode}`, {
-    next: { revalidate: ONE_HOUR * 24 },
-  });
-  if (!response.ok) {
-    throw new Error('Country not found');
-  }
-
-  const data: CountryCompleteViewRecord = await response.json();
-
-  return data;
-}
-export async function getCountryById(countryId: number) {
-  const response = await fetch(`${baseUrl}countries/id/${countryId}`, {
-    next: { revalidate: ONE_HOUR * 24 },
-  });
-  if (!response.ok) {
-    throw new Error('Country not found');
-  }
-
-  const { data }: { data: CountryCompleteViewRecord[] } = await response.json();
-
-  return data[0];
-}
-
 export async function fetchCountries(): Promise<CountryCompleteViewRecord[]> {
   const response = await fetch(`${baseUrl}countries/`, {
     next: { revalidate: ONE_HOUR * 12 },
@@ -36,10 +11,6 @@ export async function fetchCountries(): Promise<CountryCompleteViewRecord[]> {
 
   const { data }: { data: CountryCompleteViewRecord[] } = await response.json();
   return data;
-}
-
-export async function getAllCountries(): Promise<CountryCompleteViewRecord[]> {
-  return await fetchCountries();
 }
 
 export async function getAllCountriesGrouped(): Promise<GroupedCountries> {

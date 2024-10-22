@@ -12,6 +12,8 @@ const CountriesTabs = dynamic(
   },
 );
 
+export const revalidate = 60 * 60; // 1 hour
+
 export const metadata = {
   title: 'Countries',
   description: 'Explore all countries.',
