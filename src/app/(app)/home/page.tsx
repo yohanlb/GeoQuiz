@@ -3,12 +3,12 @@ import ContinentsSection from '@features/decks/components/ContinentsSection';
 import DifficultySection from '@features/decks/components/DifficultySection';
 import FeaturedAndPopularSection from '@features/decks/components/FeaturedAndPopularSection';
 import RegionSection from '@features/decks/components/RegionSection';
+import { getDecks, getFeaturedDecks } from '@features/decks/server/db/decks';
 import CountryOfTheDay from '@features/welcome/components/home/CountryOfTheDay';
 import UpdateMessageAlert from '@features/welcome/components/home/UpdateMessageAlert';
 import { navigationLinks } from '@lib/data/navigation-links';
 import dynamic from 'next/dynamic';
 import PageCenteredLink from '@components/global/PageCenteredLink';
-import { getDecks, getFeaturedDecks } from '../../../lib/queries/gameDecks';
 
 const UnplayedDecksSection = dynamic(
   () => import('@features/decks/components/UnplayedDecksSection'),

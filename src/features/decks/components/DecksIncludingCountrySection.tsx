@@ -1,6 +1,6 @@
 import React from 'react';
 import DeckList from '@features/decks/components/DeckList';
-import { getDecks } from '@lib/queries/gameDecks';
+import { getDecks } from '@features/decks/server/db/decks';
 import SectionTitle from '@components/global/SectionTitle';
 
 const DecksIncludingCountrySection = async ({
