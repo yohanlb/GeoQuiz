@@ -1,6 +1,7 @@
 import React from 'react';
+import { getAllCountries } from '@features/countries/server/db/countries';
+import { groupCountriesByRegionAndSubregion } from '@features/countries/utils/countries';
 import { navigationLinks } from '@lib/data/navigation-links';
-import { getAllCountriesGrouped } from '@lib/queries/countries';
 import dynamic from 'next/dynamic';
 import PageCenteredLink from '@components/global/PageCenteredLink';
 import SectionTitle from '@components/global/SectionTitle';
@@ -20,7 +21,8 @@ export const metadata = {
 };
 
 const Country = async () => {
-  const groupedCountries = await getAllCountriesGrouped();
+  const allCountries = await getAllCountries();
+  const groupedCountries = groupCountriesByRegionAndSubregion(allCountries);
 
   return (
     <div className='mx-auto flex flex-col gap-2 px-2 py-2 md:px-0'>

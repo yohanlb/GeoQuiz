@@ -13,7 +13,7 @@ declare global {
     CountryGuessHistory;
 
   export type GroupedCountries = {
-    [key: string]: { [subregion: string]: CountryCompleteViewRecord[] };
+    [region: string]: { [subregion: string]: CountryRecord[] };
   };
 
   export type CountryScoreHistory = { [key: CountryRecord['id']]: boolean[] };
