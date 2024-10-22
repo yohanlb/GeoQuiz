@@ -1,10 +1,9 @@
 'use client';
 
 import React from 'react';
+import QuizLoading from '@/src/app/(app)/quiz/[deckName]/QuizLoading';
 import { useFetchQuestions } from '@features/quiz/hooks/useFetchQuestions';
 import useGameStore from '@lib/stores/game-store';
-import { motion } from 'framer-motion';
-import LoadingSpinner from '@components/global/LoadingSpinner';
 import QuizController from './QuizController';
 
 type Props = {
@@ -20,24 +19,32 @@ const QuizWrapper = ({
 }: Props) => {
   const { setDeck } = useGameStore();
   const { questions, isLoading } = useFetchQuestions(deck, amountOfQuestions);
+  const [isFakeLoading, setIsFakeLoading] = React.useState(true);
 
   React.useEffect(() => {
     setDeck(deck);
   }, [setDeck, deck]);
 
-  if (isLoading) {
-    return (
-      <div className='flex h-full w-full flex-col items-center justify-center gap-8'>
-        <motion.p
-          className='text-xl'
-          initial={{ x: -300, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-        >
-          Preparing questions...
-        </motion.p>
-        <LoadingSpinner />
-      </div>
-    );
+  React.useEffect(() => {
+    // artificial delay to show loading animation
+    if (isLoading) {
+      setIsFakeLoading(true);
+      const timer = setTimeout(() => {
+        setIsFakeLoading(false);
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    } else {
+      const timer = setTimeout(() => {
+        setIsFakeLoading(false);
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [isLoading]);
+
+  if (isLoading || isFakeLoading) {
+    return <QuizLoading />;
   } else if (questions.length < 1) {
     return (
       <div className='flex h-full w-full items-center justify-center'>
