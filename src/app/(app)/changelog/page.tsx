@@ -1,6 +1,6 @@
+import { Separator } from '@/src/shared/components/ui/separator';
 import { CHANGELOG_DATA, ChangelogEntry } from '@lib/data/changelog-data';
 import Image from 'next/image';
-import { Separator } from '@components/ui/separator';
 
 const ChangelogEntryComponent = ({ entry }: { entry: ChangelogEntry }) => {
   return (

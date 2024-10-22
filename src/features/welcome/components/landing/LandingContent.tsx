@@ -6,7 +6,7 @@ import { navigationLinks } from '@lib/data/navigation-links';
 import Image from 'next/image';
 import Link from 'next/link';
 import GeoQuizLogo from '@assets/GeoQuizGlobeLogo.png';
-import LoginModalTrigger from '@components/_commons/navbar/LoginModalTrigger';
+import LoginModalTrigger from '@components/global/navbar/LoginModalTrigger';
 
 function LandingContent() {
   return (

@@ -2,9 +2,9 @@
 
 import React from 'react';
 import DailyCountryQuiz from '@features/daily/components/DailyCountryQuiz';
-import { useCountryOfTheDay } from '@hooks/useCountryOfTheDay';
+import { useCountryOfTheDay } from '@features/daily/hooks/useCountryOfTheDay';
 import { motion } from 'framer-motion';
-import LoadingSpinner from '@components/_commons/LoadingSpinner';
+import LoadingSpinner from '@components/global/LoadingSpinner';
 
 function CotdPageContent() {
   const { data: dailyQuestion, isLoading, error } = useCountryOfTheDay(0);

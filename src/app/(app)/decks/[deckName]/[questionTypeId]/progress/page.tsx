@@ -10,7 +10,7 @@ import { fetchUserGuessesHistoryByCountryIds } from '@features/userInsights/serv
 import { navigationLinks } from '@lib/data/navigation-links';
 import { getDeckByName } from '@lib/queries/gameDecks';
 import Link from 'next/link';
-import SectionTitle from '@components/_commons/SectionTitle';
+import SectionTitle from '@components/global/SectionTitle';
 
 type Props = {
   params: { deckName: string; questionTypeId?: Question['questionTypeId'] };

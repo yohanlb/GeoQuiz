@@ -1,10 +1,10 @@
 'use server';
 
-import { getAuthenticatedUser } from '@features/auth/server/db/get-authenticated-user';
 import {
   fetchUserGuessesHistory,
   upsertUserGuessesHistory,
 } from '@features/userInsights/server/db/user-guesses-history';
+import { getAuthenticatedUser } from '@server/db/get-authenticated-user';
 
 export async function updateUserGuessesHistory(
   countryId: number,

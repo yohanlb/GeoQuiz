@@ -5,9 +5,9 @@ import { PiCity } from 'react-icons/pi';
 import { UserGuessHistoryWithCountry } from '@features/userInsights/server/db/user-guesses-history';
 import { navigationLinks } from '@lib/data/navigation-links';
 import Link from 'next/link';
-import DifficultyIndicator from '@components/_commons/DifficultyIndicator';
-import GuessesList from '@components/_commons/GuessesList';
-import SectionTitle from '@components/_commons/SectionTitle';
+import DifficultyIndicator from '@components/global/DifficultyIndicator';
+import GuessesList from '@components/global/GuessesList';
+import SectionTitle from '@components/global/SectionTitle';
 
 type Props = { lastUserGuesses: UserGuessHistoryWithCountry[] };
 

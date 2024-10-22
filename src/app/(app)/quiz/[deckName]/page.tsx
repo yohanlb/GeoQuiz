@@ -1,6 +1,6 @@
-import { getAuthenticatedUser } from '@features/auth/server/db/get-authenticated-user';
-import GameClientWrapper from '@features/quiz/components/GameClientWrapper';
+import QuizWrapper from '@/src/app/(app)/quiz/[deckName]/QuizWrapper';
 import { fetchAllUserGuessesHistory } from '@features/userInsights/server/db/user-guesses-history';
+import { getAuthenticatedUser } from '@server/db/get-authenticated-user';
 import { getDeckByName } from '../../../../lib/queries/gameDecks';
 
 type Props = {
@@ -35,7 +35,7 @@ const Quiz = async ({ params, searchParams }: Props) => {
   }
   return (
     <div className='h-full'>
-      <GameClientWrapper
+      <QuizWrapper
         userGuessesHistory={userGuessesHistory}
         deck={deck}
         amountOfQuestions={searchParams.length}

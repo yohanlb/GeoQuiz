@@ -24,10 +24,9 @@
         "mode": "full",
         "type": "shared",
         "pattern": [
-          "src/components/**/*",
+          "src/shared/**/*",
           "src/__tests__/**/*",
           "src/assets/**/*",
-          "src/hooks/**/*",
           "src/lib/**/*"
         ]
       },
@@ -66,10 +65,7 @@
             "from": ["feature"],
             "allow": [
               "shared",
-              // Temporary setup to allow all features to call each other.
-              // Ideally, features needs to be independent of each other.
-              // ["feature", { "featureName": "${from.featureName}" }]
-              "feature"
+              ["feature", { "featureName": "${from.featureName}" }]
             ]
           },
           {

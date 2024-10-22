@@ -1,3 +1,5 @@
+// TODO: refactor this file and remove the eslint-disable-next-line
+//eslint-disable-next-line
 import { getAllCountriesCompleteView } from '@features/countries/server/db/countries';
 
 export const defaultProps = {

@@ -7,10 +7,10 @@ import { UserContext } from '@lib/contexts/UserProvider';
 import { navigationLinks } from '@lib/data/navigation-links';
 import useGameStore from '@stores/game-store';
 import Link from 'next/link';
-import DeckImage from '@components/_commons/DeckImage';
-import DifficultyIndicator from '@components/_commons/DifficultyIndicator';
-import PlayButton from '@components/_commons/PlayButton';
-import SelectQuestionType from '@components/_commons/SelectQuestionType';
+import DeckImage from '@components/global/DeckImage';
+import DifficultyIndicator from '@components/global/DifficultyIndicator';
+import PlayButton from '@components/global/PlayButton';
+import SelectQuestionType from '@components/global/SelectQuestionType';
 
 type Props = {
   deck: DeckWithStatsRecord;

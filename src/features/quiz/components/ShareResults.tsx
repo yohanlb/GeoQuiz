@@ -1,9 +1,9 @@
 import React from 'react';
+import { Button } from '@/src/shared/components/ui/button';
 import { EMOJIS, WEBSITE_URL } from '@lib/data/consts';
 import useGameStore from '@stores/game-store';
 import { motion } from 'framer-motion';
-import ShareIcon from '@components/_commons/icons/ShareIcon';
-import { Button } from '@components/ui/button';
+import ShareIcon from '@components/global/icons/ShareIcon';
 
 const ShareResults = () => {
   const { deck, answeredQuestions } = useGameStore();

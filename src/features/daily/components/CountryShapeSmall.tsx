@@ -2,8 +2,8 @@
 
 import React from 'react';
 import InlineSVG from 'react-inlinesvg';
+import { Skeleton } from '@/src/shared/components/ui/skeleton';
 import { MISSING_COUNTRIES_SVGS } from '@lib/data/consts';
-import { Skeleton } from '@components/ui/skeleton';
 
 //TODO: remove this file and use CountryShape instead
 // Created to have a smaller version of the CountryShape component

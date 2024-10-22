@@ -1,5 +1,4 @@
 import React from 'react';
-import { getAuthenticatedUser } from '@features/auth/server/db/get-authenticated-user';
 import DecksIncludingCountrySection from '@features/decks/components/DecksIncludingCountrySection';
 import CountryDescription from '@features/quiz/components/CountryDescription';
 import CountryShape from '@features/quiz/components/CountryShape';
@@ -7,7 +6,8 @@ import UserGuesses from '@features/userInsights/components/UserGuesses';
 import { fetchUserGuessesHistoryByCountry } from '@features/userInsights/server/db/user-guesses-history';
 import { navigationLinks } from '@lib/data/navigation-links';
 import { getCountryById } from '@lib/queries/countries';
-import PageCenteredLink from '@components/_commons/PageCenteredLink';
+import { getAuthenticatedUser } from '@server/db/get-authenticated-user';
+import PageCenteredLink from '@components/global/PageCenteredLink';
 
 type Props = {
   params: { countryId: number };

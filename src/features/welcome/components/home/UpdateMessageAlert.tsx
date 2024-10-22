@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { X } from 'lucide-react';
 // import Link from 'next/link';
-import { Alert, AlertDescription } from '@components/ui/alert';
-import { Button } from '@components/ui/button';
+import { Alert, AlertDescription } from '@/src/shared/components/ui/alert';
+import { Button } from '@/src/shared/components/ui/button';
+import { X } from 'lucide-react';
 
 export default function UpdateMessageAlert() {
   const [isVisible, setIsVisible] = useState(true);

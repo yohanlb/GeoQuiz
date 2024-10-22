@@ -6,7 +6,7 @@ import useGameStore from '@stores/game-store';
 import { User } from '@supabase/supabase-js';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import DifficultyIndicator from '@components/_commons/DifficultyIndicator';
+import DifficultyIndicator from '@components/global/DifficultyIndicator';
 
 const ResultsTable = ({ user }: { user: User | null }) => {
   const { answeredQuestions } = useGameStore();

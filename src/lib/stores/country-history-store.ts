@@ -1,5 +1,5 @@
 import { AVAILABLE_QUESTION_TYPES } from '@lib/data/consts';
-import { CountryScoreStatus, getCountryScoreStatus } from '@lib/utils/score';
+import { CountryScoreStatus, getCountryScoreStatus } from '@utils/score';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import useGameStore from './game-store';
