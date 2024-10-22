@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
-import DifficultyIndicator from '@components/_commons/DifficultyIndicator';
+import DifficultyIndicator from '@/src/shared/components/_commons/DifficultyIndicator';
 
 type Props = {
   countryData: CountryCompleteViewRecord;

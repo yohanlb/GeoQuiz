@@ -1,12 +1,12 @@
 'use client';
 
 import React from 'react';
-import DeckPageContent from '@features/decks/components/DeckPageContent';
 import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from '@components/ui/dialog';
+} from '@/src/shared/components/ui/dialog';
+import DeckPageContent from '@features/decks/components/DeckPageContent';
 
 type Props = {
   deck: DeckWithStatsRecord;

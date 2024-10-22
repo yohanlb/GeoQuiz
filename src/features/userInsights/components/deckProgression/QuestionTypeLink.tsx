@@ -1,5 +1,5 @@
 import React from 'react';
-import { questionTypeIdToQuestionTypeDisplayName } from '@lib/utils/utils';
+import { questionTypeIdToQuestionTypeDisplayName } from '@shared/utils/utils';
 import Link from 'next/link';
 
 type Props = {

@@ -1,8 +1,8 @@
 import React from 'react';
+import LoginButton from '@/src/shared/components/_commons/login/LoginButton';
 import { navigationLinks } from '@lib/data/navigation-links';
 import { createClient } from '@lib/supabase/server';
 import { redirect } from 'next/navigation';
-import LoginButton from '@components/_commons/login/LoginButton';
 
 export const metadata = {
   title: 'Login',

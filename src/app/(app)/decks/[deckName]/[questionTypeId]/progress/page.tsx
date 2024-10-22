@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaRegFlag } from 'react-icons/fa6';
 import { PiCity } from 'react-icons/pi';
+import SectionTitle from '@/src/shared/components/_commons/SectionTitle';
 import { getCountriesByIds } from '@features/countries/server/db/countries';
 import AnonymousWarning from '@features/userInsights/components/deckProgression/AnonymousWarning';
 import CountryProgress from '@features/userInsights/components/deckProgression/CountryProgress';
@@ -10,7 +11,6 @@ import { fetchUserGuessesHistoryByCountryIds } from '@features/userInsights/serv
 import { navigationLinks } from '@lib/data/navigation-links';
 import { getDeckByName } from '@lib/queries/gameDecks';
 import Link from 'next/link';
-import SectionTitle from '@components/_commons/SectionTitle';
 
 type Props = {
   params: { deckName: string; questionTypeId?: Question['questionTypeId'] };

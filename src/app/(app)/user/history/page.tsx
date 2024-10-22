@@ -1,9 +1,9 @@
 import React from 'react';
-import { getAuthenticatedUser } from '@/src/server/db/get-authenticated-user';
+import PageCenteredLink from '@/src/shared/components/_commons/PageCenteredLink';
 import CountryHistory from '@features/userInsights/components/history/CountryHistory';
 import { fetchLastUserGuessesHistoryWithCountryRecord } from '@features/userInsights/server/db/user-guesses-history';
 import { navigationLinks } from '@lib/data/navigation-links';
-import PageCenteredLink from '@components/_commons/PageCenteredLink';
+import { getAuthenticatedUser } from '@shared/server/db/get-authenticated-user';
 
 export const metadata = {
   title: 'History',

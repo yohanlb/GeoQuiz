@@ -1,10 +1,10 @@
 'use client';
 
 import React from 'react';
+import LoadingSpinner from '@/src/shared/components/_commons/LoadingSpinner';
 import DailyCountryQuiz from '@features/daily/components/DailyCountryQuiz';
 import { useCountryOfTheDay } from '@hooks/useCountryOfTheDay';
 import { motion } from 'framer-motion';
-import LoadingSpinner from '@components/_commons/LoadingSpinner';
 
 const TEST_DAYS = [...Array(11).keys()].map((num) => num - 5);
 

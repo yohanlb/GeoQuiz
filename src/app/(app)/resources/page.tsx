@@ -1,7 +1,7 @@
 import React from 'react';
+import SectionTitle from '@/src/shared/components/_commons/SectionTitle';
 import { navigationLinks } from '@lib/data/navigation-links';
 import Link from 'next/link';
-import SectionTitle from '@components/_commons/SectionTitle';
 
 function page() {
   return (

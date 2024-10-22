@@ -1,12 +1,12 @@
 'use client';
 
 import React from 'react';
+import LoadingSpinner from '@/src/shared/components/_commons/LoadingSpinner';
+import PageCenteredLink from '@/src/shared/components/_commons/PageCenteredLink';
 import { navigationLinks } from '@lib/data/navigation-links';
 import useGameStore from '@stores/game-store';
 import { User } from '@supabase/supabase-js';
 import Link from 'next/link';
-import LoadingSpinner from '@components/_commons/LoadingSpinner';
-import PageCenteredLink from '@components/_commons/PageCenteredLink';
 import LinkToDeck from './LinkToDeck';
 import ResultsTable from './ResultsTable';
 import ShareResults from './ShareResults';

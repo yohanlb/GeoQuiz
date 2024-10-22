@@ -1,8 +1,8 @@
 import React from 'react';
+import SectionTitle from '@/src/shared/components/_commons/SectionTitle';
 import { Card } from '@nextui-org/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import SectionTitle from '@components/_commons/SectionTitle';
 
 const CountryOfTheDay = () => {
   return (

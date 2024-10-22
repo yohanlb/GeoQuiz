@@ -1,15 +1,15 @@
+import BackgroundGradient from '@/src/shared/components/_commons/BackgroundGradient';
+import MetaTags from '@/src/shared/components/_commons/MetaTags';
+import NavBar from '@/src/shared/components/_commons/navbar/NavBar';
 import Footer from '@features/welcome/components/landing/Footer';
 import { MyQueryClientProvider } from '@lib/QueryClientProvider';
 import UserProvider from '@lib/contexts/UserProvider';
 import { metadatas } from '@lib/metadatas';
 import { PHProvider } from '@lib/providers';
-import { inter, notoEmoji } from '@lib/utils/font';
 import { NextUIProvider } from '@nextui-org/react';
+import { inter, notoEmoji } from '@shared/utils/font';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import dynamic from 'next/dynamic';
-import BackgroundGradient from '@components/_commons/BackgroundGradient';
-import MetaTags from '@components/_commons/MetaTags';
-import NavBar from '@components/_commons/navbar/NavBar';
 import './globals.css';
 
 const PostHogPageView = dynamic(() => import('./PostHogPageView'), {

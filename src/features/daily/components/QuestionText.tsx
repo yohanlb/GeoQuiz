@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import { Button } from '@/src/shared/components/ui/button';
 import { DailyQuestionType } from '@lib/types/daily-mode';
-import { Button } from '@components/ui/button';
 
 type Props = {
   options: string[];

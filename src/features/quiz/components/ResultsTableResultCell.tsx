@@ -1,8 +1,8 @@
 import React from 'react';
+import GuessesList from '@/src/shared/components/_commons/GuessesList';
 import UserResult from '@features/quiz/components/UserResult';
 import useCountryLocalUserGuesses from '@hooks/useCountryLocalUserGuesses';
 import { User } from '@supabase/supabase-js';
-import GuessesList from '@components/_commons/GuessesList';
 
 type Props = {
   countryId: CountryRecord['id'];

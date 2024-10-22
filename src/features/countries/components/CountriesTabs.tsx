@@ -2,11 +2,11 @@
 
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
+import SectionTitle from '@/src/shared/components/_commons/SectionTitle';
 import { navigationLinks } from '@lib/data/navigation-links';
-import { toCamelCase } from '@lib/utils/utils';
 import { Card, CardBody, Tab, Tabs } from '@nextui-org/react';
+import { toCamelCase } from '@shared/utils/utils';
 import Link from 'next/link';
-import SectionTitle from '@components/_commons/SectionTitle';
 
 type Props = {
   groupedCountries: GroupedCountries;

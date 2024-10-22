@@ -1,9 +1,14 @@
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
+import DifficultyIndicator from '@/src/shared/components/_commons/DifficultyIndicator';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableRow,
+} from '@/src/shared/components/ui/table';
 import useGameStore from '@stores/game-store';
 import Link from 'next/link';
-import DifficultyIndicator from '@components/_commons/DifficultyIndicator';
-import { Table, TableBody, TableCell, TableRow } from '@components/ui/table';
 
 type Props = {
   countries: CountryWithScores[];

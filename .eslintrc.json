@@ -24,12 +24,10 @@
         "mode": "full",
         "type": "shared",
         "pattern": [
-          "src/components/**/*",
+          "src/shared/**/*",
           "src/__tests__/**/*",
           "src/assets/**/*",
-          "src/hooks/**/*",
-          "src/lib/**/*",
-          "src/server/**/*"
+          "src/lib/**/*"
         ]
       },
       {
