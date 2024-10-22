@@ -2,12 +2,12 @@
 
 import React, { startTransition } from 'react';
 import { postCountryStats } from '@features/countries/server/actions/country-stats';
+import QuestionView from '@features/quiz/components/QuestionView';
 import { updateUserGuessesHistory } from '@features/userInsights/server/actions/update-user-guesses-history';
 import { calculateNewDeckScore } from '@lib/utils/score';
 import { useDeckHistory } from '@stores/deck-history-store';
 import useGameStore from '@stores/game-store';
 import { useRouter } from 'next/navigation';
-import QuestionView from './QuestionView';
 
 type Props = {
   questions: Question[];

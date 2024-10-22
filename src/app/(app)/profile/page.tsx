@@ -1,6 +1,6 @@
 import React from 'react';
-import LoginButton from '@features/auth/components/login/LoginButton';
 import { createClient } from '@lib/supabase/server';
+import LoginButton from '@components/_commons/login/LoginButton';
 
 export const metadata = {
   title: 'Profile',
