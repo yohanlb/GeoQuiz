@@ -1,5 +1,4 @@
 import React from 'react';
-import HowItWorksSection from '@/src/app/(app)/help/HowItWorksSection';
 import {
   FEEDBACK_FORM_LINK,
   navigationLinks,
@@ -8,6 +7,7 @@ import Link from 'next/link';
 import PageCenteredLink from '@components/_commons/PageCenteredLink';
 import SectionTitle from '@components/_commons/SectionTitle';
 import { Button } from '@components/ui/button';
+import HowItWorksSection from './HowItWorksSection';
 
 export const metadata = {
   title: 'Help',

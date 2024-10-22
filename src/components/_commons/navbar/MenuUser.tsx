@@ -1,10 +1,10 @@
 'use client';
 
 import React from 'react';
-import LogoutButton from '@features/auth/components/login/LogoutButton';
 import { navigationLinks } from '@lib/data/navigation-links';
 import { User } from '@supabase/supabase-js';
 import Link from 'next/link';
+import LogoutButton from '@components/_commons/login/LogoutButton';
 import LoginModalTrigger from '@components/_commons/navbar/LoginModalTrigger';
 import {
   DropdownMenu,

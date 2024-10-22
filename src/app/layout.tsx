@@ -1,5 +1,8 @@
 import Footer from '@features/welcome/components/landing/Footer';
+import { MyQueryClientProvider } from '@lib/QueryClientProvider';
 import UserProvider from '@lib/contexts/UserProvider';
+import { metadatas } from '@lib/metadatas';
+import { PHProvider } from '@lib/providers';
 import { inter, notoEmoji } from '@lib/utils/font';
 import { NextUIProvider } from '@nextui-org/react';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
@@ -7,9 +10,6 @@ import dynamic from 'next/dynamic';
 import BackgroundGradient from '@components/_commons/BackgroundGradient';
 import MetaTags from '@components/_commons/MetaTags';
 import NavBar from '@components/_commons/navbar/NavBar';
-import { MyQueryClientProvider } from './QueryClientProvider';
-import { metadatas } from './metadatas';
-import { PHProvider } from './providers';
 import './globals.css';
 
 const PostHogPageView = dynamic(() => import('./PostHogPageView'), {
