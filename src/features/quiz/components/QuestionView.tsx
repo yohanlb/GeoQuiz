@@ -9,7 +9,7 @@ import CountryDescription from './CountryDescription';
 import CountryShape from './CountryShape';
 
 const PersonalCountryInfos = dynamic(
-  () => import('@/src/shared/components/_commons/PersonalCountryInfos'),
+  () => import('@shared/components/global/PersonalCountryInfos'),
   {
     ssr: false,
   },

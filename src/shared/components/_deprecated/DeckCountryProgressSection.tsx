@@ -3,11 +3,11 @@
 import React from 'react';
 import CountryScoreOverview, {
   PopoverContentScoreOverview,
-} from '@/src/shared/components/_commons/CountryScoreOverview';
+} from '@shared/components/global/CountryScoreOverview';
 import DeckProgress, {
   PopoverContentDeckProgress,
-} from '@/src/shared/components/_commons/DeckProgress';
-import PopoverCustom from '@/src/shared/components/_commons/Popover';
+} from '@shared/components/global/DeckProgress';
+import PopoverCustom from '@shared/components/global/Popover';
 import useGameStore from '@stores/game-store';
 
 type Props = {

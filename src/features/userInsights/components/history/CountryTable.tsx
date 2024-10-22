@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
-import DifficultyIndicator from '@/src/shared/components/_commons/DifficultyIndicator';
 import {
   Table,
   TableBody,
   TableCell,
   TableRow,
 } from '@/src/shared/components/ui/table';
+import DifficultyIndicator from '@shared/components/global/DifficultyIndicator';
 import useGameStore from '@stores/game-store';
 import Link from 'next/link';
 

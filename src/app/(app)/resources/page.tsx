@@ -1,6 +1,6 @@
 import React from 'react';
-import SectionTitle from '@/src/shared/components/_commons/SectionTitle';
 import { navigationLinks } from '@lib/data/navigation-links';
+import SectionTitle from '@shared/components/global/SectionTitle';
 import Link from 'next/link';
 
 function page() {

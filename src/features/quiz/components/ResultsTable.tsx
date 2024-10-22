@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
-import DifficultyIndicator from '@/src/shared/components/_commons/DifficultyIndicator';
 import ResultsTableResultCell from '@features/quiz/components/ResultsTableResultCell';
 import { navigationLinks } from '@lib/data/navigation-links';
+import DifficultyIndicator from '@shared/components/global/DifficultyIndicator';
 import useGameStore from '@stores/game-store';
 import { User } from '@supabase/supabase-js';
 import { motion } from 'framer-motion';

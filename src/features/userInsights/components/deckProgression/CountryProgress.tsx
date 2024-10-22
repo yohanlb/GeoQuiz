@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
-import DifficultyIndicator from '@/src/shared/components/_commons/DifficultyIndicator';
-import GuessesList from '@/src/shared/components/_commons/GuessesList';
 import { navigationLinks } from '@lib/data/navigation-links';
+import DifficultyIndicator from '@shared/components/global/DifficultyIndicator';
+import GuessesList from '@shared/components/global/GuessesList';
 import Link from 'next/link';
 
 type Props = {

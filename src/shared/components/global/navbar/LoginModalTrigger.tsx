@@ -1,9 +1,9 @@
 'use client';
 
 import React from 'react';
-import LoginModal from '@/src/shared/components/_commons/navbar/LoginModal';
 import { Button } from '@/src/shared/components/ui/button';
 import { navigationLinks } from '@lib/data/navigation-links';
+import LoginModal from '@shared/components/global/navbar/LoginModal';
 
 type Props = {
   text?: string;

@@ -8,7 +8,7 @@ type DeckItemProps = {
   deck: DeckWithStatsRecord;
 };
 const UnplayedIndicator = dynamic(
-  () => import('@/src/shared/components/_commons/UnplayedIndicator'),
+  () => import('@shared/components/global/UnplayedIndicator'),
   {
     ssr: false,
   },

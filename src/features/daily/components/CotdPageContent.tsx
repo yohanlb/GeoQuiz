@@ -1,9 +1,9 @@
 'use client';
 
 import React from 'react';
-import LoadingSpinner from '@/src/shared/components/_commons/LoadingSpinner';
 import DailyCountryQuiz from '@features/daily/components/DailyCountryQuiz';
 import { useCountryOfTheDay } from '@hooks/useCountryOfTheDay';
+import LoadingSpinner from '@shared/components/global/LoadingSpinner';
 import { motion } from 'framer-motion';
 
 function CotdPageContent() {

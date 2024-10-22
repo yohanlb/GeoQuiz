@@ -1,7 +1,7 @@
 import React from 'react';
-import GuessesList from '@/src/shared/components/_commons/GuessesList';
 import UserResult from '@features/quiz/components/UserResult';
 import useCountryLocalUserGuesses from '@hooks/useCountryLocalUserGuesses';
+import GuessesList from '@shared/components/global/GuessesList';
 import { User } from '@supabase/supabase-js';
 
 type Props = {

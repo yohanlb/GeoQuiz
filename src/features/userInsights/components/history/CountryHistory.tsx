@@ -2,11 +2,11 @@ import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
 import { FaRegFlag } from 'react-icons/fa6';
 import { PiCity } from 'react-icons/pi';
-import DifficultyIndicator from '@/src/shared/components/_commons/DifficultyIndicator';
-import GuessesList from '@/src/shared/components/_commons/GuessesList';
-import SectionTitle from '@/src/shared/components/_commons/SectionTitle';
 import { UserGuessHistoryWithCountry } from '@features/userInsights/server/db/user-guesses-history';
 import { navigationLinks } from '@lib/data/navigation-links';
+import DifficultyIndicator from '@shared/components/global/DifficultyIndicator';
+import GuessesList from '@shared/components/global/GuessesList';
+import SectionTitle from '@shared/components/global/SectionTitle';
 import Link from 'next/link';
 
 type Props = { lastUserGuesses: UserGuessHistoryWithCountry[] };

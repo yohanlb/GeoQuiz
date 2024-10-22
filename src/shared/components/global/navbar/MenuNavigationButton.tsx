@@ -1,7 +1,7 @@
 import React from 'react';
 import { LuMenu } from 'react-icons/lu';
-import MenuNavigation from '@/src/shared/components/_commons/navbar/MenuNavigation';
 import { Button } from '@/src/shared/components/ui/button';
+import MenuNavigation from '@shared/components/global/navbar/MenuNavigation';
 
 const MenuNavigationButton = () => {
   return (

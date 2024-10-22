@@ -1,8 +1,8 @@
 import React from 'react';
-import PageCenteredLink from '@/src/shared/components/_commons/PageCenteredLink';
-import SectionTitle from '@/src/shared/components/_commons/SectionTitle';
 import { navigationLinks } from '@lib/data/navigation-links';
 import { getAllCountriesGrouped } from '@lib/queries/countries';
+import PageCenteredLink from '@shared/components/global/PageCenteredLink';
+import SectionTitle from '@shared/components/global/SectionTitle';
 import dynamic from 'next/dynamic';
 
 const CountriesTabs = dynamic(

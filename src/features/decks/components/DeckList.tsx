@@ -1,7 +1,7 @@
 import React from 'react';
-import DeckItem from '@/src/shared/components/_commons/DeckItem';
-import DeckItemLarge from '@/src/shared/components/_commons/DeckItemLarge';
 import { navigationLinks } from '@lib/data/navigation-links';
+import DeckItem from '@shared/components/global/DeckItem';
+import DeckItemLarge from '@shared/components/global/DeckItemLarge';
 import Link from 'next/link';
 
 type DeckListProps = {

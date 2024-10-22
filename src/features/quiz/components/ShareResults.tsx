@@ -1,7 +1,7 @@
 import React from 'react';
-import ShareIcon from '@/src/shared/components/_commons/icons/ShareIcon';
 import { Button } from '@/src/shared/components/ui/button';
 import { EMOJIS, WEBSITE_URL } from '@lib/data/consts';
+import ShareIcon from '@shared/components/global/icons/ShareIcon';
 import useGameStore from '@stores/game-store';
 import { motion } from 'framer-motion';
 

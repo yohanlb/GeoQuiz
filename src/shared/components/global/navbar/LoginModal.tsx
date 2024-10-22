@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import LoginButton from '@/src/shared/components/_commons/login/LoginButton';
 import {
   Dialog,
   DialogContent,
@@ -9,6 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/src/shared/components/ui/dialog';
+import LoginButton from '@shared/components/global/login/LoginButton';
 import dynamic from 'next/dynamic';
 
 const LoginModal = ({

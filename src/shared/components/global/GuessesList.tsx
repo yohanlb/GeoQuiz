@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import AttemptSquare from '@/src/shared/components/_commons/AttemptSquare';
-import CountryScoreBadge from '@/src/shared/components/_commons/CountryScoreBadge';
+import AttemptSquare from '@shared/components/global/AttemptSquare';
+import CountryScoreBadge from '@shared/components/global/CountryScoreBadge';
 import { getCountryScoreStatus } from '@shared/utils/score';
 
 type Props = {

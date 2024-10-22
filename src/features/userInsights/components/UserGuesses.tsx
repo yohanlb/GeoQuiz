@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaRegFlag } from 'react-icons/fa6';
 import { PiCity } from 'react-icons/pi';
-import GuessesList from '@/src/shared/components/_commons/GuessesList';
+import GuessesList from '@shared/components/global/GuessesList';
 
 type Props = {
   guessesHistory: UserGuessHistoryPartial[];

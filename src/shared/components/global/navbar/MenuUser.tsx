@@ -1,8 +1,6 @@
 'use client';
 
 import React from 'react';
-import LogoutButton from '@/src/shared/components/_commons/login/LogoutButton';
-import LoginModalTrigger from '@/src/shared/components/_commons/navbar/LoginModalTrigger';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,6 +10,8 @@ import {
   DropdownMenuTrigger,
 } from '@/src/shared/components/ui/dropdown-menu';
 import { navigationLinks } from '@lib/data/navigation-links';
+import LogoutButton from '@shared/components/global/login/LogoutButton';
+import LoginModalTrigger from '@shared/components/global/navbar/LoginModalTrigger';
 import { User } from '@supabase/supabase-js';
 import Link from 'next/link';
 

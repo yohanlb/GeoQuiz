@@ -1,5 +1,4 @@
 import React from 'react';
-import PageCenteredLink from '@/src/shared/components/_commons/PageCenteredLink';
 import ContinentsSection from '@features/decks/components/ContinentsSection';
 import DifficultySection from '@features/decks/components/DifficultySection';
 import FeaturedAndPopularSection from '@features/decks/components/FeaturedAndPopularSection';
@@ -7,6 +6,7 @@ import RegionSection from '@features/decks/components/RegionSection';
 import CountryOfTheDay from '@features/welcome/components/home/CountryOfTheDay';
 import UpdateMessageAlert from '@features/welcome/components/home/UpdateMessageAlert';
 import { navigationLinks } from '@lib/data/navigation-links';
+import PageCenteredLink from '@shared/components/global/PageCenteredLink';
 import dynamic from 'next/dynamic';
 import { getDecks, getFeaturedDecks } from '../../../lib/queries/gameDecks';
 

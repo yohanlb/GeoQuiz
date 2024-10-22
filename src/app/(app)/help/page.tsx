@@ -1,11 +1,11 @@
 import React from 'react';
-import PageCenteredLink from '@/src/shared/components/_commons/PageCenteredLink';
-import SectionTitle from '@/src/shared/components/_commons/SectionTitle';
 import { Button } from '@/src/shared/components/ui/button';
 import {
   FEEDBACK_FORM_LINK,
   navigationLinks,
 } from '@lib/data/navigation-links';
+import PageCenteredLink from '@shared/components/global/PageCenteredLink';
+import SectionTitle from '@shared/components/global/SectionTitle';
 import Link from 'next/link';
 import HowItWorksSection from './HowItWorksSection';
 

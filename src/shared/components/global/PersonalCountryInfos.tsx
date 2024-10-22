@@ -1,9 +1,9 @@
 'use client';
 
 import React from 'react';
-import GuessesList from '@/src/shared/components/_commons/GuessesList';
 import useCountryLocalUserGuesses from '@hooks/useCountryLocalUserGuesses';
 import { UserContext } from '@lib/contexts/UserProvider';
+import GuessesList from '@shared/components/global/GuessesList';
 
 type Props = {
   countryId: CountryRecord['id'];

@@ -1,7 +1,7 @@
 import React from 'react';
-import MenuNavigationButton from '@/src/shared/components/_commons/navbar/MenuNavigationButton';
-import MenuUserButton from '@/src/shared/components/_commons/navbar/MenuUserButton';
 import { navigationLinks } from '@lib/data/navigation-links';
+import MenuNavigationButton from '@shared/components/global/navbar/MenuNavigationButton';
+import MenuUserButton from '@shared/components/global/navbar/MenuUserButton';
 import Image from 'next/image';
 import Link from 'next/link';
 import HeaderHeroSeparator from '@assets/HeaderHeroSeparator.svg';

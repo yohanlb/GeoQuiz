@@ -2,9 +2,9 @@
 
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
-import SectionTitle from '@/src/shared/components/_commons/SectionTitle';
 import { navigationLinks } from '@lib/data/navigation-links';
 import { Card, CardBody, Tab, Tabs } from '@nextui-org/react';
+import SectionTitle from '@shared/components/global/SectionTitle';
 import { toCamelCase } from '@shared/utils/utils';
 import Link from 'next/link';
 

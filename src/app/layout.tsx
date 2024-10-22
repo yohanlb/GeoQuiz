@@ -1,12 +1,12 @@
-import BackgroundGradient from '@/src/shared/components/_commons/BackgroundGradient';
-import MetaTags from '@/src/shared/components/_commons/MetaTags';
-import NavBar from '@/src/shared/components/_commons/navbar/NavBar';
 import Footer from '@features/welcome/components/landing/Footer';
 import { MyQueryClientProvider } from '@lib/QueryClientProvider';
 import UserProvider from '@lib/contexts/UserProvider';
 import { metadatas } from '@lib/metadatas';
 import { PHProvider } from '@lib/providers';
 import { NextUIProvider } from '@nextui-org/react';
+import BackgroundGradient from '@shared/components/global/BackgroundGradient';
+import MetaTags from '@shared/components/global/MetaTags';
+import NavBar from '@shared/components/global/navbar/NavBar';
 import { inter, notoEmoji } from '@shared/utils/font';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import dynamic from 'next/dynamic';

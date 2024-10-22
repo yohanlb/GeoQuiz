@@ -1,9 +1,9 @@
 'use client';
 
 import React from 'react';
-import MenuUser from '@/src/shared/components/_commons/navbar/MenuUser';
 import { UserContext } from '@lib/contexts/UserProvider';
 import { Avatar } from '@nextui-org/react';
+import MenuUser from '@shared/components/global/navbar/MenuUser';
 import posthog from 'posthog-js';
 
 const MenuUserButton = () => {

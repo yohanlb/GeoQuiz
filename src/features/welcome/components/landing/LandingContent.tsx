@@ -1,9 +1,9 @@
 'use client';
 
 import React from 'react';
-import LoginModalTrigger from '@/src/shared/components/_commons/navbar/LoginModalTrigger';
 import { Features } from '@features/welcome/components/landing/Features';
 import { navigationLinks } from '@lib/data/navigation-links';
+import LoginModalTrigger from '@shared/components/global/navbar/LoginModalTrigger';
 import Image from 'next/image';
 import Link from 'next/link';
 import GeoQuizLogo from '@assets/GeoQuizGlobeLogo.png';

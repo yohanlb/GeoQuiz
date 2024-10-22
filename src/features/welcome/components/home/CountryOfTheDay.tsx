@@ -1,6 +1,6 @@
 import React from 'react';
-import SectionTitle from '@/src/shared/components/_commons/SectionTitle';
 import { Card } from '@nextui-org/react';
+import SectionTitle from '@shared/components/global/SectionTitle';
 import Image from 'next/image';
 import Link from 'next/link';
 

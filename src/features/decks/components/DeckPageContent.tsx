@@ -2,13 +2,13 @@
 
 import React from 'react';
 import { TbCardsFilled } from 'react-icons/tb';
-import DeckImage from '@/src/shared/components/_commons/DeckImage';
-import DifficultyIndicator from '@/src/shared/components/_commons/DifficultyIndicator';
-import PlayButton from '@/src/shared/components/_commons/PlayButton';
-import SelectQuestionType from '@/src/shared/components/_commons/SelectQuestionType';
 import UserDeckGuessesProgressionSection from '@features/decks/components/UserDeckGuessesProgressionSection';
 import { UserContext } from '@lib/contexts/UserProvider';
 import { navigationLinks } from '@lib/data/navigation-links';
+import DeckImage from '@shared/components/global/DeckImage';
+import DifficultyIndicator from '@shared/components/global/DifficultyIndicator';
+import PlayButton from '@shared/components/global/PlayButton';
+import SelectQuestionType from '@shared/components/global/SelectQuestionType';
 import useGameStore from '@stores/game-store';
 import Link from 'next/link';
 
