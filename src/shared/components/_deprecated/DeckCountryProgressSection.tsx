@@ -1,14 +1,14 @@
 'use client';
 
 import React from 'react';
+import useGameStore from '@stores/game-store';
 import CountryScoreOverview, {
   PopoverContentScoreOverview,
-} from '@shared/components/global/CountryScoreOverview';
+} from '@components/global/CountryScoreOverview';
 import DeckProgress, {
   PopoverContentDeckProgress,
-} from '@shared/components/global/DeckProgress';
-import PopoverCustom from '@shared/components/global/Popover';
-import useGameStore from '@stores/game-store';
+} from '@components/global/DeckProgress';
+import PopoverCustom from '@components/global/Popover';
 
 type Props = {
   countryIds: CountryRecord['id'][];

@@ -8,8 +8,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/src/shared/components/ui/dialog';
-import LoginButton from '@shared/components/global/login/LoginButton';
 import dynamic from 'next/dynamic';
+import LoginButton from '@components/global/login/LoginButton';
 
 const LoginModal = ({
   open,

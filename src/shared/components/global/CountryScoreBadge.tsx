@@ -1,7 +1,7 @@
 import React from 'react';
 import { RiShieldStarFill } from 'react-icons/ri';
 import { RiShieldStarLine } from 'react-icons/ri';
-import { CountryScoreStatus } from '@shared/utils/score';
+import { CountryScoreStatus } from '@utils/score';
 
 type Props = { countryScoreStatus: CountryScoreStatus };
 

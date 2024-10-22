@@ -3,7 +3,7 @@
 import React from 'react';
 import { Button } from '@/src/shared/components/ui/button';
 import { navigationLinks } from '@lib/data/navigation-links';
-import LoginModal from '@shared/components/global/navbar/LoginModal';
+import LoginModal from '@components/global/navbar/LoginModal';
 
 type Props = {
   text?: string;

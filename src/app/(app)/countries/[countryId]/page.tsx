@@ -6,8 +6,8 @@ import UserGuesses from '@features/userInsights/components/UserGuesses';
 import { fetchUserGuessesHistoryByCountry } from '@features/userInsights/server/db/user-guesses-history';
 import { navigationLinks } from '@lib/data/navigation-links';
 import { getCountryById } from '@lib/queries/countries';
-import PageCenteredLink from '@shared/components/global/PageCenteredLink';
-import { getAuthenticatedUser } from '@shared/server/db/get-authenticated-user';
+import { getAuthenticatedUser } from '@server/db/get-authenticated-user';
+import PageCenteredLink from '@components/global/PageCenteredLink';
 
 type Props = {
   params: { countryId: number };

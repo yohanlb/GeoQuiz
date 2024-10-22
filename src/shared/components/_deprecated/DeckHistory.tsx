@@ -1,10 +1,10 @@
 'use client';
 
 import React from 'react';
-import DeckItem from '@shared/components/global/DeckItem';
-import SectionTitle from '@shared/components/global/SectionTitle';
 import { useDeckHistory } from '@stores/deck-history-store';
 import useGameStore from '@stores/game-store';
+import DeckItem from '@components/global/DeckItem';
+import SectionTitle from '@components/global/SectionTitle';
 
 type Props = { decks: DeckWithStatsRecord[] };
 

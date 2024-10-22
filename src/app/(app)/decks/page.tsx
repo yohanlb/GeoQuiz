@@ -2,8 +2,8 @@ import React from 'react';
 import FilterableDeckList from '@features/decks/components/FilterableDeckList';
 import { navigationLinks } from '@lib/data/navigation-links';
 import { getDecks } from '@lib/queries/gameDecks';
-import PageCenteredLink from '@shared/components/global/PageCenteredLink';
-import SectionTitle from '@shared/components/global/SectionTitle';
+import PageCenteredLink from '@components/global/PageCenteredLink';
+import SectionTitle from '@components/global/SectionTitle';
 
 export const metadata = {
   title: 'Decks',

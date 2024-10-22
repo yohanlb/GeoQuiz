@@ -1,6 +1,6 @@
 import React from 'react';
 import ResultsView from '@features/quiz/components/ResultsView';
-import { getAuthenticatedUser } from '@shared/server/db/get-authenticated-user';
+import { getAuthenticatedUser } from '@server/db/get-authenticated-user';
 
 export const metadata = {
   title: 'Results',

@@ -1,6 +1,6 @@
 import QuizWrapper from '@/src/app/(app)/quiz/[deckName]/QuizWrapper';
 import { fetchAllUserGuessesHistory } from '@features/userInsights/server/db/user-guesses-history';
-import { getAuthenticatedUser } from '@shared/server/db/get-authenticated-user';
+import { getAuthenticatedUser } from '@server/db/get-authenticated-user';
 import { getDeckByName } from '../../../../lib/queries/gameDecks';
 
 type Props = {

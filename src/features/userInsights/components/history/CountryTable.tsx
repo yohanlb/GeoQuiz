@@ -6,9 +6,9 @@ import {
   TableCell,
   TableRow,
 } from '@/src/shared/components/ui/table';
-import DifficultyIndicator from '@shared/components/global/DifficultyIndicator';
 import useGameStore from '@stores/game-store';
 import Link from 'next/link';
+import DifficultyIndicator from '@components/global/DifficultyIndicator';
 
 type Props = {
   countries: CountryWithScores[];

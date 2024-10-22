@@ -1,8 +1,8 @@
 import React from 'react';
 import { navigationLinks } from '@lib/data/navigation-links';
-import DeckItem from '@shared/components/global/DeckItem';
-import DeckItemLarge from '@shared/components/global/DeckItemLarge';
 import Link from 'next/link';
+import DeckItem from '@components/global/DeckItem';
+import DeckItemLarge from '@components/global/DeckItemLarge';
 
 type DeckListProps = {
   decks: DeckWithStatsRecord[];

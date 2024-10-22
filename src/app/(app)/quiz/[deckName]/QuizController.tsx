@@ -4,9 +4,9 @@ import React, { startTransition } from 'react';
 import { postCountryStats } from '@features/countries/server/actions/country-stats';
 import QuestionView from '@features/quiz/components/QuestionView';
 import { updateUserGuessesHistory } from '@features/userInsights/server/actions/update-user-guesses-history';
-import { calculateNewDeckScore } from '@shared/utils/score';
 import { useDeckHistory } from '@stores/deck-history-store';
 import useGameStore from '@stores/game-store';
+import { calculateNewDeckScore } from '@utils/score';
 import { useRouter } from 'next/navigation';
 
 type Props = {

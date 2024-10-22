@@ -3,8 +3,8 @@
 import React from 'react';
 import DailyCountryQuiz from '@features/daily/components/DailyCountryQuiz';
 import { useCountryOfTheDay } from '@hooks/useCountryOfTheDay';
-import LoadingSpinner from '@shared/components/global/LoadingSpinner';
 import { motion } from 'framer-motion';
+import LoadingSpinner from '@components/global/LoadingSpinner';
 
 function CotdPageContent() {
   const { data: dailyQuestion, isLoading, error } = useCountryOfTheDay(0);

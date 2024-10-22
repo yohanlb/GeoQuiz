@@ -1,11 +1,11 @@
 import React from 'react';
 import { navigationLinks } from '@lib/data/navigation-links';
-import MenuNavigationButton from '@shared/components/global/navbar/MenuNavigationButton';
-import MenuUserButton from '@shared/components/global/navbar/MenuUserButton';
 import Image from 'next/image';
 import Link from 'next/link';
 import HeaderHeroSeparator from '@assets/HeaderHeroSeparator.svg';
 import GeoQuizLogoCompact from '@assets/LogoCompact.svg';
+import MenuNavigationButton from '@components/global/navbar/MenuNavigationButton';
+import MenuUserButton from '@components/global/navbar/MenuUserButton';
 
 function NavBar() {
   return (

@@ -3,10 +3,10 @@
 import React from 'react';
 import { Features } from '@features/welcome/components/landing/Features';
 import { navigationLinks } from '@lib/data/navigation-links';
-import LoginModalTrigger from '@shared/components/global/navbar/LoginModalTrigger';
 import Image from 'next/image';
 import Link from 'next/link';
 import GeoQuizLogo from '@assets/GeoQuizGlobeLogo.png';
+import LoginModalTrigger from '@components/global/navbar/LoginModalTrigger';
 
 function LandingContent() {
   return (

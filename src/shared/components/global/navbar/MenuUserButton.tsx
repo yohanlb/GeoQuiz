@@ -3,8 +3,8 @@
 import React from 'react';
 import { UserContext } from '@lib/contexts/UserProvider';
 import { Avatar } from '@nextui-org/react';
-import MenuUser from '@shared/components/global/navbar/MenuUser';
 import posthog from 'posthog-js';
+import MenuUser from '@components/global/navbar/MenuUser';
 
 const MenuUserButton = () => {
   const { user, loading } = React.useContext(UserContext);

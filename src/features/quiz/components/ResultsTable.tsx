@@ -2,11 +2,11 @@ import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
 import ResultsTableResultCell from '@features/quiz/components/ResultsTableResultCell';
 import { navigationLinks } from '@lib/data/navigation-links';
-import DifficultyIndicator from '@shared/components/global/DifficultyIndicator';
 import useGameStore from '@stores/game-store';
 import { User } from '@supabase/supabase-js';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import DifficultyIndicator from '@components/global/DifficultyIndicator';
 
 const ResultsTable = ({ user }: { user: User | null }) => {
   const { answeredQuestions } = useGameStore();

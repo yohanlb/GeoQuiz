@@ -2,11 +2,11 @@
 
 import React from 'react';
 import { navigationLinks } from '@lib/data/navigation-links';
-import LoadingSpinner from '@shared/components/global/LoadingSpinner';
-import PageCenteredLink from '@shared/components/global/PageCenteredLink';
 import useGameStore from '@stores/game-store';
 import { User } from '@supabase/supabase-js';
 import Link from 'next/link';
+import LoadingSpinner from '@components/global/LoadingSpinner';
+import PageCenteredLink from '@components/global/PageCenteredLink';
 import LinkToDeck from './LinkToDeck';
 import ResultsTable from './ResultsTable';
 import ShareResults from './ShareResults';

@@ -4,12 +4,12 @@ import UserProvider from '@lib/contexts/UserProvider';
 import { metadatas } from '@lib/metadatas';
 import { PHProvider } from '@lib/providers';
 import { NextUIProvider } from '@nextui-org/react';
-import BackgroundGradient from '@shared/components/global/BackgroundGradient';
-import MetaTags from '@shared/components/global/MetaTags';
-import NavBar from '@shared/components/global/navbar/NavBar';
-import { inter, notoEmoji } from '@shared/utils/font';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { inter, notoEmoji } from '@utils/font';
 import dynamic from 'next/dynamic';
+import BackgroundGradient from '@components/global/BackgroundGradient';
+import MetaTags from '@components/global/MetaTags';
+import NavBar from '@components/global/navbar/NavBar';
 import './globals.css';
 
 const PostHogPageView = dynamic(() => import('./PostHogPageView'), {

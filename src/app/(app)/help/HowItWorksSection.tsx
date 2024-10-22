@@ -1,5 +1,5 @@
 import React from 'react';
-import SectionTitle from '@shared/components/global/SectionTitle';
+import SectionTitle from '@components/global/SectionTitle';
 
 const HowItWorksSection = () => {
   return (

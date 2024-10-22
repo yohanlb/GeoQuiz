@@ -1,6 +1,6 @@
 import React from 'react';
 import { navigationLinks } from '@lib/data/navigation-links';
-import PageCenteredLink from '@shared/components/global/PageCenteredLink';
+import PageCenteredLink from '@components/global/PageCenteredLink';
 
 type Props = {
   score: number;

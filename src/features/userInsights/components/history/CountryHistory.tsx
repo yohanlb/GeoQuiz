@@ -4,10 +4,10 @@ import { FaRegFlag } from 'react-icons/fa6';
 import { PiCity } from 'react-icons/pi';
 import { UserGuessHistoryWithCountry } from '@features/userInsights/server/db/user-guesses-history';
 import { navigationLinks } from '@lib/data/navigation-links';
-import DifficultyIndicator from '@shared/components/global/DifficultyIndicator';
-import GuessesList from '@shared/components/global/GuessesList';
-import SectionTitle from '@shared/components/global/SectionTitle';
 import Link from 'next/link';
+import DifficultyIndicator from '@components/global/DifficultyIndicator';
+import GuessesList from '@components/global/GuessesList';
+import SectionTitle from '@components/global/SectionTitle';
 
 type Props = { lastUserGuesses: UserGuessHistoryWithCountry[] };
 

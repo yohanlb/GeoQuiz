@@ -1,9 +1,9 @@
 'use client';
 
 import React from 'react';
-import AttemptSquare from '@shared/components/global/AttemptSquare';
-import CountryScoreBadge from '@shared/components/global/CountryScoreBadge';
-import { getCountryScoreStatus } from '@shared/utils/score';
+import { getCountryScoreStatus } from '@utils/score';
+import AttemptSquare from '@components/global/AttemptSquare';
+import CountryScoreBadge from '@components/global/CountryScoreBadge';
 
 type Props = {
   countryHistory: boolean[];

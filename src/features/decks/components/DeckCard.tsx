@@ -1,7 +1,7 @@
 import React from 'react';
 import DeckInfoDialog from '@features/decks/components/DeckInfoDialog';
 import DeckInfoDialogContent from '@features/decks/components/DeckInfoDialogContent';
-import { getRandomCardGradient } from '@shared/utils/utils';
+import { getRandomCardGradient } from '@utils/utils';
 import Image from 'next/image';
 
 type Props = {

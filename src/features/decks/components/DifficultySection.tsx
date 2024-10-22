@@ -1,6 +1,6 @@
 import React from 'react';
 import DeckGrid from '@features/decks/components/DeckGrid';
-import SectionTitle from '@shared/components/global/SectionTitle';
+import SectionTitle from '@components/global/SectionTitle';
 
 type Props = {
   decks: DeckWithStatsRecord[];

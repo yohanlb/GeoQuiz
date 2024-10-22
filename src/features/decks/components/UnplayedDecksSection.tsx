@@ -2,9 +2,9 @@
 
 import React from 'react';
 import DeckGrid from '@features/decks/components/DeckGrid';
-import SectionTitle from '@shared/components/global/SectionTitle';
-import { isBreakpoint } from '@shared/utils/screen';
 import { useDeckHistory } from '@stores/deck-history-store';
+import { isBreakpoint } from '@utils/screen';
+import SectionTitle from '@components/global/SectionTitle';
 
 type Props = {
   decks: DeckWithStatsRecord[];

@@ -4,9 +4,9 @@ import {
   FEEDBACK_FORM_LINK,
   navigationLinks,
 } from '@lib/data/navigation-links';
-import PageCenteredLink from '@shared/components/global/PageCenteredLink';
-import SectionTitle from '@shared/components/global/SectionTitle';
 import Link from 'next/link';
+import PageCenteredLink from '@components/global/PageCenteredLink';
+import SectionTitle from '@components/global/SectionTitle';
 import HowItWorksSection from './HowItWorksSection';
 
 export const metadata = {

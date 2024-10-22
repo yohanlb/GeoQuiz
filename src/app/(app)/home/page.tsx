@@ -6,8 +6,8 @@ import RegionSection from '@features/decks/components/RegionSection';
 import CountryOfTheDay from '@features/welcome/components/home/CountryOfTheDay';
 import UpdateMessageAlert from '@features/welcome/components/home/UpdateMessageAlert';
 import { navigationLinks } from '@lib/data/navigation-links';
-import PageCenteredLink from '@shared/components/global/PageCenteredLink';
 import dynamic from 'next/dynamic';
+import PageCenteredLink from '@components/global/PageCenteredLink';
 import { getDecks, getFeaturedDecks } from '../../../lib/queries/gameDecks';
 
 const UnplayedDecksSection = dynamic(

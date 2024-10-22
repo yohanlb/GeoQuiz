@@ -3,8 +3,8 @@
 import React from 'react';
 import { useFetchQuestions } from '@hooks/useFetchQuestions';
 import useGameStore from '@lib/stores/game-store';
-import LoadingSpinner from '@shared/components/global/LoadingSpinner';
 import { motion } from 'framer-motion';
+import LoadingSpinner from '@components/global/LoadingSpinner';
 import QuizController from './QuizController';
 
 type Props = {

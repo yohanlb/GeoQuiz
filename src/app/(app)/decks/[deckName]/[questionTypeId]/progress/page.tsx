@@ -9,8 +9,8 @@ import QuestionTypeLink from '@features/userInsights/components/deckProgression/
 import { fetchUserGuessesHistoryByCountryIds } from '@features/userInsights/server/db/user-guesses-history';
 import { navigationLinks } from '@lib/data/navigation-links';
 import { getDeckByName } from '@lib/queries/gameDecks';
-import SectionTitle from '@shared/components/global/SectionTitle';
 import Link from 'next/link';
+import SectionTitle from '@components/global/SectionTitle';
 
 type Props = {
   params: { deckName: string; questionTypeId?: Question['questionTypeId'] };

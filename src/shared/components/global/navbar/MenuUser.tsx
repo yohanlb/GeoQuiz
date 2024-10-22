@@ -10,10 +10,10 @@ import {
   DropdownMenuTrigger,
 } from '@/src/shared/components/ui/dropdown-menu';
 import { navigationLinks } from '@lib/data/navigation-links';
-import LogoutButton from '@shared/components/global/login/LogoutButton';
-import LoginModalTrigger from '@shared/components/global/navbar/LoginModalTrigger';
 import { User } from '@supabase/supabase-js';
 import Link from 'next/link';
+import LogoutButton from '@components/global/login/LogoutButton';
+import LoginModalTrigger from '@components/global/navbar/LoginModalTrigger';
 
 type Props = {
   user: User | null;

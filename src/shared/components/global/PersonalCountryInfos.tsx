@@ -3,7 +3,7 @@
 import React from 'react';
 import useCountryLocalUserGuesses from '@hooks/useCountryLocalUserGuesses';
 import { UserContext } from '@lib/contexts/UserProvider';
-import GuessesList from '@shared/components/global/GuessesList';
+import GuessesList from '@components/global/GuessesList';
 
 type Props = {
   countryId: CountryRecord['id'];
