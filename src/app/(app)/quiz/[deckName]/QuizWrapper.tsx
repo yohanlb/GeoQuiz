@@ -5,7 +5,7 @@ import { useFetchQuestions } from '@hooks/useFetchQuestions';
 import useGameStore from '@lib/stores/game-store';
 import LoadingSpinner from '@shared/components/global/LoadingSpinner';
 import { motion } from 'framer-motion';
-import GameController from './GameController';
+import QuizController from './QuizController';
 
 type Props = {
   userGuessesHistory: UserGuessHistoryPartial[];
@@ -13,7 +13,7 @@ type Props = {
   amountOfQuestions: number;
 };
 
-const GameClientWrapper = ({
+const QuizWrapper = ({
   userGuessesHistory,
   deck,
   amountOfQuestions,
@@ -46,7 +46,7 @@ const GameClientWrapper = ({
     );
   } else {
     return (
-      <GameController
+      <QuizController
         questions={questions}
         userGuessesHistory={userGuessesHistory}
       />
@@ -54,4 +54,4 @@ const GameClientWrapper = ({
   }
 };
 
-export default GameClientWrapper;
+export default QuizWrapper;

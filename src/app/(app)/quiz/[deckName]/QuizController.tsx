@@ -14,7 +14,7 @@ type Props = {
   userGuessesHistory: UserGuessHistoryPartial[];
 };
 
-function GameController({ questions, userGuessesHistory }: Readonly<Props>) {
+function QuizController({ questions, userGuessesHistory }: Readonly<Props>) {
   const {
     currentQuestionIndex,
     incrementQuestionIndex,
@@ -145,4 +145,4 @@ function GameController({ questions, userGuessesHistory }: Readonly<Props>) {
   );
 }
 
-export default GameController;
+export default QuizController;
