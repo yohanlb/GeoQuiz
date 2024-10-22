@@ -1,68 +1,72 @@
 import { createClient } from '@lib/supabase/server';
 
-export async function getCountryById(countryId: number) {
-  const supabase = createClient();
+const baseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL + '/rest/v1';
+const ONE_HOUR = 3600;
+export async function getCountryById(countryId: CountryRecord['id']) {
+  const url = `${baseUrl}/countries_complete_view?id=eq.${countryId}&select=*`;
 
-  const { data, error } = await supabase
-    .from('countries_complete_view')
-    .select('*')
-    .eq('id', countryId)
-    .single();
+  const res: Response = await fetch(url, {
+    headers: {
+      apiKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      'Content-Type': 'application/json',
+    },
+    next: { revalidate: ONE_HOUR },
+  });
 
-  if (error && error.code !== 'PGRST116') {
-    console.error('Error fetching user countries by id:', error);
-    throw error;
+  if (!res.ok) {
+    console.error('Error fetching country by id:', res.statusText);
+    throw new Error('Failed to fetch country by id');
   }
 
-  return data as CountryCompleteViewRecord;
+  const data = await res.json();
+
+  return (data[0] as CountryCompleteViewRecord) || null;
 }
 
-export async function getCountriesByIds(countryIds: number[]) {
-  const supabase = createClient();
-  const { data, error } = await supabase
-    .from('countries_complete_view')
-    .select('*')
-    .in('id', countryIds);
-
-  if (error && error.code !== 'PGRST116') {
-    console.error('Error fetching user countries by ids:', error);
-    throw error;
+export async function getCountriesByIds(countryIds: CountryRecord['id'][]) {
+  if (!Array.isArray(countryIds) || countryIds.length === 0) {
+    console.error('No country ids provided');
+    return [];
   }
+
+  const idsString = countryIds.join(',');
+  const encodedIds = encodeURIComponent(`(${idsString})`);
+
+  const url = `${baseUrl}/countries_complete_view?id=in.${encodedIds}&select=*`;
+
+  const res = await fetch(url, {
+    headers: {
+      apiKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      'Content-Type': 'application/json',
+    },
+    next: { revalidate: ONE_HOUR },
+  });
+
+  if (!res.ok) {
+    console.error('Error fetching countries by ids:', res.statusText);
+    throw new Error('Failed to fetch countries by ids');
+  }
+
+  const data = await res.json();
 
   return data as CountryCompleteViewRecord[];
 }
 
-export async function getCountriesByName(countryName: string) {
-  const supabase = createClient();
-  const { data, error } = await supabase
-    .from('countries')
-    .select('*')
-    .eq(
-      'name',
-      countryName.charAt(0).toUpperCase() + countryName.slice(1).toLowerCase(),
-    )
-    .single();
-
-  if (error && error.code !== 'PGRST116') {
-    console.error('Error fetching user countries by name:', error);
-    throw error;
-  }
-
-  return data as CountryRecord;
-}
-
 export async function getAllCountries() {
-  const supabase = createClient();
-  const { data, error } = await supabase
-    .from('countries')
-    .select('*')
-    .order('name');
+  const res = await fetch(`${baseUrl}/countries?select=*`, {
+    headers: {
+      apiKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      'Content-Type': 'application/json',
+    },
+    next: { revalidate: ONE_HOUR }, // 1 hour
+  });
 
-  if (error && error.code !== 'PGRST116') {
-    console.error('Error fetching user countries:', error);
-    throw error;
+  if (!res.ok) {
+    console.error('Error fetching countries:', res.statusText);
+    throw new Error('Failed to fetch countries');
   }
 
+  const data = await res.json();
   return data as CountryRecord[];
 }
 
@@ -79,19 +83,4 @@ export async function getAllCountriesCompleteView() {
   }
 
   return data as CountryCompleteViewRecord[];
-}
-
-export async function getCountriesById(countryIds: number[]) {
-  const supabase = createClient();
-  const { data, error } = await supabase
-    .from('countries')
-    .select('*')
-    .in('id', countryIds);
-
-  if (error && error.code !== 'PGRST116') {
-    console.error('Error fetching user countries by id:', error);
-    throw error;
-  }
-
-  return data as CountryRecord[];
 }

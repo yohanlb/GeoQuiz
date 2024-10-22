@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
 import {
-  getCountriesById,
+  getCountriesByIds,
   getCountryById,
 } from '@features/countries/server/db/countries';
 import { navigationLinks } from '@lib/data/navigation-links';
@@ -39,7 +39,7 @@ async function page({ params }: Props) {
   const { countryId } = params;
   const country = await getCountryById(countryId);
 
-  const neighboringCountries = await getCountriesById(
+  const neighboringCountries = await getCountriesByIds(
     country.closest_country_ids ?? [],
   );
 
