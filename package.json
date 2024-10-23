@@ -21,8 +21,8 @@
     "format:fix": "prettier --write --ignore-path .gitignore .",
     "test": "cross-env NODE_ENV=test jest",
     "test:watch": "cross-env NODE_ENV=test jest --watch",
-    "remotion:studio": "pnpm remotion studio ./remotionStudio/index.ts",
-    "remotion:render": "pnpm remotion render ./remotionStudio/index.ts TiktokQuizFlags ./remotionStudio/renders/out.mp4",
+    "remotion:studio": "pnpm remotion studio ./src/features/remotionStudio/index.ts",
+    "remotion:render": "pnpm remotion render ./src/features/remotionStudio/index.ts TiktokQuizFlags ./renders/out.mp4",
     "generate:types": "supabase gen types typescript --project-id \"adwhviervvdqnbswunen\" --schema public > ./src/lib/types/database.types.ts"
   },
   "dependencies": {

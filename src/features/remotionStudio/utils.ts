@@ -1,6 +1,4 @@
-// TODO: refactor this file and remove the eslint-disable-next-line
-//eslint-disable-next-line
-import { getAllCountriesCompleteView } from '@features/countries/server/db/countries';
+import { supabase } from '@lib/supabase/static';
 
 export const defaultProps = {
   difficultyPercent: 1,
@@ -16,8 +14,22 @@ export const defaultProps = {
   ],
 };
 
+export async function fetchAllCountriesForVideo() {
+  const { data, error } = await supabase
+    .from('countries_complete_view')
+    .select('*')
+    .order('name');
+
+  if (error && error.code !== 'PGRST116') {
+    console.error('Error fetching user countries complete view:', error);
+    throw error;
+  }
+
+  return data as CountryCompleteViewRecord[];
+}
+
 export const getCountriesForVideo = async () => {
-  const allCountries = await getAllCountriesCompleteView();
+  const allCountries = await fetchAllCountriesForVideo();
   const pickedCountries = pickCountries(allCountries);
   return pickedCountries;
 };

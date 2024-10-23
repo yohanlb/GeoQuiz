@@ -1,11 +1,12 @@
 import React from 'react';
-import { CompTiktokQuizFlags } from '@features/remotionStudio/CompTiktokQuizFlags';
 import { Composition, Folder } from 'remotion';
+import { CompTiktokQuizFlags } from './CompTiktokQuizFlags';
 import { CompTiktokQuizTerritories } from './CompTiktokQuizTerritories';
 import { CountryForVideo, videoPropsSchema } from './schemas';
 import { FPS, TIMINGS_GLOBAL } from './timings';
 import { defaultProps, getCountriesForVideo } from './utils';
-import '../src/app/globals.css';
+// eslint-disable-next-line
+import '../../app/globals.css';
 
 export const NB_OF_COUNTRIES = 10;
 
