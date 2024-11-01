@@ -1,18 +1,21 @@
+'use client';
+
 import React from 'react';
 import LandingContent from '@features/welcome/components/landing/LandingContent';
+import { UserContext } from '@lib/contexts/UserProvider';
 import { navigationLinks } from '@lib/data/navigation-links';
-import { createClient } from '@lib/supabase/server';
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
-const LandingPage = async () => {
-  const supabase = createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+const LandingPage = () => {
+  const { user } = React.useContext(UserContext);
+  const router = useRouter();
 
-  if (user) {
-    redirect(navigationLinks.home.href);
-  }
+  React.useEffect(() => {
+    if (user) {
+      router.replace(navigationLinks.home.href);
+    }
+  }, [user, router]);
+
   return <LandingContent />;
 };
 
