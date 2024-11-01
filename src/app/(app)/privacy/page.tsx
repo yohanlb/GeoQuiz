@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React from 'react';
+import { FEEDBACK_FORM_LINK } from '@lib/data/navigation-links';
 
 export const metadata = {
   title: 'Privacy Policy',
@@ -90,7 +91,6 @@ function PrivacyPage() {
             <strong>Website</strong> refers to GeoQuiz, accessible from{' '}
             <a
               href='https://geoquiz.co'
-              rel='external nofollow noopener'
               target='_blank'
               className='text-blue-500 hover:underline'
             >
@@ -486,7 +486,7 @@ function PrivacyPage() {
           <li>
             By filling the{' '}
             <a
-              href='https://forms.gle/YrScov3rJU7dEdWS8'
+              href={FEEDBACK_FORM_LINK}
               target='blank'
               rel='noreferrer'
               className='text-blue-500 hover:underline'

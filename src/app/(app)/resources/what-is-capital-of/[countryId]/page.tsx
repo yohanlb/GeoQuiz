@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
-import { navigationLinks } from '@lib/navigationLinks';
+import {
+  getCountriesByIds,
+  getCountryById,
+} from '@features/countries/server/db/countries';
+import { navigationLinks } from '@lib/data/navigation-links';
 import { supabase } from '@lib/supabase/static';
-import { getCountriesById, getCountryById } from '@utils/db/countries';
 import Link from 'next/link';
 
 type Props = {
   params: {
-    countryId: CountryData['id'];
+    countryId: CountryRecord['id'];
   };
 };
 
@@ -36,8 +39,8 @@ async function page({ params }: Props) {
   const { countryId } = params;
   const country = await getCountryById(countryId);
 
-  const neighboringCountries = await getCountriesById(
-    country.closest_country_ids,
+  const neighboringCountries = await getCountriesByIds(
+    country.closest_country_ids ?? [],
   );
 
   if (!country) {
@@ -54,6 +57,7 @@ async function page({ params }: Props) {
         countryCode={country.iso2}
         svg
         aria-label={country.name}
+        alt={'flag'}
         style={{
           width: '30%',
           height: 'auto',

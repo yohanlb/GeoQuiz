@@ -1,8 +1,8 @@
 import React from 'react';
-import { navigationLinks } from '@lib/navigationLinks';
+import LandingContent from '@features/welcome/components/landing/LandingContent';
+import { navigationLinks } from '@lib/data/navigation-links';
 import { createClient } from '@lib/supabase/server';
 import { redirect } from 'next/navigation';
-import LandingContent from '@components/landing/LandingContent';
 
 const LandingPage = async () => {
   const supabase = createClient();

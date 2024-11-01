@@ -7,7 +7,7 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:jest/recommended"
   ],
-  "plugins": ["jest", "@remotion"],
+  "plugins": ["jest", "@remotion", "boundaries"],
   "overrides": [
     {
       "files": ["remotion/*.{ts,tsx}"],
@@ -16,5 +16,72 @@
   ],
   "env": {
     "jest/globals": true
+  },
+  "settings": {
+    "boundaries/include": ["src/**/*"],
+    "boundaries/elements": [
+      {
+        "mode": "full",
+        "type": "shared",
+        "pattern": [
+          "src/shared/**/*",
+          "src/__tests__/**/*",
+          "src/assets/**/*",
+          "src/lib/**/*"
+        ]
+      },
+      {
+        "mode": "full",
+        "type": "feature",
+        "capture": ["featureName"],
+        "pattern": ["src/features/*/**/*"]
+      },
+      {
+        "mode": "full",
+        "type": "app",
+        "capture": ["_", "fileName"],
+        "pattern": ["src/app/**/*"]
+      },
+      {
+        "mode": "full",
+        "type": "neverImport",
+        "pattern": ["src/*", "src/scripts/**/*"]
+      }
+    ]
+  },
+  "rules": {
+    "boundaries/no-unknown": ["error"],
+    "boundaries/no-unknown-files": ["error"],
+    "boundaries/element-types": [
+      "error",
+      {
+        "default": "disallow",
+        "rules": [
+          {
+            "from": ["shared"],
+            "allow": ["shared"]
+          },
+          {
+            "from": ["feature"],
+            "allow": [
+              "shared",
+              ["feature", { "featureName": "${from.featureName}" }]
+            ]
+          },
+          {
+            "from": ["neverImport"],
+            "allow": ["shared", "feature"]
+          },
+          {
+            "from": ["app"],
+            "allow": ["shared", "feature", "app"]
+          },
+          {
+            "from": ["app"],
+            "allow": [["app", { "fileName": "*.css" }]]
+          }
+        ]
+      }
+    ]
   }
 }

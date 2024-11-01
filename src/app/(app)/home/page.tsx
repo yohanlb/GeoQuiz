@@ -1,17 +1,17 @@
 import React from 'react';
-import { navigationLinks } from '@lib/navigationLinks';
+import ContinentsSection from '@features/decks/components/ContinentsSection';
+import DifficultySection from '@features/decks/components/DifficultySection';
+import FeaturedAndPopularSection from '@features/decks/components/FeaturedAndPopularSection';
+import RegionSection from '@features/decks/components/RegionSection';
+import { getDecks, getFeaturedDecks } from '@features/decks/server/db/decks';
+import CountryOfTheDay from '@features/welcome/components/home/CountryOfTheDay';
+import UpdateMessageAlert from '@features/welcome/components/home/UpdateMessageAlert';
+import { navigationLinks } from '@lib/data/navigation-links';
 import dynamic from 'next/dynamic';
-import PageCenteredLink from '@components/_commons/PageCenteredLink';
-import ContinentsSection from '@components/home/ContinentsSection';
-import CountryOfTheDay from '@components/home/CountryOfTheDay';
-import DifficultySection from '@components/home/DifficultySection';
-import FeaturedAndPopularSection from '@components/home/FeaturedAndPopularSection';
-import RegionSection from '@components/home/RegionSection';
-import UpdateMessageAlert from '@components/home/UpdateMessageAlert';
-import { getDecks, getFeaturedDecks } from '../../../utils/queries/gameDecks';
+import PageCenteredLink from '@components/global/PageCenteredLink';
 
 const UnplayedDecksSection = dynamic(
-  () => import('@components/home/UnplayedDecksSection'),
+  () => import('@features/decks/components/UnplayedDecksSection'),
   {
     ssr: false,
   },

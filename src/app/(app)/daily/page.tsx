@@ -1,5 +1,5 @@
 import React from 'react';
-import CotdPageContent from '@components/daily/CotdPageContent';
+import CotdPageContent from '@features/daily/components/CotdPageContent';
 
 export const metadata = {
   title: 'Country of the Day',

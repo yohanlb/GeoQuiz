@@ -21,7 +21,7 @@ export type Database = {
           emojiU: string | null
           id: number
           is_disabled: boolean
-          iso2: string | null
+          iso2: string
           iso3: string
           latitude: number | null
           longitude: number | null
@@ -47,7 +47,7 @@ export type Database = {
           emojiU?: string | null
           id: number
           is_disabled?: boolean
-          iso2?: string | null
+          iso2: string
           iso3: string
           latitude?: number | null
           longitude?: number | null
@@ -73,7 +73,7 @@ export type Database = {
           emojiU?: string | null
           id?: number
           is_disabled?: boolean
-          iso2?: string | null
+          iso2?: string
           iso3?: string
           latitude?: number | null
           longitude?: number | null
@@ -98,8 +98,6 @@ export type Database = {
           created_at: string | null
           flag_guessed_count: number
           flag_guessed_right: number
-          guessed: number | null
-          guessed_right: number | null
           updated_at: string | null
         }
         Insert: {
@@ -109,8 +107,6 @@ export type Database = {
           created_at?: string | null
           flag_guessed_count?: number
           flag_guessed_right?: number
-          guessed?: number | null
-          guessed_right?: number | null
           updated_at?: string | null
         }
         Update: {
@@ -120,8 +116,6 @@ export type Database = {
           created_at?: string | null
           flag_guessed_count?: number
           flag_guessed_right?: number
-          guessed?: number | null
-          guessed_right?: number | null
           updated_at?: string | null
         }
         Relationships: []
@@ -183,10 +177,10 @@ export type Database = {
       decks: {
         Row: {
           categories: string[] | null
-          countryIds: number[] | null
+          countryIds: number[]
           created_at: string
           description: string | null
-          displayName: string | null
+          displayName: string
           displayPriority: number | null
           id: number
           image_name: string | null
@@ -197,10 +191,10 @@ export type Database = {
         }
         Insert: {
           categories?: string[] | null
-          countryIds?: number[] | null
+          countryIds: number[]
           created_at?: string
           description?: string | null
-          displayName?: string | null
+          displayName: string
           displayPriority?: number | null
           id?: number
           image_name?: string | null
@@ -211,10 +205,10 @@ export type Database = {
         }
         Update: {
           categories?: string[] | null
-          countryIds?: number[] | null
+          countryIds?: number[]
           created_at?: string
           description?: string | null
-          displayName?: string | null
+          displayName?: string
           displayPriority?: number | null
           id?: number
           image_name?: string | null
@@ -227,34 +221,31 @@ export type Database = {
       }
       decks_stats: {
         Row: {
-          averageScore: number | null
+          averageScore: number
           created_at: string
           deckId: number
           id: number
           playCount: number
-          questionType: string
           questionTypeId: number
-          updated_at: string | null
+          updated_at: string
         }
         Insert: {
-          averageScore?: number | null
+          averageScore?: number
           created_at?: string
           deckId: number
           id?: number
           playCount?: number
-          questionType?: string
           questionTypeId: number
-          updated_at?: string | null
+          updated_at?: string
         }
         Update: {
-          averageScore?: number | null
+          averageScore?: number
           created_at?: string
           deckId?: number
           id?: number
           playCount?: number
-          questionType?: string
           questionTypeId?: number
-          updated_at?: string | null
+          updated_at?: string
         }
         Relationships: [
           {
@@ -340,15 +331,7 @@ export type Database = {
           text?: string | null
           user_id?: string
         }
-        Relationships: [
-          {
-            foreignKeyName: "test_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-        ]
+        Relationships: []
       }
       user_guesses_history: {
         Row: {
@@ -400,13 +383,6 @@ export type Database = {
             referencedRelation: "question_types"
             referencedColumns: ["id"]
           },
-          {
-            foreignKeyName: "user_stats_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
         ]
       }
     }
@@ -421,8 +397,6 @@ export type Database = {
           emoji: string | null
           flag_guessed_count: number | null
           flag_guessed_right: number | null
-          guessed: number | null
-          guessed_right: number | null
           id: number | null
           is_disabled: boolean | null
           iso2: string | null
@@ -434,7 +408,6 @@ export type Database = {
           sovereignCountry: string | null
           special_classification: string | null
           subregion: string | null
-          success_rate: number | null
           success_rate_capital: number | null
           success_rate_flag: number | null
           updated_at: string | null
@@ -482,34 +455,20 @@ export type Database = {
         }
         Returns: undefined
       }
-      update_countries_stats:
-        | {
-            Args: {
-              countryid: number
-              guessedright: boolean
-            }
-            Returns: {
-              country_id: number
-              new_guessed: number
-              new_guessed_right: number
-            }[]
-          }
-        | {
-            Args: {
-              countryid: number
-              guessedright: boolean
-              _questiontype: string
-            }
-            Returns: {
-              country_id: number
-              new_guessed: number
-              new_guessed_right: number
-              new_capital_guessed: number
-              new_capital_guessed_right: number
-              new_flag_guessed: number
-              new_flag_guessed_right: number
-            }[]
-          }
+      update_countries_stats: {
+        Args: {
+          countryid: number
+          guessedright: boolean
+          _questiontype: string
+        }
+        Returns: {
+          country_id: number
+          new_capital_guessed: number
+          new_capital_guessed_right: number
+          new_flag_guessed: number
+          new_flag_guessed_right: number
+        }[]
+      }
       update_countries_stats_bulk: {
         Args: {
           data: Json
@@ -610,4 +569,19 @@ export type Enums<
   ? Database[PublicEnumNameOrOptions["schema"]]["Enums"][EnumName]
   : PublicEnumNameOrOptions extends keyof PublicSchema["Enums"]
     ? PublicSchema["Enums"][PublicEnumNameOrOptions]
+    : never
+
+export type CompositeTypes<
+  PublicCompositeTypeNameOrOptions extends
+    | keyof PublicSchema["CompositeTypes"]
+    | { schema: keyof Database },
+  CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
+    schema: keyof Database
+  }
+    ? keyof Database[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
+    : never = never,
+> = PublicCompositeTypeNameOrOptions extends { schema: keyof Database }
+  ? Database[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
+  : PublicCompositeTypeNameOrOptions extends keyof PublicSchema["CompositeTypes"]
+    ? PublicSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
     : never

@@ -1,9 +1,9 @@
 import React from 'react';
-import { navigationLinks } from '@lib/navigationLinks';
-import { getAuthenticatedUser } from '@utils/db/auth/get-authenticated-user';
-import { fetchLastUserGuessesHistoryWithCountryData } from '@utils/db/userGuessesHistory';
-import PageCenteredLink from '@components/_commons/PageCenteredLink';
-import CountryHistory from '@components/history/CountryHistory';
+import CountryHistory from '@features/userInsights/components/history/CountryHistory';
+import { fetchLastUserGuessesHistoryWithCountryRecord } from '@features/userInsights/server/db/user-guesses-history';
+import { navigationLinks } from '@lib/data/navigation-links';
+import { getAuthenticatedUser } from '@server/db/get-authenticated-user';
+import PageCenteredLink from '@components/global/PageCenteredLink';
 
 export const metadata = {
   title: 'History',
@@ -16,7 +16,7 @@ const History = async () => {
     return <div>User data not available</div>;
   }
 
-  const lastUserGuesses = await fetchLastUserGuessesHistoryWithCountryData(
+  const lastUserGuesses = await fetchLastUserGuessesHistoryWithCountryRecord(
     user.id,
     50,
   );

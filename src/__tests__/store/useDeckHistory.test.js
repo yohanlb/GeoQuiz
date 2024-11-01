@@ -1,12 +1,12 @@
+import { AVAILABLE_QUESTION_TYPES } from '@lib/data/consts';
 import {
   initializeDeckResults,
   useDeckHistory,
-} from '@/src/utils/stores/deckHistoryStore';
-import useGameStore from '@/src/utils/stores/gameStore';
-import { AVAILABLE_QUESTION_TYPES } from '@lib/consts';
+} from '@stores/deck-history-store';
+import useGameStore from '@stores/game-store';
 import { act, renderHook } from '@testing-library/react';
 
-jest.mock('@stores/gameStore', () => ({
+jest.mock('@stores/game-store', () => ({
   getState: jest.fn(),
 }));
 jest.useFakeTimers();
