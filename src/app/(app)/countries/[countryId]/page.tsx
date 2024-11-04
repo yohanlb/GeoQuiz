@@ -14,7 +14,8 @@ type Props = {
   params: { countryId: number };
 };
 
-export const revalidate = 60 * 60; // 1 hour
+export const revalidate = 60 * 60 * 24; // 1 day
+export const dynamic = 'force-static';
 
 export async function generateMetadata({ params }: Props) {
   const { countryId } = params;
@@ -33,6 +34,7 @@ export async function generateStaticParams() {
   if (!data) {
     return [];
   }
+
   return data.map((country) => ({
     countryId: country.id.toString(),
   }));
