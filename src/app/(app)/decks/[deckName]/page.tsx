@@ -1,6 +1,6 @@
 import React from 'react';
 import DeckPageContent from '@features/decks/components/DeckPageContent';
-import { getDeckByName } from '@features/decks/server/db/decks';
+import { getDeckByName, getDecks } from '@features/decks/server/db/decks';
 
 type Props = {
   params: { deckName: string };
@@ -13,6 +13,13 @@ export async function generateMetadata({ params }: Props) {
     title: `Play: ${displayName}`,
     description: `Start a quiz about ${displayName}!`,
   };
+}
+
+export async function generateStaticParams() {
+  const decks = await getDecks();
+  return decks.map((deck) => ({
+    deckName: deck.name,
+  }));
 }
 
 const Country = async ({ params }: Props) => {

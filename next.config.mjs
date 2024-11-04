@@ -10,6 +10,7 @@ const withPWA = withPWAInit({
 
 export default withSentryConfig(
   withPWA({
+    staticPageGenerationTimeout: 1000,
     images: {
       remotePatterns: [
         {
