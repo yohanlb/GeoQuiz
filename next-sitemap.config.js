@@ -3,8 +3,8 @@ module.exports = {
   siteUrl: process.env.SITE_URL || 'https://geoquiz.co',
   generateRobotsTxt: true,
   exclude: ['/user', '/quiz', '/daily/test'],
-  sitemapSize: 7000,
-
+  sitemapSize: 200,
+  generateIndexSitemap: true,
   transform: async (config, path) => {
     // Priority 1
     if (path === '/' || path === '/home' || path === '/daily') {
