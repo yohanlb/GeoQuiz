@@ -1,6 +1,5 @@
 import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
-import remotion from '@remotion/eslint-plugin';
 import boundaries from 'eslint-plugin-boundaries';
 import jest from 'eslint-plugin-jest';
 import path from 'node:path';
@@ -26,7 +25,6 @@ const config = [
   {
     plugins: {
       jest,
-      '@remotion': remotion,
       boundaries,
     },
 
@@ -122,10 +120,6 @@ const config = [
       ],
     },
   },
-  ...compat.extends('plugin:@remotion/recommended').map((config) => ({
-    ...config,
-    files: ['remotion/*.{ts,tsx}'],
-  })),
 ];
 
 export default config;
