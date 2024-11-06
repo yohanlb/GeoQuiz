@@ -55,7 +55,7 @@ const Footer = () => {
             <Link
               href={EXTERNAL_LINKS.personalWebsite}
               target='_blank'
-              className='mx-1 font-bold italic tracking-wider text-yellow-400 transition-colors duration-200 hover:text-yellow-300'
+              className='mx-1 font-bold italic tracking-wider text-yellow-400 underline transition-colors duration-200 hover:text-yellow-300'
             >
               Yohan LB
             </Link>
