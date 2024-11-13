@@ -13,7 +13,7 @@ function Page() {
         href={navigationLinks.mysteryCountry.href}
         className='block w-full transition-opacity hover:opacity-90'
       >
-        <div className='transition-bg flex w-full items-center gap-4 overflow-hidden rounded-lg border border-gray-600 bg-background p-2 hover:bg-stone-900/20 md:gap-6 md:p-4'>
+        <div className='transition-bg flex w-full items-center gap-4 overflow-hidden rounded-lg bg-stone-400/5 p-2 hover:bg-stone-400/10 md:gap-6 md:p-4'>
           <div className='relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-md md:h-24 md:w-24'>
             <Image
               src={MysteryCountryIllustration}
