@@ -21,10 +21,12 @@ function Page() {
             />
           </div>
           <div className='flex flex-grow flex-col justify-center'>
-            <h2 className='mb-2 text-xl font-bold text-gray-100'>
+            <h2 className='mb-2 text-lg font-bold text-gray-100 md:text-xl'>
               {navigationLinks.mysteryCountry.label}
             </h2>
-            <p className='text-lg text-gray-400'>A new country every day!</p>
+            <p className='text-base text-gray-400 md:text-lg'>
+              A new country every day!
+            </p>
           </div>
         </div>
       </Link>
