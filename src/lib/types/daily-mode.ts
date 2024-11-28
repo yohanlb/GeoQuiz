@@ -1,4 +1,8 @@
+import { CONTINENTS } from '@lib/data/consts';
+
 export type DailyQuestionType = 'capital' | 'region' | 'flag' | 'shape';
+
+export type Continent = (typeof CONTINENTS)[number];
 
 export type DailyQuestion = {
   questionId: number;
@@ -6,7 +10,7 @@ export type DailyQuestion = {
   countryName: string;
   capitalOptions: string[];
   capitalCorrectIndex: number;
-  regionOptions: string[];
+  regionOptions: Continent[];
   regionCorrectIndex: number;
   flagOptions: string[];
   flagCorrectIndex: number;
