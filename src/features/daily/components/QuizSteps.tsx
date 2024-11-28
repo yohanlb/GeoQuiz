@@ -1,4 +1,5 @@
 import React from 'react';
+import QuestionContinents from '@features/daily/components/QuestionContinents';
 import {
   DailyQuestion,
   DailyQuestionType,
@@ -46,14 +47,14 @@ const QuizSteps: React.FC<Props> = ({
         stepGuessStatus={guesses.region}
         handleNext={handleNext}
       >
-        <QuestionText
+        <QuestionContinents
           options={dailyQuestion.regionOptions}
           correctAnswerIndex={dailyQuestion.regionCorrectIndex}
-          questionType='region'
           handleGuess={handleGuess}
           showOnlyCorrectAnswer={step >= 2}
         />
       </QuizStep>
+
       <QuizStep
         step={2}
         currentStep={step}
