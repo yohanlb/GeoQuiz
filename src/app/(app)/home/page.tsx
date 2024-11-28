@@ -4,7 +4,7 @@ import DifficultySection from '@features/decks/components/DifficultySection';
 import FeaturedAndPopularSection from '@features/decks/components/FeaturedAndPopularSection';
 import RegionSection from '@features/decks/components/RegionSection';
 import { getDecks, getFeaturedDecks } from '@features/decks/server/db/decks';
-import CountryOfTheDay from '@features/welcome/components/home/CountryOfTheDay';
+import DailyChallengesSection from '@features/welcome/components/home/DailyChallengesSection';
 import UpdateMessageAlert from '@features/welcome/components/home/UpdateMessageAlert';
 import { navigationLinks } from '@lib/data/navigation-links';
 import dynamic from 'next/dynamic';
@@ -30,7 +30,7 @@ async function Home() {
     <div className='flex flex-col gap-12 px-4 py-4 text-center md:px-0'>
       <UpdateMessageAlert />
       <FeaturedAndPopularSection featuredDecks={featuredDecks} />
-      <CountryOfTheDay />
+      <DailyChallengesSection />
       <DifficultySection decks={decks} />
       <UnplayedDecksSection decks={decks} />
       <ContinentsSection decks={decks} />

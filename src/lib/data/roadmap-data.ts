@@ -17,7 +17,7 @@ export const ROADMAP_DATA = [
           'Design a page to display user statistics and progress in a visually engaging way',
       },
       {
-        title: 'Country of the Day: save and visualize history',
+        title: 'Mystery Country: save and visualize history',
         description:
           'Track and display your daily mode game progress and history',
       },

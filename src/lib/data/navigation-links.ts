@@ -19,6 +19,8 @@ export const navigationLinks: NavigationLinks = {
   quiz: { label: '', href: '/quiz' },
   results: { label: '', href: '/results' },
   landing: { label: 'Welcome', href: '/' },
+  daily: { label: 'Daily', href: '/daily' },
+  mysteryCountry: { label: 'Mystery Country', href: '/daily/mystery-country' },
   // user menu
   login: { label: 'Login', href: '/login' },
   profile: { label: 'Profile', href: '/profile' },

@@ -13,6 +13,16 @@ export const EMOJIS = {
   unknown: '❓',
 };
 
+export const CONTINENTS = [
+  'Africa',
+  'Asia',
+  'Europe',
+  'Americas',
+  'Oceania',
+  // 'northAmerica',
+  // 'southAmerica',
+] as const;
+
 export const AVAILABLE_QUESTION_TYPES: QuestionType[] = [
   'CountryToCapital',
   'CountryToFlag',
