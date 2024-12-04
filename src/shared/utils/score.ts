@@ -1,3 +1,4 @@
+//TODO: check if this is used anywhere
 export function calculateNewDeckScore(
   userCountryResults: UserCountryResult[],
   numberOfQuestions: number,
