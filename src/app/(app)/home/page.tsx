@@ -7,15 +7,14 @@ import { getDecks, getFeaturedDecks } from '@features/decks/server/db/decks';
 import DailyChallengesSection from '@features/welcome/components/home/DailyChallengesSection';
 import UpdateMessageAlert from '@features/welcome/components/home/UpdateMessageAlert';
 import { navigationLinks } from '@lib/data/navigation-links';
-import dynamic from 'next/dynamic';
 import PageCenteredLink from '@components/global/PageCenteredLink';
 
-const UnplayedDecksSection = dynamic(
-  () => import('@features/decks/components/UnplayedDecksSection'),
-  {
-    ssr: false,
-  },
-);
+// const UnplayedDecksSection = dynamic(
+//   () => import('@features/decks/components/UnplayedDecksSection'),
+//   {
+//     ssr: false,
+//   },
+// );
 
 export const metadata = {
   title: 'Home',
@@ -32,7 +31,7 @@ async function Home() {
       <FeaturedAndPopularSection featuredDecks={featuredDecks} />
       <DailyChallengesSection />
       <DifficultySection decks={decks} />
-      <UnplayedDecksSection decks={decks} />
+      {/* <UnplayedDecksSection decks={decks} /> */}
       <ContinentsSection decks={decks} />
       <RegionSection decks={decks} />
       <PageCenteredLink
