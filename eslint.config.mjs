@@ -1,6 +1,7 @@
 import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
 import boundaries from 'eslint-plugin-boundaries';
+import cypress from 'eslint-plugin-cypress';
 import jest from 'eslint-plugin-jest';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -21,16 +22,19 @@ const config = [
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:jest/recommended',
+    'plugin:cypress/recommended',
   ),
   {
     plugins: {
       jest,
       boundaries,
+      cypress,
     },
 
     languageOptions: {
       globals: {
         ...jest.environments.globals.globals,
+        'cypress/globals': true,
       },
     },
 
@@ -119,6 +123,15 @@ const config = [
         },
       ],
     },
+    // disable expect-expect rule for cypress tests
+    overrides: [
+      {
+        files: ['**/*.cy.ts'],
+        rules: {
+          'jest/expect-expect': 'off',
+        },
+      },
+    ],
   },
 ];
 
