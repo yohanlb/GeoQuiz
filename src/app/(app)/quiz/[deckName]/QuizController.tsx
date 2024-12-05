@@ -4,9 +4,7 @@ import React, { startTransition } from 'react';
 import { postCountryStats } from '@features/countries/server/actions/country-stats';
 import QuestionView from '@features/quiz/components/QuestionView';
 import { updateUserGuessesHistory } from '@features/userInsights/server/actions/update-user-guesses-history';
-import { useDeckHistory } from '@stores/deck-history-store';
 import useGameStore from '@stores/game-store';
-import { calculateNewDeckScore } from '@utils/score';
 import { useRouter } from 'next/navigation';
 
 type Props = {
@@ -24,7 +22,6 @@ function QuizController({ questions, userGuessesHistory }: Readonly<Props>) {
     userAnswers,
     resetUserAnswers,
     addToUserAnswers,
-    userCountryResults,
     addToUserCountryResults,
     gameState,
     setGameState,
@@ -33,7 +30,6 @@ function QuizController({ questions, userGuessesHistory }: Readonly<Props>) {
     addToAnsweredQuestions,
     setUserCountryScoresForCurrentSeries,
   } = useGameStore();
-  const { addNewDeckResult } = useDeckHistory();
   const { push } = useRouter();
   const hasInitialized = React.useRef(false);
 
@@ -128,11 +124,6 @@ function QuizController({ questions, userGuessesHistory }: Readonly<Props>) {
       hasInitialized.current = true;
     }
     if (hasInitialized.current && gameState === 'finished') {
-      const newDeckScore = calculateNewDeckScore(
-        userCountryResults,
-        questions.length,
-      );
-      addNewDeckResult(deck.id, newDeckScore);
       push('/results');
     }
   }, [gameState]); // eslint-disable-line react-hooks/exhaustive-deps

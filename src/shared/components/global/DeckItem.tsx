@@ -1,18 +1,11 @@
 import { TbCardsFilled } from 'react-icons/tb';
 import { navigationLinks } from '@lib/data/navigation-links';
-import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import DifficultyIndicator from './DifficultyIndicator';
 
 type DeckItemProps = {
   deck: DeckWithStatsRecord;
 };
-const UnplayedIndicator = dynamic(
-  () => import('@components/global/UnplayedIndicator'),
-  {
-    ssr: false,
-  },
-);
 
 const DeckItem = ({ deck }: DeckItemProps) => {
   return (
@@ -27,7 +20,6 @@ const DeckItem = ({ deck }: DeckItemProps) => {
             <h2 className='max-w-52 truncate text-sm font-light md:max-w-96'>
               {deck.displayName}
             </h2>
-            <UnplayedIndicator deckId={deck.id} />
           </div>
           <div className='flex items-center space-x-1 font-mono'>
             <span className='text-right'>

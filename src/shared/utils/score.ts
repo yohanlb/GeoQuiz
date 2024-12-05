@@ -1,3 +1,4 @@
+//TODO: check if this is used anywhere
 export function calculateNewDeckScore(
   userCountryResults: UserCountryResult[],
   numberOfQuestions: number,
@@ -42,7 +43,7 @@ export const getCountryScoreStatus = (
   if (results.length <= 0) {
     return 'notEnoughResults';
   }
-  results.slice(0, baseScoreOnLastNAttempts);
+  results = results.slice(0, baseScoreOnLastNAttempts);
   const rightAnswers = results.filter((result) => result === true).length;
   const wrongAnswers = results.filter((result) => result === false).length;
 
