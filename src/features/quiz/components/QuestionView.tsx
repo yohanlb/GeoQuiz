@@ -62,7 +62,10 @@ const QuestionView = ({
   }) as OptionsFlag[];
 
   return (
-    <div className='mx-auto flex h-full max-w-lg flex-col justify-between px-4 pb-3 md:px-0 md:py-2'>
+    <div
+      className='mx-auto flex h-full max-w-lg flex-col justify-between px-4 pb-3 md:px-0 md:py-2'
+      data-test='question-view'
+    >
       <CountryDescription
         countryData={currentQuestion.countryData}
         hideFlag={questionType === 'CountryToFlag'}

@@ -26,7 +26,10 @@ const QuizLoading = () => {
   }, []);
 
   return (
-    <div className='flex h-full w-full flex-col items-center justify-center gap-8 text-wrap p-4'>
+    <div
+      className='flex h-full w-full flex-col items-center justify-center gap-8 text-wrap p-4'
+      data-test='quiz-loading'
+    >
       <Lottie animationData={globeAnimation} loop={true} />
       <motion.p
         className='text-xl'
