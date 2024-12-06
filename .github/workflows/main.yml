@@ -16,6 +16,7 @@ jobs:
     timeout-minutes: 30
     runs-on: ubuntu-22.04
     env:
+      NODE_ENV: test
       NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
       NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
       NEXT_PUBLIC_GEOQUIZ_API_BASE_URL: ${{ secrets.NEXT_PUBLIC_GEOQUIZ_API_BASE_URL }}
