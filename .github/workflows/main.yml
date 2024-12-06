@@ -28,6 +28,6 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          build: pnpm run build
-          start: pnpm start
+          start: pnpm dev
+          wait-on: 'http://localhost:3000'
           install-command: pnpm install --no-frozen-lockfile
