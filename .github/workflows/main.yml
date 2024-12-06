@@ -2,12 +2,10 @@ name: Cypress Tests
 
 on:
   push:
-    branches:
-      - master
+    branches: [master]
   pull_request:
-    branches:
-      - master
-  workflow_dispatch:
+    branches: [master]
+  workflow_dispatch: {}
 
 jobs:
   cypress-run:
