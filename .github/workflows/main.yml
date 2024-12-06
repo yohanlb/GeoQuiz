@@ -41,8 +41,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
-      - name: Verify Cypress
-        run: pnpm cypress verify
+      - name: Install Cypress binary
+        run: pnpm exec cypress install
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
