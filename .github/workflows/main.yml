@@ -7,8 +7,13 @@ on:
     branches: [master]
   workflow_dispatch: {}
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   cypress-run:
+    timeout-minutes: 30
     runs-on: ubuntu-22.04
     env:
       NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
@@ -50,3 +55,10 @@ jobs:
           build: pnpm run build
           start: pnpm start
           install: false
+      - name: Upload Screenshots
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+          retention-days: 5
