@@ -52,14 +52,19 @@ function ResultsView({ user }: Readonly<{ user: User | null }>) {
   return (
     <div className='flex h-full flex-col items-center justify-evenly gap-4 pb-3 md:px-0 md:py-2'>
       <div className='flex flex-col gap-1 md:gap-4'>
-        <h1 className='text-5xl font-bold uppercase italic tracking-wider'>
+        <h1
+          className='text-5xl font-bold uppercase italic tracking-wider'
+          data-test='results-title'
+        >
           Results
         </h1>
         <LinkToDeck />
       </div>
       <ResultsTable user={user} />
       <div className='flex flex-wrap items-center justify-center gap-2 px-1 text-xl tracking-wider'>
-        <p>{formattedCorrectAnswers}% of correct answers!</p>
+        <p data-test='results-percentage'>
+          {formattedCorrectAnswers}% of correct answers!
+        </p>
         <ShareResults />
       </div>
       <div className='flex gap-6 md:gap-16'>
@@ -67,6 +72,7 @@ function ResultsView({ user }: Readonly<{ user: User | null }>) {
           <button
             type='submit'
             className='w-36 rounded-lg border border-gray-700 py-2 text-xl font-normal md:w-60 md:text-2xl'
+            data-test='home-button'
           >
             Home
           </button>
@@ -77,6 +83,7 @@ function ResultsView({ user }: Readonly<{ user: User | null }>) {
             <button
               type='submit'
               className='w-36 rounded-lg bg-gray-300 py-2 text-xl font-normal text-gray-800 md:w-60 md:text-2xl'
+              data-test='retry-button'
             >
               Retry
             </button>

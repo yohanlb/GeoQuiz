@@ -13,7 +13,10 @@ const ResultsTable = ({ user }: { user: User | null }) => {
 
   return (
     <div className='w-full overflow-x-auto'>
-      <table className='min-w-full whitespace-nowrap text-left text-xs'>
+      <table
+        className='min-w-full whitespace-nowrap text-left text-xs'
+        data-test='results-table'
+      >
         <thead className='border-b text-xs capitalize md:text-lg'>
           <tr>
             <th className='px-2 py-2 font-normal'>Country</th>

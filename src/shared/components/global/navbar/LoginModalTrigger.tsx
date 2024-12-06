@@ -25,6 +25,7 @@ function LoginModalTrigger({
       <Button
         size={size}
         variant={'accent'}
+        data-test='login-modal-trigger'
         className={buttonClassName}
         onClick={() => {
           setIsLoginModalOpen(true);

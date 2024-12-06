@@ -32,6 +32,7 @@ const Footer = () => {
   return (
     <footer
       ref={ref}
+      data-test='footer'
       className='mt-3 border-t-1 border-gray-800 text-xs font-light text-gray-400'
     >
       <div className='container mx-auto px-4 py-4'>

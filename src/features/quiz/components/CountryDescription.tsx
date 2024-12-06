@@ -17,7 +17,7 @@ const CountryDescription = ({ countryData, hideFlag = false }: Props) => {
   const averageCommunityScore = (countryData.success_rate_capital ?? 0.5) * 100;
 
   return (
-    <div className='text-sm'>
+    <div className='text-sm' data-test='country-description'>
       <div className='flex items-center gap-2'>
         {!hideFlag && (
           <ReactCountryFlag

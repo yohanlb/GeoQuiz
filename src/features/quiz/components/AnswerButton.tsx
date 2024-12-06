@@ -65,6 +65,7 @@ function AnswerButton({
       type='button'
       className={buttonStyle}
       onClick={onClick}
+      data-test='answer-option'
       whileTap={{
         scale: option.state === 'DEFAULT' ? 0.9 : 1,
         opacity: option.state !== 'DEFAULT' ? 0.5 : 1,

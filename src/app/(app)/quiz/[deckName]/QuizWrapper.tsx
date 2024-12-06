@@ -31,7 +31,10 @@ const QuizWrapper = ({
     return <QuizLoading />;
   } else if (questions.length < 1) {
     return (
-      <div className='flex h-full w-full items-center justify-center'>
+      <div
+        className='flex h-full w-full items-center justify-center'
+        data-test='quiz-error'
+      >
         Error: No questions found. Try another deck.
       </div>
     );

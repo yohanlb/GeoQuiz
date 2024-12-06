@@ -9,7 +9,7 @@ import MenuUserButton from '@components/global/navbar/MenuUserButton';
 
 function NavBar() {
   return (
-    <header className='mb-1 md:mb-2'>
+    <header className='mb-1 md:mb-2' data-test='navbar'>
       <div className='grid grid-cols-3 items-center px-4 py-4 md:px-0'>
         <div className='flex justify-start'>
           <MenuNavigationButton />
