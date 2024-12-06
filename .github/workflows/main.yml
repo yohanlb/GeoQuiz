@@ -30,10 +30,23 @@ jobs:
           node-version: '20'
           cache: 'pnpm'
 
+      - name: Cache Cypress binary
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-binary-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            cypress-binary-
+
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Verify Cypress
+        run: pnpm cypress verify
+
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
           build: pnpm run build
           start: pnpm start
-          install-command: pnpm install --no-frozen-lockfile
-          wait-on: 'http://localhost:3000'
+          install: false
