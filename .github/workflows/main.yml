@@ -10,6 +10,10 @@ on:
 jobs:
   cypress-run:
     runs-on: ubuntu-22.04
+    env:
+      NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+      NEXT_PUBLIC_GEOQUIZ_API_BASE_URL: ${{ secrets.NEXT_PUBLIC_GEOQUIZ_API_BASE_URL }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
