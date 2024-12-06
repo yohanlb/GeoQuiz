@@ -36,13 +36,12 @@ describe('Quiz Flow', () => {
       cy.wait(800);
     }
 
-    // Verify we reach the results page
-    cy.url().should('include', '/results');
-
     // Wait for results to animate in
     cy.wait(2000);
 
     // Check results page elements
+    cy.get('[data-test=results-title]', { timeout: 10000 }).should('be.visible');
+    cy.url().should('include', '/results'); 
     cy.get('[data-test=results-title]').should('be.visible');
     cy.get('[data-test=results-table]').should('be.visible');
     cy.get('[data-test=results-percentage]')
