@@ -37,7 +37,7 @@ describe('Quiz Flow', () => {
     }
 
     // Wait for results to animate in
-    cy.wait(2000);
+    cy.wait(1000);
 
     // Check results page elements
     cy.get('[data-test=results-title]', { timeout: 10000 }).should('be.visible');
