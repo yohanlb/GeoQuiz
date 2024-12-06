@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { getCountryById } from '@features/countries/server/db/countries';
 import DecksIncludingCountrySection from '@features/decks/components/DecksIncludingCountrySection';
 import CountryDescription from '@features/quiz/components/CountryDescription';
@@ -59,7 +59,10 @@ const Country = async ({ params }: Props) => {
           <strong>Log in</strong> to see your history and progression
         </p>
       )}
-      <DecksIncludingCountrySection countryId={country.id} />
+      <Suspense fallback={<div>Loading related decks...</div>}>
+        {/* @ts-expect-error Async Server Component */}
+        <DecksIncludingCountrySection countryId={country.id} />
+      </Suspense>
       <PageCenteredLink
         href={navigationLinks.countries.href}
         label='All Countries'
