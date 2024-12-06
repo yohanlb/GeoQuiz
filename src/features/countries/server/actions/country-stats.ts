@@ -7,6 +7,11 @@ export async function postCountryStats({
   guessedRight,
   questionType,
 }: UpdateCountriesStatsParams) {
+  // Skip stats collection in non-production environments
+  if (process.env.NODE_ENV !== 'production') {
+    return null;
+  }
+
   const supabase = createClient();
 
   const { data, error } = await supabase.rpc('update_countries_stats', {
