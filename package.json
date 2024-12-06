@@ -22,6 +22,8 @@
     "format:fix": "prettier --write --ignore-path .gitignore .",
     "test": "cross-env NODE_ENV=test jest",
     "test:watch": "cross-env NODE_ENV=test jest --watch",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
     "generate:types": "supabase gen types typescript --project-id \"adwhviervvdqnbswunen\" --schema public > ./src/lib/types/database.types.ts"
   },
   "dependencies": {
