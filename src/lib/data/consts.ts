@@ -23,13 +23,6 @@ export const CONTINENTS = [
   // 'southAmerica',
 ] as const;
 
-export const AVAILABLE_QUESTION_TYPES: QuestionType[] = [
-  'CountryToCapital',
-  'CountryToFlag',
-  // 'CapitalToCountry',
-  // 'FlagToCountry',
-];
-
 export const MISSING_COUNTRIES_SVGS = ['JE', 'XK', 'PS'];
 
 export const DECK_CARDS_GRADIENTS = [
