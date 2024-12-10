@@ -2,7 +2,7 @@ import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
 import { FaRegFlag } from 'react-icons/fa6';
 import { PiCity } from 'react-icons/pi';
-import { calculateCountrySuccessPercentage } from '@features/quiz/utils/countryScore';
+import { calculateCountrySuccessPercentage } from '@features/quiz/utils/countryStats';
 import { UserGuessHistoryWithCountry } from '@features/userInsights/server/db/user-guesses-history';
 import { navigationLinks } from '@lib/data/navigation-links';
 import Link from 'next/link';
