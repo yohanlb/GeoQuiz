@@ -69,18 +69,3 @@ export async function getAllCountries() {
   const data = await res.json();
   return data as CountryRecord[];
 }
-
-export async function getAllCountriesCompleteView() {
-  const supabase = createClient();
-  const { data, error } = await supabase
-    .from('countries_complete_view')
-    .select('*')
-    .order('name');
-
-  if (error && error.code !== 'PGRST116') {
-    console.error('Error fetching user countries complete view:', error);
-    throw error;
-  }
-
-  return data as CountryCompleteViewRecord[];
-}
