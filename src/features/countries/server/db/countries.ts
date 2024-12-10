@@ -18,7 +18,7 @@ export async function getCountryById(countryId: CountryRecord['id']) {
 
   const data = await res.json();
 
-  return (data[0] as CountryCompleteViewRecord) || null;
+  return (data[0] as CountryRecord) || null;
 }
 
 export async function getCountriesByIds(countryIds: CountryRecord['id'][]) {
@@ -47,7 +47,7 @@ export async function getCountriesByIds(countryIds: CountryRecord['id'][]) {
 
   const data = await res.json();
 
-  return data as CountryCompleteViewRecord[];
+  return data as CountryRecord[];
 }
 
 export async function getAllCountries() {

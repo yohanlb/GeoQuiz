@@ -1,6 +1,6 @@
 import React from 'react';
 import { getCountriesStatsByCountryIds } from '@features/countries/server/db/countries_stats';
-import { getQuestionsFromDeckId } from '@lib/queries/questions';
+import { getQuestionsFromDeckId } from '@features/quiz/hooks/useFetchQuestionsUtils';
 import useGameStore from '@stores/game-store';
 import axios from 'axios';
 
@@ -18,21 +18,7 @@ export function useFetchQuestions(
     const fetchStaticQuestions = async () => {
       // if not dynamic, questions are fetch based on deckId
       const response = await getQuestionsFromDeckId(id, questionType, length);
-      // Manually create a countryStats object for each question.
-      // TODO: Remove this once the API doesnt use country_complete_view anymore
-      return response.map((question) => ({
-        ...question,
-        country: question.countryData,
-        countryStats: {
-          country_id: question.countryData.id,
-          created_at: question.countryData.updated_at,
-          updated_at: question.countryData.updated_at,
-          capital_guessed_count: question.countryData.capital_guessed_count,
-          capital_guessed_right: question.countryData.capital_guessed_right,
-          flag_guessed_count: question.countryData.flag_guessed_count,
-          flag_guessed_right: question.countryData.flag_guessed_right,
-        },
-      }));
+      return response;
     };
 
     const fetchDynamicQuestions = async () => {

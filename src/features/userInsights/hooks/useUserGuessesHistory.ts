@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 
 export function useUserGuessesHistoryForCountry(
   userId: User['id'],
-  countryId: CountryCompleteViewRecord['id'],
+  countryId: CountryRecord['id'],
 ) {
   return useQuery({
     queryKey: ['userGuesses', userId, countryId],

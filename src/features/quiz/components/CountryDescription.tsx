@@ -6,7 +6,7 @@ import { calculateCountrySuccessPercentage } from '@features/quiz/utils/countryS
 import DifficultyIndicator from '@components/global/DifficultyIndicator';
 
 type Props = {
-  countryData: CountryCompleteViewRecord;
+  countryData: CountryRecord;
   countryStats: CountryStatsRecord;
   hideFlag?: boolean;
 };

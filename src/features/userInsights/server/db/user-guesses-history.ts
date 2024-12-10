@@ -1,7 +1,7 @@
 import { createClient } from '@lib/supabase/server';
 
 type CountryRecordPartial = Pick<
-  CountryCompleteViewRecord,
+  CountryRecord,
   'id' | 'name' | 'iso2' | 'capital'
 >;
 
@@ -158,8 +158,6 @@ export async function upsertUserGuessesHistory(
     console.error('Error updating user guesses history:', error);
     throw error;
   }
-
-  console.log('data', data);
 
   return data;
 }
