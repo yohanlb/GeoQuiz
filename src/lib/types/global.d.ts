@@ -26,7 +26,8 @@ declare global {
   export type QuestionType = 'CountryToCapital' | 'CountryToFlag'; //TODO: get rid of this type
 
   export type Question = {
-    countryData: CountryCompleteViewRecord;
+    countryData: CountryCompleteViewRecord; // TODO: Replace this field type by CountryRecord type once the API doesnt use country_complete_view anymore
+    countryStats: CountryStatsRecord;
     optionsCapitals: CountryCompleteViewRecord['capital'][];
     optionsIso2: CountryCompleteViewRecord['iso2'][];
     answerCapital: CountryCompleteViewRecord['capital'];
@@ -133,7 +134,7 @@ declare global {
     capital_guessed_count: NonNullable<
       CountryCompleteViewRecordOriginal['capital_guessed_count']
     >;
-    flagGuessedCount: NonNullable<
+    flag_guessed_count: NonNullable<
       CountryCompleteViewRecordOriginal['flag_guessed_count']
     >;
     custom_difficulty: NonNullable<

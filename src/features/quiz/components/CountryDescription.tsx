@@ -1,20 +1,28 @@
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
+import { FaRegFlag } from 'react-icons/fa6';
+import { PiCity } from 'react-icons/pi';
+import { calculateCountrySuccessPercentage } from '@features/quiz/utils/countryScore';
 import DifficultyIndicator from '@components/global/DifficultyIndicator';
 
 type Props = {
   countryData: CountryCompleteViewRecord;
+  countryStats: CountryStatsRecord;
   hideFlag?: boolean;
 };
 
-const CountryDescription = ({ countryData, hideFlag = false }: Props) => {
+const CountryDescription = ({
+  countryData,
+  countryStats,
+  hideFlag = false,
+}: Props) => {
   let displayedName = countryData.name;
   if (countryData.sovereignCountry) {
     displayedName += ` (${countryData.sovereignCountry})`;
   }
 
-  //TODO: switch score depending on question type, but for now there is not enough data for flags.
-  const averageCommunityScore = (countryData.success_rate_capital ?? 0.5) * 100;
+  const { successRateCapital, successRateFlag } =
+    calculateCountrySuccessPercentage(countryStats);
 
   return (
     <div className='text-sm' data-test='country-description'>
@@ -38,9 +46,23 @@ const CountryDescription = ({ countryData, hideFlag = false }: Props) => {
               {countryData.subregion}
             </strong>
           </p>
-          <div className='flex items-center gap-2'>
-            <span>Difficulty: </span>
-            <DifficultyIndicator value={averageCommunityScore} />
+          <div className='flex flex-col gap-1'>
+            <div className='flex items-center gap-2'>
+              <span>Difficulty:</span>
+              <div className='flex items-center gap-4'>
+                <div className='flex items-center gap-1'>
+                  <PiCity />
+                  <DifficultyIndicator
+                    value={successRateCapital}
+                    type='country'
+                  />
+                </div>
+                <div className='flex items-center gap-1'>
+                  <FaRegFlag />
+                  <DifficultyIndicator value={successRateFlag} type='country' />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

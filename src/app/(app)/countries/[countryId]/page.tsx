@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import UserCountryGuessesSection from '@/src/app/(app)/countries/[countryId]/UserCountryGuessesSection';
 import { getCountryById } from '@features/countries/server/db/countries';
+import { getCountryStatsById } from '@features/countries/server/db/countries_stats';
 import DecksIncludingCountrySection from '@features/decks/components/DecksIncludingCountrySection';
 import CountryDescription from '@features/quiz/components/CountryDescription';
 import CountryShape from '@features/quiz/components/CountryShape';
@@ -40,10 +41,11 @@ export async function generateStaticParams() {
 
 const Country = async ({ params }: Props) => {
   const country = await getCountryById(params.countryId);
+  const countryStats = await getCountryStatsById(params.countryId);
 
   return (
     <div className='mx-auto flex max-w-md flex-col gap-12 px-2 py-2 md:px-0'>
-      <CountryDescription countryData={country} />
+      <CountryDescription countryData={country} countryStats={countryStats} />
       <CountryShape countryCode={country.iso2} />
 
       <UserCountryGuessesSection countryId={country.id} />

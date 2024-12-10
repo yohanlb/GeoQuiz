@@ -68,6 +68,7 @@ const QuestionView = ({
     >
       <CountryDescription
         countryData={currentQuestion.countryData}
+        countryStats={currentQuestion.countryStats}
         hideFlag={questionType === 'CountryToFlag'}
       />
       <CountryShape countryCode={currentQuestion.countryData.iso2} />
