@@ -10,19 +10,24 @@ type Props = {
 
 const clampNumber = (num: number) => Math.min(9, Math.max(0, Math.ceil(num)));
 
+export function calculateDifficultyRank(value: number) {
+  if (value >= 100) return 0;
+  if (value < 0) return 9;
+  return 9 - Math.floor(value / 10);
+}
+
 const DifficultyIndicator = ({ value, type = 'country', size }: Props) => {
-  const difficultyIndex = 9 - Math.round(value / 10);
-  const clampedNumber = clampNumber(difficultyIndex);
+  const difficultyRank = calculateDifficultyRank(value);
 
   const contentDescription =
     type === 'country' ? (
       <div className='text-left'>
-        <p>Difficulty Index: {clampedNumber}</p>
+        <p>Difficulty Index: {difficultyRank}</p>
         <p>Average community score for this country: {Math.round(value)}%</p>
       </div>
     ) : (
       <div className='text-left'>
-        <p>Average Difficulty Index: {clampedNumber}</p>
+        <p>Average Difficulty Index: {difficultyRank}</p>
         <p>
           Average difficulty for the countries included in this deck:{' '}
           {Math.round(value)}%
@@ -31,7 +36,7 @@ const DifficultyIndicator = ({ value, type = 'country', size }: Props) => {
     );
   return (
     <PopoverCustom content={contentDescription}>
-      <DifficultyIndex digit={clampedNumber} size={size} />
+      <DifficultyIndex digit={difficultyRank} size={size} />
     </PopoverCustom>
   );
 };
