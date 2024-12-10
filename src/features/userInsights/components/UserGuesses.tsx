@@ -32,8 +32,10 @@ function UserGuesses({
     alignment === 'right' ? 'justify-end' : 'justify-start';
 
   return (
-    <div className={`flex flex-col gap-1 ${alignmentClasses}`}>
-      <h3 className='text-sm font-medium'>Your Last Guesses</h3>
+    <div
+      className={`flex flex-col gap-1 text-xs md:text-base ${alignmentClasses}`}
+    >
+      <h3 className='font-medium'>Your Last Guesses</h3>
       <ul>
         <li className={`flex items-center ${justifyClasses} gap-2`}>
           <PiCity />
