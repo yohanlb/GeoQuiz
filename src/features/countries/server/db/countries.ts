@@ -1,5 +1,3 @@
-import { createClient } from '@lib/supabase/server';
-
 const baseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL + '/rest/v1';
 const ONE_HOUR = 3600;
 export async function getCountryById(countryId: CountryRecord['id']) {
