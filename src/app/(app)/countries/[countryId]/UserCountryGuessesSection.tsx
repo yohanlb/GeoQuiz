@@ -6,7 +6,7 @@ import { useUserGuessesHistoryForCountry } from '@features/userInsights/hooks/us
 import { UserContext } from '@lib/contexts/UserProvider';
 
 type Props = {
-  countryId: CountryCompleteViewRecord['id'];
+  countryId: CountryRecord['id'];
 };
 
 function UserCountryGuessesSection({ countryId }: Readonly<Props>) {

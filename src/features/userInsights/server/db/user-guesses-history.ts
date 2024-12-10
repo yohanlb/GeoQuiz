@@ -1,17 +1,13 @@
 import { createClient } from '@lib/supabase/server';
 
 type CountryRecordPartial = Pick<
-  CountryCompleteViewRecord,
-  | 'id'
-  | 'name'
-  | 'iso2'
-  | 'capital'
-  | 'success_rate_capital'
-  | 'success_rate_flag'
+  CountryRecord,
+  'id' | 'name' | 'iso2' | 'capital'
 >;
 
-export type UserGuessHistoryWithCountry = UserGuessHistoryPartial & {
+export type UserGuessHistoryWithCountry = UserGuessHistoryRecord & {
   country: CountryRecordPartial;
+  countryStats: CountryStatsRecord;
 };
 
 export async function fetchUserGuessesHistory(
@@ -113,23 +109,14 @@ export async function fetchLastUserGuessesHistoryWithCountryRecord(
     .from('user_guesses_history')
     .select(
       `
-      guess_results,
-      question_type_id,
-      country_id,
-      updated_at,
-      countries_complete_view(
-        id,
-        name,
-        iso2,
-        capital,
-        success_rate_capital,
-        success_rate_flag
+      *,
+      countries:country_id (
+        *,
+        countries_stats(*)
       )
     `,
     )
-    .match({
-      user_id: userId,
-    })
+    .eq('user_id', userId)
     .order('updated_at', { ascending: false })
     .limit(amount);
 
@@ -138,22 +125,11 @@ export async function fetchLastUserGuessesHistoryWithCountryRecord(
     throw error;
   }
 
-  // Had a supabase bug, typescript inferred the type as array instead of object
-  const adjustedData = (data ?? []).map((item) => {
-    const countryData = Array.isArray(item.countries_complete_view)
-      ? item.countries_complete_view[0]
-      : item.countries_complete_view;
-
-    return {
-      guess_results: item.guess_results,
-      question_type_id: item.question_type_id,
-      country_id: item.country_id,
-      updated_at: item.updated_at,
-      country: countryData,
-    } as UserGuessHistoryWithCountry;
-  });
-
-  return adjustedData;
+  return (data ?? []).map((item) => ({
+    ...item,
+    country: item.countries,
+    countryStats: item.countries.countries_stats,
+  })) as UserGuessHistoryWithCountry[];
 }
 
 export async function upsertUserGuessesHistory(

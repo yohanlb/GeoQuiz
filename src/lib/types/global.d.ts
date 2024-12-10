@@ -19,19 +19,19 @@ declare global {
   export type CountryScoreHistory = { [key: CountryRecord['id']]: boolean[] };
 
   export type CountryWithUserGuesses = {
-    country: CountryCompleteViewRecord;
+    country: CountryRecord;
     userGuesses: UserGuessHistoryRecord | null;
   };
 
   export type QuestionType = 'CountryToCapital' | 'CountryToFlag'; //TODO: get rid of this type
 
   export type Question = {
-    countryData: CountryCompleteViewRecord; // TODO: Replace this field type by CountryRecord type once the API doesnt use country_complete_view anymore
+    countryData: CountryRecord;
     countryStats: CountryStatsRecord;
-    optionsCapitals: CountryCompleteViewRecord['capital'][];
-    optionsIso2: CountryCompleteViewRecord['iso2'][];
-    answerCapital: CountryCompleteViewRecord['capital'];
-    answerIso2: CountryCompleteViewRecord['iso2'];
+    optionsCapitals: CountryRecord['capital'][];
+    optionsIso2: CountryRecord['iso2'][];
+    answerCapital: CountryRecord['capital'];
+    answerIso2: CountryRecord['iso2'];
     questionTypeId: 1 | 2;
   };
 
@@ -48,7 +48,8 @@ declare global {
 
   export type AnsweredQuestion = {
     questionId: number;
-    countryData: CountryCompleteViewRecord;
+    countryData: CountryRecord;
+    countryStats: CountryStatsRecord;
     questionType: QuestionType;
     answer: string;
     isCorrect: boolean;

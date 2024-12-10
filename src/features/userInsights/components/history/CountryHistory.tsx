@@ -2,6 +2,7 @@ import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
 import { FaRegFlag } from 'react-icons/fa6';
 import { PiCity } from 'react-icons/pi';
+import { calculateCountrySuccessPercentage } from '@features/quiz/utils/countryStats';
 import { UserGuessHistoryWithCountry } from '@features/userInsights/server/db/user-guesses-history';
 import { navigationLinks } from '@lib/data/navigation-links';
 import Link from 'next/link';
@@ -39,10 +40,12 @@ const CountryHistory = ({ lastUserGuesses }: Props) => {
           </thead>
           <tbody className='text-xs md:text-base'>
             {lastUserGuesses.map((userGuess) => {
-              const successRate =
+              const { successRateCapital, successRateFlag } =
+                calculateCountrySuccessPercentage(userGuess.countryStats);
+              const successPercentage =
                 userGuess.question_type_id === 1
-                  ? (userGuess.country.success_rate_capital ?? 0.5)
-                  : (userGuess.country.success_rate_flag ?? 0.5);
+                  ? successRateCapital
+                  : successRateFlag;
 
               return (
                 <tr
@@ -66,12 +69,12 @@ const CountryHistory = ({ lastUserGuesses }: Props) => {
                     </div>
                   </Cell>
                   <Cell>
-                    <DifficultyIndicator value={successRate * 100} />
+                    <DifficultyIndicator value={successPercentage} />
                   </Cell>
                   <Cell>
                     <div className='font-extralight'>
                       <ReactCountryFlag
-                        countryCode={userGuess.country.iso2 as string}
+                        countryCode={userGuess.country.iso2}
                         svg
                         style={{
                           width: '20px',

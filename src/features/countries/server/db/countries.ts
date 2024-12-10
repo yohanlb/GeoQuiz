@@ -1,9 +1,7 @@
-import { createClient } from '@lib/supabase/server';
-
 const baseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL + '/rest/v1';
 const ONE_HOUR = 3600;
 export async function getCountryById(countryId: CountryRecord['id']) {
-  const url = `${baseUrl}/countries_complete_view?id=eq.${countryId}&select=*`;
+  const url = `${baseUrl}/countries?id=eq.${countryId}&select=*`;
 
   const res: Response = await fetch(url, {
     headers: {
@@ -20,7 +18,7 @@ export async function getCountryById(countryId: CountryRecord['id']) {
 
   const data = await res.json();
 
-  return (data[0] as CountryCompleteViewRecord) || null;
+  return (data[0] as CountryRecord) || null;
 }
 
 export async function getCountriesByIds(countryIds: CountryRecord['id'][]) {
@@ -32,7 +30,7 @@ export async function getCountriesByIds(countryIds: CountryRecord['id'][]) {
   const idsString = countryIds.join(',');
   const encodedIds = encodeURIComponent(`(${idsString})`);
 
-  const url = `${baseUrl}/countries_complete_view?id=in.${encodedIds}&select=*`;
+  const url = `${baseUrl}/countries?id=in.${encodedIds}&select=*`;
 
   const res = await fetch(url, {
     headers: {
@@ -49,7 +47,7 @@ export async function getCountriesByIds(countryIds: CountryRecord['id'][]) {
 
   const data = await res.json();
 
-  return data as CountryCompleteViewRecord[];
+  return data as CountryRecord[];
 }
 
 export async function getAllCountries() {
@@ -68,19 +66,4 @@ export async function getAllCountries() {
 
   const data = await res.json();
   return data as CountryRecord[];
-}
-
-export async function getAllCountriesCompleteView() {
-  const supabase = createClient();
-  const { data, error } = await supabase
-    .from('countries_complete_view')
-    .select('*')
-    .order('name');
-
-  if (error && error.code !== 'PGRST116') {
-    console.error('Error fetching user countries complete view:', error);
-    throw error;
-  }
-
-  return data as CountryCompleteViewRecord[];
 }

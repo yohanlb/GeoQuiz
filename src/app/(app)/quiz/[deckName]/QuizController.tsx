@@ -101,6 +101,7 @@ function QuizController({ questions, userGuessesHistory }: Readonly<Props>) {
         questionId: currentQuestionIndex,
         answer: userAnswer,
         countryData: questions[currentQuestionIndex].countryData,
+        countryStats: questions[currentQuestionIndex].countryStats,
         questionType,
         isCorrect: newResult === 'valid',
       });
