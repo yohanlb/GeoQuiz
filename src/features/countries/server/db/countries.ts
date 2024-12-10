@@ -1,7 +1,7 @@
 const baseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL + '/rest/v1';
 const ONE_HOUR = 3600;
 export async function getCountryById(countryId: CountryRecord['id']) {
-  const url = `${baseUrl}/countries_complete_view?id=eq.${countryId}&select=*`;
+  const url = `${baseUrl}/countries?id=eq.${countryId}&select=*`;
 
   const res: Response = await fetch(url, {
     headers: {
@@ -30,7 +30,7 @@ export async function getCountriesByIds(countryIds: CountryRecord['id'][]) {
   const idsString = countryIds.join(',');
   const encodedIds = encodeURIComponent(`(${idsString})`);
 
-  const url = `${baseUrl}/countries_complete_view?id=in.${encodedIds}&select=*`;
+  const url = `${baseUrl}/countries?id=in.${encodedIds}&select=*`;
 
   const res = await fetch(url, {
     headers: {
