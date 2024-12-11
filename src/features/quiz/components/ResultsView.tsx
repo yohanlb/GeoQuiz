@@ -9,7 +9,7 @@ import LoadingSpinner from '@components/global/LoadingSpinner';
 import PageCenteredLink from '@components/global/PageCenteredLink';
 import LinkToDeck from './LinkToDeck';
 import ResultsTable from './ResultsTable';
-import ShareResults from './ShareResults';
+import ShareResultsButton from './ShareResultsButton';
 
 function ResultsView({ user }: Readonly<{ user: User | null }>) {
   const { answeredQuestions, isGameStoreInitialized, deck } = useGameStore();
@@ -65,7 +65,7 @@ function ResultsView({ user }: Readonly<{ user: User | null }>) {
         <p data-test='results-percentage'>
           {formattedCorrectAnswers}% of correct answers!
         </p>
-        <ShareResults />
+        <ShareResultsButton />
       </div>
       <div className='flex gap-6 md:gap-16'>
         <Link href={navigationLinks.home.href}>
