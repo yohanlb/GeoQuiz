@@ -1,4 +1,5 @@
 import React from 'react';
+import ShareMysteryCountryResultsButton from '@features/daily/components/ShareMysteryCountryResultsButton';
 import { navigationLinks } from '@lib/data/navigation-links';
 import PageCenteredLink from '@components/global/PageCenteredLink';
 
@@ -23,12 +24,21 @@ const QuizScore: React.FC<Props> = ({ score, totalQuestions }) => {
   };
 
   return (
-    <div className='mt-4 flex w-full flex-col items-center'>
-      <p>
-        {score}/{totalQuestions}
+    <div className='mt-4 flex w-full flex-col items-center gap-2 md:gap-4'>
+      <div className='flex items-center gap-2'>
+        <p className='text-xl font-bold md:text-2xl'>
+          {score}/{totalQuestions}
+        </p>
+        <span>-</span>
+        <p className='text-md md:text-lg'>{getScoreMessage()}</p>
+      </div>
+      <ShareMysteryCountryResultsButton
+        score={score}
+        totalQuestions={totalQuestions}
+      />
+      <p className='mt-2 text-sm md:text-base'>
+        Come back tomorrow for a new challenge!
       </p>
-      <p className='text-sm'>{getScoreMessage()}</p>
-      <p className='mt-2 text-sm'>Come back tomorrow for a new challenge!</p>
       <PageCenteredLink href={navigationLinks.home.href} label='Back' />
     </div>
   );

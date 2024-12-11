@@ -11,6 +11,8 @@ export const EMOJIS = {
   city: '🏙️',
   flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿',
   unknown: '❓',
+  earth: '🌍',
+  trophy: '🏆',
 };
 
 export const CONTINENTS = [
