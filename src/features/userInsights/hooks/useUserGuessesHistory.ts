@@ -3,12 +3,16 @@ import { User } from '@supabase/supabase-js';
 import { useQuery } from '@tanstack/react-query';
 
 export function useUserGuessesHistoryForCountry(
-  userId: User['id'],
+  userId: User['id'] | null,
   countryId: CountryRecord['id'],
 ) {
   return useQuery({
     queryKey: ['userGuesses', userId, countryId],
     queryFn: async () => {
+      if (!userId) {
+        return [];
+      }
+
       const supabase = createClient();
       const { data, error } = await supabase
         .from('user_guesses_history')
