@@ -51,8 +51,7 @@ async function page({ params }: Props) {
     <div className='container mx-auto max-w-4xl px-4 py-8'>
       <div className='flex flex-col items-center justify-center gap-8 text-center'>
         <h1 className='text-4xl font-bold'>
-          What is the flag of{' '}
-          <span className='text-primary'>{country.name}</span>?
+          What is the flag of <strong>{country.name}</strong>?
         </h1>
 
         <div className='w-full max-w-xl rounded-lg bg-gray-800/50 p-8'>
