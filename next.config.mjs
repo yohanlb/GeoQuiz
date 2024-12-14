@@ -6,6 +6,7 @@ import withPWAInit from 'next-pwa';
 const withPWA = withPWAInit({
   dest: 'public',
   disable: process.env.NODE_ENV === 'development',
+  maximumFileSizeToCacheInBytes: 8 * 1024 * 1024, // 8MB
 });
 
 export default withSentryConfig(
