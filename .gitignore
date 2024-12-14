@@ -46,3 +46,7 @@ public/workbox-*
 # cypress
 cypress/screenshots
 cypress/videos
+
+# sitemap
+public/sitemap.xml
+public/sitemap-*.xml
