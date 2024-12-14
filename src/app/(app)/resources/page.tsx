@@ -10,10 +10,15 @@ function page() {
       <p>
         Here are some resources and links to help you learn about the world.
       </p>
-      <ul>
+      <ul className='flex flex-col gap-2'>
         <li className='text-blue-500 underline'>
           <Link href={`${navigationLinks.resources.href}/what-is-capital-of`}>
             What is the capital of ...?
+          </Link>
+        </li>
+        <li className='text-blue-500 underline'>
+          <Link href={`${navigationLinks.resources.href}/what-is-flag-of`}>
+            What is the flag of ...?
           </Link>
         </li>
       </ul>
