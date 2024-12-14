@@ -13,10 +13,11 @@ import Link from 'next/link';
 import SectionTitle from '@components/global/SectionTitle';
 
 type Props = {
-  params: { deckName: string; questionTypeId?: Question['questionTypeId'] };
+  params: Promise<{ deckName: string; questionTypeId?: Question['questionTypeId'] }>;
 };
 
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata(props: Props) {
+  const params = await props.params;
   const { displayName } = await getDeckByName(params.deckName);
 
   return {
@@ -25,7 +26,8 @@ export async function generateMetadata({ params }: Props) {
   };
 }
 
-const DeckProgress = async ({ params }: Props) => {
+const DeckProgress = async (props: Props) => {
+  const params = await props.params;
   const deck = await getDeckByName(params.deckName);
 
   const [deckCountries, userGuessesForDeck] = await Promise.all([
