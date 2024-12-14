@@ -8,8 +8,6 @@ type Props = {
   size?: 'xl' | 'md' | 'sm';
 };
 
-const clampNumber = (num: number) => Math.min(9, Math.max(0, Math.ceil(num)));
-
 export function calculateDifficultyRank(value: number) {
   if (value >= 100) return 0;
   if (value < 0) return 9;

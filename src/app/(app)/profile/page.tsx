@@ -8,9 +8,10 @@ export const metadata = {
 };
 
 const ProfilePage = async () => {
+  const supabase = await createClient();
   const {
     data: { user },
-  } = await createClient().auth.getUser();
+  } = await supabase.auth.getUser();
 
   return (
     <div>

@@ -2,6 +2,12 @@
 
 import { createClient } from '@lib/supabase/server';
 
+interface UpdateCountriesStatsParams {
+  countryId: number;
+  guessedRight: boolean;
+  questionType: string;
+}
+
 export async function postCountryStats({
   countryId,
   guessedRight,
@@ -12,7 +18,7 @@ export async function postCountryStats({
     return null;
   }
 
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const { data, error } = await supabase.rpc('update_countries_stats', {
     countryid: Number(countryId),

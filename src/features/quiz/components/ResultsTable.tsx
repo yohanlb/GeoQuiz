@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
 import ResultsTableResultCell from '@features/quiz/components/ResultsTableResultCell';
-import { calculateCountrySuccessPercentage } from '@features/quiz/utils/countryStats';
 import { navigationLinks } from '@lib/data/navigation-links';
 import useGameStore from '@stores/game-store';
 import { User } from '@supabase/supabase-js';
+import { calculateCountrySuccessPercentage } from '@utils/countryStats';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import DifficultyIndicator from '@components/global/DifficultyIndicator';

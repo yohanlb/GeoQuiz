@@ -1,19 +1,12 @@
 import React from 'react';
+import CountriesTabs from '@features/countries/components/CountriesTabs';
 import { getAllCountries } from '@features/countries/server/db/countries';
 import { groupCountriesByRegionAndSubregion } from '@features/countries/utils/countries';
 import { navigationLinks } from '@lib/data/navigation-links';
-import dynamic from 'next/dynamic';
 import PageCenteredLink from '@components/global/PageCenteredLink';
 import SectionTitle from '@components/global/SectionTitle';
 
-const CountriesTabs = dynamic(
-  () => import('@features/countries/components/CountriesTabs'),
-  {
-    ssr: false,
-  },
-);
-
-export const revalidate = 60 * 60; // 1 hour
+export const revalidate = 3600; // 1 hour
 
 export const metadata = {
   title: 'Countries',
