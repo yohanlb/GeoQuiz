@@ -1,8 +1,9 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import UserCountryGuessesSection from '@/src/app/(app)/countries/[countryId]/UserCountryGuessesSection';
 import { getCountryById } from '@features/countries/server/db/countries';
 import { getCountryStatsById } from '@features/countries/server/db/countries_stats';
 import DecksIncludingCountrySection from '@features/decks/components/DecksIncludingCountrySection';
+import { getDecks } from '@features/decks/server/db/decks';
 import CountryDescription from '@features/quiz/components/CountryDescription';
 import CountryShape from '@features/quiz/components/CountryShape';
 import { navigationLinks } from '@lib/data/navigation-links';
@@ -18,7 +19,6 @@ export const dynamic = 'force-static';
 
 export async function generateMetadata({ params }: Props) {
   const { countryId } = params;
-
   const { name } = await getCountryById(countryId);
 
   return {
@@ -40,19 +40,18 @@ export async function generateStaticParams() {
 }
 
 const Country = async ({ params }: Props) => {
-  const country = await getCountryById(params.countryId);
-  const countryStats = await getCountryStatsById(params.countryId);
+  const [country, countryStats, decks] = await Promise.all([
+    getCountryById(params.countryId),
+    getCountryStatsById(params.countryId),
+    getDecks(),
+  ]);
 
   return (
     <div className='mx-auto flex max-w-md flex-col gap-12 px-2 py-2 md:px-0'>
       <CountryDescription countryData={country} countryStats={countryStats} />
       <CountryShape countryCode={country.iso2} />
-
       <UserCountryGuessesSection countryId={country.id} />
-      <Suspense fallback={<div>Loading related decks...</div>}>
-        {/* @ts-expect-error Async Server Component */}
-        <DecksIncludingCountrySection countryId={country.id} />
-      </Suspense>
+      <DecksIncludingCountrySection countryId={country.id} decks={decks} />
       <PageCenteredLink
         href={navigationLinks.countries.href}
         label='All Countries'

@@ -1,15 +1,15 @@
+'use client';
+
 import React from 'react';
 import DeckList from '@features/decks/components/DeckList';
-import { getDecks } from '@features/decks/server/db/decks';
 import SectionTitle from '@components/global/SectionTitle';
 
-const DecksIncludingCountrySection = async ({
-  countryId,
-}: {
+interface Props {
   countryId: number;
-}) => {
-  const decks = await getDecks();
+  decks: DeckWithStatsRecord[];
+}
 
+const DecksIncludingCountrySection = ({ countryId, decks }: Props) => {
   const decksIncludingCountry = decks.filter((deck) =>
     deck.countryIds?.includes(countryId),
   );
