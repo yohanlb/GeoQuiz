@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props) {
 
   return {
     title: `What is the capital of ${country.name}?`,
-    description: `Informations about the country ${country.name}.`,
+    description: `Information about the capital of ${country.name}.`,
   };
 }
 
@@ -48,50 +48,62 @@ async function page({ params }: Props) {
   }
 
   return (
-    <div className='flex flex-col items-center justify-center gap-4 text-center'>
-      <h1 className='text-3xl'>
-        What is the capital of <strong> {country.name} </strong>?
-      </h1>
-      <ReactCountryFlag
-        className='inline-block'
-        countryCode={country.iso2}
-        svg
-        aria-label={country.name}
-        alt={'flag'}
-        style={{
-          width: '30%',
-          height: 'auto',
-        }}
-      />
-      <h2 className='text-2xl'>
-        The capital of <strong>{country.name}</strong> is{' '}
-        <strong className='underline'>{country.capital}</strong>.
-      </h2>
-      <div className='mt-12 md:mt-24'>
-        <h3>Neighboring countries:</h3>
-        <ul className='flex flex-wrap justify-center gap-2'>
-          {neighboringCountries.map((country) => (
-            <li key={country.id}>
-              <ReactCountryFlag
-                className='inline-block'
-                countryCode={country.iso2}
-                svg
-                aria-label={country.name}
-                style={{
-                  width: '20px',
-                  height: 'auto',
-                  marginRight: '2px',
-                }}
-              />
+    <div className='container mx-auto max-w-4xl px-4 py-8'>
+      <div className='flex flex-col items-center justify-center gap-8 text-center'>
+        <h1 className='text-4xl font-bold'>
+          What is the capital of <strong>{country.name}</strong>?
+        </h1>
+
+        <div className='w-full max-w-xl rounded-lg bg-gray-800/50 p-8'>
+          <div className='mb-6'>
+            <ReactCountryFlag
+              className='inline-block rounded-md shadow-lg'
+              countryCode={country.iso2}
+              svg
+              aria-label={country.name}
+              alt={`Flag of ${country.name}`}
+              style={{
+                width: '100%',
+                height: 'auto',
+                maxWidth: '400px',
+              }}
+            />
+          </div>
+          <h2 className='text-2xl'>
+            The capital of <strong>{country.name}</strong> is{' '}
+            <strong className='text-2xl'>{country.capital}</strong>
+          </h2>
+        </div>
+
+        <div className='mt-8 w-full max-w-2xl rounded-lg bg-gray-800/50 p-8'>
+          <h3 className='mb-6 text-xl font-semibold'>
+            Neighboring countries and their capitals:
+          </h3>
+          <div className='grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4'>
+            {neighboringCountries.map((country) => (
               <Link
-                className='text-blue-500 underline'
+                key={country.id}
                 href={`${navigationLinks.resources.href}/what-is-capital-of/${country.id}`}
+                className='group flex flex-col items-center gap-2 rounded-md p-2 transition-colors hover:bg-gray-700/50'
               >
-                {country.name}
+                <ReactCountryFlag
+                  className='inline-block rounded shadow-sm transition-transform group-hover:scale-110'
+                  countryCode={country.iso2}
+                  svg
+                  aria-label={country.name}
+                  style={{
+                    width: '60px',
+                    height: 'auto',
+                  }}
+                />
+                <span className='text-sm text-blue-400 group-hover:underline'>
+                  {country.name}
+                </span>
+                <span className='text-xs text-gray-400'>{country.capital}</span>
               </Link>
-            </li>
-          ))}
-        </ul>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
