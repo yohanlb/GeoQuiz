@@ -12,9 +12,9 @@ type Props = {
 function UserCountryGuessesSection({ countryId }: Readonly<Props>) {
   const { user } = React.useContext(UserContext);
   const { data: guessesHistory = [], isLoading: loading } =
-    useUserGuessesHistoryForCountry(user?.id ?? '', countryId);
+    useUserGuessesHistoryForCountry(user?.id ?? null, countryId);
 
-  if (!loading && !user) {
+  if (!user) {
     return (
       <p className='ml-auto w-44 text-right text-sm'>
         <strong>Log in</strong> to see your history and progression

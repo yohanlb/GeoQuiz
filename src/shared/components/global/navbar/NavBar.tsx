@@ -31,6 +31,7 @@ function NavBar() {
         src={HeaderHeroSeparator}
         alt='Separator Hero Line'
         className='w-[90%]'
+        priority
       />
     </header>
   );

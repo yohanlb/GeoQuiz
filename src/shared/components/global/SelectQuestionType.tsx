@@ -19,13 +19,16 @@ function QuestionTypeButton({
   label,
   isActive,
   onClick,
-}: QuestionTypeButtonProps) {
-  const IconWithClass = React.cloneElement(icon as React.ReactElement, {
-    className: cn(
-      'size-7 transition-all duration-200 group-hover:fill-white',
-      isActive ? 'fill-white' : 'fill-gray-400',
-    ),
-  });
+}: Readonly<QuestionTypeButtonProps>) {
+  const IconWithClass = React.cloneElement(
+    icon as React.ReactElement<{ className?: string }>,
+    {
+      className: cn(
+        'size-7 transition-all duration-200 group-hover:fill-white',
+        isActive ? 'fill-white' : 'fill-gray-400',
+      ),
+    },
+  );
 
   return (
     <motion.button
