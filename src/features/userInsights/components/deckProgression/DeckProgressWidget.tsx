@@ -1,5 +1,5 @@
 import React from 'react';
-import { CircularProgress } from '@nextui-org/react';
+import DeckProgressIndicator from './DeckProgressIndicator';
 
 const getBarColor = (value: number) => {
   if (value > 99) {
@@ -10,6 +10,7 @@ const getBarColor = (value: number) => {
   }
   return 'default';
 };
+
 type Props = {
   countriesWithUserGuesses: CountryWithUserGuesses[];
   nbOfCountriesInDeck: number;
@@ -38,17 +39,10 @@ export default function DeckProgressWidget({
 
   return (
     <div className='flex items-center justify-center gap-4'>
-      <CircularProgress
-        classNames={{
-          svg: 'w-24 h-24 drop-shadow-md',
-          indicator: `${getBarColor(overallDeckProgress)}`,
-          track: 'stroke-white/10',
-          value: 'text-xl font-semibold text-white',
-        }}
+      <DeckProgressIndicator
         value={overallDeckProgress}
-        strokeWidth={4}
-        showValueLabel={true}
-        label='Overall Progress'
+        color={getBarColor(overallDeckProgress)}
+        className='h-24 w-24 drop-shadow-md'
       />
     </div>
   );
