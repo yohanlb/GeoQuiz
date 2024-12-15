@@ -27,6 +27,10 @@ const nextConfig = {
       fullUrl: true,
     },
   },
+  webpack: (config) => {
+    config.devtool = 'hidden-source-map';
+    return config;
+  },
   async rewrites() {
     return [
       {
@@ -76,11 +80,10 @@ export default withSentryConfig(withPWA(nextConfig), {
   tunnelRoute: '/monitoring',
 
   // Configure source maps
-  hideSourceMaps: true,
+  hideSourceMaps: false,
   deleteSourceMapsAfterUpload: true,
-  devtool: 'hidden-source-map',
 
-  // Automatically tree-shake Sentry logger statements to reduce bundle size
+  // Automatically tree-shake Sentry logger statements
   disableLogger: true,
 
   // Enables automatic instrumentation of Vercel Cron Monitors. (Does not yet work with App Router route handlers.)
