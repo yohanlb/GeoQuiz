@@ -3,10 +3,11 @@ import DeckPageContent from '@features/decks/components/DeckPageContent';
 import { getDeckByName, getDecks } from '@features/decks/server/db/decks';
 
 type Props = {
-  params: { deckName: string };
+  params: Promise<{ deckName: string }>;
 };
 
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata(props: Props) {
+  const params = await props.params;
   const { displayName } = await getDeckByName(params.deckName);
 
   return {
@@ -22,7 +23,8 @@ export async function generateStaticParams() {
   }));
 }
 
-const Country = async ({ params }: Props) => {
+const Country = async (props: Props) => {
+  const params = await props.params;
   const deck = await getDeckByName(params.deckName);
 
   return (

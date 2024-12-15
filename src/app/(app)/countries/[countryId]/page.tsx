@@ -11,13 +11,14 @@ import { supabase } from '@lib/supabase/static';
 import PageCenteredLink from '@components/global/PageCenteredLink';
 
 type Props = {
-  params: { countryId: number };
+  params: Promise<{ countryId: number }>;
 };
 
-export const revalidate = 60 * 60 * 24; // 1 day
+export const revalidate = 86400; // 1 day
 export const dynamic = 'force-static';
 
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata(props: Props) {
+  const params = await props.params;
   const { countryId } = params;
   const { name } = await getCountryById(countryId);
 
@@ -39,7 +40,8 @@ export async function generateStaticParams() {
   }));
 }
 
-const Country = async ({ params }: Props) => {
+const Country = async (props: Props) => {
+  const params = await props.params;
   const [country, countryStats, decks] = await Promise.all([
     getCountryById(params.countryId),
     getCountryStatsById(params.countryId),

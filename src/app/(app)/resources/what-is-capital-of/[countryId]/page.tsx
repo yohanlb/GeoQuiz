@@ -9,12 +9,13 @@ import { supabase } from '@lib/supabase/static';
 import Link from 'next/link';
 
 type Props = {
-  params: {
+  params: Promise<{
     countryId: CountryRecord['id'];
-  };
+  }>;
 };
 
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata(props: Props) {
+  const params = await props.params;
   const { countryId } = params;
   const country = await getCountryById(countryId);
 
@@ -35,7 +36,8 @@ export async function generateStaticParams() {
   }));
 }
 
-async function page({ params }: Props) {
+async function page(props: Props) {
+  const params = await props.params;
   const { countryId } = params;
   const country = await getCountryById(countryId);
 

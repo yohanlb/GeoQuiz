@@ -1,6 +1,6 @@
 import React from 'react';
-import { getCountriesStatsByCountryIds } from '@features/countries/server/db/countries_stats';
 import { getQuestionsFromDeckId } from '@features/quiz/hooks/useFetchQuestionsUtils';
+import { getCountriesStats } from '@server/actions/get-countries-stats';
 import useGameStore from '@stores/game-store';
 import axios from 'axios';
 
@@ -36,8 +36,7 @@ export function useFetchQuestions(
       const questionsCountryIds = response.data.map(
         (question: Question) => question.countryData.id,
       );
-      const countriesStats =
-        await getCountriesStatsByCountryIds(questionsCountryIds);
+      const countriesStats = await getCountriesStats(questionsCountryIds);
 
       return response.data.map((question: Question) => ({
         ...question,
