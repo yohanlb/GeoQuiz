@@ -15,7 +15,7 @@ export async function fetchUserGuessesHistory(
   countryId: number,
   questionTypeId: number,
 ) {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const { data, error } = await supabase
     .from('user_guesses_history')
@@ -39,7 +39,7 @@ export async function fetchUserGuessesHistoryByCountry(
   userId: string,
   countryId: number,
 ) {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const { data, error } = await supabase
     .from('user_guesses_history')
@@ -61,7 +61,7 @@ export async function fetchUserGuessesHistoryByCountryIds(
   countryIds: number[],
   questionTypeId?: Question['questionTypeId'],
 ) {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const query = supabase
     .from('user_guesses_history')
@@ -82,7 +82,7 @@ export async function fetchUserGuessesHistoryByCountryIds(
 }
 
 export async function fetchAllUserGuessesHistory(userId: string) {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const { data, error } = await supabase
     .from('user_guesses_history')
@@ -103,7 +103,7 @@ export async function fetchLastUserGuessesHistoryWithCountryRecord(
   userId: string,
   amount: number,
 ): Promise<UserGuessHistoryWithCountry[]> {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const { data, error } = await supabase
     .from('user_guesses_history')
@@ -138,7 +138,7 @@ export async function upsertUserGuessesHistory(
   questionTypeId: UserGuessHistoryRecord['question_type_id'],
   guessResults: UserGuessHistoryRecord['guess_results'],
 ) {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const { data, error } = await supabase
     .from('user_guesses_history')

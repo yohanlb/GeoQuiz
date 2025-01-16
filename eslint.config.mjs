@@ -14,6 +14,115 @@ const compat = new FlatCompat({
   allConfig: js.configs.all,
 });
 
+// Base configuration for all files
+const baseConfig = {
+  plugins: {
+    jest,
+    boundaries,
+    cypress,
+  },
+
+  languageOptions: {
+    globals: {
+      ...jest.environments.globals.globals,
+      'cypress/globals': true,
+    },
+  },
+
+  settings: {
+    'boundaries/include': ['src/**/*'],
+
+    'boundaries/elements': [
+      {
+        mode: 'full',
+        type: 'shared',
+        pattern: [
+          'src/shared/**/*',
+          'src/__tests__/**/*',
+          'src/assets/**/*',
+          'src/lib/**/*',
+        ],
+      },
+      {
+        mode: 'full',
+        type: 'feature',
+        capture: ['featureName'],
+        pattern: ['src/features/*/**/*'],
+      },
+      {
+        mode: 'full',
+        type: 'app',
+        capture: ['_', 'fileName'],
+        pattern: ['src/app/**/*'],
+      },
+      {
+        mode: 'full',
+        type: 'neverImport',
+        pattern: ['src/*', 'src/scripts/**/*'],
+      },
+    ],
+  },
+
+  rules: {
+    'boundaries/no-unknown': ['error'],
+    'boundaries/no-unknown-files': ['error'],
+
+    'boundaries/element-types': [
+      'error',
+      {
+        default: 'disallow',
+
+        rules: [
+          {
+            from: ['shared'],
+            allow: ['shared'],
+          },
+          {
+            from: ['feature'],
+            allow: [
+              'shared',
+              [
+                'feature',
+                {
+                  featureName: '${from.featureName}',
+                },
+              ],
+            ],
+          },
+          {
+            from: ['neverImport'],
+            allow: ['shared', 'feature'],
+          },
+          {
+            from: ['app'],
+            allow: ['shared', 'feature', 'app'],
+          },
+          {
+            from: ['app'],
+
+            allow: [
+              [
+                'app',
+                {
+                  fileName: '*.css',
+                },
+              ],
+            ],
+          },
+        ],
+      },
+    ],
+  },
+};
+
+// Cypress test specific configuration
+const cypressConfig = {
+  files: ['**/*.cy.ts'],
+  rules: {
+    'jest/expect-expect': 'off',
+  },
+};
+
 const config = [
   ...compat.extends(
     'eslint:recommended',
@@ -24,115 +133,8 @@ const config = [
     'plugin:jest/recommended',
     'plugin:cypress/recommended',
   ),
-  {
-    plugins: {
-      jest,
-      boundaries,
-      cypress,
-    },
-
-    languageOptions: {
-      globals: {
-        ...jest.environments.globals.globals,
-        'cypress/globals': true,
-      },
-    },
-
-    settings: {
-      'boundaries/include': ['src/**/*'],
-
-      'boundaries/elements': [
-        {
-          mode: 'full',
-          type: 'shared',
-          pattern: [
-            'src/shared/**/*',
-            'src/__tests__/**/*',
-            'src/assets/**/*',
-            'src/lib/**/*',
-          ],
-        },
-        {
-          mode: 'full',
-          type: 'feature',
-          capture: ['featureName'],
-          pattern: ['src/features/*/**/*'],
-        },
-        {
-          mode: 'full',
-          type: 'app',
-          capture: ['_', 'fileName'],
-          pattern: ['src/app/**/*'],
-        },
-        {
-          mode: 'full',
-          type: 'neverImport',
-          pattern: ['src/*', 'src/scripts/**/*'],
-        },
-      ],
-    },
-
-    rules: {
-      'boundaries/no-unknown': ['error'],
-      'boundaries/no-unknown-files': ['error'],
-
-      'boundaries/element-types': [
-        'error',
-        {
-          default: 'disallow',
-
-          rules: [
-            {
-              from: ['shared'],
-              allow: ['shared'],
-            },
-            {
-              from: ['feature'],
-
-              allow: [
-                'shared',
-                [
-                  'feature',
-                  {
-                    featureName: '${from.featureName}',
-                  },
-                ],
-              ],
-            },
-            {
-              from: ['neverImport'],
-              allow: ['shared', 'feature'],
-            },
-            {
-              from: ['app'],
-              allow: ['shared', 'feature', 'app'],
-            },
-            {
-              from: ['app'],
-
-              allow: [
-                [
-                  'app',
-                  {
-                    fileName: '*.css',
-                  },
-                ],
-              ],
-            },
-          ],
-        },
-      ],
-    },
-    // disable expect-expect rule for cypress tests
-    overrides: [
-      {
-        files: ['**/*.cy.ts'],
-        rules: {
-          'jest/expect-expect': 'off',
-        },
-      },
-    ],
-  },
+  baseConfig,
+  cypressConfig,
 ];
 
 export default config;

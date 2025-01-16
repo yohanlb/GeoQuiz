@@ -4,14 +4,15 @@ import { fetchAllUserGuessesHistory } from '@features/userInsights/server/db/use
 import { getAuthenticatedUser } from '@server/db/get-authenticated-user';
 
 type Props = {
-  params: { deckName: string };
-  searchParams: {
+  params: Promise<{ deckName: string }>;
+  searchParams: Promise<{
     length: number;
     dynamicCountryIds: string;
-  };
+  }>;
 };
 
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata(props: Props) {
+  const params = await props.params;
   const { displayName } = await getDeckByName(params.deckName);
   return {
     title: `Playing: ${displayName}`,
@@ -19,7 +20,9 @@ export async function generateMetadata({ params }: Props) {
   };
 }
 
-const Quiz = async ({ params, searchParams }: Props) => {
+const Quiz = async (props: Props) => {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
   const user = await getAuthenticatedUser();
   const deck = await getDeckByName(params.deckName);
 

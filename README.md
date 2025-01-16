@@ -1,35 +1,43 @@
-# GeoQuiz Web App
+# GeoQuiz - Learn Country Flags and Capitals!
 
-Welcome to the **GeoQuiz** web app! This is an interactive quiz application built with **React**, **Next.js**, and **Tailwind CSS**.
+A modern web application for learning geography through interactive quizzes about country flags and capitals.
 
-The app is thought to be both a fun quiz to play and an methodical tool to help users learn the capitals and flags of the world effectively.
+## Features
 
-## Key Features
+- 🌍 Interactive quizzes on country flags and capitals
+- 🎯 Daily challenges
+- 👤 User accounts with Google authentication
+- ☁️ Cloud sync progress tracking
+- 📱 PWA support for offline use
+- 🎨 Modern UI with Shadcn, NextUI and Tailwind CSS
+- 📊 Progress tracking and statistics
+- 🔍 Dynamic SEO with prioritized sitemap generation
 
-- 🌍 **Country Quizzes**: Select a deck of countries and test your knowledge of their capitals.
-- 🏁 **Multiple Question Types**: Capital, flag, and border guessing plus daily game modes with new special questions everyday.
-- 📊 **Real-Time Results**: Get instant feedback on your answers, with a final results summary at the end of each quiz.
-- ⚡ **Fast & Interactive**: Built with a mix of client-side and server-side logic for a smooth and optimized experience.
-- 🛠 **Tech Stack**: React 18, Next.js 14, Tailwind CSS, Shadcn UI, TypeScript, and Supabase for the backend API and database.
+## Tech Stack
 
-## Live Version
+- **Framework:** Next.js 15 with Turbopack
+- **UI Libraries:** NextUI, Tailwind CSS, Framer Motion, Shadcn
+- **State Management:** Zustand, TanStack Query
+- **Database:** Supabase
+- **Testing:** Jest, Cypress
+- **Monitoring:** Sentry
+- **Analytics:** PostHog
+- **Type Safety:** TypeScript
+- **Package Manager:** pnpm
 
-Check out the live version of GeoQuiz at [GeoQuiz.co](https://geoquiz.co)
+## Prerequisites
 
-## Roadmap
+- Node.js ^20.0.0
+- pnpm
 
-GeoQuiz is still in early development! Here are the next steps:
+## Installation
 
-- [x] User accounts with google authentication
-- [x] Cloud sync progress tracking
-- [ ] Advanced user stats and charts
-- [ ] Custom decks: user tailored series of questions to practice your weak points
-- [ ] Additional daily quiz types
-- [ ] Localization support for multiple languages
+1. Clone the repository:
 
-## Installation and Setup
-
-1. Clone the repository
+   ```bash
+   git clone https://github.com/yohanlb/GeoQuiz-WebApp.git
+   cd GeoQuiz
+   ```
 
 2. Install dependencies:
 
@@ -38,29 +46,71 @@ GeoQuiz is still in early development! Here are the next steps:
    ```
 
 3. Set up environment variables:
-   Create a `.env.local` file at the root of your project and add your Supabase keys and other necessary environment variables.
-
-4. Run the development server:
-
-   ```bash
-   pnpm run dev
+   Create a `.env.local` file with the following variables:
+   ```
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   NEXT_PUBLIC_GEOQUIZ_API_BASE_URL=your_api_url
    ```
 
-   The app will be available at [http://localhost:3000](http://localhost:3000).
+## Development
 
-## Deployment
+Start the development server:
 
-To deploy GeoQuiz to a production environment:
+```bash
+pnpm dev
+```
+
+The app will be available at [http://localhost:3000](http://localhost:3000).
+
+### Available Scripts
+
+- `pnpm dev` - Start development server with Turbopack
+- `pnpm build` - Create production build
+- `pnpm start` - Start production server
+- `pnpm test` - Run Jest tests
+- `pnpm test:watch` - Run Jest in watch mode
+- `pnpm cy:open` - Open Cypress test runner
+- `pnpm cy:run` - Run Cypress tests headlessly
+- `pnpm lint` - Run ESLint
+- `pnpm format` - Check code formatting
+- `pnpm format:fix` - Fix code formatting
+
+## Testing
+
+- Unit/Integration Tests: `pnpm test`
+- E2E Tests: `pnpm cy:run`
+
+## Production Deployment
 
 1. Build the project:
+
    ```bash
-   pnpm run build
+   pnpm build
    ```
+
 2. Start the production server:
    ```bash
    pnpm start
    ```
 
+## SEO & Sitemap
+
+The application uses `next-sitemap` to generate a dynamic sitemap with prioritized routes.
+The sitemap is automatically generated after each build.
+
 ## Contributing
 
-Contributions are welcome! Feel free to fork the repository, make changes, and submit a pull request.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License.
+
+## Author
+
+Yohan LB - [https://yohanlebreton.com](https://yohanlebreton.com)
