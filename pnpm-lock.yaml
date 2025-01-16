@@ -97,8 +97,8 @@ importers:
         specifier: ^5.4.0
         version: 5.4.0(react@19.0.0)
       react-inlinesvg:
-        specifier: ^4.1.7
-        version: 4.1.7(react@19.0.0)
+        specifier: 4.1.5
+        version: 4.1.5(react@19.0.0)
       sharp:
         specifier: ^0.33.5
         version: 0.33.5
@@ -5853,8 +5853,8 @@ packages:
     peerDependencies:
       react: '*'
 
-  react-inlinesvg@4.1.7:
-    resolution: {integrity: sha512-vi6J4um56bFGK2bn+a5rMX524B1H/qP3qZBe2UHuv5Ti53/Q0jvOZwxubPfVXb7p2uB5xoIK7RBPj8BTpaRmcw==}
+  react-inlinesvg@4.1.5:
+    resolution: {integrity: sha512-DcCnmHhpKAUNp6iLPEEB2HJP3simDlyiy8JPZ1DwGCynrQQGQD04GJTFtai8JK8vRhCmoiBV6hSgj31D42Z3Lg==}
     peerDependencies:
       react: 16.8 - 19
 
@@ -14295,7 +14295,7 @@ snapshots:
     dependencies:
       react: 19.0.0
 
-  react-inlinesvg@4.1.7(react@19.0.0):
+  react-inlinesvg@4.1.5(react@19.0.0):
     dependencies:
       react: 19.0.0
       react-from-dom: 0.7.5(react@19.0.0)

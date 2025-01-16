@@ -61,7 +61,7 @@ const ContinentButton: React.FC<ContinentButtonProps> = ({
   };
 
   return (
-    <motion.li
+    <motion.div
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       initial={{ opacity: 0, scale: 0.7 }}
@@ -77,7 +77,7 @@ const ContinentButton: React.FC<ContinentButtonProps> = ({
 
         <span className='text-lg font-semibold'>{continent}</span>
       </button>
-    </motion.li>
+    </motion.div>
   );
 };
 
