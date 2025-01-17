@@ -1,7 +1,7 @@
 'use client';
 
 import React, { startTransition } from 'react';
-import { postCountryStats } from '@features/countries/server/actions/country-stats';
+import { postCountryStats } from '@/src/shared/server/actions/post-country-stats';
 import QuestionView from '@features/quiz/components/QuestionView';
 import { updateUserGuessesHistory } from '@features/userInsights/server/actions/update-user-guesses-history';
 import useGameStore from '@stores/game-store';

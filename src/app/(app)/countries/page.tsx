@@ -1,7 +1,7 @@
 import React from 'react';
-import CountriesTabs from '@features/countries/components/CountriesTabs';
-import { getAllCountries } from '@features/countries/server/db/countries';
-import { groupCountriesByRegionAndSubregion } from '@features/countries/utils/countries';
+import { getAllCountries } from '@/src/shared/server/db/countries';
+import { groupCountriesByRegionAndSubregion } from '@/src/shared/utils/countries';
+import CountriesTabs from '@features/countryExplorer/components/CountriesTabs';
 import { navigationLinks } from '@lib/data/navigation-links';
 import PageCenteredLink from '@components/global/PageCenteredLink';
 import SectionTitle from '@components/global/SectionTitle';

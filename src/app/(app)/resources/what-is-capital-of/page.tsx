@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
-import { getAllCountries } from '@features/countries/server/db/countries';
+import { getAllCountries } from '@/src/shared/server/db/countries';
 import { navigationLinks } from '@lib/data/navigation-links';
 import Link from 'next/link';
 

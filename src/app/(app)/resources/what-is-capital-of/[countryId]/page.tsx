@@ -3,7 +3,7 @@ import ReactCountryFlag from 'react-country-flag';
 import {
   getCountriesByIds,
   getCountryById,
-} from '@features/countries/server/db/countries';
+} from '@/src/shared/server/db/countries';
 import { navigationLinks } from '@lib/data/navigation-links';
 import { supabase } from '@lib/supabase/static';
 import Link from 'next/link';

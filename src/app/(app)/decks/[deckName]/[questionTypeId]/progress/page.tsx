@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaRegFlag } from 'react-icons/fa6';
 import { PiCity } from 'react-icons/pi';
-import { getCountriesByIds } from '@features/countries/server/db/countries';
+import { getCountriesByIds } from '@/src/shared/server/db/countries';
 import { getDeckByName } from '@features/decks/server/db/decks';
 import AnonymousWarning from '@features/userInsights/components/deckProgression/AnonymousWarning';
 import CountryProgress from '@features/userInsights/components/deckProgression/CountryProgress';
@@ -13,7 +13,10 @@ import Link from 'next/link';
 import SectionTitle from '@components/global/SectionTitle';
 
 type Props = {
-  params: Promise<{ deckName: string; questionTypeId?: Question['questionTypeId'] }>;
+  params: Promise<{
+    deckName: string;
+    questionTypeId?: Question['questionTypeId'];
+  }>;
 };
 
 export async function generateMetadata(props: Props) {
