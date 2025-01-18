@@ -36,3 +36,17 @@ export const DECK_CARDS_GRADIENTS = [
   'radial-gradient(circle at 50% 50%, #ffab73, #ffd6a5)',
   'radial-gradient(circle at 70% 30%, #70d3a5, #a1e7cd)',
 ];
+
+export const DISABLED_COUNTRIES = [
+  143, // FM - Micronesia, No SVG,
+  137, // MH - Marshall Islands, No border svg,
+  228, // TV Tuvalu, No border svg,
+  211, // Svalbard (deleted)
+  248, // Kosovo (is disabled in db)
+  98, //Hong Kong (is disabled in db)
+];
+
+// Missing SVGs
+// 164 Northern Mariana
+// 110 Jersey
+// 169 Palestinian Territory Occupied
