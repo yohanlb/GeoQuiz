@@ -32,7 +32,7 @@ declare global {
     optionsIso2: CountryRecord['iso2'][];
     answerCapital: CountryRecord['capital'];
     answerIso2: CountryRecord['iso2'];
-    questionTypeId: 1 | 2;
+    questionTypeId: QuestionTypeRecord['id'];
   };
 
   type GameStatus = 'notStarted' | 'playing' | 'finished';
