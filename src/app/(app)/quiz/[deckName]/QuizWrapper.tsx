@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useFetchQuestions } from '@features/quiz/hooks/useFetchQuestions';
+import { getQuestionsAction } from '@features/quiz/server/actions/get-questions';
 import useFakeLoading from '@hooks/useFakeLoading';
 import useGameStore from '@lib/stores/game-store';
 import QuizLoading from '@components/global/QuizLoading';
@@ -19,15 +19,26 @@ const QuizWrapper = ({
   amountOfQuestions,
 }: Props) => {
   const { setDeck } = useGameStore();
-  const { questions, isLoading } = useFetchQuestions(deck, amountOfQuestions);
+  const [questions, setQuestions] = React.useState<Question[]>([]);
+  const [isPending, startTransition] = React.useTransition();
 
   React.useEffect(() => {
     setDeck(deck);
   }, [setDeck, deck]);
 
-  const isFakeLoading = useFakeLoading(3000, isLoading);
+  React.useEffect(() => {
+    startTransition(async () => {
+      const fetchedQuestions = await getQuestionsAction(
+        deck,
+        amountOfQuestions,
+      );
+      setQuestions(fetchedQuestions);
+    });
+  }, [deck, amountOfQuestions]);
 
-  if (isLoading || isFakeLoading) {
+  const isFakeLoading = useFakeLoading(3000, isPending);
+
+  if (isPending || isFakeLoading) {
     return <QuizLoading />;
   } else if (questions.length < 1) {
     return (
