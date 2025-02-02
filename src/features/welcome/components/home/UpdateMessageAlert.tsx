@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-// import Link from 'next/link';
 import { Alert, AlertDescription } from '@/src/shared/components/ui/alert';
 import { Button } from '@/src/shared/components/ui/button';
 import { X } from 'lucide-react';
@@ -28,13 +27,6 @@ export default function UpdateMessageAlert() {
             progress in the deck, including which countries you have already
             guessed correctly.
           </p>
-          {/* <Link
-            href='/changelog'
-            className='inline-flex items-center text-primary hover:underline'
-          >
-            View Changelog
-            <ExternalLink className='ml-1 h-3 w-3' />
-          </Link> */}
         </div>
         <Button
           variant='ghost'
