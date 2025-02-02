@@ -58,8 +58,7 @@ export async function generateStaticParams() {
   }
 }
 
-// Add this to allow fallback to server-side rendering if static generation fails
-export const dynamicParams = true;
+export const dynamicParams = true; // Allow fallback to server-side rendering if static generation fails
 
 async function page(props: Props) {
   const params = await props.params;

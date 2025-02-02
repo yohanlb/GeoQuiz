@@ -15,39 +15,88 @@ type Props = {
 };
 
 export async function generateMetadata(props: Props) {
-  const params = await props.params;
-  const { countryId } = params;
-  const country = await getCountryById(countryId);
+  try {
+    const params = await props.params;
+    const { countryId } = params;
+    const country = await getCountryById(countryId);
 
-  return {
-    title: `What is the flag of ${country.name}?`,
-    description: `Information about the flag of ${country.name}.`,
-  };
+    if (!country) {
+      return {
+        title: 'Country not found',
+        description: 'The requested country could not be found.',
+      };
+    }
+
+    return {
+      title: `What is the flag of ${country.name}?`,
+      description: `Information about the flag of ${country.name}.`,
+    };
+  } catch (error) {
+    console.error('Error generating metadata:', error);
+    return {
+      title: 'Error',
+      description: 'An error occurred while loading the page.',
+    };
+  }
 }
 
 export async function generateStaticParams() {
-  // fetching from default supabase client cause cant work with cookies at build time
-  const { data } = await supabase.from('countries').select('id');
-  if (!data) {
+  try {
+    if (
+      !process.env.NEXT_PUBLIC_SUPABASE_URL ||
+      !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+    ) {
+      console.error(
+        'Missing required environment variables during static generation',
+      );
+      return [];
+    }
+
+    const { data, error } = await supabase.from('countries').select('id');
+
+    if (error) {
+      console.error('Supabase query error:', error);
+      return [];
+    }
+
+    if (!data || !data.length) {
+      console.warn('No countries data returned from Supabase');
+      return [];
+    }
+
+    return data.map((country) => ({
+      countryId: country.id.toString(),
+    }));
+  } catch (error) {
+    console.error('Failed to generate static params:', error);
     return [];
   }
-  return data.map((country) => ({
-    countryId: country.id.toString(),
-  }));
 }
+
+export const dynamicParams = true; // Allow fallback to server-side rendering if static generation fails
 
 async function page(props: Props) {
   const params = await props.params;
   const { countryId } = params;
   const country = await getCountryById(countryId);
 
+  if (!country) {
+    return (
+      <div className='container mx-auto px-4 py-8 text-center'>
+        <h1 className='text-2xl'>Country not found</h1>
+        <Link
+          href={navigationLinks.resources.href}
+          className='text-blue-400 hover:underline'
+        >
+          Back to resources
+        </Link>
+      </div>
+    );
+  }
+
   const neighboringCountries = await getCountriesByIds(
     country.closest_country_ids ?? [],
   );
-
-  if (!country) {
-    return <div>Country not found</div>;
-  }
 
   return (
     <div className='container mx-auto max-w-4xl px-4 py-8'>
