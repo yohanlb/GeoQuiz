@@ -5,7 +5,6 @@ import { useEventCallback, useEventListener } from 'usehooks-ts';
 // from https://usehooks-ts.com/react-hook/use-local-storage
 
 declare global {
-  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface WindowEventMap {
     'local-storage': CustomEvent;
   }

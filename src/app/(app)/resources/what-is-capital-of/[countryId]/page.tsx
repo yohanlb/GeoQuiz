@@ -44,7 +44,7 @@ export async function generateStaticParams() {
       return [];
     }
 
-    if (!data || !data.length) {
+    if (!data?.length) {
       console.warn('No countries data returned from Supabase');
       return [];
     }
