@@ -26,15 +26,40 @@ export async function generateMetadata(props: Props) {
 }
 
 export async function generateStaticParams() {
-  // fetching from default supabase client cause cant work with cookies at build time
-  const { data } = await supabase.from('countries').select('id');
-  if (!data) {
+  try {
+    if (
+      !process.env.NEXT_PUBLIC_SUPABASE_URL ||
+      !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+    ) {
+      console.error(
+        'Missing required environment variables during static generation',
+      );
+      return [];
+    }
+
+    const { data, error } = await supabase.from('countries').select('id');
+
+    if (error) {
+      console.error('Supabase query error:', error);
+      return [];
+    }
+
+    if (!data || !data.length) {
+      console.warn('No countries data returned from Supabase');
+      return [];
+    }
+
+    return data.map((country) => ({
+      countryId: country.id.toString(),
+    }));
+  } catch (error) {
+    console.error('Failed to generate static params:', error);
     return [];
   }
-  return data.map((country) => ({
-    countryId: country.id.toString(),
-  }));
 }
+
+// Add this to allow fallback to server-side rendering if static generation fails
+export const dynamicParams = true;
 
 async function page(props: Props) {
   const params = await props.params;
