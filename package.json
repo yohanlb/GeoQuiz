@@ -27,6 +27,7 @@
     "generate:types": "supabase gen types typescript --project-id \"adwhviervvdqnbswunen\" --schema public > ./src/lib/types/database.types.ts"
   },
   "dependencies": {
+    "@logtail/next": "^0.1.7",
     "@nextui-org/react": "2.6.8",
     "@nextui-org/theme": "^2.4.5",
     "@radix-ui/react-dialog": "^1.1.4",
