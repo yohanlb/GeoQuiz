@@ -7,7 +7,13 @@ const shouldLogRequest = (pathname: string): boolean => {
   // Log API routes, auth endpoints, and OAuth callbacks
   const pathsToLog = ['/api/', '/auth/', '/login', '/callback'];
 
-  const pathsToIgnore = ['/_next/', '/favicon.ico', '/static/', '/images/'];
+  const pathsToIgnore = [
+    '/_next/',
+    '/favicon.ico',
+    '/static/',
+    '/images/',
+    '/ingest/', // Posthog requests
+  ];
 
   return (
     pathsToLog.some((path) => pathname.includes(path)) &&
