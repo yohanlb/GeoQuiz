@@ -28,7 +28,10 @@ const DeckItem = ({ deck }: DeckItemProps) => {
             </span>
             <DifficultyIndicator
               size='md'
-              value={deck.decks_stats['CountryToCapital'].averageScore}
+              value={
+                deck.decks_stats.find((stat) => stat.questionTypeId === 1)
+                  ?.averageScore ?? 0
+              }
             />
           </div>
         </div>

@@ -85,9 +85,8 @@ declare global {
   type DeckStatsInsert = Database['public']['Tables']['decks_stats']['Insert'];
   type DeckStatsUpdate = Database['public']['Tables']['decks_stats']['Update'];
 
-  type DeckStatsPrepared = { [questionType: string]: DeckStatsRecord };
   type DeckWithStatsRecord = DeckRecord & {
-    decks_stats: DeckStatsPrepared;
+    decks_stats: DeckStatsRecord[];
   };
 
   // Aliases for 'logs' table

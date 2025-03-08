@@ -26,7 +26,8 @@ const DeckPageContent = ({ deck, hideTitle = false }: Props) => {
   const questionTypeId = questionType === 'CountryToCapital' ? 1 : 2;
 
   const difficultyScore =
-    deck.decks_stats['CountryToCapital']?.averageScore ?? 50;
+    deck.decks_stats.find((stat) => stat.questionTypeId === 1)?.averageScore ??
+    50;
   //TODO: switch score depending on question type, but for now there is not enough data for flags.
   // = deck.decks_stats[questionType].averageScore;
 
