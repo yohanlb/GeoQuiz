@@ -1,5 +1,5 @@
 import QuizWrapper from '@/src/app/(app)/quiz/[deckName]/QuizWrapper';
-import { getDeckByName } from '@features/decks/server/db/decks';
+import { getDeckByName } from '@features/decks/server/db/decks-rest';
 import { fetchAllUserGuessesHistory } from '@features/userInsights/server/db/user-guesses-history';
 import { getAuthenticatedUser } from '@server/db/get-authenticated-user';
 

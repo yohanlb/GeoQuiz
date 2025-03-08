@@ -3,7 +3,7 @@ import UserCountryGuessesSection from '@/src/app/(app)/countries/[countryId]/Use
 import { getCountryById } from '@/src/shared/server/db/countries';
 import { getCountryStatsById } from '@/src/shared/server/db/countries-stats-rest';
 import DecksIncludingCountrySection from '@features/decks/components/DecksIncludingCountrySection';
-import { getDecks } from '@features/decks/server/db/decks';
+import { getDecks } from '@features/decks/server/db/decks-rest';
 import CountryDescription from '@features/quiz/components/CountryDescription';
 import CountryShape from '@features/quiz/components/CountryShape';
 import { navigationLinks } from '@lib/data/navigation-links';

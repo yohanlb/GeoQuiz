@@ -1,6 +1,6 @@
 import React from 'react';
 import DeckPageContent from '@features/decks/components/DeckPageContent';
-import { getDeckByName, getDecks } from '@features/decks/server/db/decks';
+import { getDeckByName, getDecks } from '@features/decks/server/db/decks-rest';
 
 type Props = {
   params: Promise<{ deckName: string }>;

@@ -3,7 +3,10 @@ import ContinentsSection from '@features/decks/components/ContinentsSection';
 import DifficultySection from '@features/decks/components/DifficultySection';
 import FeaturedAndPopularSection from '@features/decks/components/FeaturedAndPopularSection';
 import RegionSection from '@features/decks/components/RegionSection';
-import { getDecks, getFeaturedDecks } from '@features/decks/server/db/decks';
+import {
+  getDecks,
+  getFeaturedDecks,
+} from '@features/decks/server/db/decks-rest';
 import DailyChallengesSection from '@features/welcome/components/home/DailyChallengesSection';
 import UpdateMessageAlert from '@features/welcome/components/home/UpdateMessageAlert';
 import { navigationLinks } from '@lib/data/navigation-links';
