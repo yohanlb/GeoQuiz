@@ -1,6 +1,6 @@
 import React from 'react';
 import CotdPageContent from '@features/daily/components/CotdPageContent';
-import { prepareMysteryCountryQuestion } from '@features/daily/server/services/prepare-mystery-country-question';
+import { generateCountryOfTheDayQuestion } from '@features/daily/server/services/prepare-mystery-country-question';
 import { Logger } from '@logtail/next';
 
 export const metadata = {
@@ -11,7 +11,7 @@ export const metadata = {
 async function MysteryCountryPage() {
   const logger = new Logger();
 
-  const dailyQuestion = await prepareMysteryCountryQuestion();
+  const dailyQuestion = await generateCountryOfTheDayQuestion();
 
   // TODO: remove log after testing data isn't cached.
   logger.info(
