@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
-import { getAllCountries } from '@/src/shared/server/db/countries';
 import { navigationLinks } from '@lib/data/navigation-links';
+import { getAllCountries } from '@server/db/countries-rest';
 import Link from 'next/link';
 
 export const metadata = {

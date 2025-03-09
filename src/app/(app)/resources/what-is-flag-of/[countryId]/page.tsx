@@ -1,11 +1,8 @@
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
-import {
-  getCountriesByIds,
-  getCountryById,
-} from '@/src/shared/server/db/countries';
 import { navigationLinks } from '@lib/data/navigation-links';
 import { supabase } from '@lib/supabase/static';
+import { getCountriesByIds, getCountryById } from '@server/db/countries-rest';
 import Link from 'next/link';
 
 type Props = {
@@ -59,7 +56,7 @@ export async function generateStaticParams() {
       return [];
     }
 
-    if (!data || !data.length) {
+    if (!data?.length) {
       console.warn('No countries data returned from Supabase');
       return [];
     }

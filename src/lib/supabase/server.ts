@@ -39,3 +39,18 @@ export async function createClient() {
     },
   );
 }
+
+export async function createAdminClient() {
+  return createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    {
+      // No cookies needed for admin operations
+      cookies: {
+        get: () => '',
+        set: () => {},
+        remove: () => {},
+      },
+    },
+  );
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { getAllCountries } from '@/src/shared/server/db/countries';
+import { getAllCountries } from '@/src/shared/server/db/countries-rest';
 import { groupCountriesByRegionAndSubregion } from '@/src/shared/utils/countries';
 import CountriesTabs from '@features/countryExplorer/components/CountriesTabs';
 import { navigationLinks } from '@lib/data/navigation-links';
