@@ -17,6 +17,7 @@
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
+    "typecheck": "tsc --noEmit",
     "lint": "next lint",
     "format": "prettier --check --ignore-path .gitignore .",
     "format:fix": "prettier --write --ignore-path .gitignore .",
