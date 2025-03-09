@@ -1,4 +1,4 @@
-import { getAllCountries } from '@/src/shared/server/db/countries';
+import { getAllCountries } from '@/src/shared/server/db/countries-rest';
 import { DISABLED_COUNTRIES } from '@lib/data/consts';
 import { getCountriesStatsByCountryIds } from '@server/db/countries-stats-rest';
 import { shuffleArray } from '@utils/utils';

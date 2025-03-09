@@ -1,14 +1,15 @@
+import { checkAndRefillDailyCOTD } from '@features/daily/server/services/refill-mystery-country-table';
 import { CONTINENTS, DISABLED_COUNTRIES } from '@lib/data/consts';
 import { Continent, DailyQuestion } from '@lib/types/daily-mode';
-import { getCountriesByIds, getCountryById } from '@server/db/countries';
+import { getCountriesByIds, getCountryById } from '@server/db/countries-rest';
 import { shuffleArray } from '@utils/utils';
 import { getCountryOfTheDay } from '../db/daily-cotd';
 
 export async function generateCountryOfTheDayQuestion(
   day: number = 0,
 ): Promise<DailyQuestion> {
-  // TO implement:
-  // await checkAndFillDailyCOTD(7);
+  // Check if enough countries in the database. Refill if not.
+  await checkAndRefillDailyCOTD(8);
 
   const cotd = await getCountryOfTheDay(day);
   const countryData = await getCountryById(cotd.countryId);
