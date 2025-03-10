@@ -1,69 +1,24 @@
-const baseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL + '/rest/v1';
-const ONE_HOUR = 3600;
-export async function getCountryById(countryId: CountryRecord['id']) {
-  const url = `${baseUrl}/countries?id=eq.${countryId}&select=*`;
+import { DISABLED_COUNTRIES } from '@lib/data/consts';
+import { createClient } from '@lib/supabase/server';
 
-  const res: Response = await fetch(url, {
-    headers: {
-      apiKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-      'Content-Type': 'application/json',
-    },
-    next: { revalidate: ONE_HOUR },
-  });
+export async function getAllCountriesIds(
+  includeDisabled: boolean = false,
+): Promise<CountryRecord['id'][]> {
+  const supabase = await createClient();
 
-  if (!res.ok) {
-    console.error('Error fetching country by id:', res.statusText);
-    throw new Error('Failed to fetch country by id');
+  let query = supabase.from('countries').select('id');
+
+  if (!includeDisabled && DISABLED_COUNTRIES.length > 0) {
+    query = query.not('id', 'in', `(${DISABLED_COUNTRIES.join(',')})`);
   }
 
-  const data = await res.json();
+  const { data: allCountries, error: countriesError } = await query;
 
-  return (data[0] as CountryRecord) || null;
-}
-
-export async function getCountriesByIds(countryIds: CountryRecord['id'][]) {
-  if (!Array.isArray(countryIds) || countryIds.length === 0) {
-    console.error('No country ids provided');
-    return [];
+  if (countriesError || !allCountries) {
+    throw new Error(
+      `Failed to get countries: ${countriesError?.message || 'Not found'}`,
+    );
   }
 
-  const idsString = countryIds.join(',');
-  const encodedIds = encodeURIComponent(`(${idsString})`);
-
-  const url = `${baseUrl}/countries?id=in.${encodedIds}&select=*`;
-
-  const res = await fetch(url, {
-    headers: {
-      apiKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-      'Content-Type': 'application/json',
-    },
-    next: { revalidate: ONE_HOUR },
-  });
-
-  if (!res.ok) {
-    console.error('Error fetching countries by ids:', res.statusText);
-    throw new Error('Failed to fetch countries by ids');
-  }
-
-  const data = await res.json();
-
-  return data as CountryRecord[];
-}
-
-export async function getAllCountries() {
-  const res = await fetch(`${baseUrl}/countries?select=*`, {
-    headers: {
-      apiKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-      'Content-Type': 'application/json',
-    },
-    next: { revalidate: ONE_HOUR }, // 1 hour
-  });
-
-  if (!res.ok) {
-    console.error('Error fetching countries:', res.statusText);
-    throw new Error('Failed to fetch countries');
-  }
-
-  const data = await res.json();
-  return data as CountryRecord[];
+  return allCountries.map((country) => country.id);
 }

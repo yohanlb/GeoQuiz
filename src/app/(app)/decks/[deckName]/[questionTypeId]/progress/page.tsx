@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaRegFlag } from 'react-icons/fa6';
 import { PiCity } from 'react-icons/pi';
-import { getCountriesByIds } from '@/src/shared/server/db/countries';
+import { getCountriesByIds } from '@/src/shared/server/db/countries-rest';
 import { getDeckByName } from '@features/decks/server/db/decks-rest';
 import AnonymousWarning from '@features/userInsights/components/deckProgression/AnonymousWarning';
 import CountryProgress from '@features/userInsights/components/deckProgression/CountryProgress';
