@@ -1,5 +1,10 @@
 export const WEBSITE_URL = 'https://geoquiz.co';
 
+export const PROJECT_FEATURES = {
+  Quiz: 'Quiz',
+  MysteryCountry: 'MysteryCountry',
+} as const;
+
 export const EMOJIS = {
   valid: '🟩',
   invalid: '🟥',

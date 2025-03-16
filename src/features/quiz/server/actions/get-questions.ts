@@ -1,10 +1,8 @@
 'use server';
 
 import { generateQuestionsFromCountryIds } from '@features/quiz/server/services/questions';
-import {
-  formatServerActionName,
-  log,
-} from '@lib/logging/logging-server-actions';
+import { formatServerActionName } from '@lib/logging/logging-server-actions';
+import { log } from '@logtail/next';
 
 export async function getQuestionsAction(
   deck: DeckRecord,

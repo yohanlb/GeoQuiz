@@ -1,7 +1,9 @@
 import React from 'react';
 import CotdPageContent from '@features/daily/components/CotdPageContent';
 import { generateCountryOfTheDayQuestion } from '@features/daily/server/services/prepare-mystery-country-question';
-import { Logger } from '@logtail/next';
+import { PROJECT_FEATURES } from '@lib/data/consts';
+import { formatWithFeatureName } from '@lib/logging/logging-server-actions';
+import { log } from '@logtail/next';
 
 export const metadata = {
   title: 'Mystery Country',
@@ -9,13 +11,14 @@ export const metadata = {
 };
 
 async function MysteryCountryPage() {
-  const logger = new Logger();
-
   const dailyQuestion = await generateCountryOfTheDayQuestion();
 
   // TODO: remove log after testing data isn't cached.
-  logger.info(
-    `Mystery country data fetch completed (${dailyQuestion.countryName})`,
+  log.info(
+    formatWithFeatureName(
+      `Data fetch completed (${dailyQuestion.countryName})`,
+      PROJECT_FEATURES.MysteryCountry,
+    ),
   );
 
   return (

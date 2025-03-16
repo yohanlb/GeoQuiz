@@ -4,6 +4,8 @@ import {
   getPreviousCountriesOfTheDayIds,
   insertDailyCOTD,
 } from '@features/daily/server/db/daily-cotd';
+import { PROJECT_FEATURES } from '@lib/data/consts';
+import { formatWithFeatureName } from '@lib/logging/logging-server-actions';
 import { log } from '@logtail/next';
 import { getAllCountriesIds } from '@server/db/countries';
 import { shuffleArray } from '@utils/utils';
@@ -13,7 +15,10 @@ export async function checkAndRefillDailyCOTD(
 ): Promise<void> {
   const nextCountries = await getNextCountriesOfTheDay(requiredCount);
 
-  const logString = `Mystery country check and fill: Country available: ${nextCountries.length}, refilling: ${nextCountries.length < requiredCount}`;
+  const logString = formatWithFeatureName(
+    `Check and fill: Country available: ${nextCountries.length}, refilling: ${nextCountries.length < requiredCount}`,
+    PROJECT_FEATURES.MysteryCountry,
+  );
   console.log(logString);
   try {
     log.info(logString);
@@ -31,7 +36,10 @@ export async function refillDailyCOTD(count: number): Promise<void> {
   const startTime = Date.now();
   const allCountriesIds = await getAllCountriesIds();
 
-  const logString = `Mystery country refill DB. Count: ${count}`;
+  const logString = formatWithFeatureName(
+    `Refill DB, Count: ${count}`,
+    PROJECT_FEATURES.MysteryCountry,
+  );
   console.log(logString);
   try {
     log.info(logString);
@@ -49,9 +57,8 @@ export async function refillDailyCOTD(count: number): Promise<void> {
 
   const latestDateInTable = await getLatestDateInTable();
 
-  let insertedCount = 0;
-
   // Insert new entries
+  const instertedRows = [];
   for (let i = 0; i < count; i++) {
     if (i >= shuffledCountries.length) break;
 
@@ -62,14 +69,14 @@ export async function refillDailyCOTD(count: number): Promise<void> {
 
     // Insert the new COTD
     const newCOTD = await insertDailyCOTD(shuffledCountries[i], formattedDate);
-    insertedCount++;
-
-    const insertMessage = `Mystery country: Inserted new COTD: ${newCOTD.countryId}, ${newCOTD.date}`;
-    console.log(insertMessage);
+    instertedRows.push(newCOTD);
   }
 
   const executionTime = Date.now() - startTime;
-  const summaryMessage = `Mystery country refill completed: Inserted ${insertedCount} of ${count} requested rows in ${executionTime}ms`;
+  const summaryMessage = formatWithFeatureName(
+    `Refill completed: Inserted ${instertedRows.length} of ${count} requested rows in ${executionTime}ms`,
+    PROJECT_FEATURES.MysteryCountry,
+  );
   console.log(summaryMessage);
 
   try {
