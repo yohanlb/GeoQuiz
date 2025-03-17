@@ -27,7 +27,7 @@ A modern web application for learning geography through interactive quizzes abou
 
 ## Prerequisites
 
-- Node.js ^20.0.0
+- Node.js ^22.0.0
 - pnpm
 
 ## Installation

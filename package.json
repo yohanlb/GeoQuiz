@@ -4,7 +4,7 @@
   "description": "A capital and flag quiz web application.",
   "private": true,
   "engines": {
-    "node": "^20.0.0"
+    "node": "^22.0.0"
   },
   "repository": {
     "type": "git",
