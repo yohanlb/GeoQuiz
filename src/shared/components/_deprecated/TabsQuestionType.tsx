@@ -3,7 +3,7 @@
 import React from 'react';
 import { FaRegFlag } from 'react-icons/fa6';
 import { PiCity } from 'react-icons/pi';
-import { Tab, Tabs } from '@nextui-org/react';
+import { Tab, Tabs } from "@heroui/react";
 import useGameStore from '@stores/game-store';
 
 export default function TabsQuestionType() {

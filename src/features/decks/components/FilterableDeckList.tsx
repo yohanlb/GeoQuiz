@@ -2,7 +2,7 @@
 
 import React from 'react';
 import DeckList from '@features/decks/components/DeckList';
-import { Chip } from '@nextui-org/react';
+import { Chip } from "@heroui/react";
 
 type Props = {
   decks: DeckWithStatsRecord[];

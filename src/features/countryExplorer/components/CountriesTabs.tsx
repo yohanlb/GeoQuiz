@@ -3,7 +3,7 @@
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
 import { navigationLinks } from '@lib/data/navigation-links';
-import { Card, CardBody, Tab, Tabs } from '@nextui-org/react';
+import { Card, CardBody, Tab, Tabs } from "@heroui/react";
 import { toCamelCase } from '@utils/utils';
 import Link from 'next/link';
 import SectionTitle from '@components/global/SectionTitle';

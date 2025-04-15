@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { DailyQuestionType } from '@lib/types/daily-mode';
-import { Card } from '@nextui-org/react';
+import { Card } from "@heroui/react";
 import CountryShapeSmall from './CountryShapeSmall';
 
 type Props = {

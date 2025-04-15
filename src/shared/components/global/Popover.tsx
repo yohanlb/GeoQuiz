@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Popover, PopoverContent, PopoverTrigger } from '@nextui-org/react';
+import { Popover, PopoverContent, PopoverTrigger } from "@heroui/react";
 
 type Props = {
   children: React.ReactNode;

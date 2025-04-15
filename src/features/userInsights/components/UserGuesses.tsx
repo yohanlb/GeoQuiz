@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaRegFlag } from 'react-icons/fa6';
 import { PiCity } from 'react-icons/pi';
-import { Skeleton } from '@nextui-org/react';
+import { Skeleton } from "@heroui/react";
 import GuessesList from '@components/global/GuessesList';
 
 type Props = {

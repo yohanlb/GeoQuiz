@@ -1,4 +1,4 @@
-import { nextui } from '@nextui-org/theme';
+import { heroui } from '@heroui/theme';
 import type { Config } from 'tailwindcss';
 
 const config = {
@@ -7,7 +7,7 @@ const config = {
     './src/components/**/*.{ts,tsx}',
     './src/app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
-    './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
+    './node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}',
   ],
   darkMode: ['class'],
   prefix: '',
@@ -55,7 +55,7 @@ const config = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate'), nextui()],
+  plugins: [require('tailwindcss-animate'), heroui()],
 } satisfies Config;
 
 export default config;

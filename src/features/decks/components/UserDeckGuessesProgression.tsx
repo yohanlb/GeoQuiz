@@ -4,7 +4,7 @@ import React from 'react';
 import { FaRegFlag } from 'react-icons/fa6';
 import { PiCity } from 'react-icons/pi';
 import DeckProgressByQuestionType from '@features/decks/components/DeckProgressByQuestionType';
-import { Skeleton } from '@nextui-org/react';
+import { Skeleton } from "@heroui/react";
 
 type Props = {
   countryIds: CountryRecord['id'][];
