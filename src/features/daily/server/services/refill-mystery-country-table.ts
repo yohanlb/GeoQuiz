@@ -9,10 +9,9 @@ import { formatWithFeatureName } from '@lib/logging/logging-server-actions';
 import { log } from '@logtail/next';
 import { getAllCountriesIds } from '@server/db/countries';
 import { shuffleArray } from '@utils/utils';
-
 export async function checkAndRefillDailyCOTD(
   requiredCount: number,
-): Promise<void> {
+): Promise<{ numberOfInsertedRows: number }> {
   const nextCountries = await getNextCountriesOfTheDay(requiredCount);
 
   const logString = formatWithFeatureName(
@@ -27,12 +26,14 @@ export async function checkAndRefillDailyCOTD(
   }
 
   // If we don't have enough countries, fill the table
+  let insertedRows: DailyCotdRecord[] = [];
   if (nextCountries.length < requiredCount) {
-    await refillDailyCOTD(requiredCount - nextCountries.length);
+    insertedRows = await refillDailyCOTD(requiredCount - nextCountries.length);
   }
+  return {'numberOfInsertedRows': insertedRows.length};
 }
 
-export async function refillDailyCOTD(count: number): Promise<void> {
+export async function refillDailyCOTD(count: number): Promise<DailyCotdRecord[]> {
   const startTime = Date.now();
   const allCountriesIds = await getAllCountriesIds();
 
@@ -84,4 +85,6 @@ export async function refillDailyCOTD(count: number): Promise<void> {
   } catch (error) {
     console.error('Error logging to Logtail:', error);
   }
+
+  return instertedRows;
 }

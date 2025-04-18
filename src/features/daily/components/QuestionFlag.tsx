@@ -1,7 +1,13 @@
+'use client';
+
 import React, { useState } from 'react';
-import ReactCountryFlag from 'react-country-flag';
+import dynamic from 'next/dynamic';
 import { DailyQuestionType } from '@lib/types/daily-mode';
 import { Card } from "@heroui/react";
+
+const ReactCountryFlag = dynamic(() => import('react-country-flag'), {
+  ssr: false,
+});
 
 type Props = {
   options: string[];
