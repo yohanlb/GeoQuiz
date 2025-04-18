@@ -1,6 +1,6 @@
 'use client';
 
-import React, { Suspense } from 'react';
+import React from 'react';
 import dynamic from 'next/dynamic';
 import { Skeleton } from '@/src/shared/components/ui/skeleton';
 import { MISSING_COUNTRIES_SVGS } from '@lib/data/consts';
