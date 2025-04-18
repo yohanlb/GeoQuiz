@@ -1,7 +1,7 @@
 'use client';
 
-import React from 'react';
-import InlineSVG from 'react-inlinesvg';
+import React, { Suspense } from 'react';
+import dynamic from 'next/dynamic';
 import { Skeleton } from '@/src/shared/components/ui/skeleton';
 import { MISSING_COUNTRIES_SVGS } from '@lib/data/consts';
 
@@ -14,6 +14,11 @@ type Props = {
   strokeColor?: string;
   strokeWidth?: number;
 };
+
+const InlineSVG = dynamic(() => import('react-inlinesvg'), {
+  ssr: false,
+  loading: () => <Skeleton className='h-16 w-16 rounded-xl md:h-16 md:w-16' />,
+});
 
 function CountryShapeSmall({
   countryCode,
@@ -37,7 +42,6 @@ function CountryShapeSmall({
           height='100%'
           width='100%'
           title='Country shape'
-          loader={<Skeleton className='h-16 w-16 rounded-xl md:h-16 md:w-16' />}
         />
       </div>
     );
