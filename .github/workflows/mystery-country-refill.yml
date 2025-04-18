@@ -1,0 +1,17 @@
+name: Mystery Country Refill
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'  # Every Monday at midnight UTC
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  refill:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Refill Endpoint
+        run: |
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.API_KEY_ADMIN }}" \
+            -H "Content-Type: application/json" \
+            https://geoquiz.co/api/mystery-country/refill
