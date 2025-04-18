@@ -7,14 +7,41 @@ export async function POST(request: Request) {
   try {
     // Verify API key
     const authHeader = request.headers.get('authorization');
-    if (!authHeader?.startsWith('Bearer ') || 
-        authHeader.split('Bearer ')[1] !== process.env.API_KEY_ADMIN) {
-      await log.error('Unauthorized refill attempt', {
-        hasAuthHeader: !!authHeader,
-        authHeaderPrefix: authHeader?.startsWith('Bearer '),
-      });
+    
+    // First check if we have an auth header at all
+    if (!authHeader) {
+      await log.error('Missing authorization header');
       return NextResponse.json(
-        { error: 'Unauthorized' },
+        { error: 'Unauthorized - Missing authorization header' },
+        { status: 401 }
+      );
+    }
+
+    // Then check if it has the correct format
+    if (!authHeader.startsWith('Bearer ')) {
+      await log.error('Invalid authorization format - missing Bearer prefix');
+      return NextResponse.json(
+        { error: 'Unauthorized - Invalid authorization format' },
+        { status: 401 }
+      );
+    }
+
+    // Finally check if the key matches
+    const providedKey = authHeader.split('Bearer ')[1];
+    const expectedKey = process.env.API_KEY_ADMIN;
+
+    if (!expectedKey) {
+      await log.error('API_KEY_ADMIN environment variable is not set');
+      return NextResponse.json(
+        { error: 'Server configuration error' },
+        { status: 500 }
+      );
+    }
+
+    if (providedKey !== expectedKey) {
+      await log.error('Invalid API key provided');
+      return NextResponse.json(
+        { error: 'Unauthorized - Invalid API key' },
         { status: 401 }
       );
     }
