@@ -5,6 +5,22 @@ module.exports = {
   exclude: ['/user', '/quiz', '/daily/test'],
   sitemapSize: 200,
   generateIndexSitemap: true,
+  robotsTxtOptions: {
+    policies: [
+      {
+        userAgent: '*',
+        disallow: [
+          '/_next/data/',
+          '/_next/static/chunks/',
+        ],
+        allow: [
+          '/_next/static/images/',
+          '/_next/static/css/',
+          '/_next/static/media/',
+        ],
+      },
+    ],
+  },
   transform: async (config, path) => {
     // Priority 1
     if (path === '/' || path === '/home' || path === '/daily') {
