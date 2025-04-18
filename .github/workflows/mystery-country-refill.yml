@@ -11,7 +11,9 @@ jobs:
     steps:
       - name: Trigger Refill Endpoint
         run: |
-          curl -X POST \
+          echo "Starting curl request..."
+          response=$(curl -v -X POST \
             -H "Authorization: Bearer ${{ secrets.API_KEY_ADMIN }}" \
             -H "Content-Type: application/json" \
-            https://geoquiz.co/api/mystery-country/refill
+            https://geoquiz.co/api/mystery-country/refill)
+          echo "Response received: $response"
