@@ -1,6 +1,12 @@
 # *
 User-agent: *
 Allow: /
+Disallow: /_next/data/
+Disallow: /_next/static/chunks/
+# Allow specific static assets
+Allow: /_next/static/images/
+Allow: /_next/static/css/
+Allow: /_next/static/media/
 
 # Host
 Host: https://geoquiz.co
