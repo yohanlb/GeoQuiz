@@ -9,14 +9,14 @@ A modern web application for learning geography through interactive quizzes abou
 - 👤 User accounts with Google authentication
 - ☁️ Cloud sync progress tracking
 - 📱 PWA support for offline use
-- 🎨 Modern UI with Shadcn, NextUI and Tailwind CSS
+- 🎨 Modern UI with Shadcn, HeroUI and Tailwind CSS
 - 📊 Progress tracking and statistics
 - 🔍 Dynamic SEO with prioritized sitemap generation
 
 ## Tech Stack
 
 - **Framework:** Next.js 15 with Turbopack
-- **UI Libraries:** NextUI, Tailwind CSS, Framer Motion, Shadcn
+- **UI Libraries:** HeroUI, Tailwind CSS, Framer Motion, Shadcn
 - **State Management:** Zustand, TanStack Query
 - **Database:** Supabase
 - **Testing:** Jest, Cypress
