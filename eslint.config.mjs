@@ -31,6 +31,11 @@ const baseConfig = {
 
   settings: {
     'boundaries/include': ['src/**/*'],
+    'import/resolver': {
+      typescript: {
+        project: './tsconfig.json'
+      }
+    },
 
     'boundaries/elements': [
       {
