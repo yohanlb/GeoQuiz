@@ -35,7 +35,7 @@ A modern web application for learning geography through interactive quizzes abou
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yohanlb/GeoQuiz-WebApp.git
+   git clone https://github.com/yohanlb/GeoQuiz.git
    cd GeoQuiz
    ```
 
