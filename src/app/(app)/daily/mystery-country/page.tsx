@@ -5,7 +5,7 @@ import { PROJECT_FEATURES } from '@lib/data/consts';
 import { formatWithFeatureName } from '@lib/logging/logging-server-actions';
 import { log } from '@logtail/next';
 
-export const revalidate = 3600; // 1 hour
+export const dynamic = 'force-dynamic';
 
 export const metadata = {
   title: 'Mystery Country',
