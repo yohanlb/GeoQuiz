@@ -2,19 +2,14 @@ import { checkAndRefillDailyCOTD } from '@features/daily/server/services/refill-
 import { getNextCountriesOfTheDay } from '@features/daily/server/db/daily-cotd';
 import { NextResponse } from 'next/server';
 import { log } from '@logtail/next';
+import { verifyAdminApiKey } from '@utils/api-auth';
 
 export async function POST(request: Request) {
   try {
     // Verify API key
-    const authHeader = request.headers.get('authorization');
-    const expectedKey = process.env.API_KEY_ADMIN;
-
-    if (!expectedKey) {
-      throw new Error('API_KEY_ADMIN environment variable is not set');
-    }
-
-    if (!authHeader?.startsWith('Bearer ') || authHeader.split('Bearer ')[1] !== expectedKey) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    const { isValid, errorResponse } = verifyAdminApiKey(request);
+    if (!isValid) {
+      return errorResponse!;
     }
 
     // Check if we have enough entries and refill if needed
