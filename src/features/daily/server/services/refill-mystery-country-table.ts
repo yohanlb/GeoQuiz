@@ -9,44 +9,31 @@ import { formatWithFeatureName } from '@lib/logging/logging-server-actions';
 import { log } from '@logtail/next';
 import { getAllCountriesIds } from '@server/db/countries';
 import { shuffleArray } from '@utils/utils';
+
 export async function checkAndRefillDailyCOTD(
   requiredCount: number,
 ): Promise<{ numberOfInsertedRows: number }> {
   const nextCountries = await getNextCountriesOfTheDay(requiredCount);
 
   const logString = formatWithFeatureName(
-    `Check and fill: Country available: ${nextCountries.length}, refilling: ${nextCountries.length < requiredCount}`,
+    `Check How many countries available: ${nextCountries.length}, need to refill: ${nextCountries.length < requiredCount}`,
     PROJECT_FEATURES.MysteryCountry,
   );
-  console.log(logString);
-  try {
-    log.info(logString);
-  } catch (error) {
-    console.error('Error logging to Logtail:', error);
-  }
+  log.info(logString);
 
   // If we don't have enough countries, fill the table
   let insertedRows: DailyCotdRecord[] = [];
   if (nextCountries.length < requiredCount) {
     insertedRows = await refillDailyCOTD(requiredCount - nextCountries.length);
   }
-  return {'numberOfInsertedRows': insertedRows.length};
+  return { numberOfInsertedRows: insertedRows.length };
 }
 
-export async function refillDailyCOTD(count: number): Promise<DailyCotdRecord[]> {
+export async function refillDailyCOTD(
+  count: number,
+): Promise<DailyCotdRecord[]> {
   const startTime = Date.now();
   const allCountriesIds = await getAllCountriesIds();
-
-  const logString = formatWithFeatureName(
-    `Refill DB, Count: ${count}`,
-    PROJECT_FEATURES.MysteryCountry,
-  );
-  console.log(logString);
-  try {
-    log.info(logString);
-  } catch (error) {
-    console.error('Error logging to Logtail:', error);
-  }
 
   // Filter out recently used countries
   const previousDailyCountryIdsUsed = await getPreviousCountriesOfTheDayIds();
@@ -59,7 +46,7 @@ export async function refillDailyCOTD(count: number): Promise<DailyCotdRecord[]>
   const latestDateInTable = await getLatestDateInTable();
 
   // Insert new entries
-  const instertedRows = [];
+  const insertedRows = [];
   for (let i = 0; i < count; i++) {
     if (i >= shuffledCountries.length) break;
 
@@ -70,21 +57,15 @@ export async function refillDailyCOTD(count: number): Promise<DailyCotdRecord[]>
 
     // Insert the new COTD
     const newCOTD = await insertDailyCOTD(shuffledCountries[i], formattedDate);
-    instertedRows.push(newCOTD);
+    insertedRows.push(newCOTD);
   }
 
   const executionTime = Date.now() - startTime;
   const summaryMessage = formatWithFeatureName(
-    `Refill completed: Inserted ${instertedRows.length} of ${count} requested rows in ${executionTime}ms`,
+    `Refill completed: Inserted ${insertedRows.length} of ${count} requested rows in ${executionTime}ms`,
     PROJECT_FEATURES.MysteryCountry,
   );
-  console.log(summaryMessage);
+  log.info(summaryMessage);
 
-  try {
-    log.info(summaryMessage);
-  } catch (error) {
-    console.error('Error logging to Logtail:', error);
-  }
-
-  return instertedRows;
+  return insertedRows;
 }
