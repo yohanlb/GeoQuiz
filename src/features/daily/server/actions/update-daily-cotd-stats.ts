@@ -5,6 +5,7 @@ import {
   updateDailyCOTD,
 } from '@features/daily/server/db/daily-cotd';
 import { formatServerActionName } from '@lib/logging/logging-server-actions';
+import { log } from '@logtail/next';
 
 interface DailyCOTDCompletionData {
   questionId: number;
@@ -17,7 +18,7 @@ export async function updateDailyCOTDStats(
 ) {
   const actionName = formatServerActionName('updateDailyCOTDStats');
 
-  console.log(`${actionName} - Started`, {
+  log.info(`${actionName} - Started`, {
     questionId: completionData.questionId,
     rightAnswers: completionData.rightAnswers,
     wrongAnswers: completionData.wrongAnswers,
@@ -26,44 +27,22 @@ export async function updateDailyCOTDStats(
 
   // Skip stats collection in non-production environments
   if (process.env.NODE_ENV !== 'production') {
-    console.log(`${actionName} - Skipped (non-production environment)`, {
-      questionId: completionData.questionId,
-      environment: process.env.NODE_ENV,
-    });
     return null;
   }
 
   try {
-    console.log(`${actionName} - About to get current COTD data`, {
-      questionId: completionData.questionId,
-    });
-
     // Get current COTD stats for validation and calculation
     const currentCOTD = await getCountryOfTheDay(0);
 
-    console.log(`${actionName} - Retrieved current COTD data`, {
-      questionId: completionData.questionId,
-      currentCOTDId: currentCOTD.id,
-      currentCOTDDate: currentCOTD.date,
-      currentTimesPlayed: currentCOTD.times_played,
-      currentTimesCompleted: currentCOTD.times_completed,
-      currentRightAnswers: currentCOTD.right_answers,
-      currentWrongAnswers: currentCOTD.wrong_answers,
-    });
-
     // Validate that the questionId matches the current COTD
     if (currentCOTD.id !== completionData.questionId) {
-      console.error(`${actionName} - Question ID mismatch`, {
+      log.error(`${actionName} - Question ID mismatch`, {
         questionId: completionData.questionId,
         currentCOTDId: currentCOTD.id,
         currentCOTDDate: currentCOTD.date,
       });
       return null;
     }
-
-    console.log(`${actionName} - Validation passed, calculating new stats`, {
-      questionId: completionData.questionId,
-    });
 
     // Calculate new values
     const newTimesPlayed = currentCOTD.times_played + 1;
@@ -75,19 +54,6 @@ export async function updateDailyCOTDStats(
     const newAverageScore =
       Math.round((newRightAnswers / newTimesCompleted) * 100) / 100;
 
-    console.log(`${actionName} - Calculated new stats`, {
-      questionId: completionData.questionId,
-      newTimesPlayed,
-      newTimesCompleted,
-      newRightAnswers,
-      newWrongAnswers,
-      newAverageScore,
-    });
-
-    console.log(`${actionName} - About to call updateDailyCOTD`, {
-      questionId: completionData.questionId,
-    });
-
     // Delegate to DB function for the actual database operation
     await updateDailyCOTD(
       completionData.questionId,
@@ -98,23 +64,19 @@ export async function updateDailyCOTDStats(
       newAverageScore,
     );
 
-    console.log(`${actionName} - Database update completed`, {
-      questionId: completionData.questionId,
-    });
-
-    console.log(`${actionName} - Completed successfully`, {
+    log.info(`${actionName} - Completed successfully`, {
       questionId: completionData.questionId,
       newTimesPlayed,
       newTimesCompleted,
       newRightAnswers,
       newWrongAnswers,
-      newAverageScore: newAverageScore,
+      newAverageScore,
       success: true,
     });
 
     return { success: true };
   } catch (error) {
-    console.error(`${actionName} - Failed`, {
+    log.error(`${actionName} - Failed`, {
       questionId: completionData.questionId,
       rightAnswers: completionData.rightAnswers,
       wrongAnswers: completionData.wrongAnswers,

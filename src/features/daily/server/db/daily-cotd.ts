@@ -131,6 +131,7 @@ export async function updateDailyCOTD(
     .eq('id', questionId);
 
   if (error) {
+    console.error('Failed to update Daily COTD:', error);
     throw new Error(`Failed to update Daily COTD: ${error.message}`);
   }
 
