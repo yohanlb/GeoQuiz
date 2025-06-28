@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import { updateDailyCOTDStats } from '@features/daily/server/actions/update-daily-cotd-stats';
 import { useLocalStorage } from '@hooks/useLocalStorage';
-import useLogGameEvent, { GameEventData } from '@hooks/useLogGameEvent';
 import { DailyQuestion, DaysHistory, Guesses } from '@lib/types/daily-mode';
 import QuizSteps from './QuizSteps';
 
@@ -15,7 +15,6 @@ const DailyCountryQuiz: React.FC<Props> = ({
   dailyQuestion,
   showRemoveHistoryButton = false,
 }) => {
-  const { sendLogGameEvent } = useLogGameEvent();
   const [cotdHistory, setCotdHistory] = useLocalStorage<DaysHistory>(
     'cotd-history',
     {},
@@ -76,16 +75,11 @@ const DailyCountryQuiz: React.FC<Props> = ({
       [dailyQuestion.questionId]: todaysHistory,
     }));
 
-    const completeEventData: GameEventData = {
-      event: 'complete',
-      gameMode: 'countryOfTheDay',
-      payload: {
-        questionId: dailyQuestion.questionId,
-        rightAnswers: sumCorrectAnswers(),
-        wrongAnswers: nbOfQuestions - sumCorrectAnswers(),
-      },
-    };
-    sendLogGameEvent(completeEventData);
+    updateDailyCOTDStats({
+      questionId: dailyQuestion.questionId,
+      rightAnswers: sumCorrectAnswers(),
+      wrongAnswers: nbOfQuestions - sumCorrectAnswers(),
+    });
   };
 
   useEffect(() => {

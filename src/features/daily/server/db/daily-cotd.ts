@@ -108,3 +108,31 @@ export async function insertDailyCOTD(
   }
   return newCOTD[0];
 }
+
+export async function updateDailyCOTD(
+  questionId: number,
+  newTimesPlayed: number,
+  newTimesCompleted: number,
+  newRightAnswers: number,
+  newWrongAnswers: number,
+  newAverageScore: number,
+) {
+  const supabase = await createClient();
+
+  const { error } = await supabase
+    .from('daily_cotd')
+    .update({
+      times_played: newTimesPlayed,
+      times_completed: newTimesCompleted,
+      right_answers: newRightAnswers,
+      wrong_answers: newWrongAnswers,
+      average_score: newAverageScore,
+    })
+    .eq('id', questionId);
+
+  if (error) {
+    throw new Error(`Failed to update Daily COTD: ${error.message}`);
+  }
+
+  return { success: true };
+}
