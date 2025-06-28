@@ -117,7 +117,7 @@ export async function updateDailyCOTD(
   newWrongAnswers: number,
   newAverageScore: number,
 ) {
-  const supabase = await createClient();
+  const supabase = await createAdminClient();
 
   const { error } = await supabase
     .from('daily_cotd')
