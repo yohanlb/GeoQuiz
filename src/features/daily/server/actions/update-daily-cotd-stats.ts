@@ -35,8 +35,24 @@ export async function updateDailyCOTDStats(
   }
 
   try {
+    //temp
+    log.info(`${actionName} - About to get current COTD data`, {
+      questionId: completionData.questionId,
+    });
+
     // Get current COTD stats for validation and calculation
     const currentCOTD = await getCountryOfTheDay(0);
+
+    //temp
+    log.info(`${actionName} - Retrieved current COTD data`, {
+      questionId: completionData.questionId,
+      currentCOTDId: currentCOTD.id,
+      currentCOTDDate: currentCOTD.date,
+      currentTimesPlayed: currentCOTD.times_played,
+      currentTimesCompleted: currentCOTD.times_completed,
+      currentRightAnswers: currentCOTD.right_answers,
+      currentWrongAnswers: currentCOTD.wrong_answers,
+    });
 
     // Validate that the questionId matches the current COTD
     if (currentCOTD.id !== completionData.questionId) {
@@ -48,6 +64,11 @@ export async function updateDailyCOTDStats(
       return null;
     }
 
+    //temp
+    log.info(`${actionName} - Validation passed, calculating new stats`, {
+      questionId: completionData.questionId,
+    });
+
     // Calculate new values
     const newTimesPlayed = currentCOTD.times_played + 1;
     const newTimesCompleted = currentCOTD.times_completed + 1;
@@ -58,6 +79,21 @@ export async function updateDailyCOTDStats(
     const newAverageScore =
       Math.round((newRightAnswers / newTimesCompleted) * 100) / 100;
 
+    //temp
+    log.info(`${actionName} - Calculated new stats`, {
+      questionId: completionData.questionId,
+      newTimesPlayed,
+      newTimesCompleted,
+      newRightAnswers,
+      newWrongAnswers,
+      newAverageScore,
+    });
+
+    //temp
+    log.info(`${actionName} - About to call updateDailyCOTD`, {
+      questionId: completionData.questionId,
+    });
+
     // Delegate to DB function for the actual database operation
     await updateDailyCOTD(
       completionData.questionId,
@@ -67,6 +103,11 @@ export async function updateDailyCOTDStats(
       newWrongAnswers,
       newAverageScore,
     );
+
+    //temp
+    log.info(`${actionName} - Database update completed`, {
+      questionId: completionData.questionId,
+    });
 
     log.info(`${actionName} - Completed successfully`, {
       questionId: completionData.questionId,
