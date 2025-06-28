@@ -4,6 +4,8 @@ import {
   getCountryOfTheDay,
   updateDailyCOTD,
 } from '@features/daily/server/db/daily-cotd';
+import { formatServerActionName } from '@lib/logging/logging-server-actions';
+import { log } from '@logtail/next';
 
 interface DailyCOTDCompletionData {
   questionId: number;
@@ -14,8 +16,21 @@ interface DailyCOTDCompletionData {
 export async function updateDailyCOTDStats(
   completionData: DailyCOTDCompletionData,
 ) {
+  const actionName = formatServerActionName('updateDailyCOTDStats');
+
+  log.info(`${actionName} - Started`, {
+    questionId: completionData.questionId,
+    rightAnswers: completionData.rightAnswers,
+    wrongAnswers: completionData.wrongAnswers,
+    environment: process.env.NODE_ENV,
+  });
+
   // Skip stats collection in non-production environments
   if (process.env.NODE_ENV !== 'production') {
+    log.info(`${actionName} - Skipped (non-production environment)`, {
+      questionId: completionData.questionId,
+      environment: process.env.NODE_ENV,
+    });
     return null;
   }
 
@@ -25,7 +40,11 @@ export async function updateDailyCOTDStats(
 
     // Validate that the questionId matches the current COTD
     if (currentCOTD.id !== completionData.questionId) {
-      console.error('Question ID mismatch with current COTD');
+      log.error(`${actionName} - Question ID mismatch`, {
+        questionId: completionData.questionId,
+        currentCOTDId: currentCOTD.id,
+        currentCOTDDate: currentCOTD.date,
+      });
       return null;
     }
 
@@ -36,7 +55,8 @@ export async function updateDailyCOTDStats(
       currentCOTD.right_answers + completionData.rightAnswers;
     const newWrongAnswers =
       currentCOTD.wrong_answers + completionData.wrongAnswers;
-    const newAverageScore = newRightAnswers / newTimesCompleted;
+    const newAverageScore =
+      Math.round((newRightAnswers / newTimesCompleted) * 100) / 100;
 
     // Delegate to DB function for the actual database operation
     await updateDailyCOTD(
@@ -48,9 +68,25 @@ export async function updateDailyCOTDStats(
       newAverageScore,
     );
 
+    log.info(`${actionName} - Completed successfully`, {
+      questionId: completionData.questionId,
+      newTimesPlayed,
+      newTimesCompleted,
+      newRightAnswers,
+      newWrongAnswers,
+      newAverageScore: newAverageScore,
+      success: true,
+    });
+
     return { success: true };
   } catch (error) {
-    console.error('Error updating COTD stats:', error);
+    log.error(`${actionName} - Failed`, {
+      questionId: completionData.questionId,
+      rightAnswers: completionData.rightAnswers,
+      wrongAnswers: completionData.wrongAnswers,
+      error: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : undefined,
+    });
     return null;
   }
 }
