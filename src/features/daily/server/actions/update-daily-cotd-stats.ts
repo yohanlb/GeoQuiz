@@ -5,7 +5,6 @@ import {
   updateDailyCOTD,
 } from '@features/daily/server/db/daily-cotd';
 import { formatServerActionName } from '@lib/logging/logging-server-actions';
-import { log } from '@logtail/next';
 
 interface DailyCOTDCompletionData {
   questionId: number;
@@ -18,7 +17,7 @@ export async function updateDailyCOTDStats(
 ) {
   const actionName = formatServerActionName('updateDailyCOTDStats');
 
-  log.info(`${actionName} - Started`, {
+  console.log(`${actionName} - Started`, {
     questionId: completionData.questionId,
     rightAnswers: completionData.rightAnswers,
     wrongAnswers: completionData.wrongAnswers,
@@ -27,7 +26,7 @@ export async function updateDailyCOTDStats(
 
   // Skip stats collection in non-production environments
   if (process.env.NODE_ENV !== 'production') {
-    log.info(`${actionName} - Skipped (non-production environment)`, {
+    console.log(`${actionName} - Skipped (non-production environment)`, {
       questionId: completionData.questionId,
       environment: process.env.NODE_ENV,
     });
@@ -35,16 +34,14 @@ export async function updateDailyCOTDStats(
   }
 
   try {
-    //temp
-    log.info(`${actionName} - About to get current COTD data`, {
+    console.log(`${actionName} - About to get current COTD data`, {
       questionId: completionData.questionId,
     });
 
     // Get current COTD stats for validation and calculation
     const currentCOTD = await getCountryOfTheDay(0);
 
-    //temp
-    log.info(`${actionName} - Retrieved current COTD data`, {
+    console.log(`${actionName} - Retrieved current COTD data`, {
       questionId: completionData.questionId,
       currentCOTDId: currentCOTD.id,
       currentCOTDDate: currentCOTD.date,
@@ -56,7 +53,7 @@ export async function updateDailyCOTDStats(
 
     // Validate that the questionId matches the current COTD
     if (currentCOTD.id !== completionData.questionId) {
-      log.error(`${actionName} - Question ID mismatch`, {
+      console.error(`${actionName} - Question ID mismatch`, {
         questionId: completionData.questionId,
         currentCOTDId: currentCOTD.id,
         currentCOTDDate: currentCOTD.date,
@@ -64,8 +61,7 @@ export async function updateDailyCOTDStats(
       return null;
     }
 
-    //temp
-    log.info(`${actionName} - Validation passed, calculating new stats`, {
+    console.log(`${actionName} - Validation passed, calculating new stats`, {
       questionId: completionData.questionId,
     });
 
@@ -79,8 +75,7 @@ export async function updateDailyCOTDStats(
     const newAverageScore =
       Math.round((newRightAnswers / newTimesCompleted) * 100) / 100;
 
-    //temp
-    log.info(`${actionName} - Calculated new stats`, {
+    console.log(`${actionName} - Calculated new stats`, {
       questionId: completionData.questionId,
       newTimesPlayed,
       newTimesCompleted,
@@ -89,8 +84,7 @@ export async function updateDailyCOTDStats(
       newAverageScore,
     });
 
-    //temp
-    log.info(`${actionName} - About to call updateDailyCOTD`, {
+    console.log(`${actionName} - About to call updateDailyCOTD`, {
       questionId: completionData.questionId,
     });
 
@@ -104,12 +98,11 @@ export async function updateDailyCOTDStats(
       newAverageScore,
     );
 
-    //temp
-    log.info(`${actionName} - Database update completed`, {
+    console.log(`${actionName} - Database update completed`, {
       questionId: completionData.questionId,
     });
 
-    log.info(`${actionName} - Completed successfully`, {
+    console.log(`${actionName} - Completed successfully`, {
       questionId: completionData.questionId,
       newTimesPlayed,
       newTimesCompleted,
@@ -121,7 +114,7 @@ export async function updateDailyCOTDStats(
 
     return { success: true };
   } catch (error) {
-    log.error(`${actionName} - Failed`, {
+    console.error(`${actionName} - Failed`, {
       questionId: completionData.questionId,
       rightAnswers: completionData.rightAnswers,
       wrongAnswers: completionData.wrongAnswers,
