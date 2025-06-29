@@ -34,7 +34,7 @@ const ResultsTable = ({ user }: { user: User | null }) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{
-                type: 'elastic',
+                type: 'spring',
                 delay: index * 0.3,
               }}
             >

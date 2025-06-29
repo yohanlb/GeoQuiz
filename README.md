@@ -50,7 +50,6 @@ A modern web application for learning geography through interactive quizzes abou
    ```
    NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
    NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-   NEXT_PUBLIC_GEOQUIZ_API_BASE_URL=your_api_url
    ```
 
 ## Development

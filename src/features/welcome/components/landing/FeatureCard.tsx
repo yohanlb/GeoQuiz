@@ -1,12 +1,12 @@
 import { FeatureData } from '@lib/data/features-description';
-import { motion } from 'framer-motion';
+import { Variants, motion } from 'framer-motion';
 
 type FeatureCardProps = {
   featureData: FeatureData;
   flexBasis?: 'basis-3/5' | 'basis-2/5';
 };
 
-const titleMotion = {
+const titleMotion: Variants = {
   rest: {
     x: 0,
     rotate: 0,
