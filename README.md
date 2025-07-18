@@ -2,6 +2,10 @@
 
 A modern web application for learning geography through interactive quizzes about country flags and capitals.
 
+## Documentation
+
+- [Folder Structure Overview](doc/folder-structure-overview.md)
+
 ## Features
 
 - 🌍 Interactive quizzes on country flags and capitals
