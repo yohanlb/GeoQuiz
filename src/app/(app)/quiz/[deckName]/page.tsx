@@ -17,6 +17,10 @@ export async function generateMetadata(props: Props) {
   return {
     title: `Playing: ${displayName}`,
     description: `Playing a quiz about ${displayName}!`,
+    robots: {
+      index: false,
+      follow: false,
+    },
   };
 }
 

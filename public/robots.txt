@@ -5,6 +5,7 @@ Allow: /_next/static/css/
 Allow: /_next/static/media/
 Disallow: /_next/data/
 Disallow: /_next/static/chunks/
+Disallow: /quiz/
 
 # Host
 Host: https://geoquiz.co
