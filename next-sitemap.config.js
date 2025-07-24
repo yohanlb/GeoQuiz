@@ -2,17 +2,14 @@
 module.exports = {
   siteUrl: process.env.SITE_URL || 'https://geoquiz.co',
   generateRobotsTxt: true,
-  exclude: ['/user', '/quiz', '/daily/test'],
+  exclude: ['/user', '/quiz', '/daily/test', '/countries/*'],
   sitemapSize: 200,
   generateIndexSitemap: true,
   robotsTxtOptions: {
     policies: [
       {
         userAgent: '*',
-        disallow: [
-          '/_next/data/',
-          '/_next/static/chunks/',
-        ],
+        disallow: ['/_next/data/', '/_next/static/chunks/'],
         allow: [
           '/_next/static/images/',
           '/_next/static/css/',
