@@ -80,6 +80,14 @@ async function page(props: Props) {
           What is the capital of <strong>{country.name}</strong>?
         </h1>
 
+        <p className='text-lg text-gray-300'>
+          {country.name} is a country located in {country.subregion}.
+        </p>
+        <p className='text-lg text-gray-300'>
+          Its capital city is <strong>{country.capital}</strong>, which serves
+          as the political and cultural center of the country.
+        </p>
+
         <div className='w-full max-w-xl rounded-lg bg-gray-800/50 p-8'>
           <div className='mb-6'>
             <ReactCountryFlag
