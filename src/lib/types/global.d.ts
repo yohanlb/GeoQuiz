@@ -119,6 +119,14 @@ declare global {
   type UserGuessHistoryUpdate =
     Database['public']['Tables']['user_guesses_history']['Update'];
 
+  // Aliases for 'country_details' table
+  type CountryDetailsRecord =
+    Database['public']['Tables']['country_details']['Row'];
+  type CountryDetailsInsert =
+    Database['public']['Tables']['country_details']['Insert'];
+  type CountryDetailsUpdate =
+    Database['public']['Tables']['country_details']['Update'];
+
   // Aliases for 'countries_complete_view' view
   type CountryCompleteViewRecordOriginal =
     Database['public']['Views']['countries_complete_view']['Row'];
