@@ -21,13 +21,12 @@ export async function middleware(request: NextRequest) {
   // Log unexpected routes (to make sure we're not missing any routes)
   const expectedPaths = [
     '/api/',
-    '/',
-    '/home',
     '/auth/',
     '/daily/',
     '/quiz/',
     '/user/',
     '/profile/',
+    '/results',
   ];
   const isExpectedPath = expectedPaths.some((path) =>
     url.pathname.startsWith(path),
@@ -44,14 +43,14 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    // Path-based filtering for performance (avoid having the middleware run on every request)
-    '/api/:path*',
-    '/auth/:path*',
-    '/',
-    '/home',
+    // Only include pages that use server-side authentication (getAuthenticatedUser, redirects, etc.)
+    // Pages with only client-side auth (UserContext, useAuth) don't need middleware
+    '/api/:path*', // Server actions that need user context
+    '/auth/:path*', // OAuth callbacks and session management
     '/daily/:path*',
     '/quiz/:path*',
     '/user/:path*',
     '/profile/:path*',
+    '/results',
   ],
 };
