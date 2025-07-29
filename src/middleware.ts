@@ -1,6 +1,7 @@
 import { loggingMiddleware } from '@lib/logging/logging-middleware';
 import { updateSession } from '@lib/supabase/middleware';
 import { type NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 
 export async function middleware(request: NextRequest) {
   const url = new URL(request.url);
@@ -8,16 +9,25 @@ export async function middleware(request: NextRequest) {
   // TEMPORARY: Log all middleware executions
   console.log(`Middleware executing for: ${url.pathname}`);
 
+  // Skip middleware for static assets
+  if (
+    url.pathname.startsWith('/_next/') ||
+    url.pathname.startsWith('/static/') ||
+    url.pathname.includes('.')
+  ) {
+    return NextResponse.next();
+  }
+
   // Log unexpected routes (to make sure we're not missing any routes)
   const expectedPaths = [
     '/api/',
+    '/',
+    '/home',
     '/auth/',
     '/daily/',
     '/quiz/',
     '/user/',
     '/profile/',
-    '/home',
-    '/',
   ];
   const isExpectedPath = expectedPaths.some((path) =>
     url.pathname.startsWith(path),
@@ -34,13 +44,14 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * Feel free to modify this pattern to include more paths.
-     */
-    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+    // Path-based filtering for performance (avoid having the middleware run on every request)
+    '/api/:path*',
+    '/auth/:path*',
+    '/',
+    '/home',
+    '/daily/:path*',
+    '/quiz/:path*',
+    '/user/:path*',
+    '/profile/:path*',
   ],
 };
