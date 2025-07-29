@@ -20,12 +20,12 @@ export async function middleware(request: NextRequest) {
 
   // Log unexpected routes (to make sure we're not missing any routes)
   const expectedPaths = [
-    '/api/',
-    '/auth/',
-    '/daily/',
-    '/quiz/',
-    '/user/',
-    '/profile/',
+    '/api',
+    '/auth',
+    '/daily',
+    '/quiz',
+    '/user',
+    '/profile',
     '/results',
   ];
   const isExpectedPath = expectedPaths.some((path) =>
